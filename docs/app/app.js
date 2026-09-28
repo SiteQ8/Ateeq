@@ -5,7 +5,7 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.5.0';
+  var VERSION = '0.5.1';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N, FAITH;
@@ -686,13 +686,19 @@
       '<h2 class="sec-h">' + esc(t('settings')) + '</h2><div class="card set">' +
       '<div class="set-row"><span>' + esc(t('lang')) + '</span>' + segc('lang', S.lang, [['ar', 'العربية'], ['en', 'English']]) + '</div>' +
       '<div class="set-row"><span>' + esc(t('dates_show')) + '</span>' + segc('dates', S.dates, [['both', t('dates_both')], ['hijri', t('dates_hijri')], ['greg', t('dates_greg')]]) + '</div></div>' +
-      '<h2 class="sec-h">' + esc(t('install')) + '</h2><p class="note">' + esc(t('install_note')) + '</p>' +
+      (installed() ? '' : '<h2 class="sec-h">' + esc(t('install')) + '</h2><p class="note">' + esc(t('install_note')) + '</p>') +
       '<h2 class="sec-h">' + esc(t('data_title')) + '</h2><p class="note">' + esc(t('data_note')) + '</p>' +
       '<button class="btn ghost danger" data-act="erase">' + esc(t('erase_all')) + '</button>' +
       '<h2 class="sec-h">' + esc(t('about')) + '</h2><div class="card about"><p>' + esc(t('about_name')) + '</p><p>' + esc(t('about_content')) + '</p>' +
       '<p><a href="https://github.com/SiteQ8/Ateeq" target="_blank" rel="noopener">' + esc(t('about_open')) + '</a></p>' +
       '<p>' + esc(t('about_by')) + '</p><p><a href="mailto:site@hotmail.com">' + esc(t('contact')) + '</a></p>' +
-      '<p class="ver">' + esc(t('version')) + ' <span dir="ltr">' + VERSION + '</span></p></div></main>';
+      '<p class="ver">' + esc(t('version')) + ' <span dir="ltr">' + VERSION + '</span>' +
+      (NATIVE_INFO.version ? '، ' + esc(t('app_version')) + ' <span dir="ltr">' + esc(String(NATIVE_INFO.version)) + '</span>' : '') + '</p></div></main>';
+  }
+  /* Inside the iPhone or Android app, or once added to the home screen, there is nothing left to install. */
+  function installed() {
+    if (NATIVE_INFO.platform) return true;
+    try { return navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches); } catch (e) { return false; }
   }
   function sw(k, title, sub) {
     var on = !!S[k];

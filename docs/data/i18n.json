@@ -1154,5 +1154,9 @@
  "day_tashreeq": {
   "ar": "من أيام التشريق",
   "en": "A day of Tashreeq"
+ },
+ "app_version": {
+  "ar": "وإصدار التطبيق",
+  "en": "app"
  }
 }

@@ -110,8 +110,9 @@ button { font: inherit; }
 .seg::-webkit-scrollbar { display: none; }
 .seg a, .seg button { flex: 1 0 auto; text-align: center; padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: calc(14.5px * var(--ts, 1)); background: none; border: 0; color: var(--ink); cursor: pointer; white-space: nowrap; }
 .seg .on { background: var(--btn-bg); color: var(--btn-fg); font-weight: 600; }
-.seg.small { background: transparent; border: 0; padding: 0; gap: 6px; margin: 0; flex-wrap: wrap; }
-.seg.small button { flex: 0 1 auto; border: 1px solid var(--hair); background: var(--card); padding: 6px 14px; min-width: 44px; }
+/* every small switch is a full width control with equal, tall segments, like the one on the home screen */
+.seg.small { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; width: 100%; gap: 6px; padding: 4px; margin: 0; }
+.seg.small button { min-height: 48px; padding: 10px 8px; border: 0; background: none; white-space: normal; line-height: 1.4; font-size: calc(15px * var(--ts, 1)); }
 .lines { margin: 0; padding: 0; list-style: none; counter-reset: s; }
 .lines li { position: relative; padding: 12px 0; padding-inline-start: 44px; border-bottom: 1px solid var(--hair); line-height: 1.95; }
 .lines li:last-child { border-bottom: 0; }
@@ -312,9 +313,10 @@ details.nusk[open] summary { margin-bottom: 6px; }
 .links a span { flex: 1; }
 .links a .ic:first-child { color: var(--gold-line); }
 .links .ic.fwd { color: var(--stone); width: 18px; height: 18px; }
-.set-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--hair); flex-wrap: wrap; }
+.set-row { display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--hair); }
+.set-row > span { font-weight: 600; font-size: calc(15px * var(--ts, 1)); }
 .set-row:last-child { border-bottom: 0; }
-.set .seg.small .on { background: var(--btn-bg); color: var(--btn-fg); border-color: transparent; }
+.set .seg.small .on { background: var(--btn-bg); color: var(--btn-fg); }
 .about p { margin: 6px 0; line-height: 1.95; }
 .about a { color: var(--gold); }
 .ver { color: var(--stone); font-size: calc(13px * var(--ts, 1)); }
@@ -353,10 +355,10 @@ details.nusk[open] summary { margin-bottom: 6px; }
 .nb-h a { color: var(--gold); font-weight: 600; }
 .nusk-box .lines li { border-bottom-color: rgba(184, 146, 75, .28); border-bottom-color: color-mix(in srgb, var(--gold-line) 30%, transparent); }
 .nusk-box .lines li:last-child { border-bottom: 0; }
-.seg.small.kinds { margin: 12px 0 14px; justify-content: center; }
-.seg.small a { flex: 0 1 auto; border: 1px solid var(--hair); background: var(--card); padding: 6px 12px; font-size: calc(13.5px * var(--ts, 1)); }
+.seg.small.kinds { margin: 12px 0 14px; }
+.seg.small a { min-height: 48px; padding: 10px 8px; border: 0; background: none; white-space: normal; line-height: 1.4; font-size: calc(15px * var(--ts, 1)); display: flex; align-items: center; justify-content: center; }
 .seg.small { overflow: visible; }
-.seg.small button.on, .seg.small a.on { background: var(--btn-bg); color: var(--btn-fg); border-color: transparent; }
+.seg.small button.on, .seg.small a.on { background: var(--btn-bg); color: var(--btn-fg); font-weight: 700; }
 .nusk-pick .lbl { margin: 0 0 8px; font-size: calc(13.5px * var(--ts, 1)); color: var(--stone); }
 .more-link { display: inline-block; margin-top: 12px; color: var(--gold); font-size: calc(14px * var(--ts, 1)); font-weight: 600; }
 .nusk-card.on { border-color: var(--gold-line); box-shadow: inset 0 0 0 1px var(--gold-line); }
@@ -484,8 +486,8 @@ details.nusk[open] summary { margin-bottom: 6px; }
 
 /* the tasbeeh */
 .tasbeeh { text-align: center; }
-.seg.small.wrapseg { flex-wrap: wrap; justify-content: center; margin-top: 12px; }
-.seg.small.wrapseg button { font-family: var(--naskh); font-size: calc(16px * var(--ts, 1)); }
+.seg.small.wrapseg { grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); margin-top: 12px; }
+.seg.small.wrapseg button { font-family: var(--naskh); font-size: calc(18px * var(--ts, 1)); }
 .tb-phrase { margin: 18px 0 4px; font-size: calc((var(--dua-size) + 6px) * var(--ts, 1)); }
 .tb-en { margin: 0 0 6px; }
 .bead { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 230px; height: 230px; margin: 14px auto 8px; border: 0; border-radius: 50%;
@@ -497,15 +499,15 @@ details.nusk[open] summary { margin-bottom: 6px; }
 .bead-n { position: relative; font-size: calc(64px * var(--ts, 1)); font-weight: 700; line-height: 1.1; }
 .bead-of { position: relative; font-size: calc(14px * var(--ts, 1)); color: var(--gold); font-weight: 600; }
 .tb-round, .tb-total { margin: 6px 0; font-size: calc(13.5px * var(--ts, 1)); color: var(--stone); }
-.tasbeeh .set-row { margin-top: 10px; }
+.tasbeeh .set-row { margin-top: 10px; border-bottom: 0; }
+.tasbeeh .set-row > span { text-align: start; }
 
 /* the dates */
 .date-today { text-align: center; }
 .dt-h { margin: 4px 0 2px; font-family: var(--naskh); font-weight: 700; font-size: calc(27px * var(--ts, 1)); }
 .dt-g { margin: 0; font-size: calc(15px * var(--ts, 1)); color: var(--stone); }
 .conv .seg { margin-bottom: 12px; }
-.conv .seg.small { display: grid; grid-template-columns: 1fr 1fr; }
-.conv .seg.small button { white-space: normal; line-height: 1.5; }
+
 .conv-h { display: grid; grid-template-columns: 1fr 1.7fr 1.2fr; gap: 8px; }
 .conv select, .conv input[type="date"] { width: 100%; min-height: 46px; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--hair); background: var(--card); color: var(--ink); font: inherit; font-size: calc(15px * var(--ts, 1)); }
 .conv-out { margin: 14px 0 0; padding: 14px; border-radius: 12px; background: var(--gold-soft); text-align: center; }
