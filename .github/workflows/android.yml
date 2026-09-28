@@ -32,7 +32,7 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ hashFiles('android/**/*.gradle.kts', 'android/gradle/wrapper/gradle-wrapper.properties') }}
 
-      - name: Release lint and debug build
+      - name: Release lint and the shrunk release build
         run: cd android && chmod +x gradlew && ./gradlew --no-daemon :app:lintRelease :app:assembleRelease
 
       - name: The web app is inside the apk
