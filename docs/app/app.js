@@ -109,10 +109,20 @@
       return new Date(ms).toLocaleTimeString(S.lang === 'ar' ? 'ar-SA-u-nu-arab' : 'en-GB', { hour: '2-digit', minute: '2-digit' });
     } catch (e) { return ''; }
   }
+  var HIJRI_MONTHS = {
+    ar: ['محرم', 'صفر', 'ربيع الأول', 'ربيع الآخر', 'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'],
+    en: ['Muharram', 'Safar', 'Rabiʿ al-Awwal', 'Rabiʿ al-Akhir', 'Jumada al-Ula', 'Jumada al-Akhirah', 'Rajab', 'Shaʿban', 'Ramadan', 'Shawwal', 'Dhul-Qiʿdah', 'Dhul-Hijjah']
+  };
+  /* Built from the Umm al-Qura numbers and the app's own month names: some phone browsers
+     carry the calendar's numbers but not its month names in every language. */
   function hijri() {
     try {
-      var loc = S.lang === 'ar' ? 'ar-SA-u-ca-islamic-umalqura-nu-arab' : 'en-GB-u-ca-islamic-umalqura';
-      return new Intl.DateTimeFormat(loc, { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+      var n = {};
+      new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', { day: 'numeric', month: 'numeric', year: 'numeric' })
+        .formatToParts(new Date()).forEach(function (p) { n[p.type] = parseInt(p.value, 10); });
+      if (!(n.month >= 1 && n.month <= 12) || !n.day || !n.year) return '';
+      if (S.lang === 'ar') return L.num(n.day, 'ar') + ' ' + HIJRI_MONTHS.ar[n.month - 1] + ' ' + L.num(n.year, 'ar') + ' هـ';
+      return n.day + ' ' + HIJRI_MONTHS.en[n.month - 1] + ' ' + n.year + ' AH';
     } catch (e) { return ''; }
   }
 
