@@ -1,0 +1,1750 @@
+{
+ "version": 1,
+ "sources": [
+  {
+   "id": "prh",
+   "title": {
+    "ar": "صفة العمرة، للشيخ عبدالعزيز بن باز، رئاسة الشؤون الدينية بالمسجد الحرام والمسجد النبوي",
+    "en": "The Description of Umrah by Shaykh Abdulaziz ibn Baz, Presidency of Religious Affairs at the Two Holy Mosques"
+   },
+   "url": "https://risala.prh.gov.sa/storage/contents/63/ar-sifat_umrah-2.pdf"
+  },
+  {
+   "id": "tahqiq",
+   "title": {
+    "ar": "التحقيق والإيضاح لكثير من مسائل الحج والعمرة والزيارة، للشيخ ابن باز، الرئاسة نفسها",
+    "en": "At-Tahqiq wal-Idah on Hajj, Umrah and the Visit, by Shaykh Ibn Baz, from the same Presidency"
+   },
+   "url": "https://risala.prh.gov.sa/storage/contents/209/ar_attahqiq.pdf"
+  },
+  {
+   "id": "bb11982",
+   "title": {
+    "ar": "فتوى صفة العمرة، الموقع الرسمي للشيخ ابن باز",
+    "en": "Fatwa on how to perform Umrah, official website of Shaykh Ibn Baz"
+   },
+   "url": "https://binbaz.org.sa/fatwas/11982/%D8%B5%D9%81%D8%A9-%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A9"
+  },
+  {
+   "id": "bb16511",
+   "title": {
+    "ar": "فتوى صفة مناسك الحج الثلاثة، الموقع الرسمي للشيخ ابن باز",
+    "en": "Fatwa on the three forms of Hajj, official website of Shaykh Ibn Baz"
+   },
+   "url": "https://binbaz.org.sa/fatwas/16511/%D8%B5%D9%81%D8%A9-%D9%85%D9%86%D8%A7%D8%B3%D9%83-%D8%A7%D9%84%D8%AD%D8%AC-%D8%A7%D9%84%D8%AB%D9%84%D8%A7%D8%AB%D8%A9"
+  },
+  {
+   "id": "bb1640",
+   "title": {
+    "ar": "فتوى كيفية إحرام من كان على الطائرة أو السفينة، الموقع الرسمي للشيخ ابن باز",
+    "en": "Fatwa on entering ihram on a plane or a ship, official website of Shaykh Ibn Baz"
+   },
+   "url": "https://binbaz.org.sa/fatwas/1640/%D9%83%D9%8A%D9%81%D9%8A%D8%A9-%D8%A7%D8%AD%D8%B1%D8%A7%D9%85-%D9%85%D9%86-%D9%83%D8%A7%D9%86-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%B7%D8%A7%D9%89%D8%B1%D8%A9-%D8%A7%D9%88-%D8%A7%D9%84%D8%B3%D9%81%D9%8A%D9%86%D8%A9"
+  },
+  {
+   "id": "bb16100",
+   "title": {
+    "ar": "فتوى بداية رمي الجمار ونهايته، الموقع الرسمي للشيخ ابن باز",
+    "en": "Fatwa on when the stoning begins and ends, official website of Shaykh Ibn Baz"
+   },
+   "url": "https://binbaz.org.sa/fatwas/16100/%D8%A8%D8%AF%D8%A7%D9%8A%D8%A9-%D8%B1%D9%85%D9%8A-%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B1-%D9%88%D9%86%D9%87%D8%A7%D9%8A%D8%AA%D9%87-%D9%88%D9%85%D8%A7-%D9%8A%D8%AA%D8%B9%D9%84%D9%82-%D8%A8%D9%87"
+  },
+  {
+   "id": "saaid",
+   "title": {
+    "ar": "صفة العمرة من الشرح الفقهي المصور، شبكة صيد الفوائد، بمراجعة الشيخ عبدالله بن جبرين",
+    "en": "Illustrated guide to Umrah, Saaid al-Fawaid, reviewed by Shaykh Abdullah ibn Jibreen"
+   },
+   "url": "https://saaid.org/rasael/omrah/index.htm"
+  },
+  {
+   "id": "dalil",
+   "title": {
+    "ar": "دليل المعتمر، جمع طلال بن أحمد العقيل، لجنة توزيع المطبوعات الدينية على الحجاج والمعتمرين",
+    "en": "The Pilgrim's Guide to Umrah, compiled by Talal Al-Aqeel, Committee for Distributing Religious Publications to Pilgrims"
+   },
+   "url": "https://www.alukah.net/books/files/book_9185/bookfile/dalil.pdf"
+  }
+ ],
+ "duas": [
+  {
+   "id": "travel",
+   "title": {
+    "ar": "دعاء السفر",
+    "en": "The travel supplication"
+   },
+   "ar": "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ، اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى، اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا، وَاطْوِ عَنَّا بُعْدَهُ، اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ، وَالْخَلِيفَةُ فِي الْأَهْلِ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ الْمَنْظَرِ، وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ",
+   "en": "Allah is the Greatest, Allah is the Greatest, Allah is the Greatest. Glory be to the One who placed this at our service, for we could never have done it ourselves, and to our Lord we shall surely return. O Allah, on this journey we ask You for righteousness and piety, and for deeds that please You. O Allah, make this journey easy for us and fold up its distance. O Allah, You are the Companion on the journey and the Guardian of the family. O Allah, I seek refuge in You from the hardship of travel, from sorrowful sights, and from an evil return to wealth and family.",
+   "note": {
+    "ar": "رواه مسلم، ويقال إذا ركبت السيارة أو الطائرة بعد التسمية والحمد.",
+    "en": "Narrated by Muslim. Say it once you are seated in the car or plane, after bismillah and praise."
+   }
+  },
+  {
+   "id": "niyyah",
+   "title": {
+    "ar": "نية العمرة",
+    "en": "The intention for Umrah"
+   },
+   "ar": "لَبَّيْكَ عُمْرَةً",
+   "tr": "Labbayka 'umratan",
+   "en": "Here I am, O Allah, answering Your call for Umrah.",
+   "note": {
+    "ar": "أو تقول: اللهم لبيك عمرة، والنية بالقلب هي الأصل.",
+    "en": "You may also say Allahumma labbayka 'umratan. The intention in the heart is what counts."
+   }
+  },
+  {
+   "id": "shart",
+   "title": {
+    "ar": "الاشتراط",
+    "en": "The condition"
+   },
+   "ar": "فَإِنْ حَبَسَنِي حَابِسٌ فَمَحِلِّي حَيْثُ حَبَسْتَنِي",
+   "tr": "Fa-in habasani habisun fa-mahilli haythu habastani",
+   "en": "If anything holds me back, then I leave ihram wherever You hold me back.",
+   "note": {
+    "ar": "لمن خاف ألا يتم نسكه لمرض أو خوف، لحديث ضباعة بنت الزبير رضي الله عنها.",
+    "en": "For anyone who fears illness or danger may stop them, from the hadith of Duba'a bint al-Zubayr."
+   }
+  },
+  {
+   "id": "talbiyah",
+   "title": {
+    "ar": "التلبية",
+    "en": "The Talbiyah"
+   },
+   "ar": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ",
+   "tr": "Labbayka Allahumma labbayk, labbayka la sharika laka labbayk, inna l-hamda wa n-ni'mata laka wa l-mulk, la sharika lak",
+   "en": "Here I am, O Allah, here I am. Here I am, You have no partner, here I am. All praise and all blessings are Yours, and all dominion. You have no partner.",
+   "note": {
+    "ar": "من الإحرام حتى تصل إلى البيت، يرفع بها الرجال أصواتهم وتخفضها النساء.",
+    "en": "From ihram until you reach the Kaaba. Men say it aloud and women say it quietly."
+   }
+  },
+  {
+   "id": "enter",
+   "title": {
+    "ar": "دعاء دخول المسجد",
+    "en": "Entering the mosque"
+   },
+   "ar": "بِسْمِ اللَّهِ، وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ، أَعُوذُ بِاللَّهِ الْعَظِيمِ، وَبِوَجْهِهِ الْكَرِيمِ، وَسُلْطَانِهِ الْقَدِيمِ، مِنَ الشَّيْطَانِ الرَّجِيمِ",
+   "en": "In the name of Allah, and blessings and peace be upon the Messenger of Allah. O Allah, open for me the doors of Your mercy. I seek refuge in Allah the Almighty, in His noble Face and His eternal authority, from Satan the accursed.",
+   "note": {
+    "ar": "مع تقديم الرجل اليمنى.",
+    "en": "Step in with your right foot."
+   }
+  },
+  {
+   "id": "stone",
+   "title": {
+    "ar": "عند الحجر الأسود والركن اليماني",
+    "en": "At the Black Stone and the Yemeni corner"
+   },
+   "ar": "بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ",
+   "tr": "Bismillahi wa Allahu akbar",
+   "en": "In the name of Allah, and Allah is the Greatest.",
+   "note": {
+    "ar": "عند استلامهما، فإن أشرت إلى الحجر من بعيد قلت: الله أكبر، ولا تشر إلى الركن اليماني.",
+    "en": "When touching either one. When pointing to the Stone from afar, say Allahu akbar. Do not point to the Yemeni corner."
+   }
+  },
+  {
+   "id": "corners",
+   "title": {
+    "ar": "بين الركنين",
+    "en": "Between the two corners"
+   },
+   "ar": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+   "ref": {
+    "ar": "البقرة ٢٠١",
+    "en": "Al-Baqarah 201"
+   },
+   "tr": "Rabbana atina fi d-dunya hasanatan wa fi l-akhirati hasanatan wa qina 'adhaba n-nar",
+   "en": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+   "note": {
+    "ar": "بين الركن اليماني والحجر الأسود في كل شوط.",
+    "en": "Between the Yemeni corner and the Black Stone, in every circuit."
+   }
+  },
+  {
+   "id": "maqam",
+   "title": {
+    "ar": "عند التوجه إلى المقام",
+    "en": "Heading to the Station of Ibrahim"
+   },
+   "ar": "وَاتَّخِذُوا مِنْ مَقَامِ إِبْرَاهِيمَ مُصَلًّى",
+   "ref": {
+    "ar": "البقرة ١٢٥",
+    "en": "Al-Baqarah 125"
+   },
+   "tr": "Wattakhidhu min maqami Ibrahima musalla",
+   "en": "And take the Station of Ibrahim as a place of prayer."
+  },
+  {
+   "id": "nabda",
+   "title": {
+    "ar": "عند بداية السعي",
+    "en": "At the start of saʿi"
+   },
+   "ar": "نَبْدَأُ بِمَا بَدَأَ اللَّهُ بِهِ",
+   "tr": "Nabda'u bima bada'a Allahu bih",
+   "en": "We begin with what Allah began with.",
+   "note": {
+    "ar": "في بداية الشوط الأول فقط.",
+    "en": "At the start of the first lap only."
+   }
+  },
+  {
+   "id": "safaverse",
+   "title": {
+    "ar": "آية الصفا",
+    "en": "The verse of Safa"
+   },
+   "ar": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ",
+   "ref": {
+    "ar": "البقرة ١٥٨",
+    "en": "Al-Baqarah 158"
+   },
+   "tr": "Inna s-safa wa l-marwata min sha'a'iri llah",
+   "en": "Indeed, Safa and Marwah are among the symbols of Allah.",
+   "note": {
+    "ar": "عند الاقتراب من الصفا في بداية الشوط الأول فقط.",
+    "en": "As you approach Safa at the start of the first lap only."
+   }
+  },
+  {
+   "id": "safa",
+   "title": {
+    "ar": "ذكر الصفا والمروة",
+    "en": "The remembrance on Safa and Marwah"
+   },
+   "ar": "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، لَا إِلَهَ إِلَّا اللَّهُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ وَلِلَّهِ الْحَمْدُ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ، أَنْجَزَ وَعْدَهُ، وَنَصَرَ عَبْدَهُ، وَهَزَمَ الْأَحْزَابَ وَحْدَهُ",
+   "en": "Allah is the Greatest, Allah is the Greatest, there is no god but Allah. Allah is the Greatest, Allah is the Greatest, and to Allah belongs all praise. There is no god but Allah alone, without partner. His is the dominion and His is the praise, and He has power over all things. There is no god but Allah alone. He fulfilled His promise, gave victory to His servant, and alone defeated the confederates.",
+   "note": {
+    "ar": "ثلاث مرات مستقبل الكعبة رافعًا يديك، وتدعو بما تيسّر بين كل مرة وأخرى، وأصله في صحيح مسلم.",
+    "en": "Three times, facing the Kaaba with raised hands, making dua in between. Its origin is in Sahih Muslim."
+   }
+  },
+  {
+   "id": "hajj",
+   "title": {
+    "ar": "نية الحج",
+    "en": "The intention for Hajj"
+   },
+   "ar": "لَبَّيْكَ حَجًّا",
+   "tr": "Labbayka hajjan",
+   "en": "Here I am, O Allah, for Hajj."
+  },
+  {
+   "id": "qiran",
+   "title": {
+    "ar": "نية القران",
+    "en": "The intention for qiran"
+   },
+   "ar": "لَبَّيْكَ عُمْرَةً وَحَجًّا",
+   "tr": "Labbayka 'umratan wa hajjan",
+   "en": "Here I am, O Allah, for Umrah and Hajj together."
+  },
+  {
+   "id": "arafah",
+   "title": {
+    "ar": "ذكر يوم عرفة",
+    "en": "The remembrance of the Day of Arafah"
+   },
+   "ar": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، يُحْيِي وَيُمِيتُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+   "en": "There is no god but Allah alone, without partner. His is the dominion and His is the praise. He gives life and causes death, and He has power over all things."
+  },
+  {
+   "id": "arafah2",
+   "title": {
+    "ar": "من ذكر يوم عرفة",
+    "en": "More remembrance for Arafah"
+   },
+   "ar": "سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ، سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
+   "en": "Glory be to Allah, praise be to Allah, there is no god but Allah, Allah is the Greatest, and there is no power or strength except with Allah. Glory be to Allah and praise be to Him, glory be to Allah the Almighty."
+  },
+  {
+   "id": "rami",
+   "title": {
+    "ar": "مع كل حصاة",
+    "en": "With every pebble"
+   },
+   "ar": "اللَّهُ أَكْبَرُ",
+   "tr": "Allahu akbar",
+   "en": "Allah is the Greatest."
+  }
+ ],
+ "stations": [
+  {
+   "id": "safar",
+   "title": {
+    "ar": "السفر",
+    "en": "Setting out"
+   },
+   "place": {
+    "ar": "من بيتك إلى الميقات",
+    "en": "From home to the miqat"
+   },
+   "do": [
+    {
+     "ar": "إذا ركبت سيارتك أو طائرتك فسمِّ الله واحمده، ثم كبّر ثلاثًا وقل دعاء السفر.",
+     "en": "When you are seated in your car or plane, say bismillah and praise Allah, then say Allahu akbar three times and recite the travel supplication."
+    },
+    {
+     "ar": "أكثر في سفرك من الذكر والاستغفار والدعاء وتلاوة القرآن، وحافظ على الصلوات في الجماعة.",
+     "en": "Throughout the journey, remember Allah often, seek His forgiveness, make dua and recite the Quran, and keep your prayers in congregation."
+    },
+    {
+     "ar": "ابذل البرّ لرفقتك وكفّ أذاك عنهم، وأمرهم بالمعروف بالحكمة والموعظة الحسنة على قدر طاقتك.",
+     "en": "Be kind to your companions and spare them any harm, and encourage good among them with wisdom and gentle advice as far as you can."
+    }
+   ],
+   "say": [
+    "travel"
+   ],
+   "watch": [
+    {
+     "ar": "احفظ لسانك من كثرة القيل والقال والإفراط في المزاح، ومن الكذب والغيبة والنميمة والسخرية بغيرك.",
+     "en": "Guard your tongue from idle talk and excessive joking, and from lying, backbiting, gossip and mocking others."
+    }
+   ],
+   "calm": [],
+   "women": [],
+   "src": [
+    "tahqiq"
+   ]
+  },
+  {
+   "id": "before",
+   "title": {
+    "ar": "قبل الإحرام",
+    "en": "Before ihram"
+   },
+   "place": {
+    "ar": "عند الميقات أو قبله",
+    "en": "At the miqat or before it"
+   },
+   "do": [
+    {
+     "ar": "خذ ما تحتاج إلى أخذه من الشارب والأظفار والعانة والإبط، لئلا تحتاج إليه بعد الإحرام.",
+     "en": "Trim your moustache and nails and remove body hair as needed, so you will not need to after entering ihram."
+    },
+    {
+     "ar": "اغتسل إن تيسّر لك، والاغتسال سنة للرجال والنساء حتى الحائض والنفساء.",
+     "en": "Take a full bath if you can. It is sunnah for men and women alike, even during menstruation or after childbirth."
+    },
+    {
+     "ar": "يتجرّد الرجل من الثياب المخيطة ويلبس إزارًا ورداءً، والأفضل أن يكونا أبيضين نظيفين.",
+     "en": "Men take off all stitched clothing and wear two sheets, a lower wrap and an upper wrap, preferably white and clean."
+    },
+    {
+     "ar": "يتطيّب الرجل في بدنه دون ملابس إحرامه.",
+     "en": "Men apply perfume to the body only, never to the ihram garments."
+    },
+    {
+     "ar": "تُحرم المرأة في ملابسها العادية التي ليس فيها زينة ولا شهرة ولا ضيق ولا شفافية.",
+     "en": "Women enter ihram in their ordinary clothes, as long as they are not adorned, attention drawing, tight or see-through."
+    },
+    {
+     "ar": "ليس للإحرام صلاة مخصوصة، فإن وافق وقت فريضة فأحرم بعدها.",
+     "en": "Ihram has no prayer of its own. If it coincides with an obligatory prayer, enter ihram after it."
+    }
+   ],
+   "say": [],
+   "watch": [],
+   "calm": [
+    {
+     "ar": "إن لم يتيسّر الاغتسال في الميقات فلا حرج، واغتسل إذا وصلت مكة قبل الطواف إن تيسّر.",
+     "en": "If you cannot bathe at the miqat, there is no harm. Bathe when you reach Makkah before tawaf, if you can."
+    },
+    {
+     "ar": "يجوز لك أن تلبس الإحرام في بيتك قبل السفر، على أن تعقد النية عند الميقات.",
+     "en": "You may put on the ihram garments at home before travelling, as long as you make the intention at the miqat."
+    },
+    {
+     "ar": "ليس للمرأة لون معيّن في ملابس إحرامها، فالأسود والأخضر وغيرهما سواء.",
+     "en": "There is no set colour for a woman in ihram. Black, green or any other colour are all fine."
+    }
+   ],
+   "women": [
+    {
+     "ar": "تُحرم المرأة وإن كانت حائضًا أو نفساء، وتفعل ما يفعله المعتمر، غير أنها لا تطوف بالبيت حتى تطهر وتغتسل.",
+     "en": "A woman may enter ihram while menstruating or after childbirth and does everything a pilgrim does, except that she does not circle the Kaaba until she is pure and has bathed."
+    },
+    {
+     "ar": "لا تلبس المرأة النقاب ولا القفازين، وتستر وجهها ويديها عن الرجال الأجانب بغيرهما كالخمار والعباءة.",
+     "en": "She does not wear a face veil or gloves, and covers her face and hands from unrelated men with something else, such as her head covering or abaya."
+    },
+    {
+     "ar": "تتطيّب المرأة بما لا يظهر ريحه.",
+     "en": "She may use perfume whose scent does not spread."
+    }
+   ],
+   "src": [
+    "prh",
+    "tahqiq",
+    "dalil",
+    "saaid",
+    "bb16511"
+   ]
+  },
+  {
+   "id": "ihram",
+   "title": {
+    "ar": "الإحرام من الميقات",
+    "en": "Ihram at the miqat"
+   },
+   "place": {
+    "ar": "الميقات",
+    "en": "The miqat"
+   },
+   "do": [
+    {
+     "ar": "انوِ بقلبك الدخول في العمرة عند الميقات الذي تمرّ عليه، وقل: لبّيك عمرة، أو: اللهم لبّيك عمرة.",
+     "en": "At the miqat on your route, intend in your heart to begin Umrah and say Labbayka 'umratan, or Allahumma labbayka 'umratan."
+    },
+    {
+     "ar": "إن خفت ألّا تتمّ نسكك لمرض أو خوف فاشترط عند إحرامك.",
+     "en": "If you fear that illness or danger may stop you from finishing, add the condition when you enter ihram."
+    },
+    {
+     "ar": "ثم لبِّ بتلبية النبي صلى الله عليه وسلم وأكثر منها.",
+     "en": "Then begin the Talbiyah of the Prophet, peace be upon him, and repeat it often."
+    },
+    {
+     "ar": "من كان مسكنه دون المواقيت كأهل جدة أحرم من مكانه، ومن كان في مكة خرج إلى الحلّ كالتنعيم فأحرم منه.",
+     "en": "If you live inside the miqat boundary, as in Jeddah, enter ihram from where you are. If you are in Makkah, go out of the sanctuary, to al-Tan'im for example, and enter ihram there."
+    },
+    {
+     "ar": "في الطائرة تهيّأ قبل الإقلاع، ثم أحرم قبل محاذاة الميقات بيسير احتياطًا، ولا تؤخّر الإحرام إلى جدة.",
+     "en": "On a plane, get ready before take-off, then enter ihram a little before the plane is level with the miqat, to be safe. Never delay it until Jeddah."
+    }
+   ],
+   "say": [
+    "niyyah",
+    "shart",
+    "talbiyah"
+   ],
+   "watch": [
+    {
+     "ar": "من مرّ بالميقات يريد العمرة وجب عليه أن يحرم منه، فإن تجاوزه رجع إليه فأحرم، وإلا فعليه دم.",
+     "en": "Anyone who passes a miqat intending Umrah must enter ihram there. If you pass it, go back and enter ihram from it, otherwise a sacrifice is due."
+    },
+    {
+     "ar": "اجتنب محظورات الإحرام من لحظة النية، وستجدها في المحطة التالية.",
+     "en": "Avoid everything forbidden in ihram from the moment of intention. You will find the list in the next station."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "الإحرام نية بالقلب، فمن نوى صار محرمًا ولو لم يتلفّظ بشيء.",
+     "en": "Ihram is an intention of the heart. Once you intend it you are in ihram, even if you say nothing aloud."
+    },
+    {
+     "ar": "ومعنى الاشتراط أنك إن حُبست عن إتمام عمرتك حللت من إحرامك حيث حُبست.",
+     "en": "The condition means that if you are held back from finishing, you leave ihram where you are held back."
+    }
+   ],
+   "women": [],
+   "tool": "miqat",
+   "src": [
+    "prh",
+    "bb11982",
+    "bb1640",
+    "bb16511",
+    "dalil"
+   ]
+  },
+  {
+   "id": "road",
+   "title": {
+    "ar": "الطريق والتلبية",
+    "en": "On the way"
+   },
+   "place": {
+    "ar": "من الميقات حتى الكعبة",
+    "en": "From the miqat to the Kaaba"
+   },
+   "do": [
+    {
+     "ar": "أكثر من التلبية ومن ذكر الله ودعائه حتى تصل إلى البيت.",
+     "en": "Keep repeating the Talbiyah, remembering Allah and making dua until you reach the Kaaba."
+    },
+    {
+     "ar": "يرفع الرجال أصواتهم بالتلبية، وتخفض النساء أصواتهن.",
+     "en": "Men raise their voices with the Talbiyah, and women keep theirs low."
+    }
+   ],
+   "say": [
+    "talbiyah"
+   ],
+   "watch": [
+    {
+     "ar": "لا تأخذ شيئًا من شعرك أو أظفارك، ولا تتطيّب في بدنك ولا ثوبك.",
+     "en": "Do not cut your hair or nails, and do not apply perfume to your body or clothes."
+    },
+    {
+     "ar": "لا يغطّي الرجل رأسه بملاصق كالغترة والشماغ والعمامة، ولا يلبس المخيط كالثوب والقميص والسراويل والخفين.",
+     "en": "Men must not cover the head with anything that sits on it, such as a ghutra, shimagh or turban, nor wear stitched clothing such as a thobe, shirt, trousers or leather socks."
+    },
+    {
+     "ar": "يحرم عقد النكاح والخطبة والجماع ومقدماته حتى تحلّ.",
+     "en": "Marriage contracts, proposals, intercourse and foreplay are forbidden until you leave ihram."
+    },
+    {
+     "ar": "لا تتعرّض للصيد البري، ولا تقطع شجر الحرم ونباته الأخضر، ولا تلتقط لقطته إلا لتعرّف بها.",
+     "en": "Do not hunt or disturb land animals, do not cut the trees or green plants of the sanctuary, and do not pick up lost property there except to announce it."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "يجوز لك لبس الساعة والخاتم والنظارة والنعلين والحزام الذي تحفظ فيه مالك وأوراقك.",
+     "en": "You may wear a watch, ring, glasses, sandals and a belt for your money and papers."
+    },
+    {
+     "ar": "يجوز الاستظلال بالمظلة وسقف السيارة، وتغيير ملابس الإحرام وغسلها، وغسل الرأس والبدن.",
+     "en": "You may shade yourself with an umbrella or a car roof, change and wash your ihram garments, and wash your head and body."
+    },
+    {
+     "ar": "من أخذ شيئًا من شعره أو أظفاره ناسيًا أو جاهلًا فلا شيء عليه، ومن غطّى رأسه ناسيًا أزال الغطاء متى تذكّر ولا شيء عليه.",
+     "en": "If you cut some hair or nails out of forgetfulness or not knowing, nothing is due, and if you covered your head by mistake, remove it as soon as you remember and nothing is due."
+    }
+   ],
+   "women": [
+    {
+     "ar": "لا تلبس المرأة القفازين ولا النقاب، فإن حضر رجال أجانب سترت وجهها بالخمار ونحوه.",
+     "en": "A woman does not wear gloves or a face veil. When unrelated men are near, she covers her face with her head covering or similar."
+    }
+   ],
+   "src": [
+    "prh",
+    "dalil",
+    "saaid"
+   ]
+  },
+  {
+   "id": "enter",
+   "title": {
+    "ar": "دخول المسجد الحرام",
+    "en": "Entering al-Masjid al-Haram"
+   },
+   "place": {
+    "ar": "مكة المكرمة",
+    "en": "Makkah"
+   },
+   "do": [
+    {
+     "ar": "يستحب أن تغتسل عند وصولك مكة إن تيسّر.",
+     "en": "It is recommended to bathe when you arrive in Makkah, if you can."
+    },
+    {
+     "ar": "قدّم رجلك اليمنى عند دخول المسجد، وقل دعاء الدخول.",
+     "en": "Step in with your right foot and say the supplication for entering the mosque."
+    },
+    {
+     "ar": "إذا وصلت إلى البيت فاقطع التلبية، ثم اتجه إلى الحجر الأسود لتبدأ الطواف.",
+     "en": "When you reach the Kaaba, stop the Talbiyah and head to the Black Stone to begin tawaf."
+    }
+   ],
+   "say": [
+    "enter"
+   ],
+   "watch": [],
+   "calm": [
+    {
+     "ar": "إن ذهبت إلى المسجد الحرام دون أن تغتسل فلا حرج عليك.",
+     "en": "If you go to the mosque without having bathed, there is no harm."
+    }
+   ],
+   "women": [],
+   "src": [
+    "bb11982",
+    "dalil",
+    "prh"
+   ]
+  },
+  {
+   "id": "tawaf",
+   "title": {
+    "ar": "الطواف",
+    "en": "Tawaf"
+   },
+   "place": {
+    "ar": "حول الكعبة",
+    "en": "Around the Kaaba"
+   },
+   "do": [
+    {
+     "ar": "يشترط أن تكون على طهارة من الحدث الأصغر والأكبر، لأن الطواف مثل الصلاة غير أنه رُخّص فيه الكلام.",
+     "en": "You must be pure from both minor and major impurity, because tawaf is like prayer, except that speaking is allowed in it."
+    },
+    {
+     "ar": "يضطبع الرجل في هذا الطواف كله، فيجعل وسط ردائه تحت منكبه الأيمن وطرفيه على عاتقه الأيسر.",
+     "en": "Men uncover the right shoulder for the whole of this tawaf, placing the middle of the upper sheet under the right armpit and both ends over the left shoulder."
+    },
+    {
+     "ar": "ابدأ من الحجر الأسود، فاستلمه بيمينك وقبّله إن تيسّر دون أن تؤذي أحدًا، وقل: بسم الله والله أكبر.",
+     "en": "Begin at the Black Stone. Touch it with your right hand and kiss it if you can without harming anyone, and say Bismillahi wa Allahu akbar."
+    },
+    {
+     "ar": "فإن شقّ التقبيل استلمته بيدك أو بعصا وقبّلت ما استلمته به، فإن شقّ الاستلام أشرت إليه وقلت: الله أكبر، ولا تقبّل ما أشرت به.",
+     "en": "If kissing is difficult, touch it with your hand or a stick and kiss what touched it. If touching is difficult, point to it and say Allahu akbar, without kissing your hand."
+    },
+    {
+     "ar": "اجعل البيت عن يسارك وطف به سبعة أشواط، يبدأ كل شوط من الحجر الأسود وينتهي إليه.",
+     "en": "Keep the Kaaba on your left and complete seven circuits, each beginning and ending at the Black Stone."
+    },
+    {
+     "ar": "يرمُل الرجل في الأشواط الثلاثة الأولى، أي يسرع في مشيه مع تقارب خطاه.",
+     "en": "In the first three circuits, men walk briskly with short steps."
+    },
+    {
+     "ar": "إذا حاذيت الركن اليماني فاستلمه بيمينك إن تيسّر وقل: بسم الله والله أكبر، ولا تقبّله.",
+     "en": "At the Yemeni corner, touch it with your right hand if you can and say Bismillahi wa Allahu akbar, without kissing it."
+    },
+    {
+     "ar": "قل بين الركن اليماني والحجر الأسود: ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.",
+     "en": "Between the Yemeni corner and the Black Stone, say: Rabbana atina fi d-dunya hasanatan wa fi l-akhirati hasanatan wa qina adhaba n-nar."
+    },
+    {
+     "ar": "ادعُ واذكر الله بما تيسّر في جميع الأشواط، فليس في الطواف دعاء مخصوص ولا ذكر مخصوص.",
+     "en": "Make dua and remember Allah as you wish in every circuit. Tawaf has no set supplication."
+    },
+    {
+     "ar": "اختم الشوط السابع باستلام الحجر أو الإشارة إليه مع التكبير، ثم أعد رداءك على كتفيك.",
+     "en": "End the seventh circuit by touching or pointing to the Stone with takbir, then put your upper sheet back over both shoulders."
+    }
+   ],
+   "say": [
+    "stone",
+    "corners"
+   ],
+   "watch": [
+    {
+     "ar": "لا تطف من داخل الحِجر، فالحِجر من الكعبة ولا بد أن يكون الطواف من خارجه.",
+     "en": "Do not walk through the Hijr, the low semicircular wall. It is part of the Kaaba, so tawaf must go around the outside of it."
+    },
+    {
+     "ar": "لا تستلم أركان الكعبة الأخرى وجدرانها، ولا تتمسّح بأستارها وبابها ومقام إبراهيم، فذلك لا أصل له في الشرع.",
+     "en": "Do not touch the other corners or walls of the Kaaba, and do not rub yourself on its cover, its door or the Station of Ibrahim. None of this has a basis in the Sunnah."
+    },
+    {
+     "ar": "لا تقبّل الركن اليماني ولا تتمسّح به، وإن لم تستطع استلامه فامضِ دون أن تشير إليه أو تكبّر.",
+     "en": "Do not kiss or rub the Yemeni corner. If you cannot touch it, carry on without pointing or saying takbir."
+    },
+    {
+     "ar": "لا تؤذِ أحدًا بالمزاحمة والمدافعة ورفع الصوت، ويكفيك أن تشير إلى الحجر من بعيد دون أن تتوقف.",
+     "en": "Never harm others by pushing, jostling or shouting. Pointing to the Stone from a distance without stopping is enough."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "إن أقيمت الصلاة وأنت تطوف فصلِّ مع المسلمين، ثم أكمل ما بقي من طوافك.",
+     "en": "If the prayer begins while you are in tawaf, pray with the congregation, then complete the remaining circuits."
+    },
+    {
+     "ar": "إن شككت في عدد الأشواط فابنِ على الأقل ثم أكمل.",
+     "en": "If you are unsure how many circuits you have done, count the lower number and carry on."
+    },
+    {
+     "ar": "إن انتقض وضوؤك أثناء الطواف فتوضأ ثم أعد الطواف من أوله.",
+     "en": "If your wudu breaks during tawaf, make wudu again and restart the tawaf from the beginning."
+    }
+   ],
+   "women": [
+    {
+     "ar": "لا ترمُل المرأة ولا تضطبع، فهما للرجل خاصة.",
+     "en": "Women do not walk briskly or uncover the shoulder. Both are for men only."
+    },
+    {
+     "ar": "لا تطوف الحائض حتى تطهر.",
+     "en": "A menstruating woman does not perform tawaf until she is pure."
+    },
+    {
+     "ar": "يجوز للمرأة أن تأخذ حبوبًا تؤخّر الحيض حتى تتم عمرتها إن لم تضرّ بصحتها.",
+     "en": "A woman may take pills that delay her period until she completes Umrah, if they do not harm her health."
+    },
+    {
+     "ar": "تجنّب المرأة مزاحمة الرجال، خاصة عند الحجر الأسود ومقام إبراهيم.",
+     "en": "Women avoid crowding among men, especially at the Black Stone and the Station of Ibrahim."
+    }
+   ],
+   "tool": "tawaf",
+   "src": [
+    "prh",
+    "bb11982",
+    "saaid",
+    "dalil"
+   ]
+  },
+  {
+   "id": "maqam",
+   "title": {
+    "ar": "ركعتا الطواف وزمزم",
+    "en": "Two rakʿahs and Zamzam"
+   },
+   "place": {
+    "ar": "خلف مقام إبراهيم",
+    "en": "Behind the Station of Ibrahim"
+   },
+   "do": [
+    {
+     "ar": "اقرأ عند توجهك إلى المقام: واتخذوا من مقام إبراهيم مصلى.",
+     "en": "As you head to the Station, recite: wattakhidhu min maqami Ibrahima musalla."
+    },
+    {
+     "ar": "صلِّ ركعتين خلف المقام إن تيسّر، فإن لم يتيسّر فصلِّهما في أي موضع من المسجد.",
+     "en": "Pray two rakʿahs behind the Station if you can, otherwise anywhere in the mosque."
+    },
+    {
+     "ar": "اقرأ بعد الفاتحة في الركعة الأولى سورة الكافرون، وفي الثانية سورة الإخلاص.",
+     "en": "After al-Fatihah, recite al-Kafirun in the first rakʿah and al-Ikhlas in the second."
+    },
+    {
+     "ar": "إذا سلّمت فاستلم الحجر الأسود بيمينك إن تيسّر.",
+     "en": "After finishing the prayer, touch the Black Stone with your right hand if you can."
+    },
+    {
+     "ar": "اشرب من ماء زمزم إن تيسّر.",
+     "en": "Drink Zamzam water if you can."
+    }
+   ],
+   "say": [
+    "maqam"
+   ],
+   "watch": [],
+   "calm": [
+    {
+     "ar": "إن قرأت بغير الكافرون والإخلاص فلا بأس.",
+     "en": "If you recite other surahs, that is fine."
+    }
+   ],
+   "women": [],
+   "src": [
+    "prh",
+    "bb11982",
+    "saaid"
+   ]
+  },
+  {
+   "id": "sai",
+   "title": {
+    "ar": "السعي",
+    "en": "Saʿi"
+   },
+   "place": {
+    "ar": "بين الصفا والمروة",
+    "en": "Between Safa and Marwah"
+   },
+   "do": [
+    {
+     "ar": "اخرج إلى الصفا فاصعده أو قف عنده، والصعود أفضل إن تيسّر.",
+     "en": "Go to Safa and climb it or stand at its foot. Climbing is better if you can."
+    },
+    {
+     "ar": "قل في بداية الشوط الأول: نبدأ بما بدأ الله به، واقرأ: إن الصفا والمروة من شعائر الله.",
+     "en": "At the start of the first lap, say nabda'u bima bada'a Allahu bih, and recite: inna s-safa wa l-marwata min sha'a'iri llah."
+    },
+    {
+     "ar": "استقبل الكعبة وارفع يديك، ثم قل ذكر الصفا وادعُ بما تيسّر، وكرّر الذكر والدعاء ثلاث مرات.",
+     "en": "Face the Kaaba and raise your hands, then say the remembrance of Safa and make any dua you wish, repeating both three times."
+    },
+    {
+     "ar": "انزل وامشِ إلى المروة، فإذا بلغت العلم الأخضر الأول أسرع الرجل حتى يبلغ العلم الثاني.",
+     "en": "Walk down towards Marwah. Between the two green markers, men walk quickly."
+    },
+    {
+     "ar": "اصعد المروة أو قف عندها، وقل وافعل كما فعلت على الصفا، دون قراءة الآية ودون قول: نبدأ بما بدأ الله به.",
+     "en": "Climb Marwah or stand at it, and do and say what you did on Safa, without the verse and without nabda'u."
+    },
+    {
+     "ar": "ذهابك من الصفا إلى المروة شوط ورجوعك شوط، فتتم سبعة أشواط تبدأ بالصفا وتنتهي بالمروة.",
+     "en": "Going from Safa to Marwah is one lap and returning is another, seven laps in all, beginning at Safa and ending at Marwah."
+    },
+    {
+     "ar": "أكثر من الذكر والدعاء في سعيك بما تيسّر، فليس للسعي دعاء مخصوص.",
+     "en": "Remember Allah and make dua as you wish throughout. Saʿi has no set supplication."
+    }
+   ],
+   "say": [
+    "nabda",
+    "safaverse",
+    "safa"
+   ],
+   "watch": [
+    {
+     "ar": "لا تضطبع في السعي، بل يكون رداؤك على كتفيك.",
+     "en": "Do not uncover your shoulder during saʿi. Keep the upper sheet over both shoulders."
+    },
+    {
+     "ar": "لا تضايق غيرك إذا أسرعت بين العلمين.",
+     "en": "When walking quickly between the markers, do not crowd others."
+    },
+    {
+     "ar": "لا ترفع يديك إلا للدعاء، ولا تشر بهما عند التكبير.",
+     "en": "Raise your hands only for dua, and do not gesture with them when saying takbir."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "الطهارة للسعي أفضل وليست شرطًا، فإن سعيت على غير طهارة أجزأك.",
+     "en": "Being in wudu for saʿi is better but not required. Without wudu it is still valid."
+    },
+    {
+     "ar": "إن أقيمت الصلاة وأنت تسعى فصلِّ مع الجماعة ثم أكمل سعيك.",
+     "en": "If the prayer starts while you are in saʿi, pray with the congregation and then continue."
+    },
+    {
+     "ar": "لا حرج أن تسعى راكبًا على عربة، ولا سيما عند الحاجة.",
+     "en": "There is no harm in doing saʿi in a wheelchair or cart, especially when needed."
+    },
+    {
+     "ar": "لا يشترط أن ترقى أعلى الصفا والمروة، فلو بلغت بداية ارتفاعهما أجزأك.",
+     "en": "You do not have to climb to the top of Safa and Marwah. Reaching the start of the slope is enough."
+    }
+   ],
+   "women": [
+    {
+     "ar": "لا تسرع المرأة بين العلمين الأخضرين.",
+     "en": "Women do not walk quickly between the green markers."
+    },
+    {
+     "ar": "إن حاضت المرأة بعد الطواف فلها أن تسعى، لأن المسعى ليس من المسجد الحرام.",
+     "en": "If a woman's period starts after tawaf, she may still do saʿi, because the Masʿa is not part of the mosque."
+    }
+   ],
+   "tool": "sai",
+   "src": [
+    "prh",
+    "bb11982",
+    "saaid",
+    "dalil"
+   ]
+  },
+  {
+   "id": "halq",
+   "title": {
+    "ar": "الحلق أو التقصير",
+    "en": "Shaving or shortening"
+   },
+   "place": {
+    "ar": "بعد السعي",
+    "en": "After saʿi"
+   },
+   "do": [
+    {
+     "ar": "يحلق الرجل رأسه كله أو يقصّره كله، والحلق أفضل.",
+     "en": "Men shave the whole head or shorten hair from all of it. Shaving is better."
+    },
+    {
+     "ar": "إن كان قدومك قريبًا من وقت الحج فالتقصير أفضل ليبقى الشعر لحلق الحج.",
+     "en": "If you arrived close to Hajj season, shortening is better, so there is hair left to shave for Hajj."
+    },
+    {
+     "ar": "تجمع المرأة شعرها وتأخذ منه قدر أنملة فأقل.",
+     "en": "Women gather their hair and cut a fingertip's length or less."
+    },
+    {
+     "ar": "بهذا تمّت عمرتك، وحلّ لك كل ما حرم عليك بالإحرام.",
+     "en": "With this your Umrah is complete, and everything forbidden in ihram is permitted again."
+    }
+   ],
+   "say": [],
+   "watch": [
+    {
+     "ar": "يجب أن يعمّ التقصير جميع الرأس، فلا يكفي أن تقصّر جهة وتترك أخرى.",
+     "en": "Shortening must cover the whole head. Cutting one side and leaving the rest is not enough."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "إن نسيت الحلق أو التقصير وخلعت إحرامك، فالبس إحرامك متى تذكّرت ولو في بلدك، ثم احلق أو قصّر ولا شيء عليك.",
+     "en": "If you forgot to shave or trim and took off your ihram, put it back on whenever you remember, even at home, then shave or trim. Nothing more is due."
+    }
+   ],
+   "women": [
+    {
+     "ar": "لا تحلق المرأة رأسها، وإنما تقصّر من كل ضفيرة قدر رأس الإصبع.",
+     "en": "A woman never shaves her head. She cuts about a fingertip's length from each braid."
+    }
+   ],
+   "src": [
+    "prh",
+    "bb11982",
+    "saaid",
+    "dalil"
+   ]
+  },
+  {
+   "id": "done",
+   "title": {
+    "ar": "تمّت عمرتك",
+    "en": "Your Umrah is complete"
+   },
+   "place": {
+    "ar": "تقبّل الله منك",
+    "en": "May Allah accept it from you"
+   },
+   "do": [
+    {
+     "ar": "لم يصلِّ النبي صلى الله عليه وسلم ركعتين بعد انتهاء العمرة، فمن أحب الاقتداء به فعل مثله.",
+     "en": "The Prophet, peace be upon him, did not pray two rakʿahs after finishing Umrah, so follow his example."
+    },
+    {
+     "ar": "افتح أمانات الدعاء وتأكد أنك دعوت لكل من أوصاك.",
+     "en": "Open your dua trusts and make sure you prayed for everyone who asked you."
+    }
+   ],
+   "say": [],
+   "watch": [],
+   "calm": [],
+   "women": [],
+   "src": [
+    "prh"
+   ]
+  }
+ ],
+ "miqat": {
+  "hadith": {
+   "ar": "قال النبي صلى الله عليه وسلم في المواقيت: «هنّ لهنّ ولمن أتى عليهنّ من غير أهلهنّ ممن أراد الحج والعمرة»، متفق عليه.",
+   "en": "The Prophet, peace be upon him, said of the miqats: \"They are for their people and for whoever passes by them from elsewhere, intending Hajj or Umrah.\" Agreed upon."
+  },
+  "list": [
+   {
+    "id": "dhulhulayfah",
+    "name": {
+     "ar": "ذو الحليفة",
+     "en": "Dhul-Hulayfah"
+    },
+    "today": {
+     "ar": "أبيار علي",
+     "en": "Abyar Ali"
+    },
+    "for": {
+     "ar": "لأهل المدينة ومن جاء عن طريقهم",
+     "en": "For the people of Madinah and anyone coming their way"
+    },
+    "km": 450,
+    "bearing": -5
+   },
+   {
+    "id": "juhfah",
+    "name": {
+     "ar": "الجحفة",
+     "en": "Al-Juhfah"
+    },
+    "today": {
+     "ar": "يُحرم الناس اليوم من رابغ",
+     "en": "People enter ihram today from Rabigh"
+    },
+    "for": {
+     "ar": "لأهل الشام ومصر والمغرب ومن جاء عن طريقهم",
+     "en": "For the people of the Levant, Egypt and North Africa and anyone coming their way"
+    },
+    "km": 183,
+    "bearing": -30
+   },
+   {
+    "id": "dhatirq",
+    "name": {
+     "ar": "ذات عرق",
+     "en": "Dhat 'Irq"
+    },
+    "today": {
+     "ar": "الضريبة",
+     "en": "Ad-Daribah"
+    },
+    "for": {
+     "ar": "لأهل العراق ومن جاء عن طريقهم",
+     "en": "For the people of Iraq and anyone coming their way"
+    },
+    "km": 94,
+    "bearing": 40
+   },
+   {
+    "id": "qarn",
+    "name": {
+     "ar": "قرن المنازل",
+     "en": "Qarn al-Manazil"
+    },
+    "today": {
+     "ar": "السيل الكبير",
+     "en": "As-Sayl al-Kabir"
+    },
+    "for": {
+     "ar": "لأهل نجد ومن جاء عن طريقهم",
+     "en": "For the people of Najd and anyone coming their way"
+    },
+    "km": 75,
+    "bearing": 70
+   },
+   {
+    "id": "yalamlam",
+    "name": {
+     "ar": "يلملم",
+     "en": "Yalamlam"
+    },
+    "today": {
+     "ar": "السعدية",
+     "en": "As-Sa'diyyah"
+    },
+    "for": {
+     "ar": "لأهل اليمن ومن جاء عن طريقهم",
+     "en": "For the people of Yemen and anyone coming their way"
+    },
+    "km": 92,
+    "bearing": 172
+   }
+  ],
+  "rules": [
+   {
+    "ar": "يجب على من مرّ بميقات يريد الحج أو العمرة أن يحرم منه.",
+    "en": "Anyone passing a miqat with the intention of Hajj or Umrah must enter ihram there."
+   },
+   {
+    "ar": "من كان مسكنه دون المواقيت كسكان جدة وبحرة وأم السلم والشرائع أحرم من بيته، أو من حيث طرأت عليه النية.",
+    "en": "Those who live inside the boundary, as in Jeddah, Bahrah, Umm al-Salam or al-Shara'i, enter ihram from home or wherever the intention first arose."
+   },
+   {
+    "ar": "أهل مكة يحرمون للحج من مكة، ويخرجون للعمرة إلى الحلّ خارج الحرم كالتنعيم.",
+    "en": "The people of Makkah enter ihram for Hajj from Makkah, and for Umrah they go out of the sanctuary, to al-Tan'im for example."
+   }
+  ],
+  "plane": [
+   {
+    "ar": "تهيّأ في بلدك قبل الإقلاع، فاغتسل إن تيسّر وتطيّب والبس الإزار والرداء، وكن في الطائرة مستعدًا.",
+    "en": "Get ready at home before the flight. Bathe if you can, apply perfume, put on the two ihram sheets and be ready on the plane."
+   },
+   {
+    "ar": "إن كانت رحلتك من جهة الطائف فأحرم إذا بقي بينك وبين جدة نحو نصف ساعة، لأنك حينئذ قد حاذيت الميقات.",
+    "en": "If your flight comes from the direction of Taif, enter ihram when about half an hour remains before Jeddah, because by then you are level with the miqat."
+   },
+   {
+    "ar": "إن كانت من طريق المدينة فأحرم عند محاذاة ميقاتها، ومن طريق الساحل أو مصر أو الشام فعند محاذاة رابغ، ولك أن تحرم قبل ذلك بيسير احتياطًا.",
+    "en": "By the Madinah route, enter ihram when level with its miqat. By the coast, Egypt or the Levant, enter ihram when level with Rabigh. You may enter a little earlier to be safe."
+   },
+   {
+    "ar": "لا تؤخّر الإحرام إلى أن تصل جدة.",
+    "en": "Do not put off ihram until you land in Jeddah."
+   }
+  ],
+  "routes": [
+   {
+    "id": "east",
+    "name": {
+     "ar": "من جهة الطائف، كالقادم من الكويت والخليج والعراق",
+     "en": "From the Taif side, as from Kuwait, the Gulf or Iraq"
+    },
+    "intent": 40,
+    "prepare": 70
+   },
+   {
+    "id": "north",
+    "name": {
+     "ar": "من طريق المدينة",
+     "en": "By the Madinah route"
+    },
+    "intent": null,
+    "prepare": 90
+   },
+   {
+    "id": "coast",
+    "name": {
+     "ar": "من طريق الساحل أو مصر أو الشام",
+     "en": "By the coast, Egypt or the Levant"
+    },
+    "intent": null,
+    "prepare": 90
+   }
+  ],
+  "src": [
+   "dalil",
+   "bb1640",
+   "bb16511",
+   "bb11982"
+  ]
+ },
+ "hajj": {
+  "nusuk": [
+   {
+    "id": "tamattu",
+    "name": {
+     "ar": "التمتع",
+     "en": "Tamattu'"
+    },
+    "say": "niyyah",
+    "lines": [
+     {
+      "ar": "تحرم بالعمرة وحدها في أشهر الحج فتقول: لبّيك عمرة، ولك أن تقول: متمتعًا بها إلى الحج.",
+      "en": "You enter ihram for Umrah alone during the Hajj months, saying Labbayka 'umratan, and you may add: enjoying it until Hajj."
+     },
+     {
+      "ar": "تطوف وتسعى وتقصّر وتحل، ثم تحرم بالحج يوم الثامن من مكانك في مكة.",
+      "en": "You do tawaf and saʿi, shorten your hair and leave ihram, then enter ihram for Hajj on the eighth from where you are in Makkah."
+     },
+     {
+      "ar": "عليك سعيان، سعي لعمرتك وسعي لحجك مع طواف الإفاضة.",
+      "en": "You do two saʿis, one for your Umrah and one for your Hajj after tawaf al-ifadah."
+     },
+     {
+      "ar": "وعلى المتمتع هدي، لقوله تعالى: فمن تمتع بالعمرة إلى الحج فما استيسر من الهدي فمن لم يجد فصيام ثلاثة أيام في الحج وسبعة إذا رجعتم.",
+      "en": "A sacrifice is due in tamattuʿ, for Allah says: whoever enjoys Umrah until Hajj must offer what sacrifice is available, and whoever cannot find one must fast three days during Hajj and seven on returning."
+     }
+    ]
+   },
+   {
+    "id": "ifrad",
+    "name": {
+     "ar": "الإفراد",
+     "en": "Ifrad"
+    },
+    "say": "hajj",
+    "lines": [
+     {
+      "ar": "تحرم بالحج وحده فتقول: لبّيك حجًا، وتبقى على إحرامك حتى يوم النحر.",
+      "en": "You enter ihram for Hajj alone, saying Labbayka hajjan, and remain in ihram until the Day of Sacrifice."
+     },
+     {
+      "ar": "يكفيك سعي واحد، إما مع طواف القدوم وإما بعد عرفة مع طواف الإفاضة.",
+      "en": "One saʿi is enough, either with the arrival tawaf or after Arafah with tawaf al-ifadah."
+     },
+     {
+      "ar": "والأفضل لمن لم يسق الهدي إن اتسع الوقت أن يجعلها عمرة، فيطوف ويسعى ويقصّر ويحل، كما أمر النبي صلى الله عليه وسلم أصحابه.",
+      "en": "If there is time and you did not bring a sacrificial animal, it is better to turn it into Umrah and leave ihram, as the Prophet, peace be upon him, told his companions."
+     }
+    ]
+   },
+   {
+    "id": "qiran",
+    "name": {
+     "ar": "القران",
+     "en": "Qiran"
+    },
+    "say": "qiran",
+    "lines": [
+     {
+      "ar": "تحرم بالعمرة والحج معًا فتقول: لبّيك عمرة وحجًا، وأعمالك مثل أعمال المفرد ويكفيك سعي واحد.",
+      "en": "You enter ihram for Umrah and Hajj together, saying Labbayka 'umratan wa hajjan. Your rites are those of ifrad, and one saʿi is enough."
+     },
+     {
+      "ar": "والسنة لمن لم يسق الهدي أن يجعلها عمرة، أما من ساق الهدي فيبقى على إحرامه كما فعل النبي صلى الله عليه وسلم.",
+      "en": "The sunnah for anyone without a sacrificial animal is to turn it into Umrah. Whoever brought one stays in ihram, as the Prophet, peace be upon him, did."
+     }
+    ]
+   }
+  ],
+  "days": [
+   {
+    "id": "d8",
+    "day": {
+     "ar": "الثامن من ذي الحجة",
+     "en": "The 8th of Dhul-Hijjah"
+    },
+    "name": {
+     "ar": "يوم التروية",
+     "en": "The Day of Tarwiyah"
+    },
+    "lines": [
+     {
+      "ar": "يحرم من حلّ من عمرته من مكانه في مكة ويقول: لبّيك حجًا، ثم يتوجه إلى منى.",
+      "en": "Whoever has left ihram after Umrah enters ihram again from where they are in Makkah, says Labbayka hajjan, and goes to Mina."
+     },
+     {
+      "ar": "يصلي بمنى الظهر والعصر والمغرب والعشاء والفجر، كل صلاة في وقتها قصرًا دون جمع.",
+      "en": "At Mina, pray Dhuhr, Asr, Maghrib, Isha and Fajr, each in its own time, shortened but not combined."
+     }
+    ],
+    "say": [
+     "hajj"
+    ]
+   },
+   {
+    "id": "d9",
+    "day": {
+     "ar": "التاسع من ذي الحجة",
+     "en": "The 9th of Dhul-Hijjah"
+    },
+    "name": {
+     "ar": "يوم عرفة",
+     "en": "The Day of Arafah"
+    },
+    "lines": [
+     {
+      "ar": "يتوجه الحاج إلى عرفات بعد طلوع الشمس ملبيًا.",
+      "en": "After sunrise, go to Arafah saying the Talbiyah."
+     },
+     {
+      "ar": "يصلي الظهر والعصر جمعًا وقصرًا بأذان واحد وإقامتين، والأفضل أن يكون ذلك في نمرة إن تيسّر.",
+      "en": "Pray Dhuhr and Asr combined and shortened with one call to prayer and two iqamahs, at Namirah if you can."
+     },
+     {
+      "ar": "يقف في أي مكان من عرفة مستقبل القبلة، يدعو ويهلّل ويكبّر ويلبّي حتى تغيب الشمس، فعرفة كلها موقف.",
+      "en": "Stay anywhere within Arafah facing the qiblah, making dua, dhikr and Talbiyah until sunset. All of Arafah is a place of standing."
+     },
+     {
+      "ar": "قال النبي صلى الله عليه وسلم: «ما من يوم أكثر من أن يعتق الله فيه عبدًا من النار من يوم عرفة»، رواه مسلم.",
+      "en": "The Prophet, peace be upon him, said: \"There is no day on which Allah frees more servants from the Fire than the Day of Arafah.\" Narrated by Muslim."
+     }
+    ],
+    "say": [
+     "arafah",
+     "arafah2"
+    ],
+    "trusts": true
+   },
+   {
+    "id": "n10",
+    "day": {
+     "ar": "ليلة العاشر",
+     "en": "The night of the 10th"
+    },
+    "name": {
+     "ar": "مزدلفة",
+     "en": "Muzdalifah"
+    },
+    "lines": [
+     {
+      "ar": "بعد غروب الشمس ينصرف إلى مزدلفة بسكينة ملبيًا.",
+      "en": "After sunset, move on to Muzdalifah calmly, saying the Talbiyah."
+     },
+     {
+      "ar": "يصلي المغرب والعشاء جمعًا وقصرًا حين يصل بأذان واحد وإقامتين، ولا يصلي بينهما شيئًا.",
+      "en": "On arrival, pray Maghrib and Isha combined and shortened with one call and two iqamahs, with nothing between them."
+     },
+     {
+      "ar": "يبيت بها ويصلي الفجر، ثم يذكر الله ويدعو مستقبل القبلة رافعًا يديه حتى يسفر جدًّا، ثم ينصرف إلى منى قبل طلوع الشمس.",
+      "en": "Spend the night there and pray Fajr, then remember Allah and make dua facing the qiblah with raised hands until the sky is bright, and leave for Mina before sunrise."
+     },
+     {
+      "ar": "يجوز للضعفة من النساء والصبيان ونحوهم الانصراف في آخر الليل.",
+      "en": "The weak, such as women and children, may leave in the last part of the night."
+     }
+    ],
+    "say": []
+   },
+   {
+    "id": "d10",
+    "day": {
+     "ar": "العاشر من ذي الحجة",
+     "en": "The 10th of Dhul-Hijjah"
+    },
+    "name": {
+     "ar": "يوم النحر",
+     "en": "The Day of Sacrifice"
+    },
+    "lines": [
+     {
+      "ar": "يرمي جمرة العقبة بسبع حصيات يكبّر مع كل حصاة، ويقطع التلبية عند الرمي.",
+      "en": "Throw seven pebbles at Jamrat al-Aqabah, saying Allahu akbar with each one, and stop the Talbiyah as you begin."
+     },
+     {
+      "ar": "الأفضل أن يرميها ضحى، ويمتد وقتها إلى غروب الشمس، ومن فاته ذلك رماها ليلًا.",
+      "en": "It is best to throw in the forenoon, the time lasts until sunset, and anyone who misses it throws at night."
+     },
+     {
+      "ar": "ينحر هديه إن كان عنده هدي، ثم يحلق الرجل أو يقصّر والحلق أفضل، وتقصّر المرأة من أطراف شعرها.",
+      "en": "Slaughter your sacrifice if you have one. Men then shave or shorten, shaving being better, and women shorten the ends of their hair."
+     },
+     {
+      "ar": "يحصل التحلل الأول بالرمي والحلق أو التقصير، فيحل له كل شيء إلا النساء.",
+      "en": "The first release comes with the stoning and the shaving or shortening, after which everything is permitted except marital relations."
+     },
+     {
+      "ar": "يطوف طواف الإفاضة ويسعى إن كان عليه سعي، فإذا فعل ذلك حل له كل شيء.",
+      "en": "Perform tawaf al-ifadah and saʿi if it is due. After that everything is permitted."
+     },
+     {
+      "ar": "الترتيب بين هذه الأعمال ليس بواجب، فقد سُئل النبي صلى الله عليه وسلم عن التقديم والتأخير فقال: لا حرج.",
+      "en": "The order of these acts is not obligatory. When the Prophet, peace be upon him, was asked about doing one before another, he said: no harm."
+     }
+    ],
+    "say": [
+     "rami"
+    ]
+   },
+   {
+    "id": "d11",
+    "day": {
+     "ar": "الحادي عشر إلى الثالث عشر",
+     "en": "The 11th to the 13th"
+    },
+    "name": {
+     "ar": "أيام التشريق",
+     "en": "The days of Tashriq"
+    },
+    "lines": [
+     {
+      "ar": "يرمي الجمرات الثلاث بعد زوال الشمس، كل جمرة بسبع حصيات يكبّر مع كل حصاة.",
+      "en": "After midday, throw at all three pillars, seven pebbles each, saying Allahu akbar with every pebble."
+     },
+     {
+      "ar": "يبدأ بالأولى التي تلي مسجد الخيف، ثم يقف مستقبل القبلة جاعلها عن يساره ويدعو طويلًا.",
+      "en": "Begin with the first, next to Masjid al-Khayf, then stand facing the qiblah with it on your left and make a long dua."
+     },
+     {
+      "ar": "ثم يرمي الوسطى ويقف مستقبل القبلة جاعلها عن يمينه ويدعو طويلًا.",
+      "en": "Then throw at the middle one and stand facing the qiblah with it on your right, making a long dua."
+     },
+     {
+      "ar": "ثم يرمي جمرة العقبة ولا يقف عندها.",
+      "en": "Then throw at Jamrat al-Aqabah without stopping after it."
+     },
+     {
+      "ar": "يرمي في اليوم الحادي عشر والثاني عشر، وفي الثالث عشر لمن لم يتعجّل، لقوله تعالى: فمن تعجل في يومين فلا إثم عليه ومن تأخر فلا إثم عليه.",
+      "en": "Throw on the 11th and 12th, and on the 13th if you did not leave early, for Allah says: whoever hastens in two days commits no sin, and whoever stays on commits no sin."
+     }
+    ],
+    "say": [
+     "rami"
+    ],
+    "trusts": true
+   },
+   {
+    "id": "wada",
+    "day": {
+     "ar": "قبل السفر",
+     "en": "Before leaving"
+    },
+    "name": {
+     "ar": "طواف الوداع",
+     "en": "The farewell tawaf"
+    },
+    "lines": [
+     {
+      "ar": "إذا فرغ الحاج من كل شيء طاف طواف الوداع ثم سافر.",
+      "en": "When everything is done, perform the farewell tawaf, then travel."
+     }
+    ],
+    "say": []
+   }
+  ],
+  "src": [
+   "bb16511",
+   "bb16100"
+  ]
+ },
+ "prep": {
+  "umrah": [
+   {
+    "id": "heart",
+    "title": {
+     "ar": "القلب",
+     "en": "The heart"
+    },
+    "src": [
+     "tahqiq"
+    ],
+    "items": [
+     {
+      "id": "h1",
+      "t": {
+       "ar": "توبة نصوح من جميع الذنوب، بالإقلاع عنها والندم على ما مضى والعزم على ألا تعود.",
+       "en": "Sincere repentance from every sin: stop it, regret the past, and resolve not to return."
+      }
+     },
+     {
+      "id": "h2",
+      "t": {
+       "ar": "ردّ المظالم إلى أهلها من نفس أو مال أو عرض، أو استحلالهم منها قبل سفرك.",
+       "en": "Put right any wrong you did to others in person, wealth or honour, or ask their pardon before you travel."
+      }
+     },
+     {
+      "id": "h3",
+      "t": {
+       "ar": "كتابة ما لك وما عليك من الدين، والإشهاد على ذلك.",
+       "en": "Write down what you owe and what you are owed, with witnesses."
+      }
+     },
+     {
+      "id": "h4",
+      "t": {
+       "ar": "وصية أهلك وأصحابك بتقوى الله.",
+       "en": "Advise your family and friends to be mindful of Allah."
+      }
+     },
+     {
+      "id": "h5",
+      "t": {
+       "ar": "نفقة طيبة لنسكك من مال حلال.",
+       "en": "Clean, lawful money to fund your trip."
+      }
+     },
+     {
+      "id": "h6",
+      "t": {
+       "ar": "إخلاص النية لله والدار الآخرة، والحذر من الرياء والمفاخرة.",
+       "en": "A sincere intention for Allah and the Hereafter, free of showing off."
+      }
+     },
+     {
+      "id": "h7",
+      "t": {
+       "ar": "رفقة صالحة من أهل الطاعة والتقوى والفقه في الدين.",
+       "en": "Good companions who are devout and knowledgeable in the religion."
+      }
+     }
+    ]
+   },
+   {
+    "id": "know",
+    "title": {
+     "ar": "العلم",
+     "en": "Knowledge"
+    },
+    "items": [
+     {
+      "id": "k1",
+      "t": {
+       "ar": "تعلّم ما يشرع لك في عمرتك، والسؤال عما أشكل عليك.",
+       "en": "Learn what is prescribed for your Umrah and ask about anything unclear."
+      },
+      "src": "tahqiq"
+     },
+     {
+      "id": "k2",
+      "t": {
+       "ar": "قراءة محطات الرحلة في التطبيق مرة قبل السفر.",
+       "en": "Read through the journey in the app once before you travel."
+      }
+     },
+     {
+      "id": "k3",
+      "t": {
+       "ar": "معرفة ميقاتك في طريق سفرك.",
+       "en": "Know which miqat lies on your route."
+      },
+      "link": "miqat"
+     },
+     {
+      "id": "k4",
+      "t": {
+       "ar": "تجهيز أمانات الدعاء وقائمة دعائي.",
+       "en": "Prepare your dua trusts and your own dua list."
+      },
+      "link": "trusts"
+     }
+    ]
+   },
+   {
+    "id": "bag",
+    "title": {
+     "ar": "الحقيبة",
+     "en": "The bag"
+    },
+    "items": [
+     {
+      "id": "b1",
+      "t": {
+       "ar": "إزار ورداء للرجل، ويستحب أن يكونا أبيضين.",
+       "en": "Two ihram sheets for men, preferably white."
+      }
+     },
+     {
+      "id": "b2",
+      "t": {
+       "ar": "إحرام احتياطي لتغييره إذا اتسخ.",
+       "en": "A spare set of ihram in case it gets dirty."
+      }
+     },
+     {
+      "id": "b3",
+      "t": {
+       "ar": "نعلان.",
+       "en": "Sandals."
+      }
+     },
+     {
+      "id": "b4",
+      "t": {
+       "ar": "حزام لحفظ المال والأوراق.",
+       "en": "A belt for money and papers."
+      }
+     },
+     {
+      "id": "b5",
+      "t": {
+       "ar": "طيب للبدن قبل الإحرام.",
+       "en": "Perfume for the body before ihram."
+      }
+     },
+     {
+      "id": "b6",
+      "t": {
+       "ar": "مقص صغير أو ماكينة للتقصير.",
+       "en": "Small scissors or a trimmer for shortening the hair."
+      }
+     },
+     {
+      "id": "b7",
+      "t": {
+       "ar": "مظلة تقيك الشمس.",
+       "en": "An umbrella for shade."
+      }
+     },
+     {
+      "id": "b8",
+      "t": {
+       "ar": "أدويتك الخاصة.",
+       "en": "Your own medicines."
+      }
+     }
+    ]
+   },
+   {
+    "id": "papers",
+    "title": {
+     "ar": "الأوراق",
+     "en": "Papers"
+    },
+    "items": [
+     {
+      "id": "p1",
+      "t": {
+       "ar": "جواز السفر وتصريح العمرة وفق اشتراطات الجهات الرسمية.",
+       "en": "Passport and Umrah permit, as the official authorities require."
+      }
+     },
+     {
+      "id": "p2",
+      "t": {
+       "ar": "تذاكر السفر وحجز السكن.",
+       "en": "Tickets and accommodation."
+      }
+     },
+     {
+      "id": "p3",
+      "t": {
+       "ar": "موعد وصولك إلى جدة لضبط تنبيه الميقات.",
+       "en": "Your arrival time in Jeddah, to set the miqat alert."
+      },
+      "link": "miqat"
+     }
+    ]
+   }
+  ],
+  "hajj": [
+   {
+    "id": "heart",
+    "title": {
+     "ar": "القلب",
+     "en": "The heart"
+    },
+    "src": [
+     "tahqiq"
+    ],
+    "items": [
+     {
+      "id": "h1",
+      "t": {
+       "ar": "توبة نصوح من جميع الذنوب، بالإقلاع عنها والندم على ما مضى والعزم على ألا تعود.",
+       "en": "Sincere repentance from every sin: stop it, regret the past, and resolve not to return."
+      }
+     },
+     {
+      "id": "h2",
+      "t": {
+       "ar": "ردّ المظالم إلى أهلها من نفس أو مال أو عرض، أو استحلالهم منها قبل سفرك.",
+       "en": "Put right any wrong you did to others in person, wealth or honour, or ask their pardon before you travel."
+      }
+     },
+     {
+      "id": "h3",
+      "t": {
+       "ar": "كتابة ما لك وما عليك من الدين، والإشهاد على ذلك.",
+       "en": "Write down what you owe and what you are owed, with witnesses."
+      }
+     },
+     {
+      "id": "h4",
+      "t": {
+       "ar": "وصية أهلك وأصحابك بتقوى الله.",
+       "en": "Advise your family and friends to be mindful of Allah."
+      }
+     },
+     {
+      "id": "h5",
+      "t": {
+       "ar": "نفقة طيبة لنسكك من مال حلال.",
+       "en": "Clean, lawful money to fund your trip."
+      }
+     },
+     {
+      "id": "h6",
+      "t": {
+       "ar": "إخلاص النية لله والدار الآخرة، والحذر من الرياء والمفاخرة.",
+       "en": "A sincere intention for Allah and the Hereafter, free of showing off."
+      }
+     },
+     {
+      "id": "h7",
+      "t": {
+       "ar": "رفقة صالحة من أهل الطاعة والتقوى والفقه في الدين.",
+       "en": "Good companions who are devout and knowledgeable in the religion."
+      }
+     }
+    ]
+   },
+   {
+    "id": "know",
+    "title": {
+     "ar": "العلم",
+     "en": "Knowledge"
+    },
+    "items": [
+     {
+      "id": "k1",
+      "t": {
+       "ar": "تعلّم ما يشرع لك في حجك، والسؤال عما أشكل عليك.",
+       "en": "Learn what is prescribed for your Hajj and ask about anything unclear."
+      },
+      "src": "tahqiq"
+     },
+     {
+      "id": "k5",
+      "t": {
+       "ar": "تحديد نسكك، تمتعًا أو إفرادًا أو قرانًا.",
+       "en": "Decide your form of Hajj: tamattu', ifrad or qiran."
+      },
+      "link": "hajj"
+     },
+     {
+      "id": "k6",
+      "t": {
+       "ar": "قراءة أيام الحج من الثامن إلى الثالث عشر في التطبيق.",
+       "en": "Read the days of Hajj, from the 8th to the 13th, in the app."
+      },
+      "link": "hajj"
+     },
+     {
+      "id": "k3",
+      "t": {
+       "ar": "معرفة ميقاتك في طريق سفرك.",
+       "en": "Know which miqat lies on your route."
+      },
+      "link": "miqat"
+     },
+     {
+      "id": "k4",
+      "t": {
+       "ar": "تجهيز أمانات الدعاء ليوم عرفة.",
+       "en": "Prepare your dua trusts for the Day of Arafah."
+      },
+      "link": "trusts"
+     }
+    ]
+   },
+   {
+    "id": "bag",
+    "title": {
+     "ar": "الحقيبة",
+     "en": "The bag"
+    },
+    "items": [
+     {
+      "id": "b1",
+      "t": {
+       "ar": "إزار ورداء للرجل، ويستحب أن يكونا أبيضين.",
+       "en": "Two ihram sheets for men, preferably white."
+      }
+     },
+     {
+      "id": "b2",
+      "t": {
+       "ar": "إحرام احتياطي لتغييره إذا اتسخ.",
+       "en": "A spare set of ihram in case it gets dirty."
+      }
+     },
+     {
+      "id": "b3",
+      "t": {
+       "ar": "نعلان.",
+       "en": "Sandals."
+      }
+     },
+     {
+      "id": "b4",
+      "t": {
+       "ar": "حزام لحفظ المال والأوراق.",
+       "en": "A belt for money and papers."
+      }
+     },
+     {
+      "id": "b5",
+      "t": {
+       "ar": "طيب للبدن قبل الإحرام.",
+       "en": "Perfume for the body before ihram."
+      }
+     },
+     {
+      "id": "b6",
+      "t": {
+       "ar": "مقص صغير أو ماكينة للتقصير.",
+       "en": "Small scissors or a trimmer for shortening the hair."
+      }
+     },
+     {
+      "id": "b7",
+      "t": {
+       "ar": "مظلة تقيك الشمس.",
+       "en": "An umbrella for shade."
+      }
+     },
+     {
+      "id": "b8",
+      "t": {
+       "ar": "أدويتك الخاصة.",
+       "en": "Your own medicines."
+      }
+     },
+     {
+      "id": "b9",
+      "t": {
+       "ar": "كيس صغير للحصى.",
+       "en": "A small pouch for the pebbles."
+      }
+     },
+     {
+      "id": "b10",
+      "t": {
+       "ar": "فراش خفيف للمبيت في مزدلفة.",
+       "en": "A light mat for the night at Muzdalifah."
+      }
+     }
+    ]
+   },
+   {
+    "id": "papers",
+    "title": {
+     "ar": "الأوراق",
+     "en": "Papers"
+    },
+    "items": [
+     {
+      "id": "p4",
+      "t": {
+       "ar": "جواز السفر وتصريح الحج وفق اشتراطات الجهات الرسمية.",
+       "en": "Passport and Hajj permit, as the official authorities require."
+      }
+     },
+     {
+      "id": "p2",
+      "t": {
+       "ar": "تذاكر السفر وحجز السكن.",
+       "en": "Tickets and accommodation."
+      }
+     },
+     {
+      "id": "p3",
+      "t": {
+       "ar": "موعد وصولك إلى جدة لضبط تنبيه الميقات.",
+       "en": "Your arrival time in Jeddah, to set the miqat alert."
+      },
+      "link": "miqat"
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,718 @@
+{
+ "app_name": {
+  "ar": "عتيق",
+  "en": "Ateeq"
+ },
+ "tagline": {
+  "ar": "العمرة خطوة بخطوة، من بيتك حتى التقصير",
+  "en": "Umrah step by step, from your door to the final trim"
+ },
+ "nav_journey": {
+  "ar": "الرحلة",
+  "en": "Journey"
+ },
+ "nav_duas": {
+  "ar": "الأدعية",
+  "en": "Duas"
+ },
+ "nav_prep": {
+  "ar": "التجهيز",
+  "en": "Prepare"
+ },
+ "nav_more": {
+  "ar": "المزيد",
+  "en": "More"
+ },
+ "home_start": {
+  "ar": "ابدأ رحلة العمرة",
+  "en": "Begin your Umrah"
+ },
+ "home_continue": {
+  "ar": "تابع رحلتك",
+  "en": "Continue your journey"
+ },
+ "home_now": {
+  "ar": "محطتك الآن",
+  "en": "Your station now"
+ },
+ "home_all_done": {
+  "ar": "تمّت عمرتك، تقبّل الله منك",
+  "en": "Your Umrah is complete. May Allah accept it"
+ },
+ "home_progress": {
+  "ar": "أتممت {a} من {b}",
+  "en": "{a} of {b} done"
+ },
+ "tools_title": {
+  "ar": "أدوات الرحلة",
+  "en": "Tools"
+ },
+ "tool_tawaf": {
+  "ar": "عدّاد الطواف",
+  "en": "Tawaf counter"
+ },
+ "tool_sai": {
+  "ar": "عدّاد السعي",
+  "en": "Saʿi counter"
+ },
+ "tool_trusts": {
+  "ar": "أمانات الدعاء",
+  "en": "Dua trusts"
+ },
+ "tool_miqat": {
+  "ar": "الميقات",
+  "en": "Miqat"
+ },
+ "tool_prep": {
+  "ar": "التجهيز",
+  "en": "Prepare"
+ },
+ "tool_hajj": {
+  "ar": "الحج",
+  "en": "Hajj"
+ },
+ "tool_tawaf_sub": {
+  "ar": "سبعة أشواط بلا عدّ في رأسك",
+  "en": "Seven circuits, no counting in your head"
+ },
+ "tool_sai_sub": {
+  "ar": "من الصفا إلى المروة",
+  "en": "From Safa to Marwah"
+ },
+ "tool_trusts_sub": {
+  "ar": "لا تنسَ من أوصاك",
+  "en": "Remember who asked you"
+ },
+ "tool_miqat_sub": {
+  "ar": "ومتى تحرم في الطائرة",
+  "en": "And when to enter ihram on a plane"
+ },
+ "tool_prep_sub": {
+  "ar": "قبل أن تسافر",
+  "en": "Before you travel"
+ },
+ "tool_hajj_sub": {
+  "ar": "الأنساك والأيام",
+  "en": "Its forms and days"
+ },
+ "station_of": {
+  "ar": "المحطة {n} من {total}",
+  "en": "Station {n} of {total}"
+ },
+ "tab_do": {
+  "ar": "افعل",
+  "en": "Do"
+ },
+ "tab_say": {
+  "ar": "قل",
+  "en": "Say"
+ },
+ "tab_watch": {
+  "ar": "انتبه",
+  "en": "Avoid"
+ },
+ "tab_calm": {
+  "ar": "إن حدث",
+  "en": "What if"
+ },
+ "tab_women": {
+  "ar": "للمرأة",
+  "en": "Women"
+ },
+ "mark_done": {
+  "ar": "أتممت هذه المحطة",
+  "en": "I have finished this station"
+ },
+ "marked_done": {
+  "ar": "أتممتها",
+  "en": "Finished"
+ },
+ "next_station": {
+  "ar": "التالية",
+  "en": "Next"
+ },
+ "prev_station": {
+  "ar": "السابقة",
+  "en": "Previous"
+ },
+ "open_tawaf": {
+  "ar": "افتح عدّاد الطواف",
+  "en": "Open the tawaf counter"
+ },
+ "open_sai": {
+  "ar": "افتح عدّاد السعي",
+  "en": "Open the saʿi counter"
+ },
+ "open_miqat": {
+  "ar": "افتح دليل الميقات",
+  "en": "Open the miqat guide"
+ },
+ "sources": {
+  "ar": "المصادر",
+  "en": "Sources"
+ },
+ "station_sources": {
+  "ar": "مصادر هذه المحطة",
+  "en": "Sources for this station"
+ },
+ "journey_title": {
+  "ar": "رحلة العمرة",
+  "en": "The Umrah journey"
+ },
+ "reset_journey": {
+  "ar": "ابدأ الرحلة من جديد",
+  "en": "Start the journey again"
+ },
+ "confirm_reset": {
+  "ar": "هل تريد مسح تقدّمك في الرحلة؟",
+  "en": "Clear your journey progress?"
+ },
+ "tawaf_title": {
+  "ar": "الطواف",
+  "en": "Tawaf"
+ },
+ "lap_now": {
+  "ar": "الشوط {n} من ٧",
+  "en": "Circuit {n} of 7"
+ },
+ "tap_lap": {
+  "ar": "أنهيت الشوط",
+  "en": "Circuit done"
+ },
+ "tap_hint": {
+  "ar": "اضغط كلما عدت إلى محاذاة الحجر الأسود",
+  "en": "Tap each time you come back level with the Black Stone"
+ },
+ "undo": {
+  "ar": "تراجع",
+  "en": "Undo"
+ },
+ "pause_prayer": {
+  "ar": "أقيمت الصلاة",
+  "en": "Prayer started"
+ },
+ "resume": {
+  "ar": "أكمل من حيث توقفت",
+  "en": "Resume where you stopped"
+ },
+ "paused_note": {
+  "ar": "العدد محفوظ، فصلِّ مع الجماعة ثم أكمل ما بقي.",
+  "en": "Your count is saved. Pray with the congregation, then complete what remains."
+ },
+ "doubt": {
+  "ar": "شككت في العدد",
+  "en": "Unsure of the count"
+ },
+ "doubt_note": {
+  "ar": "ابنِ على الأقل ثم أكمل، فاختر العدد الذي أنت متيقّن منه.",
+  "en": "Count the lower number and carry on. Choose the number you are sure of."
+ },
+ "tip_start": {
+  "ar": "عند الحجر الأسود استلمه أو أشر إليه وكبّر",
+  "en": "At the Black Stone, touch it or point to it and say Allahu akbar"
+ },
+ "tip_idtiba": {
+  "ar": "للرجال: الاضطباع طوال هذا الطواف",
+  "en": "Men: keep the right shoulder uncovered throughout"
+ },
+ "tip_ramal": {
+  "ar": "للرجال: الرمل في هذا الشوط، أي الإسراع مع تقارب الخطى",
+  "en": "Men: walk briskly with short steps in this circuit"
+ },
+ "tip_walk": {
+  "ar": "امشِ مشيًا عاديًا في هذا الشوط",
+  "en": "Walk at a normal pace in this circuit"
+ },
+ "tip_corners": {
+  "ar": "بين الركن اليماني والحجر الأسود",
+  "en": "Between the Yemeni corner and the Black Stone"
+ },
+ "tip_last": {
+  "ar": "اختم عند الحجر، ثم أعد رداءك على كتفيك",
+  "en": "Finish at the Stone, then cover both shoulders again"
+ },
+ "tawaf_done": {
+  "ar": "أتممت سبعة أشواط",
+  "en": "Seven circuits complete"
+ },
+ "tawaf_next": {
+  "ar": "إلى ركعتي الطواف",
+  "en": "On to the two rakʿahs"
+ },
+ "started_at": {
+  "ar": "بدأت الساعة {t}",
+  "en": "Started at {t}"
+ },
+ "restart": {
+  "ar": "ابدأ العدّ من جديد",
+  "en": "Restart the count"
+ },
+ "confirm_restart": {
+  "ar": "هل تريد تصفير العدّاد؟",
+  "en": "Reset the counter to zero?"
+ },
+ "label_blackstone": {
+  "ar": "الحجر الأسود",
+  "en": "Black Stone"
+ },
+ "label_yamani": {
+  "ar": "الركن اليماني",
+  "en": "Yemeni corner"
+ },
+ "label_hijr": {
+  "ar": "الحِجر",
+  "en": "Hijr"
+ },
+ "label_maqam": {
+  "ar": "المقام",
+  "en": "Station"
+ },
+ "kaaba_note": {
+  "ar": "البيت عن يسارك، والطواف من خارج الحِجر",
+  "en": "The Kaaba on your left, and around the outside of the Hijr"
+ },
+ "sai_title": {
+  "ar": "السعي",
+  "en": "Saʿi"
+ },
+ "leg_now": {
+  "ar": "الشوط {n} من ٧",
+  "en": "Lap {n} of 7"
+ },
+ "at_safa": {
+  "ar": "أنت على الصفا",
+  "en": "You are at Safa"
+ },
+ "at_marwa": {
+  "ar": "أنت على المروة",
+  "en": "You are at Marwah"
+ },
+ "going_marwa": {
+  "ar": "امشِ إلى المروة",
+  "en": "Walk to Marwah"
+ },
+ "going_safa": {
+  "ar": "امشِ إلى الصفا",
+  "en": "Walk to Safa"
+ },
+ "reached_marwa": {
+  "ar": "وصلت المروة",
+  "en": "I reached Marwah"
+ },
+ "reached_safa": {
+  "ar": "وصلت الصفا",
+  "en": "I reached Safa"
+ },
+ "green_zone": {
+  "ar": "بين العلمين الأخضرين يسرع الرجال دون النساء",
+  "en": "Men walk quickly between the green markers, women do not"
+ },
+ "safa": {
+  "ar": "الصفا",
+  "en": "Safa"
+ },
+ "marwa": {
+  "ar": "المروة",
+  "en": "Marwah"
+ },
+ "dhikr_round": {
+  "ar": "الذكر والدعاء {n} من ٣",
+  "en": "Remembrance and dua, {n} of 3"
+ },
+ "dhikr_next": {
+  "ar": "قلته ودعوت",
+  "en": "Said it and made dua"
+ },
+ "dhikr_done": {
+  "ar": "أتممت الذكر ثلاثًا",
+  "en": "All three rounds done"
+ },
+ "sai_done": {
+  "ar": "أتممت سبعة أشواط وانتهيت بالمروة",
+  "en": "Seven laps complete, ending at Marwah"
+ },
+ "sai_next": {
+  "ar": "إلى الحلق أو التقصير",
+  "en": "On to shaving or shortening"
+ },
+ "trusts_moment": {
+  "ar": "وقت دعاء، ولديك أمانات",
+  "en": "A time for dua, and you have trusts"
+ },
+ "open_trusts": {
+  "ar": "افتح الأمانات",
+  "en": "Open trusts"
+ },
+ "open_mine": {
+  "ar": "دعائي",
+  "en": "My duas"
+ },
+ "duas_title": {
+  "ar": "الأدعية",
+  "en": "Duas"
+ },
+ "duas_tab_sections": {
+  "ar": "الأبواب",
+  "en": "Topics"
+ },
+ "duas_tab_rite": {
+  "ar": "أدعية المناسك",
+  "en": "Rite duas"
+ },
+ "duas_tab_favs": {
+  "ar": "المفضلة",
+  "en": "Saved"
+ },
+ "duas_tab_mine": {
+  "ar": "دعائي",
+  "en": "My duas"
+ },
+ "search_ph": {
+  "ar": "ابحث في الأدعية",
+  "en": "Search the duas"
+ },
+ "fav_add": {
+  "ar": "أضف إلى المفضلة",
+  "en": "Save"
+ },
+ "fav_remove": {
+  "ar": "أزل من المفضلة",
+  "en": "Remove from saved"
+ },
+ "copy": {
+  "ar": "انسخ",
+  "en": "Copy"
+ },
+ "copied": {
+  "ar": "نُسخ الدعاء",
+  "en": "Dua copied"
+ },
+ "share": {
+  "ar": "شارك",
+  "en": "Share"
+ },
+ "empty_favs": {
+  "ar": "لم تحفظ شيئًا بعد، فاضغط النجمة بجانب أي دعاء.",
+  "en": "Nothing saved yet. Tap the star beside any dua."
+ },
+ "mine_ph": {
+  "ar": "اكتب دعاءً تريد ألا تنساه في رحلتك",
+  "en": "Write a dua you do not want to forget on your journey"
+ },
+ "mine_add": {
+  "ar": "أضف الدعاء",
+  "en": "Add dua"
+ },
+ "empty_mine": {
+  "ar": "اكتب هنا ما تريد أن تدعو به، وستجده في الطواف والسعي.",
+  "en": "Write what you want to ask for. You will find it again in tawaf and saʿi."
+ },
+ "delete": {
+  "ar": "احذف",
+  "en": "Delete"
+ },
+ "no_results": {
+  "ar": "لا نتائج، فجرّب كلمة أخرى.",
+  "en": "No results. Try another word."
+ },
+ "arabic_note": {
+  "ar": "تظهر أدعية الأبواب بالعربية كما يُدعى بها.",
+  "en": "Topic duas appear in Arabic, as they are said."
+ },
+ "quran": {
+  "ar": "قرآن",
+  "en": "Quran"
+ },
+ "trusts_title": {
+  "ar": "أمانات الدعاء",
+  "en": "Dua trusts"
+ },
+ "trusts_intro": {
+  "ar": "اكتب قبل سفرك من أوصاك بالدعاء وما طلب، فتجد القائمة على الصفا والمروة وفي الطواف ويوم عرفة.",
+  "en": "Before you travel, note who asked you to pray for them and what they asked. The list will be waiting on Safa, on Marwah, in tawaf and on the Day of Arafah."
+ },
+ "trust_name": {
+  "ar": "الاسم",
+  "en": "Name"
+ },
+ "trust_req": {
+  "ar": "ماذا طلب؟",
+  "en": "What did they ask for?"
+ },
+ "trust_add": {
+  "ar": "أضف الأمانة",
+  "en": "Add trust"
+ },
+ "trust_done": {
+  "ar": "دعوت له",
+  "en": "Prayed for"
+ },
+ "trust_mark": {
+  "ar": "علّمها بعد الدعاء",
+  "en": "Mark after praying"
+ },
+ "trusts_empty": {
+  "ar": "لا أمانات بعد، فأضف أول اسم.",
+  "en": "No trusts yet. Add the first name."
+ },
+ "trusts_left": {
+  "ar": "بقي {n}",
+  "en": "{n} left"
+ },
+ "private_note": {
+  "ar": "تبقى هذه القائمة في جهازك فقط.",
+  "en": "This list stays on your device only."
+ },
+ "prep_title": {
+  "ar": "التجهيز",
+  "en": "Preparation"
+ },
+ "prep_umrah": {
+  "ar": "للعمرة",
+  "en": "Umrah"
+ },
+ "prep_hajj": {
+  "ar": "للحج",
+  "en": "Hajj"
+ },
+ "prep_progress": {
+  "ar": "أنجزت {a} من {b}",
+  "en": "{a} of {b} done"
+ },
+ "prep_mine": {
+  "ar": "بنودك",
+  "en": "Your items"
+ },
+ "custom_ph": {
+  "ar": "أضف بندًا خاصًا بك",
+  "en": "Add your own item"
+ },
+ "custom_add": {
+  "ar": "أضف",
+  "en": "Add"
+ },
+ "miqat_title": {
+  "ar": "الميقات",
+  "en": "The miqat"
+ },
+ "miqat_list": {
+  "ar": "المواقيت الخمسة",
+  "en": "The five miqats"
+ },
+ "miqat_km": {
+  "ar": "نحو {km} كم عن مكة",
+  "en": "About {km} km from Makkah"
+ },
+ "miqat_rules": {
+  "ar": "من يحرم من أين",
+  "en": "Who enters ihram where"
+ },
+ "miqat_plane": {
+  "ar": "في الطائرة",
+  "en": "On a plane"
+ },
+ "map_note": {
+  "ar": "رسم للاتجاهات فقط، ولا تُحسب به المحاذاة.",
+  "en": "A sketch of directions only, not a way to work out the miqat line."
+ },
+ "makkah": {
+  "ar": "مكة",
+  "en": "Makkah"
+ },
+ "flight_title": {
+  "ar": "تنبيه الإحرام في الطائرة",
+  "en": "Plane ihram alert"
+ },
+ "flight_route": {
+  "ar": "من أين تأتي رحلتك؟",
+  "en": "Where is your flight coming from?"
+ },
+ "flight_arrival": {
+  "ar": "موعد الوصول إلى جدة بتوقيت جدة",
+  "en": "Arrival time in Jeddah, Jeddah time"
+ },
+ "flight_start": {
+  "ar": "شغّل التنبيه",
+  "en": "Start the alert"
+ },
+ "flight_stop": {
+  "ar": "أوقف التنبيه",
+  "en": "Stop the alert"
+ },
+ "flight_to_prepare": {
+  "ar": "تهيّأ بعد {m}",
+  "en": "Get ready in {m}"
+ },
+ "flight_to_intent": {
+  "ar": "أحرم بعد {m}",
+  "en": "Enter ihram in {m}"
+ },
+ "flight_now_prepare": {
+  "ar": "حان وقت التهيّؤ، فالبس إحرامك واستعد",
+  "en": "Time to get ready. Put on your ihram"
+ },
+ "flight_now_intent": {
+  "ar": "حان وقت الإحرام، فانوِ وقل: لبّيك عمرة",
+  "en": "Time to enter ihram. Intend it and say Labbayka 'umratan"
+ },
+ "flight_listen": {
+  "ar": "واستمع لتنبيه طاقم الطائرة عند محاذاة الميقات، وأحرم عنده أو قبله بيسير.",
+  "en": "Listen for the crew's announcement at the miqat, and enter ihram then or a little before."
+ },
+ "flight_note_east": {
+  "ar": "يأتي تنبيه الإحرام قبل الوصول بأربعين دقيقة، أي قبل نصف الساعة بقليل احتياطًا، لأن الطائرة قد تصل مبكرة.",
+  "en": "The ihram alert comes forty minutes before arrival, a little ahead of the half hour, to be safe in case the plane lands early."
+ },
+ "flight_note_web": {
+  "ar": "يعمل التنبيه ما دامت هذه الصفحة مفتوحة، وتنبيهات الهاتف تأتي مع تطبيقي آيفون وأندرويد.",
+  "en": "The alert works while this page stays open. Phone notifications come with the iPhone and Android apps."
+ },
+ "flight_past": {
+  "ar": "مضى موعد الوصول",
+  "en": "The arrival time has passed"
+ },
+ "flight_bad_time": {
+  "ar": "اكتب الوقت بصيغة ساعة ودقيقة",
+  "en": "Enter the time as hours and minutes"
+ },
+ "hajj_title": {
+  "ar": "الحج",
+  "en": "Hajj"
+ },
+ "hajj_nusuk": {
+  "ar": "الأنساك الثلاثة",
+  "en": "The three forms"
+ },
+ "hajj_days": {
+  "ar": "أيام الحج",
+  "en": "The days of Hajj"
+ },
+ "hajj_intro": {
+  "ar": "من فتاوى الشيخ ابن باز في صفة الأنساك الثلاثة ورمي الجمار.",
+  "en": "From Shaykh Ibn Baz's fatwas on the three forms of Hajj and on the stoning."
+ },
+ "more_title": {
+  "ar": "المزيد",
+  "en": "More"
+ },
+ "settings": {
+  "ar": "الإعدادات",
+  "en": "Settings"
+ },
+ "lang": {
+  "ar": "اللغة",
+  "en": "Language"
+ },
+ "theme": {
+  "ar": "المظهر",
+  "en": "Appearance"
+ },
+ "theme_auto": {
+  "ar": "تلقائي",
+  "en": "Automatic"
+ },
+ "theme_light": {
+  "ar": "نهاري",
+  "en": "Light"
+ },
+ "theme_dark": {
+  "ar": "ليلي",
+  "en": "Dark"
+ },
+ "size": {
+  "ar": "حجم خط الأدعية",
+  "en": "Dua text size"
+ },
+ "size_s": {
+  "ar": "صغير",
+  "en": "Small"
+ },
+ "size_m": {
+  "ar": "متوسط",
+  "en": "Medium"
+ },
+ "size_l": {
+  "ar": "كبير",
+  "en": "Large"
+ },
+ "data_title": {
+  "ar": "بياناتك",
+  "en": "Your data"
+ },
+ "data_note": {
+  "ar": "كل ما تحفظه يبقى في جهازك، ولا يرسل التطبيق أي بيانات إلى أي مكان.",
+  "en": "Everything you save stays on your device. The app sends no data anywhere."
+ },
+ "erase_all": {
+  "ar": "امسح كل بياناتي",
+  "en": "Erase all my data"
+ },
+ "confirm_erase": {
+  "ar": "سيُمسح التقدّم والمفضلة والأمانات والتجهيز، فهل أنت متأكد؟",
+  "en": "This erases your progress, saved duas, trusts and checklists. Are you sure?"
+ },
+ "about": {
+  "ar": "عن عتيق",
+  "en": "About Ateeq"
+ },
+ "about_name": {
+  "ar": "سُمّي عتيق من قوله تعالى: «وليطّوّفوا بالبيت العتيق»، ومن العتق من النار الذي يُرجى يوم عرفة.",
+  "en": "Named after the verse \"and let them circle the Ancient House\", and after the freeing from the Fire hoped for on the Day of Arafah."
+ },
+ "about_content": {
+  "ar": "صفة العمرة والحج في التطبيق مأخوذة من كلام الشيخ عبدالعزيز بن باز رحمه الله ومن الكتيبات الموثوقة المذكورة في المصادر.",
+  "en": "The description of Umrah and Hajj in this app comes from Shaykh Abdulaziz ibn Baz, may Allah have mercy on him, and the trusted guides listed in the sources."
+ },
+ "about_open": {
+  "ar": "مشروع مفتوح المصدر",
+  "en": "Open source"
+ },
+ "about_by": {
+  "ar": "من صنع علي العنزي",
+  "en": "Made by Ali AlEnezi"
+ },
+ "contact": {
+  "ar": "راسلنا",
+  "en": "Email us"
+ },
+ "version": {
+  "ar": "الإصدار",
+  "en": "Version"
+ },
+ "install": {
+  "ar": "ثبّته على هاتفك",
+  "en": "Install on your phone"
+ },
+ "install_note": {
+  "ar": "من متصفح هاتفك اختر «إضافة إلى الشاشة الرئيسية»، فيعمل التطبيق دون إنترنت.",
+  "en": "In your phone's browser choose \"Add to Home Screen\", and the app works offline."
+ },
+ "back": {
+  "ar": "رجوع",
+  "en": "Back"
+ },
+ "open": {
+  "ar": "افتح",
+  "en": "Open"
+ },
+ "close": {
+  "ar": "أغلق",
+  "en": "Close"
+ },
+ "hijri_today": {
+  "ar": "اليوم",
+  "en": "Today"
+ },
+ "offline_ready": {
+  "ar": "جاهز للعمل دون إنترنت",
+  "en": "Ready to work offline"
+ },
+ "sources_intro": {
+  "ar": "هذه هي المصادر التي بُنيت عليها صفة العمرة والحج في التطبيق.",
+  "en": "These are the sources the description of Umrah and Hajj is built on."
+ },
+ "north": {
+  "ar": "الشمال",
+  "en": "North"
+ }
+}
