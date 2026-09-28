@@ -27,12 +27,13 @@ open_scene() {
   sleep 6
 }
 
-# The first start after installing warms up WebView, which is slow on an emulator.
-adb shell am start -W -n "$PKG/.MainActivity" < /dev/null > /dev/null
-sleep 15
-
 mkdir -p shots
 node tools/ios/scenes.mjs hajj-home,arafah,tawaf,sai,duas,trusts,look,home > shots/scenes.txt
+
+# The first start after installing warms up WebView, which is slow on an emulator.
+first=$(head -1 shots/scenes.txt | cut -d'|' -f4)
+adb shell am start -W -n "$PKG/.MainActivity" --es state "$first" < /dev/null > /dev/null
+sleep 15
 while IFS='|' read -r name lang route state; do
   r=$(printf '%s' "$route" | sed 's/^#//')
   for attempt in 1 2 3; do
@@ -45,4 +46,15 @@ while IFS='|' read -r name lang route state; do
   in_front || { echo "the app never came to the front for $lang-$name"; exit 1; }
 done < shots/scenes.txt
 rm -f shots/scenes.txt
+
+# The welcome, as a person sees it on opening the app. It never fails the run: it is here to
+# look at, and to show whether the phone copes with its animation.
+set +e
+adb shell pm clear "$PKG" > /dev/null
+adb shell am start -W -n "$PKG/.MainActivity" < /dev/null > /dev/null
+sleep 2
+adb exec-out screencap -p > shots/welcome-1.png < /dev/null
+sleep 4
+adb exec-out screencap -p > shots/welcome-2.png < /dev/null
+adb get-state && echo "the emulator is still up after the welcome"
 ls -la shots
