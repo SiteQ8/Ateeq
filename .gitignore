@@ -13,3 +13,4 @@ ios/build.log
 ios/scenes.txt
 __pycache__/
 *.pyc
+docs/_store/

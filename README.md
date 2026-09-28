@@ -139,6 +139,7 @@ tools/shots.mjs    renders the screenshots, from the scenes in tools/scenes.mjs
 tools/brand/       draws the mark and renders every icon size
 tools/ios/         copies the web app into the iPhone app, prints the phone scenes, prepares App Store signing
 tools/android/     emulator screenshots, Play upload and Play listing
+tools/store/       composes the store screenshots: the real captures in a drawn phone under a gold headline
 ```
 
 ### Roadmap
