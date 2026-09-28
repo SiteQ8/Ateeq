@@ -53,19 +53,31 @@ jobs:
           xcrun simctl bootstatus "$UDID" -b
           xcrun simctl status_bar "$UDID" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 || true
           xcrun simctl install "$UDID" build/Build/Products/Debug-iphonesimulator/Ateeq.app
+          # A fresh simulator shows system banners in its first seconds; let them pass.
+          sleep 25
+          python3 -m pip install --quiet --break-system-packages pillow 2>/dev/null || python3 -m pip install --quiet pillow
           mkdir -p shots
           node ../tools/ios/scenes.mjs > scenes.txt
           while IFS='|' read -r name lang route state; do
             xcrun simctl terminate "$UDID" com.eworldq8.ateeq < /dev/null || true
             xcrun simctl launch "$UDID" com.eworldq8.ateeq -state "$state" -route "$route" -AppleLanguages "($lang)" < /dev/null
             sleep 7
-            # The launch screen compresses to under 100 KB and every app screen to over 200 KB,
-            # so a small picture means the app had not opened yet: wait and take it again.
-            for attempt in 1 2 3 4; do
+            # A picture is kept only when it shows the app: its dark band across the top and its
+            # light page below. The launch screen fails the second test and a system banner
+            # over the band fails the first, so either is taken again after a pause.
+            for attempt in 1 2 3 4 5; do
               xcrun simctl io "$UDID" screenshot "shots/$lang-$name.png" < /dev/null
-              [ "$(stat -f%z "shots/$lang-$name.png")" -gt 150000 ] && break
+              if python3 - "shots/$lang-$name.png" <<'PY'
+          import sys
+          from PIL import Image
+          im = Image.open(sys.argv[1]).convert('RGB'); w, h = im.size
+          top = im.crop((0, int(h * .05), w, int(h * .1))).resize((1, 1)).getpixel((0, 0))
+          mid = im.crop((0, int(h * .4), w, int(h * .55))).resize((1, 1)).getpixel((0, 0))
+          sys.exit(0 if sum(top) < 150 and sum(mid) > 450 else 1)
+          PY
+              then break; fi
               echo "retaking $lang-$name"
-              sleep 5
+              sleep 6
             done
           done < scenes.txt
           ls shots
