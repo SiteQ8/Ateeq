@@ -32,7 +32,7 @@ while IFS='|' read -r name lang route state; do
       break
     fi
     echo "::warning::$lang-$name: the app was not in front, attempt $attempt"
-    adb wait-for-device < /dev/null
+    timeout 90 adb wait-for-device < /dev/null || { echo "::error::the emulator is gone"; exit 1; }
   done
 done < shots/scenes.txt
 rm -f shots/scenes.txt

@@ -69,6 +69,8 @@ jobs:
           target: google_apis
           profile: Nexus 5X
           disable-animations: true
+          # The guest renders on its own, which keeps the emulator up through the welcome's animation.
+          emulator-options: -no-window -gpu guest -no-snapshot -noaudio -no-boot-anim
           script: sh tools/android/screenshots.sh
 
       - uses: actions/upload-artifact@v4
