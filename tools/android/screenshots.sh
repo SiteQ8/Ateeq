@@ -17,7 +17,7 @@ mkdir -p shots
 (adb logcat -v time > shots/logcat.txt 2>&1 &)
 
 in_front() {
-  { adb shell dumpsys activity activities 2>/dev/null; adb shell dumpsys window 2>/dev/null; } \
+  { adb shell dumpsys activity activities 2>/dev/null < /dev/null; adb shell dumpsys window 2>/dev/null < /dev/null; } \
     | grep -E "topResumedActivity|mResumedActivity|mCurrentFocus|mFocusedApp" | grep -q "$PKG"
 }
 

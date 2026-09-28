@@ -424,13 +424,12 @@ details.nusk[open] summary { margin-bottom: 6px; }
 .sp-mark { position: absolute; left: 50%; top: 50%; width: 176px; height: 176px; margin: -88px 0 0 -88px; animation: sp-mark 1.1s ease both; }
 .sp-words { position: absolute; left: 0; right: 0; top: calc(50% + 112px); text-align: center; padding: 0 24px; }
 .sp-words p { margin: 0; font-family: var(--naskh); font-weight: 700; }
-.sp-one { font-size: calc(46px * var(--ts, 1)); line-height: 1.5; background: linear-gradient(100deg, #A67B33 0%, #E4C57C 22%, #FBF0C8 42%, #EDD48E 62%, #B8893C 82%, #A67B33 100%); background-size: 260% 100%; background-position: 100% 0; padding: .05em .1em .4em; margin-bottom: -.35em; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sp-rise .9s .3s ease both, sp-shine 2.2s .5s ease-in-out forwards; }
+.sp-one { font-size: calc(46px * var(--ts, 1)); line-height: 1.5; background: linear-gradient(100deg, #A67B33 0%, #E4C57C 22%, #FBF0C8 42%, #EDD48E 62%, #B8893C 82%, #A67B33 100%); background-size: 260% 100%; background-position: 35% 0; padding: .05em .1em .4em; margin-bottom: -.35em; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sp-rise .9s .3s ease both; }
 .sp-two { font-size: calc(25px * var(--ts, 1)); line-height: 1.8; color: #E4D3A8; opacity: .85; animation: sp-rise .9s .75s ease both; }
 .sp-name { font-size: calc(17px * var(--ts, 1)); line-height: 2.6; color: #CDBB92; letter-spacing: 1px; opacity: .7; animation: sp-rise .9s 1.05s ease both; }
 @keyframes sp-mark { from { opacity: .0; transform: scale(.94); } to { opacity: 1; transform: none; } }
 @keyframes sp-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-@keyframes sp-shine { to { background-position: 0 0; } }
-@media (prefers-reduced-motion: reduce) { #splash *, #splash { animation: none !important; transition-duration: .2s !important; } .sp-one { background-position: 30% 0; } }
+@media (prefers-reduced-motion: reduce) { #splash *, #splash { animation: none !important; transition-duration: .2s !important; } .sp-one { background-position: 35% 0; } }
 :root[data-motion="1"] #splash *, :root[data-motion="1"] #splash { animation: none !important; transition-duration: .2s !important; }
 
 /* the faith that runs under the journey: a verse or a hadith in a gold frame */
