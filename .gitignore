@@ -11,3 +11,5 @@ ios/build/
 ios/shots/
 ios/build.log
 ios/scenes.txt
+__pycache__/
+*.pyc
