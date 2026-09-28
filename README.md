@@ -1,33 +1,35 @@
 <p align="center"><img src="docs/assets/icon-512.png" width="112" alt=""></p>
 
 <h1 align="center">عتيق</h1>
-<p align="center"><b>Ateeq</b>, Umrah step by step, from your door to the final trim</p>
+<p align="center"><b>Ateeq</b>, Hajj and Umrah step by step, every station with what to do, what to say and what to avoid</p>
 <p align="center"><a href="https://ateeq.3li.info/app/">افتح التطبيق · Open the app</a> &nbsp;|&nbsp; <a href="https://ateeq.3li.info/">الموقع · Website</a></p>
 
 <p align="center">
-<img src="docs/assets/shots/ar-home.webp" width="200" alt="الشاشة الرئيسية">
-<img src="docs/assets/shots/ar-station.webp" width="200" alt="محطة الطواف">
+<img src="docs/assets/shots/ar-hajj-home.webp" width="200" alt="رحلة الحج">
+<img src="docs/assets/shots/ar-arafah.webp" width="200" alt="يوم عرفة">
+<img src="docs/assets/shots/ar-home.webp" width="200" alt="رحلة العمرة">
 <img src="docs/assets/shots/ar-tawaf.webp" width="200" alt="عدّاد الطواف">
-<img src="docs/assets/shots/ar-sai.webp" width="200" alt="عدّاد السعي">
 </p>
 
 <div dir="rtl">
 
 ## عتيق
 
-عتيق تطبيق مجاني مفتوح المصدر يجمع صفة العمرة كما شرحها الشيخ عبدالعزيز بن باز رحمه الله، فيقسم الرحلة إلى عشر محطات لكل منها ما تفعله وما تقوله وما تنتبه له، ومعها عدّاد للطواف والسعي، وأمانات الدعاء، والتجهيز قبل العمرة والحج، ويعمل كله دون إنترنت ودون حساب.
+عتيق تطبيق مجاني مفتوح المصدر يجمع صفة الحج والعمرة كما شرحها الشيخ عبدالعزيز بن باز رحمه الله، فيقسم الحج إلى إحدى عشرة محطة والعمرة إلى عشر، لكل محطة ما تفعله وما تقوله وما تنتبه له، ومعها عدّاد للطواف والسعي وأمانات الدعاء والتجهيز، ويعمل كله دون إنترنت ودون حساب.
 
 سُمّي «عتيق» من قوله تعالى: ﴿وَلْيَطَّوَّفُوا بِالْبَيْتِ الْعَتِيقِ﴾، ومن العتق من النار الذي يُرجى يوم عرفة.
 
 ### ما فيه
 
-- **الرحلة بمحطاتها:** عشر محطات من السفر حتى التقصير، وكل محطة مقسومة إلى افعل وقل وانتبه وإن حدث وللمرأة، مع مصادرها.
-- **عدّاد الطواف:** رسم للكعبة من الأعلى بالحجر الأسود والركن اليماني والحِجر، وزر كبير يعدّ الأشواط، ويحفظ العدد إذا أقيمت الصلاة، ويبني على الأقل عند الشك، ويُبقي الشاشة مضاءة.
-- **عدّاد السعي:** يعرف أين تقف، فيعرض ذكر الصفا والمروة ثلاث مرات، والآية في بداية الشوط الأول فقط، وينبّه الرجال عند العلمين الأخضرين، وينتهي بك على المروة.
-- **أمانات الدعاء:** تكتب قبل سفرك من أوصاك بالدعاء، فتظهر القائمة في مواطن الإجابة على الصفا والمروة وفي الطواف ويوم عرفة.
+- **رحلة الحج:** إحدى عشرة محطة من السفر حتى طواف الوداع، مرورًا بيوم التروية وعرفة ومزدلفة ويوم النحر وأيام التشريق، وكل محطة مقسومة إلى افعل وقل وانتبه وإن حدث وللمرأة، مع مصادرها.
+- **الحج بحسب نسكك:** تختار التمتع أو القران أو الإفراد فتتغيّر التعليمات في كل محطة، من لفظ الإحرام إلى الهدي والسعي.
+- **رحلة العمرة:** عشر محطات من السفر حتى التقصير، بالأبواب الخمسة نفسها.
+- **عدّاد الطواف:** لطواف العمرة والقدوم والإفاضة والوداع، برسم للكعبة من الأعلى بالحجر الأسود والركن اليماني والحِجر، وزر كبير يعدّ الأشواط، ولا يذكّر بالرمل والاضطباع إلا في الطواف الأول، ويحفظ العدد إذا أقيمت الصلاة، ويبني على الأقل عند الشك، ويُبقي الشاشة مضاءة.
+- **عدّاد السعي:** لسعي العمرة وسعي الحج، يعرف أين تقف، فيعرض ذكر الصفا والمروة ثلاث مرات، والآية في بداية الشوط الأول فقط، وينبّه الرجال عند العلمين الأخضرين، وينتهي بك على المروة.
+- **أمانات الدعاء:** تكتب قبل سفرك من أوصاك بالدعاء، فتظهر القائمة في مواطن الإجابة على الصفا والمروة وفي الطواف ويوم عرفة وعند الجمرات.
 - **الميقات وتنبيه الطائرة:** المواقيت الخمسة ومن يحرم من أين، وتنبيه قبل الوصول إلى جدة يحسب الوقت بتوقيت جدة مهما كان توقيت الهاتف.
-- **التجهيز:** قوائم للعمرة والحج تبدأ بالقلب، من التوبة وردّ المظالم وكتابة الديون، ثم العلم والحقيبة والأوراق، مع بنودك الخاصة.
-- **الحج:** الأنساك الثلاثة، ثم الأيام من الثامن إلى الثالث عشر، مع الأذكار والأدعية في كل يوم.
+- **التجهيز:** قوائم للحج والعمرة تبدأ بالقلب، من التوبة وردّ المظالم وكتابة الديون، ثم العلم والحقيبة والأوراق، مع بنودك الخاصة.
+- **أدعية المناسك:** أدعية الإحرام والطواف والسعي، وذكر يوم عرفة وجوامع الدعاء فيه، وذكر المشعر الحرام، والتكبير مع الحصى، ودعاء ذبح الهدي.
 - **باب الأدعية:** ثلاثون بابًا وأكثر من أربعمئة وخمسين دعاءً، مع البحث والمفضلة وقائمة دعائي.
 - **بلا إنترنت وبلا حساب:** يحتاج الإنترنت في أول فتح فقط، ثم يعمل دونه، ولا تغادر بياناتك جهازك.
 - **عربي وإنجليزي:** يفتح بلغة جهازك، مع الوضع الليلي وتكبير خط الأدعية.
@@ -69,19 +71,21 @@ python3 -m http.server 8080 --directory docs
 
 ## Ateeq
 
-Ateeq is a free, open-source app that brings together the description of Umrah as Shaykh Abdulaziz ibn Baz explained it. It splits the journey into ten stations, each with what to do, what to say and what to avoid, and adds counters for tawaf and saʿi, dua trusts, and preparation for Umrah and Hajj. Everything works offline and with no account.
+Ateeq is a free, open-source app that brings together the description of Hajj and Umrah as Shaykh Abdulaziz ibn Baz explained it. Hajj comes in eleven stations and Umrah in ten, each with what to do, what to say and what to avoid, alongside counters for tawaf and saʿi, dua trusts and preparation. Everything works offline and with no account.
 
 The name comes from the verse "and let them circle the Ancient House" (al-Bayt al-Ateeq), and from the freeing from the Fire hoped for on the Day of Arafah.
 
 ### What is inside
 
-- **The journey:** ten stations from setting out to the final trim, each split into Do, Say, Avoid, What if and Women, with its sources.
-- **Tawaf counter:** a top-down Kaaba with the Black Stone, the Yemeni corner and the Hijr, one large button per circuit, a saved count when the prayer starts, the lower number when in doubt, and the screen kept awake.
-- **Saʿi counter:** knows where you stand, shows the Safa and Marwah remembrance three times, the verse at the start of the first lap only, the green markers for men, and ends you at Marwah.
-- **Dua trusts:** write down before you travel who asked you to pray for them. The list comes up where prayers are answered, on Safa and Marwah, in tawaf and on the Day of Arafah.
+- **The Hajj journey:** eleven stations from setting out to the farewell tawaf, through Tarwiyah, Arafah, Muzdalifah, the Day of Sacrifice and the days of Tashriq, each split into Do, Say, Avoid, What if and Women, with its sources.
+- **Hajj that follows your form:** choose tamattuʿ, qiran or ifrad and every station adjusts, from the words of ihram to the sacrifice and the saʿi.
+- **The Umrah journey:** ten stations from setting out to the final trim, with the same five parts.
+- **Tawaf counter:** for the Umrah, arrival, ifadah and farewell tawaf, with brisk walking tips only in the first tawaf, a top-down Kaaba with the Black Stone, the Yemeni corner and the Hijr, one large button per circuit, a saved count when the prayer starts, the lower number when in doubt, and the screen kept awake.
+- **Saʿi counter:** for the saʿi of Umrah and of Hajj, knows where you stand, shows the Safa and Marwah remembrance three times, the verse at the start of the first lap only, the green markers for men, and ends you at Marwah.
+- **Dua trusts:** write down before you travel who asked you to pray for them. The list comes up where prayers are answered, on Safa and Marwah, in tawaf, on the Day of Arafah and at the Jamarat.
 - **Miqat and plane alert:** the five miqats and who enters ihram where, with an alert before landing in Jeddah timed in Jeddah time whatever the phone clock says.
-- **Preparation:** Umrah and Hajj checklists that begin with the heart, then knowledge, the bag and the papers, plus your own items.
-- **Hajj:** the three forms, then the days from the 8th to the 13th, with the words for each day.
+- **Preparation:** Hajj and Umrah checklists that begin with the heart, then knowledge, the bag and the papers, plus your own items.
+- **Supplications of the rites:** ihram, tawaf and saʿi, the remembrance and comprehensive duas of Arafah, al-Mashʿar al-Haram, the takbir with each pebble and the words at the sacrifice.
 - **Duas library:** thirty topics and more than 450 supplications, with search, saving and a list of your own.
 - **Offline, no account:** the internet is needed on the first visit only, and your data never leaves your device.
 - **Arabic and English:** opens in your device language, with a dark theme and a larger dua font.
@@ -104,7 +108,7 @@ Then open `http://localhost:8080/app/`. Run the tests with `npm test`.
 docs/              the site and the app, served by GitHub Pages
   index.html       the explanation site
   app/             the app: index.html, app.js, logic.js, app.css
-  data/            rite.json (journey, miqat, Hajj, preparation), duas.json, i18n.json
+  data/            rite.json (Umrah and Hajj journeys, forms of Hajj, miqat, preparation), duas.json, i18n.json
   fonts/           self-hosted Noto Kufi Arabic and Scheherazade New, SIL Open Font License
   sw.js            the offline cache
 tests/             content and logic tests

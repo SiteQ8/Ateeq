@@ -350,3 +350,28 @@ details.nusk[open] summary { margin-bottom: 6px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Hajj and Umrah: journey switch, forms of Hajj, tawaf and sa'i kinds */
+.seg.mode { margin: 14px 0 0; }
+.seg.mode button { font-size: 17px; font-weight: 600; padding: 10px 14px; }
+.jc-title { text-decoration: none; }
+.jc-nusk { margin: -4px 0 14px; font-size: 14px; color: var(--stone); }
+.jc-nusk b { color: var(--ink); font-weight: 700; }
+.jc-nusk a { color: var(--gold); margin-inline-start: 10px; font-weight: 600; }
+.nusk-box { background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: 14px; padding: 10px 14px 2px; margin: 4px 0 12px; }
+.nb-h { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13.5px; color: var(--gold); font-weight: 700; }
+.nb-h a { color: var(--gold); font-weight: 600; }
+.nusk-box .lines li { border-bottom-color: rgba(184, 146, 75, .28); }
+.nusk-box .lines li:last-child { border-bottom: 0; }
+.kinds { margin: 12px 0 2px; justify-content: center; }
+.seg.small a { flex: 0 1 auto; border: 1px solid var(--hair); background: var(--card); padding: 6px 12px; font-size: 13.5px; }
+.seg.small { overflow: visible; }
+.seg.small button.on, .seg.small a.on { background: var(--btn-bg); color: var(--btn-fg); border-color: transparent; }
+.nusk-pick .lbl { margin: 0 0 8px; font-size: 13.5px; color: var(--stone); }
+.more-link { display: inline-block; margin-top: 12px; color: var(--gold); font-size: 14px; font-weight: 600; }
+.nusk-card.on { border-color: var(--gold-line); box-shadow: inset 0 0 0 1px var(--gold-line); }
+.nc-h { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 4px; }
+.nc-h h2 { font-family: var(--naskh); font-size: 27px; margin: 0; }
+.pill { font-size: 12.5px; background: var(--gold-line); color: #15130F; border-radius: 999px; padding: 3px 12px; font-weight: 700; white-space: nowrap; }
+.done-box .note { margin: 0 0 12px; }
+.done-box .btn { display: flex; width: 100%; margin-top: 8px; }

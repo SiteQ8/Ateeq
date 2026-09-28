@@ -62,3 +62,5 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
   .hero { grid-template-columns: 1fr; padding-top: 28px; gap: 28px; }
   .feat-grid { grid-template-columns: 1fr; }
 }
+
+.nw { white-space: nowrap; }

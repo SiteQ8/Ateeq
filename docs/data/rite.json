@@ -1,5 +1,5 @@
 {
- "version": 1,
+ "version": 2,
  "sources": [
   {
    "id": "prh",
@@ -91,7 +91,7 @@
    "en": "Here I am, O Allah, answering Your call for Umrah.",
    "note": {
     "ar": "أو تقول: اللهم لبيك عمرة، والنية بالقلب هي الأصل.",
-    "en": "You may also say Allahumma labbayka 'umratan. The intention in the heart is what counts."
+    "en": "You may also say Allahumma labbayka ʿumratan. The intention in the heart is what counts."
    }
   },
   {
@@ -273,6 +273,116 @@
    "ar": "اللَّهُ أَكْبَرُ",
    "tr": "Allahu akbar",
    "en": "Allah is the Greatest."
+  },
+  {
+   "id": "mashar",
+   "title": {
+    "ar": "عند المشعر الحرام",
+    "en": "At al-Mash'ar al-Haram"
+   },
+   "ar": "فَإِذَا أَفَضْتُمْ مِنْ عَرَفَاتٍ فَاذْكُرُوا اللَّهَ عِنْدَ الْمَشْعَرِ الْحَرَامِ وَاذْكُرُوهُ كَمَا هَدَاكُمْ",
+   "ref": {
+    "ar": "البقرة ١٩٨",
+    "en": "Al-Baqarah 198"
+   },
+   "en": "When you pour down from Arafat, remember Allah at al-Mash'ar al-Haram, and remember Him as He has guided you.",
+   "note": {
+    "ar": "بعد صلاة الفجر بمزدلفة تكبّر الله وتهلّله وتدعوه مستقبل القبلة حتى يسفر جدًّا.",
+    "en": "After Fajr at Muzdalifah, say takbir and tahlil and make dua facing the qiblah until the sky is very bright."
+   }
+  },
+  {
+   "id": "hady",
+   "title": {
+    "ar": "عند ذبح الهدي",
+    "en": "When slaughtering the sacrifice"
+   },
+   "ar": "بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ، اللَّهُمَّ هَذَا مِنْكَ وَلَكَ",
+   "tr": "Bismillahi wa Allahu akbar, Allahumma hadha minka wa lak",
+   "en": "In the name of Allah, and Allah is the Greatest. O Allah, this is from You and for You.",
+   "note": {
+    "ar": "عند نحر الهدي أو ذبحه، وتوجّهه إلى القبلة.",
+    "en": "When slaughtering the sacrifice, facing it towards the qiblah."
+   }
+  },
+  {
+   "id": "tashreeq",
+   "title": {
+    "ar": "ذكر أيام التشريق",
+    "en": "Remembrance in the days of Tashriq"
+   },
+   "ar": "وَاذْكُرُوا اللَّهَ فِي أَيَّامٍ مَعْدُودَاتٍ فَمَنْ تَعَجَّلَ فِي يَوْمَيْنِ فَلَا إِثْمَ عَلَيْهِ وَمَنْ تَأَخَّرَ فَلَا إِثْمَ عَلَيْهِ لِمَنِ اتَّقَى",
+   "ref": {
+    "ar": "البقرة ٢٠٣",
+    "en": "Al-Baqarah 203"
+   },
+   "en": "Remember Allah during the appointed days. Whoever hastens on in two days commits no sin, and whoever stays on commits no sin, for the one who is mindful of Allah."
+  },
+  {
+   "id": "yunus",
+   "title": {
+    "ar": "دعاء ذي النون",
+    "en": "The supplication of Yunus"
+   },
+   "ar": "لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
+   "ref": {
+    "ar": "الأنبياء ٨٧",
+    "en": "Al-Anbiya 87"
+   },
+   "tr": "La ilaha illa anta subhanaka inni kuntu mina z-zalimin",
+   "en": "There is no god but You. Glory be to You. I have been among the wrongdoers."
+  },
+  {
+   "id": "islah",
+   "title": {
+    "ar": "صلاح الدين والدنيا والآخرة",
+    "en": "For religion, this life and the next"
+   },
+   "ar": "اللَّهُمَّ أَصْلِحْ لِي دِينِيَ الَّذِي هُوَ عِصْمَةُ أَمْرِي، وَأَصْلِحْ لِي دُنْيَايَ الَّتِي فِيهَا مَعَاشِي، وَأَصْلِحْ لِي آخِرَتِيَ الَّتِي فِيهَا مَعَادِي، وَاجْعَلِ الْحَيَاةَ زِيَادَةً لِي فِي كُلِّ خَيْرٍ، وَالْمَوْتَ رَاحَةً لِي مِنْ كُلِّ شَرٍّ",
+   "en": "O Allah, set right for me my religion, which is the safeguard of my affairs. Set right for me my worldly life, in which is my living, and set right for me my Hereafter, to which I return. Make life an increase for me in every good, and death a rest for me from every evil.",
+   "note": {
+    "ar": "رواه مسلم.",
+    "en": "Narrated by Muslim."
+   }
+  },
+  {
+   "id": "afw",
+   "title": {
+    "ar": "العفو والعافية",
+    "en": "Pardon and well-being"
+   },
+   "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَتِي وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ وَمِنْ خَلْفِي، وَعَنْ يَمِينِي وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+   "en": "O Allah, I ask You for pardon and well-being in this world and the Hereafter. O Allah, I ask You for pardon and well-being in my religion, my worldly life, my family and my wealth. O Allah, cover my faults and calm my fears. O Allah, guard me from in front and behind, from my right and my left, and from above, and I seek refuge in Your greatness from being taken unawares from beneath me.",
+   "note": {
+    "ar": "رواه أبو داود.",
+    "en": "Narrated by Abu Dawud."
+   }
+  },
+  {
+   "id": "hamm",
+   "title": {
+    "ar": "من الهم والحزن",
+    "en": "From worry and grief"
+   },
+   "ar": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنَ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ وَقَهْرِ الرِّجَالِ",
+   "en": "O Allah, I seek refuge in You from worry and grief, from helplessness and laziness, from cowardice and miserliness, and from being overwhelmed by debt and overpowered by men.",
+   "note": {
+    "ar": "رواه أبو داود.",
+    "en": "Narrated by Abu Dawud."
+   }
+  },
+  {
+   "id": "khair",
+   "title": {
+    "ar": "جوامع الدعاء",
+    "en": "A comprehensive supplication"
+   },
+   "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنَ الْخَيْرِ كُلِّهِ، عَاجِلِهِ وَآجِلِهِ، مَا عَلِمْتُ مِنْهُ وَمَا لَمْ أَعْلَمْ، وَأَعُوذُ بِكَ مِنَ الشَّرِّ كُلِّهِ، عَاجِلِهِ وَآجِلِهِ، مَا عَلِمْتُ مِنْهُ وَمَا لَمْ أَعْلَمْ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ، وَأَعُوذُ بِكَ مِنَ النَّارِ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ",
+   "en": "O Allah, I ask You for all good, now and later, what I know of it and what I do not, and I seek refuge in You from all evil, now and later, what I know of it and what I do not. O Allah, I ask You for Paradise and every word or deed that brings one near to it, and I seek refuge in You from the Fire and every word or deed that brings one near to it.",
+   "note": {
+    "ar": "رواه ابن ماجه.",
+    "en": "Narrated by Ibn Majah."
+   }
   }
  ],
  "stations": [
@@ -402,7 +512,7 @@
    "do": [
     {
      "ar": "انوِ بقلبك الدخول في العمرة عند الميقات الذي تمرّ عليه، وقل: لبّيك عمرة، أو: اللهم لبّيك عمرة.",
-     "en": "At the miqat on your route, intend in your heart to begin Umrah and say Labbayka 'umratan, or Allahumma labbayka 'umratan."
+     "en": "At the miqat on your route, intend in your heart to begin Umrah and say Labbayka ʿumratan, or Allahumma labbayka ʿumratan."
     },
     {
      "ar": "إن خفت ألّا تتمّ نسكك لمرض أو خوف فاشترط عند إحرامك.",
@@ -905,6 +1015,877 @@
    ]
   }
  ],
+ "hajjStations": [
+  {
+   "id": "h-safar",
+   "title": {
+    "ar": "السفر إلى الحج",
+    "en": "Setting out for Hajj"
+   },
+   "place": {
+    "ar": "من بيتك إلى الميقات",
+    "en": "From home to the miqat"
+   },
+   "do": [
+    {
+     "ar": "إذا عزمت على الحج فأوصِ أهلك وأصحابك بتقوى الله، واكتب ما لك وما عليك من الدين وأشهد على ذلك.",
+     "en": "Once you resolve to go, advise your family and friends to be mindful of Allah, and write down what you owe and are owed, with witnesses."
+    },
+    {
+     "ar": "تب إلى الله توبة نصوحًا، وردّ المظالم إلى أهلها أو استحلّهم منها قبل سفرك.",
+     "en": "Repent sincerely to Allah, and put right any wrong you did to others, or ask their pardon, before you travel."
+    },
+    {
+     "ar": "اجعل نفقة حجك من مال حلال، واختر رفقة صالحة، وتعلّم ما يشرع لك في حجك.",
+     "en": "Fund your Hajj with lawful money, travel with good companions, and learn what is prescribed for your Hajj."
+    },
+    {
+     "ar": "إذا ركبت فسمِّ الله واحمده، ثم كبّر ثلاثًا وقل دعاء السفر.",
+     "en": "When you are seated, say bismillah and praise Allah, then say Allahu akbar three times and recite the travel supplication."
+    }
+   ],
+   "say": [
+    "travel"
+   ],
+   "watch": [
+    {
+     "ar": "احفظ لسانك من كثرة القيل والقال والإفراط في المزاح، ومن الكذب والغيبة والنميمة والسخرية بغيرك.",
+     "en": "Guard your tongue from idle talk and excessive joking, and from lying, backbiting, gossip and mocking others."
+    }
+   ],
+   "calm": [],
+   "women": [],
+   "tools": [
+    {
+     "kind": "prep"
+    }
+   ],
+   "src": [
+    "tahqiq"
+   ]
+  },
+  {
+   "id": "h-ihram",
+   "title": {
+    "ar": "الإحرام من الميقات",
+    "en": "Ihram at the miqat"
+   },
+   "place": {
+    "ar": "الميقات",
+    "en": "The miqat"
+   },
+   "do": [
+    {
+     "ar": "اغتسل عند الميقات إن تيسر وتطيّب في بدنك، ثم البس الإزار والرداء كما في رحلة العمرة.",
+     "en": "At the miqat, bathe if you can and perfume your body, then put on the two sheets, as in the Umrah journey."
+    },
+    {
+     "ar": "انوِ بقلبك النسك الذي اخترته، وقل لفظه المذكور في بطاقة نسكك.",
+     "en": "Make the intention for your chosen form in your heart and say its words, shown in your form card."
+    },
+    {
+     "ar": "إن خفت ألا تتم نسكك لمرض أو خوف فاشترط عند إحرامك.",
+     "en": "If you fear illness or danger may stop you, add the condition when you enter ihram."
+    },
+    {
+     "ar": "ثم لبِّ بتلبية النبي صلى الله عليه وسلم، ويرفع الرجال بها أصواتهم وتخفضها النساء.",
+     "en": "Then begin the Talbiyah of the Prophet, peace be upon him. Men say it aloud and women say it quietly."
+    },
+    {
+     "ar": "من وصل إلى الميقات في أشهر الحج خُيّر بين الأنساك الثلاثة، والسنة لمن لم يسق الهدي أن يحرم بالعمرة متمتعًا بها إلى الحج.",
+     "en": "Whoever reaches the miqat in the Hajj months may choose any of the three forms, and the sunnah for anyone without a sacrificial animal is to enter ihram for Umrah as tamattuʿ."
+    }
+   ],
+   "nuskSay": {
+    "tamattu": "niyyah",
+    "qiran": "qiran",
+    "ifrad": "hajj"
+   },
+   "say": [
+    "shart",
+    "talbiyah"
+   ],
+   "nusk": {
+    "tamattu": [
+     {
+      "ar": "تحرم بالعمرة وحدها فتقول: لبّيك عمرة، ثم تقطع التلبية إذا وصلت إلى البيت وبدأت الطواف.",
+      "en": "Enter ihram for Umrah alone, saying Labbayka ʿumratan, and stop the Talbiyah when you reach the Kaaba and begin tawaf."
+     }
+    ],
+    "qiran": [
+     {
+      "ar": "تحرم بالعمرة والحج معًا فتقول: لبّيك عمرة وحجًّا، ولا تزال تلبّي حتى ترمي جمرة العقبة يوم العيد.",
+      "en": "Enter ihram for Umrah and Hajj together, saying Labbayka ʿumratan wa hajjan, and keep saying the Talbiyah until you stone Jamrat al-Aqabah on the day of Eid."
+     }
+    ],
+    "ifrad": [
+     {
+      "ar": "تحرم بالحج وحده فتقول: لبّيك حجًّا، ولا تزال تلبّي حتى ترمي جمرة العقبة يوم العيد.",
+      "en": "Enter ihram for Hajj alone, saying Labbayka hajjan, and keep saying the Talbiyah until you stone Jamrat al-Aqabah on the day of Eid."
+     }
+    ]
+   },
+   "watch": [
+    {
+     "ar": "من مرّ بالميقات يريد الحج وجب عليه أن يحرم منه، فإن تجاوزه رجع إليه فأحرم، وإلا فعليه دم.",
+     "en": "Anyone who passes a miqat intending Hajj must enter ihram there. If you pass it, go back and enter ihram from it, otherwise a sacrifice is due."
+    },
+    {
+     "ar": "يحرم عليك بعد النية أخذ الشعر والأظفار والطيب وعقد النكاح والجماع وقتل الصيد، ويحرم على الرجل تغطية رأسه ولبس المخيط وعلى المرأة النقاب والقفازان.",
+     "en": "Once you intend, cutting hair or nails, perfume, marriage contracts, intercourse and hunting are forbidden. Men may not cover the head or wear stitched clothing, and women may not wear a face veil or gloves."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "الإحرام نية بالقلب، فمن نوى صار محرمًا ولو لم يتلفّظ بشيء.",
+     "en": "Ihram is an intention of the heart. Once you intend it you are in ihram, even if you say nothing aloud."
+    },
+    {
+     "ar": "في الطائرة تهيّأ قبل الإقلاع ثم انوِ قبل محاذاة الميقات بيسير احتياطًا، ولا تؤخّر الإحرام إلى جدة.",
+     "en": "On a plane, get ready before take-off and make the intention a little before you are level with the miqat, to be safe. Never delay it until Jeddah."
+    }
+   ],
+   "women": [
+    {
+     "ar": "تغتسل الحائض والنفساء وتحرم مع الناس، وتفعل ما يفعله الحاج غير الطواف بالبيت كما أمر النبي صلى الله عليه وسلم عائشة وأسماء رضي الله عنهما.",
+     "en": "A woman who is menstruating or bleeding after childbirth bathes, enters ihram with everyone and does all that pilgrims do except tawaf, as the Prophet, peace be upon him, told Aisha and Asma."
+    },
+    {
+     "ar": "تُحرم المرأة في ملابسها العادية الساترة، ولا تلبس النقاب ولا القفازين، وتستر وجهها عن الرجال الأجانب بغيرهما.",
+     "en": "A woman enters ihram in her ordinary modest clothes without a face veil or gloves, and covers her face from unrelated men with something else."
+    }
+   ],
+   "tools": [
+    {
+     "kind": "miqat"
+    }
+   ],
+   "src": [
+    "tahqiq",
+    "bb16511",
+    "bb1640"
+   ]
+  },
+  {
+   "id": "h-arrive",
+   "title": {
+    "ar": "الوصول إلى مكة",
+    "en": "Arriving in Makkah"
+   },
+   "place": {
+    "ar": "المسجد الحرام",
+    "en": "Al-Masjid al-Haram"
+   },
+   "do": [
+    {
+     "ar": "إذا وصلت إلى مكة فاغتسل قبل دخولها إن تيسر، ثم ادخل المسجد الحرام مقدّمًا رجلك اليمنى وقل دعاء الدخول.",
+     "en": "When you reach Makkah, bathe before entering if you can, then enter al-Masjid al-Haram with your right foot and say the supplication for entering."
+    },
+    {
+     "ar": "ابدأ بالطواف، فاستلم الحجر الأسود أو أشر إليه وكبّر، واجعل البيت عن يسارك وطُف سبعة أشواط.",
+     "en": "Begin with tawaf. Touch the Black Stone or point to it saying Allahu akbar, keep the Kaaba on your left and complete seven circuits."
+    },
+    {
+     "ar": "يرمل الرجل في الأشواط الثلاثة الأولى من هذا الطواف ويضطبع فيه كله، لأنه طوافه الأول حين قدم مكة.",
+     "en": "Men walk briskly in the first three circuits of this tawaf and keep the right shoulder uncovered throughout, because it is the first tawaf on arriving in Makkah."
+    },
+    {
+     "ar": "ثم صلِّ ركعتين خلف المقام إن تيسر، ولو في أي مكان من المسجد.",
+     "en": "Then pray two rakʿahs behind the Station of Ibrahim if you can, or anywhere in the mosque."
+    }
+   ],
+   "say": [
+    "enter",
+    "stone",
+    "corners"
+   ],
+   "nusk": {
+    "tamattu": [
+     {
+      "ar": "طوافك هذا طواف عمرتك، فأتمّ عمرتك بالسعي ثم التقصير، ثم تحلّل وابقَ حلالًا حتى يوم الثامن.",
+      "en": "This tawaf is the tawaf of your Umrah. Complete your Umrah with saʿi and shortening, then leave ihram and stay out of it until the 8th."
+     },
+     {
+      "ar": "التقصير هنا أفضل من الحلق إذا كان الحج قريبًا، ليبقى الشعر لحلق الحج.",
+      "en": "Shortening is better than shaving here when Hajj is close, so there is hair left to shave for Hajj."
+     }
+    ],
+    "qiran": [
+     {
+      "ar": "طوافك هذا طواف القدوم، ولك أن تسعى بعده سعي الحج فيكفيك عن السعي بعد طواف الإفاضة.",
+      "en": "This is the arrival tawaf. You may do the saʿi of Hajj after it, and it then covers the saʿi after tawaf al-ifadah."
+     },
+     {
+      "ar": "لا تحلق ولا تقصّر، وابقَ على إحرامك حتى يوم النحر.",
+      "en": "Do not shave or shorten, and stay in ihram until the Day of Sacrifice."
+     }
+    ],
+    "ifrad": [
+     {
+      "ar": "طوافك هذا طواف القدوم، ولك أن تسعى بعده سعي الحج فيكفيك عن السعي بعد طواف الإفاضة.",
+      "en": "This is the arrival tawaf. You may do the saʿi of Hajj after it, and it then covers the saʿi after tawaf al-ifadah."
+     },
+     {
+      "ar": "لا تحلق ولا تقصّر، وابقَ على إحرامك حتى يوم النحر.",
+      "en": "Do not shave or shorten, and stay in ihram until the Day of Sacrifice."
+     }
+    ]
+   },
+   "watch": [
+    {
+     "ar": "لا يشرع الرمل والاضطباع إلا في هذا الطواف الأول، ولا يشرعان في السعي ولا للنساء.",
+     "en": "Brisk walking and uncovering the shoulder belong only to this first tawaf, never to saʿi and never to women."
+    },
+    {
+     "ar": "لا تخصّ كل شوط بدعاء معيّن، فليس في الطواف ولا السعي ذكر مخصوص، ومهما تيسر من الذكر والدعاء كفى.",
+     "en": "Do not assign a set supplication to each circuit. Tawaf and saʿi have no set words, and whatever remembrance and dua come easily are enough."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "إن شككت في عدد الأشواط فابنِ على الأقل ثم أكمل، وإن أقيمت الصلاة فصلِّ ثم أكمل طوافك.",
+     "en": "If you are unsure of the count, take the lower number and carry on, and if the prayer starts, pray and then complete your tawaf."
+    }
+   ],
+   "women": [
+    {
+     "ar": "إن حاضت المتمتعة قبل الطواف ولم تطهر قبل يوم الثامن أحرمت بالحج من مكانها وصارت قارنة، ثم تفعل ما يفعله الحاج فإذا طهرت طافت وسعت.",
+     "en": "If a woman doing tamattuʿ gets her period before tawaf and is not pure by the 8th, she enters ihram for Hajj from where she is and becomes a qarin. She does all the rites and, once pure, performs tawaf and saʿi."
+    },
+    {
+     "ar": "تطوف المرأة من وراء الرجال إذا لم تجد فسحة ولا تزاحمهم عند الحجر، وذلك خير لها وأعظم أجرًا.",
+     "en": "A woman circles behind the men when there is no room and does not crowd them at the Stone, which is better for her and greater in reward."
+    }
+   ],
+   "tools": [
+    {
+     "kind": "umrah",
+     "n": [
+      "tamattu"
+     ]
+    },
+    {
+     "kind": "tawaf",
+     "k": "qudum",
+     "n": [
+      "qiran",
+      "ifrad"
+     ]
+    },
+    {
+     "kind": "sai",
+     "k": "hajj",
+     "n": [
+      "qiran",
+      "ifrad"
+     ]
+    }
+   ],
+   "src": [
+    "tahqiq",
+    "bb16511"
+   ]
+  },
+  {
+   "id": "h-tarwiyah",
+   "title": {
+    "ar": "يوم التروية",
+    "en": "The Day of Tarwiyah"
+   },
+   "place": {
+    "ar": "الثامن من ذي الحجة، منى",
+    "en": "The 8th of Dhul-Hijjah, Mina"
+   },
+   "do": [
+    {
+     "ar": "يغتسل من كان حلالًا بمكة ويتطيب ويحرم بالحج من مسكنه، كما فعل الصحابة رضي الله عنهم بأمر النبي صلى الله عليه وسلم.",
+     "en": "Anyone out of ihram in Makkah bathes, applies perfume and enters ihram for Hajj from where they are staying, as the Companions did at the Prophet's command."
+    },
+    {
+     "ar": "توجّه إلى منى قبل الزوال أو بعده، وأكثر من التلبية.",
+     "en": "Head to Mina before or after midday, repeating the Talbiyah often."
+    },
+    {
+     "ar": "صلِّ بمنى الظهر والعصر والمغرب والعشاء والفجر كل صلاة في وقتها، وتقصر الرباعية ولا تجمع.",
+     "en": "At Mina, pray Dhuhr, Asr, Maghrib, Isha and Fajr, each in its own time, shortening the four-rakʿah prayers without combining them."
+    }
+   ],
+   "nuskSay": {
+    "tamattu": "hajj"
+   },
+   "say": [
+    "talbiyah"
+   ],
+   "nusk": {
+    "tamattu": [
+     {
+      "ar": "أحرم بالحج من مسكنك في مكة وقل: لبّيك حجًّا، ولا حاجة إلى الذهاب إلى المسجد الحرام لتحرم منه.",
+      "en": "Enter ihram for Hajj from where you are staying in Makkah, saying Labbayka hajjan. There is no need to go to the Haram to enter ihram."
+     }
+    ],
+    "qiran": [
+     {
+      "ar": "أنت باقٍ على إحرامك منذ الميقات، فتوجّه إلى منى ملبّيًا.",
+      "en": "You are still in ihram from the miqat, so head to Mina saying the Talbiyah."
+     }
+    ],
+    "ifrad": [
+     {
+      "ar": "أنت باقٍ على إحرامك منذ الميقات، فتوجّه إلى منى ملبّيًا.",
+      "en": "You are still in ihram from the miqat, so head to Mina saying the Talbiyah."
+     }
+    ]
+   },
+   "watch": [
+    {
+     "ar": "لم يأمر النبي صلى الله عليه وسلم أصحابه أن يحرموا عند البيت أو عند الميزاب، ولا أن يطوفوا للوداع عند خروجهم إلى منى.",
+     "en": "The Prophet, peace be upon him, did not tell his Companions to enter ihram at the Kaaba or beneath its waterspout, nor to perform a farewell tawaf when leaving for Mina."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "لا تقصر المغرب ولا الفجر، ولا فرق في القصر بمنى وعرفة ومزدلفة بين أهل مكة وغيرهم.",
+     "en": "Maghrib and Fajr are never shortened, and at Mina, Arafah and Muzdalifah the people of Makkah shorten like everyone else."
+    }
+   ],
+   "women": [
+    {
+     "ar": "تحرم الحائض والنفساء بالحج كغيرها، وتخرج مع الناس إلى منى.",
+     "en": "A woman who is menstruating or bleeding after childbirth enters ihram for Hajj like everyone else and goes out with them to Mina."
+    }
+   ],
+   "src": [
+    "tahqiq",
+    "bb16511"
+   ]
+  },
+  {
+   "id": "h-arafah",
+   "title": {
+    "ar": "يوم عرفة",
+    "en": "The Day of Arafah"
+   },
+   "place": {
+    "ar": "التاسع من ذي الحجة، عرفة",
+    "en": "The 9th of Dhul-Hijjah, Arafah"
+   },
+   "do": [
+    {
+     "ar": "بعد طلوع الشمس توجّه من منى إلى عرفة، وانزل بنمرة إلى الزوال إن تيسر.",
+     "en": "After sunrise, go from Mina to Arafah, and stop at Namirah until midday if you can."
+    },
+    {
+     "ar": "إذا زالت الشمس فاستمع للخطبة، ثم صلِّ الظهر والعصر قصرًا وجمعًا في وقت الأولى بأذان واحد وإقامتين.",
+     "en": "After midday, listen to the sermon, then pray Dhuhr and Asr shortened and combined at the time of the first, with one call to prayer and two iqamahs."
+    },
+    {
+     "ar": "قف بعرفة مستقبل القبلة، وإن تيسر أن تستقبل معها جبل الرحمة فحسن، فعرفة كلها موقف إلا بطن عُرنة.",
+     "en": "Stand at Arafah facing the qiblah, and the Mount of Mercy too if you can. All of Arafah is a place of standing except the valley of ʿUranah."
+    },
+    {
+     "ar": "اجتهد في الذكر والدعاء والتضرع رافعًا يديك، وأكثر من قول: لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، يحيي ويميت، وهو على كل شيء قدير.",
+     "en": "Strive in remembrance, dua and humble pleading with raised hands, and say often: La ilaha illa Allah wahdahu la sharika lah, lahu l-mulku wa lahu l-hamd, yuhyi wa yumit, wa huwa ala kulli shay'in qadir."
+    },
+    {
+     "ar": "ألحّ في الدعاء وكرّره ثلاثًا كما كان النبي صلى الله عليه وسلم يفعل، وحاسب نفسك وجدّد توبتك وادعُ لمن أوصاك.",
+     "en": "Be persistent and repeat each dua three times, as the Prophet, peace be upon him, did. Take account of yourself, renew your repentance and pray for those who asked you."
+    },
+    {
+     "ar": "ابقَ مشتغلًا بالذكر والدعاء حتى تغرب الشمس.",
+     "en": "Stay occupied with remembrance and dua until sunset."
+    }
+   ],
+   "say": [
+    "arafah",
+    "arafah2",
+    "yunus",
+    "islah",
+    "afw",
+    "hamm",
+    "khair",
+    "corners"
+   ],
+   "watch": [
+    {
+     "ar": "لا يجوز الانصراف من عرفة قبل غروب الشمس، لأن النبي صلى الله عليه وسلم وقف حتى غربت وقال: «خذوا عني مناسككم».",
+     "en": "You may not leave Arafah before sunset, because the Prophet, peace be upon him, stayed until the sun had set and said: \"Take your rites from me.\""
+    },
+    {
+     "ar": "تأكّد أنك داخل حدود عرفة، فبطن عُرنة ليس منها.",
+     "en": "Make sure you are inside the boundary of Arafah, since the valley of ʿUranah is not part of it."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "لا يلزمك صعود الجبل ولا القرب منه، فحيثما وقفت من عرفة أجزأك.",
+     "en": "You do not need to climb the mountain or go near it, since standing anywhere in Arafah is enough."
+    },
+    {
+     "ar": "الفطر للحاج يوم عرفة أفضل، لأن النبي صلى الله عليه وسلم وقف مفطرًا ولأنه أنشط على الذكر والدعاء.",
+     "en": "For the pilgrim, not fasting on the Day of Arafah is better, because the Prophet, peace be upon him, stood there without fasting, and it leaves more energy for remembrance and dua."
+    },
+    {
+     "ar": "إن لبّيت أو قرأت شيئًا من القرآن فحسن.",
+     "en": "Saying the Talbiyah or reciting some Quran is also good."
+    }
+   ],
+   "women": [
+    {
+     "ar": "تقف الحائض والنفساء بعرفة وتذكر الله وتدعوه كغيرها، لقول النبي صلى الله عليه وسلم لعائشة: «افعلي ما يفعل الحاج غير ألا تطوفي بالبيت حتى تطهري».",
+     "en": "A woman who is menstruating or bleeding after childbirth stands at Arafah and remembers Allah like everyone else, for the Prophet, peace be upon him, told Aisha: \"Do all that the pilgrim does except circling the House until you are pure.\""
+    }
+   ],
+   "trusts": true,
+   "src": [
+    "tahqiq",
+    "bb16511"
+   ]
+  },
+  {
+   "id": "h-muzdalifah",
+   "title": {
+    "ar": "مزدلفة",
+    "en": "Muzdalifah"
+   },
+   "place": {
+    "ar": "ليلة العاشر من ذي الحجة",
+    "en": "The night of the 10th"
+   },
+   "do": [
+    {
+     "ar": "إذا غربت الشمس فانصرف إلى مزدلفة بسكينة ووقار، وأكثر من التلبية.",
+     "en": "After sunset, move on to Muzdalifah calmly and with dignity, repeating the Talbiyah."
+    },
+    {
+     "ar": "إذا وصلت فصلِّ المغرب ثلاثًا والعشاء ركعتين جمعًا بأذان وإقامتين، سواء وصلت في وقت المغرب أو بعد دخول وقت العشاء.",
+     "en": "As soon as you arrive, pray Maghrib as three rakʿahs and Isha as two, combined with one call and two iqamahs, whether you arrive in the time of Maghrib or of Isha."
+    },
+    {
+     "ar": "بِت بمزدلفة حتى تصلي الفجر، ثم قف عند المشعر الحرام أو حيث كنت منها مستقبل القبلة.",
+     "en": "Spend the night at Muzdalifah until you pray Fajr, then stand at al-Mash'ar al-Haram, or wherever you are in Muzdalifah, facing the qiblah."
+    },
+    {
+     "ar": "أكثر من ذكر الله وتكبيره ودعائه رافعًا يديك حتى يسفر جدًّا، ثم انصرف إلى منى قبل طلوع الشمس ملبّيًا.",
+     "en": "Remember Allah, say takbir and make dua with raised hands until the sky is very bright, then leave for Mina before sunrise, saying the Talbiyah."
+    },
+    {
+     "ar": "إذا بلغت وادي محسّر فأسرع قليلًا.",
+     "en": "When you reach the valley of Muhassir, speed up a little."
+    },
+    {
+     "ar": "خذ سبع حصيات لجمرة العقبة من أي موضع، ولا يتعين أخذها من مزدلفة بل يجوز من منى.",
+     "en": "Pick up seven pebbles for Jamrat al-Aqabah from anywhere. They need not come from Muzdalifah, and Mina is fine."
+    }
+   ],
+   "say": [
+    "mashar",
+    "talbiyah"
+   ],
+   "watch": [
+    {
+     "ar": "التقاط الحصى حين الوصول إلى مزدلفة قبل الصلاة واعتقاد أن ذلك مشروع غلط لا أصل له.",
+     "en": "Collecting pebbles on arrival at Muzdalifah before praying, believing it to be part of the rites, is a mistake with no basis."
+    },
+    {
+     "ar": "لا يستحب غسل الحصى، ولا يُرمى بحصى قد رُمي به.",
+     "en": "Washing the pebbles is not recommended, and pebbles that have already been thrown are not used again."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "حيثما وقفت من مزدلفة أجزأك، ولا يجب عليك القرب من المشعر ولا صعوده.",
+     "en": "Standing anywhere in Muzdalifah is enough, and you need not go near al-Mash'ar or climb it."
+    },
+    {
+     "ar": "يجوز للضعفة من النساء والصبيان ونحوهم أن يدفعوا إلى منى آخر الليل.",
+     "en": "The weak, such as women and children, may leave for Mina in the last part of the night."
+    },
+    {
+     "ar": "الحصى مثل حصى الخذف، وهو أكبر من الحمّص قليلًا.",
+     "en": "The pebbles are small, a little larger than a chickpea."
+    }
+   ],
+   "women": [
+    {
+     "ar": "للمرأة إذا كانت من الضعفة أن تدفع إلى منى آخر الليل، لحديث عائشة وأم سلمة رضي الله عنهما.",
+     "en": "A woman among the weak may leave for Mina in the last part of the night, from the hadiths of Aisha and Umm Salamah."
+    }
+   ],
+   "src": [
+    "tahqiq",
+    "bb16511"
+   ]
+  },
+  {
+   "id": "h-nahr",
+   "title": {
+    "ar": "يوم النحر",
+    "en": "The Day of Sacrifice"
+   },
+   "place": {
+    "ar": "العاشر من ذي الحجة، منى",
+    "en": "The 10th of Dhul-Hijjah, Mina"
+   },
+   "do": [
+    {
+     "ar": "إذا وصلت إلى منى فاقطع التلبية عند جمرة العقبة، ثم ارمها بسبع حصيات متعاقبات ترفع يدك مع كل حصاة وتكبّر.",
+     "en": "On reaching Mina, stop the Talbiyah at Jamrat al-Aqabah and throw seven pebbles at it one after another, raising your hand and saying Allahu akbar with each."
+    },
+    {
+     "ar": "يستحب أن ترميها من بطن الوادي فتجعل الكعبة عن يسارك ومنى عن يمينك، وإن رميت من جهة أخرى أجزأك إذا وقع الحصى في المرمى.",
+     "en": "It is best to throw from the valley floor, with the Kaaba on your left and Mina on your right, and throwing from another side is valid as long as the pebbles land in the basin."
+    },
+    {
+     "ar": "ثم انحر هديك إن كان عليك هدي، ووجّهه إلى القبلة وقل: بسم الله والله أكبر، اللهم هذا منك ولك.",
+     "en": "Then slaughter your sacrifice if one is due, facing it towards the qiblah and saying: Bismillahi wa Allahu akbar, Allahumma hadha minka wa lak."
+    },
+    {
+     "ar": "ثم احلق رأسك أو قصّره والحلق أفضل، لأن النبي صلى الله عليه وسلم دعا للمحلّقين ثلاثًا وللمقصّرين مرة.",
+     "en": "Then shave your head or shorten your hair. Shaving is better, because the Prophet, peace be upon him, prayed for those who shaved three times and for those who shortened once."
+    },
+    {
+     "ar": "بالرمي والحلق أو التقصير يحل لك كل شيء إلا النساء وهذا التحلل الأول، ثم تطيّب وتوجّه إلى مكة لطواف الإفاضة.",
+     "en": "With the stoning and the shave or trim, everything is permitted except marital relations. This is the first release, after which you apply perfume and head to Makkah for tawaf al-ifadah."
+    },
+    {
+     "ar": "الأفضل أن ترتّب أعمال هذا اليوم فترمي ثم تنحر ثم تحلق ثم تطوف وتسعى، فإن قدّمت بعضها على بعض فلا حرج.",
+     "en": "The best order for the day is stoning, then the sacrifice, then the shave, then tawaf and saʿi. If you do some before others there is no harm."
+    }
+   ],
+   "say": [
+    "rami",
+    "hady"
+   ],
+   "nusk": {
+    "tamattu": [
+     {
+      "ar": "عليك هدي، شاة أو سُبع بدنة أو سُبع بقرة، فإن عجزت عنه صمت ثلاثة أيام في الحج وسبعة إذا رجعت إلى أهلك.",
+      "en": "A sacrifice is due: a sheep, or a seventh of a camel or a cow. If you cannot afford it, fast three days during Hajj and seven when you return home."
+     }
+    ],
+    "qiran": [
+     {
+      "ar": "عليك هدي، شاة أو سُبع بدنة أو سُبع بقرة، فإن عجزت عنه صمت ثلاثة أيام في الحج وسبعة إذا رجعت إلى أهلك.",
+      "en": "A sacrifice is due: a sheep, or a seventh of a camel or a cow. If you cannot afford it, fast three days during Hajj and seven when you return home."
+     }
+    ],
+    "ifrad": [
+     {
+      "ar": "لا هدي عليك في الإفراد.",
+      "en": "No sacrifice is due in ifrad."
+     }
+    ]
+   },
+   "watch": [
+    {
+     "ar": "لا يكفي تقصير بعض الرأس، بل لا بد من تقصيره كله كالحلق.",
+     "en": "Shortening part of the head is not enough. It must cover the whole head, like shaving."
+    },
+    {
+     "ar": "يجب أن يكون الهدي من مال حلال وكسب طيب، وتعفّف عن سؤال الناس الهدي.",
+     "en": "The sacrifice must come from lawful, clean money, and do not ask people to give you one."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "الأفضل أن ترمي جمرة العقبة ضحى ويمتد وقتها إلى غروب الشمس، فإن فاتك رميتها ليلًا، ويجزئ رميها في النصف الأخير من ليلة النحر.",
+     "en": "It is best to stone Jamrat al-Aqabah in the forenoon, the time lasts until sunset, and if you miss it you stone at night. Stoning in the second half of the night before is also valid."
+    },
+    {
+     "ar": "إن وقعت الحصاة في المرمى ثم خرجت منه أجزأت، فالشرط وقوعها فيه لا بقاؤها.",
+     "en": "If a pebble lands in the basin and bounces out, it still counts. What matters is that it lands there, not that it stays."
+    },
+    {
+     "ar": "وقت الذبح يوم النحر وثلاثة أيام بعده، وكُل من هديك وأهدِ وتصدّق.",
+     "en": "The time for the sacrifice is the Day of Sacrifice and the three days after it. Eat from it, give some as gifts and give some in charity."
+    },
+    {
+     "ar": "من عجز عن الهدي فالأفضل أن يصوم الأيام الثلاثة قبل يوم عرفة، وله أن يصومها في أيام التشريق.",
+     "en": "Whoever cannot afford the sacrifice should ideally fast the three days before the Day of Arafah, and may fast them in the days of Tashriq."
+    }
+   ],
+   "women": [
+    {
+     "ar": "تقصّر المرأة من كل ضفيرة قدر أنملة فأقل، ولا تحلق.",
+     "en": "A woman cuts a fingertip's length or less from each braid, and never shaves."
+    },
+    {
+     "ar": "إذا رمت الحائض أو النفساء وقصّرت حلّ لها كل شيء إلا زوجها، حتى تطهر فتطوف وتسعى.",
+     "en": "Once a woman who is menstruating or bleeding after childbirth has stoned and shortened her hair, everything is permitted except her husband, until she is pure and has done tawaf and saʿi."
+    }
+   ],
+   "src": [
+    "tahqiq",
+    "bb16100",
+    "bb16511"
+   ]
+  },
+  {
+   "id": "h-ifadah",
+   "title": {
+    "ar": "طواف الإفاضة والسعي",
+    "en": "Tawaf al-Ifadah and saʿi"
+   },
+   "place": {
+    "ar": "المسجد الحرام",
+    "en": "Al-Masjid al-Haram"
+   },
+   "do": [
+    {
+     "ar": "طواف الإفاضة ركن من أركان الحج لا يتم الحج إلا به، فطُف سبعة أشواط تبدأ من الحجر الأسود وتنتهي إليه.",
+     "en": "Tawaf al-ifadah is a pillar of Hajj without which the Hajj is not complete. Circle seven times, beginning and ending at the Black Stone."
+    },
+    {
+     "ar": "ثم صلِّ ركعتين خلف المقام إن تيسر.",
+     "en": "Then pray two rakʿahs behind the Station of Ibrahim if you can."
+    },
+    {
+     "ar": "ثم اسعَ بين الصفا والمروة إن كان عليك سعي، وتجد حكم سعيك في بطاقة نسكك.",
+     "en": "Then do saʿi between Safa and Marwah if it is due. Your form card tells you whether it is."
+    },
+    {
+     "ar": "إذا أتممت الرمي والحلق أو التقصير والطواف مع السعي حلّ لك كل شيء حتى النساء، وهذا التحلل الثاني.",
+     "en": "Once the stoning, the shave or trim and the tawaf with saʿi are done, everything is permitted, marital relations included. This is the second release."
+    },
+    {
+     "ar": "اشرب من ماء زمزم وتضلّع منه وادعُ بما تيسر، فماء زمزم لما شُرب له.",
+     "en": "Drink your fill of Zamzam and make any dua you wish, for Zamzam is for whatever it is drunk for."
+    }
+   ],
+   "say": [
+    "stone",
+    "corners"
+   ],
+   "nusk": {
+    "tamattu": [
+     {
+      "ar": "عليك سعي ثانٍ لحجك بعد هذا الطواف، ولا يكفيك سعي عمرتك.",
+      "en": "You must do a second saʿi for your Hajj after this tawaf. The saʿi of your Umrah does not cover it."
+     }
+    ],
+    "qiran": [
+     {
+      "ar": "إن سعيت بعد طواف القدوم فلا سعي عليك الآن، وإلا فاسعَ بعد هذا الطواف.",
+      "en": "If you did saʿi after the arrival tawaf, none is due now. Otherwise do saʿi after this tawaf."
+     }
+    ],
+    "ifrad": [
+     {
+      "ar": "إن سعيت بعد طواف القدوم فلا سعي عليك الآن، وإلا فاسعَ بعد هذا الطواف.",
+      "en": "If you did saʿi after the arrival tawaf, none is due now. Otherwise do saʿi after this tawaf."
+     }
+    ]
+   },
+   "watch": [
+    {
+     "ar": "لا رمل ولا اضطباع في طواف الإفاضة، فهما في الطواف الأول حين تقدم مكة فقط.",
+     "en": "There is no brisk walking or uncovered shoulder in tawaf al-ifadah. Both belong only to the first tawaf on arrival."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "إن سعيت قبل أن تطوف فلا حرج، فقد سُئل النبي صلى الله عليه وسلم عمن سعى قبل أن يطوف فقال: «لا حرج».",
+     "en": "If you did saʿi before tawaf there is no harm. The Prophet, peace be upon him, was asked about someone who did saʿi before tawaf and said: \"No harm.\""
+    }
+   ],
+   "women": [
+    {
+     "ar": "لا تطوف الحائض والنفساء حتى تطهر، فإن حاضت المرأة بعد الطواف سعت وأجزأها ذلك لأن الطهارة ليست شرطًا في السعي.",
+     "en": "A woman who is menstruating or bleeding after childbirth does not circle the Kaaba until she is pure. If it begins after tawaf, she does saʿi and it is valid, because purity is not a condition for saʿi."
+    }
+   ],
+   "tools": [
+    {
+     "kind": "tawaf",
+     "k": "ifadah"
+    },
+    {
+     "kind": "sai",
+     "k": "hajj"
+    }
+   ],
+   "src": [
+    "tahqiq",
+    "bb16511"
+   ]
+  },
+  {
+   "id": "h-tashreeq",
+   "title": {
+    "ar": "أيام التشريق",
+    "en": "The days of Tashriq"
+   },
+   "place": {
+    "ar": "الحادي عشر إلى الثالث عشر، منى",
+    "en": "The 11th to the 13th, Mina"
+   },
+   "do": [
+    {
+     "ar": "ارجع إلى منى بعد طواف الإفاضة، وبِت بها ليلة الحادي عشر وليلة الثاني عشر.",
+     "en": "Return to Mina after tawaf al-ifadah and spend the nights of the 11th and the 12th there."
+    },
+    {
+     "ar": "ارمِ الجمرات الثلاث في كل يوم بعد زوال الشمس مرتّبة، كل جمرة بسبع حصيات متعاقبات ترفع يدك مع كل حصاة وتكبّر.",
+     "en": "Each day after midday, stone the three pillars in order, seven pebbles each, one after another, raising your hand and saying Allahu akbar with each."
+    },
+    {
+     "ar": "ابدأ بالجمرة الأولى التي تلي مسجد الخيف، ثم تأخّر عنها واجعلها عن يسارك واستقبل القبلة، وارفع يديك وأكثر من الدعاء.",
+     "en": "Begin with the first pillar, next to Masjid al-Khayf, then step aside with it on your left, face the qiblah, raise your hands and make a long dua."
+    },
+    {
+     "ar": "ثم ارمِ الجمرة الوسطى، وتقدّم قليلًا واجعلها عن يمينك واستقبل القبلة، وارفع يديك وادعُ كثيرًا.",
+     "en": "Then stone the middle pillar, move forward a little with it on your right, face the qiblah, raise your hands and make a long dua."
+    },
+    {
+     "ar": "ثم ارمِ جمرة العقبة ولا تقف عندها.",
+     "en": "Then stone Jamrat al-Aqabah and do not stop after it."
+    },
+    {
+     "ar": "خذ حصاك كل يوم من منى، إحدى وعشرين حصاة للجمار الثلاث.",
+     "en": "Pick up your pebbles in Mina each day, twenty-one for the three pillars."
+    },
+    {
+     "ar": "إن أردت التعجل فارمِ يوم الثاني عشر ثم اخرج من منى قبل غروب الشمس، ومن تأخّر فبات ليلة الثالث عشر ورمى فيه فهو أفضل وأعظم أجرًا.",
+     "en": "If you wish to leave early, stone on the 12th and leave Mina before sunset. Staying the night of the 13th and stoning that day is better and greater in reward."
+    }
+   ],
+   "say": [
+    "rami",
+    "tashreeq"
+   ],
+   "watch": [
+    {
+     "ar": "الرمي في اليومين الأولين من أيام التشريق واجب، وكذا المبيت بمنى ليلتيهما إلا على السقاة والرعاة ونحوهم.",
+     "en": "Stoning on the first two days of Tashriq is obligatory, and so is spending their nights at Mina, except for water carriers, herders and the like."
+    },
+    {
+     "ar": "وقت الرمي في هذه الأيام يبدأ بعد زوال الشمس، فلا ترمِ قبله.",
+     "en": "On these days the time for stoning begins after midday, so do not stone before it."
+    },
+    {
+     "ar": "يجب الترتيب بين الجمرات، فتبدأ بالأولى ثم الوسطى ثم جمرة العقبة.",
+     "en": "The order is obligatory: the first pillar, then the middle, then Jamrat al-Aqabah."
+    }
+   ],
+   "calm": [
+    {
+     "ar": "يجوز للعاجز عن الرمي لمرض أو كبر سن أو حمل أن يوكّل من يرمي عنه.",
+     "en": "Anyone unable to stone because of illness, old age or pregnancy may appoint someone to stone for them."
+    },
+    {
+     "ar": "يرمي النائب عن نفسه ثم عن موكّله كل جمرة وهو في موقف واحد، ولا يلزمه أن يكمل رميه ثم يرجع.",
+     "en": "The deputy stones each pillar for himself and then for the one he represents from the same spot, and need not finish all three first and come back."
+    },
+    {
+     "ar": "يرمي وليّ الصبي العاجز عنه بعد أن يرمي عن نفسه.",
+     "en": "A guardian stones for a child who cannot, after stoning for himself."
+    }
+   ],
+   "women": [
+    {
+     "ar": "للحامل ومن عجزت عن مزاحمة الناس أن توكّل من يرمي عنها.",
+     "en": "A pregnant woman, or any woman unable to cope with the crowds, may appoint someone to stone for her."
+    }
+   ],
+   "trusts": true,
+   "src": [
+    "tahqiq",
+    "bb16100",
+    "bb16511"
+   ]
+  },
+  {
+   "id": "h-wada",
+   "title": {
+    "ar": "طواف الوداع",
+    "en": "The farewell tawaf"
+   },
+   "place": {
+    "ar": "المسجد الحرام قبل السفر",
+    "en": "Al-Masjid al-Haram, before leaving"
+   },
+   "do": [
+    {
+     "ar": "أكثر مدة إقامتك بمكة من الصلاة والطواف وذكر الله، فالحسنات في الحرم مضاعفة.",
+     "en": "While you stay in Makkah, pray, circle the Kaaba and remember Allah often, for good deeds in the sanctuary are multiplied."
+    },
+    {
+     "ar": "إذا أردت الخروج من مكة فطُف بالبيت طواف الوداع، ليكون آخر عهدك بالبيت.",
+     "en": "When you are ready to leave Makkah, perform the farewell tawaf so that your last moment there is with the House."
+    },
+    {
+     "ar": "إذا فرغت من الطواف فامضِ على وجهك حتى تخرج من المسجد.",
+     "en": "When you finish, walk straight out of the mosque."
+    }
+   ],
+   "say": [
+    "corners"
+   ],
+   "watch": [
+    {
+     "ar": "لا تمشِ القهقرى عند خروجك من المسجد، فذلك لم يُنقل عن النبي صلى الله عليه وسلم ولا عن أصحابه.",
+     "en": "Do not walk out backwards. The Prophet, peace be upon him, and his Companions never did so."
+    },
+    {
+     "ar": "لا رمل ولا اضطباع في طواف الوداع.",
+     "en": "There is no brisk walking or uncovered shoulder in the farewell tawaf."
+    }
+   ],
+   "calm": [],
+   "women": [
+    {
+     "ar": "لا وداع على الحائض والنفساء، لحديث ابن عباس رضي الله عنهما: «أُمر الناس أن يكون آخر عهدهم بالبيت، إلا أنه خُفّف عن المرأة الحائض».",
+     "en": "There is no farewell tawaf for a woman who is menstruating or bleeding after childbirth, from the hadith of Ibn Abbas: \"People were commanded to make their last moment with the House, except that it was lightened for the menstruating woman.\""
+    }
+   ],
+   "tools": [
+    {
+     "kind": "tawaf",
+     "k": "wada"
+    }
+   ],
+   "src": [
+    "tahqiq"
+   ]
+  },
+  {
+   "id": "h-done",
+   "title": {
+    "ar": "تقبّل الله حجّك",
+    "en": "May Allah accept your Hajj"
+   },
+   "place": {
+    "ar": "بعد الحج",
+    "en": "After Hajj"
+   },
+   "do": [
+    {
+     "ar": "قال النبي صلى الله عليه وسلم: «والحج المبرور ليس له جزاء إلا الجنة» متفق عليه، فاحفظ أثر حجك بالاستقامة على الطاعة.",
+     "en": "The Prophet, peace be upon him, said: \"An accepted Hajj has no reward but Paradise.\" Agreed upon. Keep its effect by staying firm in obedience."
+    },
+    {
+     "ar": "إن كنت ممن صام عن الهدي فصم الأيام السبعة إذا رجعت إلى أهلك، ولا يلزمك التتابع فيها.",
+     "en": "If you are fasting in place of the sacrifice, fast the remaining seven days when you return home. They need not be consecutive."
+    },
+    {
+     "ar": "افتح أمانات الدعاء وتأكّد أنك دعوت لكل من أوصاك.",
+     "en": "Open your dua trusts and make sure you prayed for everyone who asked you."
+    }
+   ],
+   "say": [],
+   "watch": [],
+   "calm": [],
+   "women": [],
+   "tools": [
+    {
+     "kind": "trusts"
+    }
+   ],
+   "src": [
+    "tahqiq"
+   ]
+  }
+ ],
  "miqat": {
   "hadith": {
    "ar": "قال النبي صلى الله عليه وسلم في المواقيت: «هنّ لهنّ ولمن أتى عليهنّ من غير أهلهنّ ممن أراد الحج والعمرة»، متفق عليه.",
@@ -1071,13 +2052,13 @@
     "id": "tamattu",
     "name": {
      "ar": "التمتع",
-     "en": "Tamattu'"
+     "en": "Tamattuʿ"
     },
     "say": "niyyah",
     "lines": [
      {
       "ar": "تحرم بالعمرة وحدها في أشهر الحج فتقول: لبّيك عمرة، ولك أن تقول: متمتعًا بها إلى الحج.",
-      "en": "You enter ihram for Umrah alone during the Hajj months, saying Labbayka 'umratan, and you may add: enjoying it until Hajj."
+      "en": "You enter ihram for Umrah alone during the Hajj months, saying Labbayka ʿumratan, and you may add: enjoying it until Hajj."
      },
      {
       "ar": "تطوف وتسعى وتقصّر وتحل، ثم تحرم بالحج يوم الثامن من مكانك في مكة.",
@@ -1125,198 +2106,13 @@
     "lines": [
      {
       "ar": "تحرم بالعمرة والحج معًا فتقول: لبّيك عمرة وحجًا، وأعمالك مثل أعمال المفرد ويكفيك سعي واحد.",
-      "en": "You enter ihram for Umrah and Hajj together, saying Labbayka 'umratan wa hajjan. Your rites are those of ifrad, and one saʿi is enough."
+      "en": "You enter ihram for Umrah and Hajj together, saying Labbayka ʿumratan wa hajjan. Your rites are those of ifrad, and one saʿi is enough."
      },
      {
       "ar": "والسنة لمن لم يسق الهدي أن يجعلها عمرة، أما من ساق الهدي فيبقى على إحرامه كما فعل النبي صلى الله عليه وسلم.",
       "en": "The sunnah for anyone without a sacrificial animal is to turn it into Umrah. Whoever brought one stays in ihram, as the Prophet, peace be upon him, did."
      }
     ]
-   }
-  ],
-  "days": [
-   {
-    "id": "d8",
-    "day": {
-     "ar": "الثامن من ذي الحجة",
-     "en": "The 8th of Dhul-Hijjah"
-    },
-    "name": {
-     "ar": "يوم التروية",
-     "en": "The Day of Tarwiyah"
-    },
-    "lines": [
-     {
-      "ar": "يحرم من حلّ من عمرته من مكانه في مكة ويقول: لبّيك حجًا، ثم يتوجه إلى منى.",
-      "en": "Whoever has left ihram after Umrah enters ihram again from where they are in Makkah, says Labbayka hajjan, and goes to Mina."
-     },
-     {
-      "ar": "يصلي بمنى الظهر والعصر والمغرب والعشاء والفجر، كل صلاة في وقتها قصرًا دون جمع.",
-      "en": "At Mina, pray Dhuhr, Asr, Maghrib, Isha and Fajr, each in its own time, shortened but not combined."
-     }
-    ],
-    "say": [
-     "hajj"
-    ]
-   },
-   {
-    "id": "d9",
-    "day": {
-     "ar": "التاسع من ذي الحجة",
-     "en": "The 9th of Dhul-Hijjah"
-    },
-    "name": {
-     "ar": "يوم عرفة",
-     "en": "The Day of Arafah"
-    },
-    "lines": [
-     {
-      "ar": "يتوجه الحاج إلى عرفات بعد طلوع الشمس ملبيًا.",
-      "en": "After sunrise, go to Arafah saying the Talbiyah."
-     },
-     {
-      "ar": "يصلي الظهر والعصر جمعًا وقصرًا بأذان واحد وإقامتين، والأفضل أن يكون ذلك في نمرة إن تيسّر.",
-      "en": "Pray Dhuhr and Asr combined and shortened with one call to prayer and two iqamahs, at Namirah if you can."
-     },
-     {
-      "ar": "يقف في أي مكان من عرفة مستقبل القبلة، يدعو ويهلّل ويكبّر ويلبّي حتى تغيب الشمس، فعرفة كلها موقف.",
-      "en": "Stay anywhere within Arafah facing the qiblah, making dua, dhikr and Talbiyah until sunset. All of Arafah is a place of standing."
-     },
-     {
-      "ar": "قال النبي صلى الله عليه وسلم: «ما من يوم أكثر من أن يعتق الله فيه عبدًا من النار من يوم عرفة»، رواه مسلم.",
-      "en": "The Prophet, peace be upon him, said: \"There is no day on which Allah frees more servants from the Fire than the Day of Arafah.\" Narrated by Muslim."
-     }
-    ],
-    "say": [
-     "arafah",
-     "arafah2"
-    ],
-    "trusts": true
-   },
-   {
-    "id": "n10",
-    "day": {
-     "ar": "ليلة العاشر",
-     "en": "The night of the 10th"
-    },
-    "name": {
-     "ar": "مزدلفة",
-     "en": "Muzdalifah"
-    },
-    "lines": [
-     {
-      "ar": "بعد غروب الشمس ينصرف إلى مزدلفة بسكينة ملبيًا.",
-      "en": "After sunset, move on to Muzdalifah calmly, saying the Talbiyah."
-     },
-     {
-      "ar": "يصلي المغرب والعشاء جمعًا وقصرًا حين يصل بأذان واحد وإقامتين، ولا يصلي بينهما شيئًا.",
-      "en": "On arrival, pray Maghrib and Isha combined and shortened with one call and two iqamahs, with nothing between them."
-     },
-     {
-      "ar": "يبيت بها ويصلي الفجر، ثم يذكر الله ويدعو مستقبل القبلة رافعًا يديه حتى يسفر جدًّا، ثم ينصرف إلى منى قبل طلوع الشمس.",
-      "en": "Spend the night there and pray Fajr, then remember Allah and make dua facing the qiblah with raised hands until the sky is bright, and leave for Mina before sunrise."
-     },
-     {
-      "ar": "يجوز للضعفة من النساء والصبيان ونحوهم الانصراف في آخر الليل.",
-      "en": "The weak, such as women and children, may leave in the last part of the night."
-     }
-    ],
-    "say": []
-   },
-   {
-    "id": "d10",
-    "day": {
-     "ar": "العاشر من ذي الحجة",
-     "en": "The 10th of Dhul-Hijjah"
-    },
-    "name": {
-     "ar": "يوم النحر",
-     "en": "The Day of Sacrifice"
-    },
-    "lines": [
-     {
-      "ar": "يرمي جمرة العقبة بسبع حصيات يكبّر مع كل حصاة، ويقطع التلبية عند الرمي.",
-      "en": "Throw seven pebbles at Jamrat al-Aqabah, saying Allahu akbar with each one, and stop the Talbiyah as you begin."
-     },
-     {
-      "ar": "الأفضل أن يرميها ضحى، ويمتد وقتها إلى غروب الشمس، ومن فاته ذلك رماها ليلًا.",
-      "en": "It is best to throw in the forenoon, the time lasts until sunset, and anyone who misses it throws at night."
-     },
-     {
-      "ar": "ينحر هديه إن كان عنده هدي، ثم يحلق الرجل أو يقصّر والحلق أفضل، وتقصّر المرأة من أطراف شعرها.",
-      "en": "Slaughter your sacrifice if you have one. Men then shave or shorten, shaving being better, and women shorten the ends of their hair."
-     },
-     {
-      "ar": "يحصل التحلل الأول بالرمي والحلق أو التقصير، فيحل له كل شيء إلا النساء.",
-      "en": "The first release comes with the stoning and the shaving or shortening, after which everything is permitted except marital relations."
-     },
-     {
-      "ar": "يطوف طواف الإفاضة ويسعى إن كان عليه سعي، فإذا فعل ذلك حل له كل شيء.",
-      "en": "Perform tawaf al-ifadah and saʿi if it is due. After that everything is permitted."
-     },
-     {
-      "ar": "الترتيب بين هذه الأعمال ليس بواجب، فقد سُئل النبي صلى الله عليه وسلم عن التقديم والتأخير فقال: لا حرج.",
-      "en": "The order of these acts is not obligatory. When the Prophet, peace be upon him, was asked about doing one before another, he said: no harm."
-     }
-    ],
-    "say": [
-     "rami"
-    ]
-   },
-   {
-    "id": "d11",
-    "day": {
-     "ar": "الحادي عشر إلى الثالث عشر",
-     "en": "The 11th to the 13th"
-    },
-    "name": {
-     "ar": "أيام التشريق",
-     "en": "The days of Tashriq"
-    },
-    "lines": [
-     {
-      "ar": "يرمي الجمرات الثلاث بعد زوال الشمس، كل جمرة بسبع حصيات يكبّر مع كل حصاة.",
-      "en": "After midday, throw at all three pillars, seven pebbles each, saying Allahu akbar with every pebble."
-     },
-     {
-      "ar": "يبدأ بالأولى التي تلي مسجد الخيف، ثم يقف مستقبل القبلة جاعلها عن يساره ويدعو طويلًا.",
-      "en": "Begin with the first, next to Masjid al-Khayf, then stand facing the qiblah with it on your left and make a long dua."
-     },
-     {
-      "ar": "ثم يرمي الوسطى ويقف مستقبل القبلة جاعلها عن يمينه ويدعو طويلًا.",
-      "en": "Then throw at the middle one and stand facing the qiblah with it on your right, making a long dua."
-     },
-     {
-      "ar": "ثم يرمي جمرة العقبة ولا يقف عندها.",
-      "en": "Then throw at Jamrat al-Aqabah without stopping after it."
-     },
-     {
-      "ar": "يرمي في اليوم الحادي عشر والثاني عشر، وفي الثالث عشر لمن لم يتعجّل، لقوله تعالى: فمن تعجل في يومين فلا إثم عليه ومن تأخر فلا إثم عليه.",
-      "en": "Throw on the 11th and 12th, and on the 13th if you did not leave early, for Allah says: whoever hastens in two days commits no sin, and whoever stays on commits no sin."
-     }
-    ],
-    "say": [
-     "rami"
-    ],
-    "trusts": true
-   },
-   {
-    "id": "wada",
-    "day": {
-     "ar": "قبل السفر",
-     "en": "Before leaving"
-    },
-    "name": {
-     "ar": "طواف الوداع",
-     "en": "The farewell tawaf"
-    },
-    "lines": [
-     {
-      "ar": "إذا فرغ الحاج من كل شيء طاف طواف الوداع ثم سافر.",
-      "en": "When everything is done, perform the farewell tawaf, then travel."
-     }
-    ],
-    "say": []
    }
   ],
   "src": [
@@ -1605,17 +2401,17 @@
       "id": "k5",
       "t": {
        "ar": "تحديد نسكك، تمتعًا أو إفرادًا أو قرانًا.",
-       "en": "Decide your form of Hajj: tamattu', ifrad or qiran."
+       "en": "Decide your form of Hajj: tamattuʿ, ifrad or qiran."
       },
-      "link": "hajj"
+      "link": "nusuk"
      },
      {
       "id": "k6",
       "t": {
-       "ar": "قراءة أيام الحج من الثامن إلى الثالث عشر في التطبيق.",
-       "en": "Read the days of Hajj, from the 8th to the 13th, in the app."
+       "ar": "قراءة محطات رحلة الحج في التطبيق مرة قبل السفر.",
+       "en": "Read through the Hajj journey in the app once before you travel."
       },
-      "link": "hajj"
+      "link": "journey?j=hajj"
      },
      {
       "id": "k3",

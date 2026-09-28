@@ -4,21 +4,36 @@
 
   var L = window.AteeqLogic;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.1.0';
+  var VERSION = '0.2.0';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N;
   var RD = {}, DMAP = {};
+  var TW_KINDS = ['umrah', 'qudum', 'ifadah', 'wada'];
+  var SW_KINDS = ['umrah', 'hajj'];
+  var NUSK = ['tamattu', 'qiran', 'ifrad'];
   var S = load();
-  var wakeLock = null, flightTimer = null, lastPhase = null;
+  var wakeLock = null, flightTimer = null, lastPhase = null, twk = 'umrah', swk = 'umrah';
 
   /* ------------------------------------------------------------ state */
+  function newTw() { return { laps: 0, startedAt: null, paused: false, doubt: false }; }
+  function newSw() { return { legs: 0, startedAt: null, dhikr: 0, paused: false }; }
+  /* In the Hajj months (Shawwal to Dhul-Hijjah) the app opens on the Hajj journey. */
+  function autoMode() {
+    try {
+      var m = parseInt(new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', { month: 'numeric' }).format(new Date()), 10);
+      return m >= 10 && m <= 12 ? 'hajj' : 'umrah';
+    } catch (e) { return 'umrah'; }
+  }
   function defaults() {
     var nav = String(navigator.language || 'ar').toLowerCase();
+    var tw = {}, sw = {};
+    TW_KINDS.forEach(function (k) { tw[k] = newTw(); });
+    SW_KINDS.forEach(function (k) { sw[k] = newSw(); });
     return {
-      lang: nav.indexOf('ar') === 0 ? 'ar' : 'en', theme: 'auto', size: 'm', done: {},
-      tawaf: { laps: 0, startedAt: null, paused: false, doubt: false },
-      sai: { legs: 0, startedAt: null, dhikr: 0, paused: false },
+      lang: nav.indexOf('ar') === 0 ? 'ar' : 'en', theme: 'auto', size: 'm',
+      mode: autoMode(), nusk: 'tamattu', done: {},
+      tw: tw, sw: sw, twk: 'umrah', swk: 'umrah',
       favs: [], mine: [], trusts: [],
       prep: { umrah: {}, hajj: {} }, custom: { umrah: [], hajj: [] },
       flight: { route: 'east', time: '', arrival: null, on: false }
@@ -29,10 +44,19 @@
     try {
       var s = JSON.parse(localStorage.getItem(KEY) || '{}');
       Object.keys(s).forEach(function (k) { d[k] = s[k]; });
+      /* version 0.1 kept a single tawaf and a single sa'i */
+      if (s.tawaf && !s.tw) d.tw.umrah = s.tawaf;
+      if (s.sai && !s.sw) d.sw.umrah = s.sai;
     } catch (e) { /* first run or private mode */ }
+    delete d.tawaf; delete d.sai;
+    TW_KINDS.forEach(function (k) { if (!d.tw[k]) d.tw[k] = newTw(); });
+    SW_KINDS.forEach(function (k) { if (!d.sw[k]) d.sw[k] = newSw(); });
+    if (NUSK.indexOf(d.nusk) < 0) d.nusk = 'tamattu';
+    if (d.mode !== 'hajj' && d.mode !== 'umrah') d.mode = 'umrah';
     return d;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* storage full or blocked */ } }
+  function setMode(m) { if (S.mode !== m) { S.mode = m; save(); } }
   function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
 
   /* ------------------------------------------------------------ text */
@@ -109,6 +133,7 @@
   function li(x) { return '<li>' + esc(tx(x)) + '</li>'; }
   function liS(s) { return '<li>' + esc(s) + '</li>'; }
   function empty(s) { return '<p class="empty">' + esc(s) + '</p>'; }
+  function btnA(href, label, primary) { return '<a class="btn' + (primary ? ' primary' : ' ghost') + '" href="' + href + '">' + esc(label) + '</a>'; }
   function srcById(id) { return RITE.sources.filter(function (s) { return s.id === id; })[0]; }
   function srcList(ids) {
     return '<ul class="srclist">' + ids.map(function (id) {
@@ -116,16 +141,21 @@
       return s ? '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(tx(s.title)) + '</a></li>' : '';
     }).join('') + '</ul>';
   }
-  function stationIndex(id) {
-    for (var i = 0; i < RITE.stations.length; i++) if (RITE.stations[i].id === id) return i;
-    return -1;
+
+  /* ------------------------------------------------------------ journeys */
+  function jList(j) { return j === 'hajj' ? RITE.hajjStations : RITE.stations; }
+  function jOf(id) { return String(id || '').indexOf('h-') === 0 ? 'hajj' : 'umrah'; }
+  function stationById(id) {
+    var list = jList(jOf(id));
+    for (var i = 0; i < list.length; i++) if (list[i].id === id) return { s: list[i], i: i, list: list };
+    return null;
   }
-  function currentIndex() {
-    var st = RITE.stations;
+  function currentIndex(j) {
+    var st = jList(j);
     for (var i = 0; i < st.length; i++) if (!S.done[st[i].id]) return i;
     return st.length;
   }
-  function doneCount() { return RITE.stations.filter(function (s) { return S.done[s.id]; }).length; }
+  function doneCount(j) { return jList(j).filter(function (s) { return S.done[s.id]; }).length; }
   function pendingTrusts() { return S.trusts.filter(function (x) { return !x.done; }).length; }
 
   function acts(fid, fav) {
@@ -165,21 +195,30 @@
       (mine ? '<a class="chip" href="#/duas?t=mine">' + icon('duas') + '<span>' + esc(t('open_mine')) + '</span><b>' + esc(n(mine)) + '</b></a>' : '') +
       '</div>';
   }
+  function nuskSeg() {
+    return '<div class="seg small">' + NUSK.map(function (k) {
+      return '<button data-act="nusk" data-v="' + k + '" class="' + (k === S.nusk ? 'on' : '') + '" aria-pressed="' + (k === S.nusk) + '">' + esc(t('nusk_' + k)) + '</button>';
+    }).join('') + '</div>';
+  }
 
-  /* ------------------------------------------------------------ home and journey */
+  /* ------------------------------------------------------------ home and journeys */
   function vHome() {
-    var st = RITE.stations, ci = currentIndex(), total = st.length, dc = doneCount();
+    var j = S.mode, st = jList(j), ci = currentIndex(j), total = st.length, dc = doneCount(j);
     var cur = st[Math.min(ci, total - 1)];
+    var modes = '<div class="seg mode" role="tablist">' + ['hajj', 'umrah'].map(function (k) {
+      return '<button role="tab" aria-selected="' + (k === j) + '" class="' + (k === j ? 'on' : '') + '" data-act="mode" data-v="' + k + '">' + esc(t('mode_' + k)) + '</button>';
+    }).join('') + '</div>';
     var path = st.map(function (s, i) {
       var c = S.done[s.id] ? 'done' : (i === ci ? 'now' : '');
       return '<a class="node ' + c + '" href="#/s/' + s.id + '" aria-label="' + esc(tx(s.title)) + '"><i></i></a>';
     }).join('');
     var card = '<section class="card journey-card">' +
-      '<div class="jc-top"><span class="jc-title">' + esc(t('journey_title')) + '</span><span class="jc-count">' + esc(t('home_progress', { a: dc, b: total })) + '</span></div>' +
+      '<div class="jc-top"><a class="jc-title" href="#/journey?j=' + j + '">' + esc(t('journey_' + j)) + '</a><span class="jc-count">' + esc(t('home_progress', { a: dc, b: total })) + '</span></div>' +
       '<div class="path">' + path + '</div>' +
       (ci >= total
-        ? '<h2 class="jc-now">' + esc(t('home_all_done')) + '</h2>'
+        ? '<h2 class="jc-now">' + esc(t('home_done_' + j)) + '</h2>'
         : '<p class="jc-label">' + esc(t('home_now')) + '</p><h2 class="jc-now">' + esc(tx(cur.title)) + '</h2><p class="jc-place">' + esc(tx(cur.place)) + '</p>') +
+      (j === 'hajj' ? '<p class="jc-nusk">' + esc(t('nusk_label')) + ': <b>' + esc(t('nusk_' + S.nusk)) + '</b><a href="#/journey?j=hajj">' + esc(t('nusk_change')) + '</a></p>' : '') +
       '<a class="btn primary" href="#/s/' + cur.id + '">' + esc(dc === 0 ? t('home_start') : t('home_continue')) + '</a></section>';
     var pt = pendingTrusts();
     var tools = [
@@ -187,57 +226,83 @@
       ['sai', '#/sai', t('tool_sai'), t('tool_sai_sub')],
       ['trusts', '#/trusts', t('tool_trusts'), pt ? t('trusts_left', { n: countTrusts(pt) }) : t('tool_trusts_sub')],
       ['miqat', '#/miqat', t('tool_miqat'), t('tool_miqat_sub')],
-      ['prep', '#/prep', t('tool_prep'), t('tool_prep_sub')],
-      ['hajj', '#/hajj', t('tool_hajj'), t('tool_hajj_sub')]
+      ['prep', '#/prep?k=' + j, t('tool_prep'), t('tool_prep_sub')],
+      ['hajj', '#/nusuk', t('tool_nusuk'), t('tool_nusuk_sub')]
     ].map(function (x) {
       return '<a class="tool" href="' + x[1] + '">' + icon(x[0]) + '<b>' + esc(x[2]) + '</b><span>' + esc(x[3]) + '</span></a>';
     }).join('');
     var h = hijri();
     return head(t('app_name'), { big: true, sub: t('tagline') }) +
-      '<main class="wrap">' + (h ? '<p class="date">' + esc(h) + '</p>' : '') + card +
+      '<main class="wrap">' + (h ? '<p class="date">' + esc(h) + '</p>' : '') + modes + card +
       '<h2 class="sec-h">' + esc(t('tools_title')) + '</h2><div class="tools">' + tools + '</div></main>';
   }
 
-  function vJourney() {
-    var ci = currentIndex();
-    var items = RITE.stations.map(function (s, i) {
+  function vJourney(j) {
+    var ci = currentIndex(j), other = j === 'hajj' ? 'umrah' : 'hajj';
+    var items = jList(j).map(function (s, i) {
       var c = S.done[s.id] ? 'done' : (i === ci ? 'now' : '');
       return '<li class="stop ' + c + '"><a href="#/s/' + s.id + '"><span class="num">' + esc(n(i + 1)) + '</span>' +
         '<span class="stop-t"><b>' + esc(tx(s.title)) + '</b><small>' + esc(tx(s.place)) + '</small></span>' +
         (S.done[s.id] ? icon('check', 'ok') : '') + '</a></li>';
     }).join('');
-    return head(t('journey_title'), { back: '#/' }) + '<main class="wrap"><ol class="stops">' + items + '</ol>' +
-      (doneCount() ? '<button class="btn ghost" data-act="reset-journey">' + esc(t('reset_journey')) + '</button>' : '') + '</main>';
+    var pick = j === 'hajj' ? '<div class="card nusk-pick"><p class="lbl">' + esc(t('nusk_label')) + '</p>' + nuskSeg() +
+      '<a class="more-link" href="#/nusuk">' + esc(t('nusk_what')) + '</a></div>' : '';
+    return head(t('journey_' + j), { back: '#/' }) + '<main class="wrap">' + pick + '<ol class="stops">' + items + '</ol>' +
+      '<a class="btn ghost wide" href="#/journey?j=' + other + '">' + esc(t('journey_' + other)) + '</a>' +
+      (doneCount(j) ? '<button class="linkish" data-act="reset-journey" data-v="' + j + '">' + esc(t('reset_journey')) + '</button>' : '') + '</main>';
   }
 
   var TABS = ['do', 'say', 'watch', 'calm', 'women'];
+  function toolBtn(x, primary) {
+    var k = x.k, href, label, ic;
+    if (x.kind === 'tawaf') { href = '#/tawaf?k=' + (k || 'umrah'); label = !k || k === 'umrah' ? t('open_tawaf') : t('open_counter', { x: t('tw_' + k) }); ic = 'tawaf'; }
+    else if (x.kind === 'sai') { href = '#/sai?k=' + (k || 'umrah'); label = !k || k === 'umrah' ? t('open_sai') : t('open_counter', { x: t('sw_' + k) }); ic = 'sai'; }
+    else if (x.kind === 'miqat') { href = '#/miqat'; label = t('open_miqat'); ic = 'miqat'; }
+    else if (x.kind === 'umrah') { href = '#/journey?j=umrah'; label = t('open_umrah'); ic = 'journey'; }
+    else if (x.kind === 'prep') { href = '#/prep?k=hajj'; label = t('open_prep_hajj'); ic = 'prep'; }
+    else if (x.kind === 'trusts') { href = '#/trusts'; label = t('open_trusts'); ic = 'trusts'; }
+    else return '';
+    return '<a class="btn wide' + (primary ? ' primary' : '') + '" href="' + href + '">' + icon(ic) + esc(label) + '</a>';
+  }
+  function stationTools(s) {
+    var list = (s.tools || (s.tool ? [{ kind: s.tool }] : [])).filter(function (x) { return !x.n || x.n.indexOf(S.nusk) >= 0; });
+    return list.map(function (x, i) {
+      return toolBtn(x, i === 0 && ['tawaf', 'sai', 'umrah'].indexOf(x.kind) >= 0);
+    }).join('');
+  }
+  function nuskBox(lines) {
+    return '<div class="nusk-box"><div class="nb-h"><span>' + esc(t('nusk_for', { n: t('nusk_' + S.nusk) })) + '</span>' +
+      '<a href="#/journey?j=hajj">' + esc(t('nusk_change')) + '</a></div><ul class="lines dot">' + lines.map(li).join('') + '</ul></div>';
+  }
   function vStation(id, tab) {
-    var list = RITE.stations, i = stationIndex(id);
-    if (i < 0) return vHome();
-    var s = list[i];
-    var avail = TABS.filter(function (k) { return (s[k] || []).length; });
+    var f = stationById(id);
+    if (!f) return vHome();
+    var s = f.s, i = f.i, list = f.list, j = jOf(id);
+    var say = (s.nuskSay && s.nuskSay[S.nusk] ? [s.nuskSay[S.nusk]] : []).concat(s.say || []);
+    var nuskLines = s.nusk && s.nusk[S.nusk] ? s.nusk[S.nusk] : null;
+    var avail = TABS.filter(function (k) {
+      if (k === 'say') return say.length;
+      return (s[k] || []).length || (k === 'do' && nuskLines);
+    });
     var cur = avail.indexOf(tab) >= 0 ? tab : avail[0];
     var seg = '<div class="seg" role="tablist">' + avail.map(function (k) {
       return '<a role="tab" aria-selected="' + (k === cur) + '" class="' + (k === cur ? 'on' : '') + '" href="#/s/' + s.id + '?t=' + k + '">' + esc(t('tab_' + k)) + '</a>';
     }).join('') + '</div>';
     var body;
-    if (cur === 'say') body = s.say.map(riteDua).join('');
+    if (cur === 'say') body = say.map(riteDua).join('');
     else {
       var tag = cur === 'do' ? 'ol' : 'ul';
-      body = '<' + tag + ' class="lines ' + cur + '">' + s[cur].map(li).join('') + '</' + tag + '>';
+      body = (cur === 'do' && nuskLines ? nuskBox(nuskLines) : '') +
+        '<' + tag + ' class="lines ' + cur + '">' + (s[cur] || []).map(li).join('') + '</' + tag + '>';
     }
-    var tool = '';
-    if (s.tool === 'tawaf') tool = '<a class="btn primary wide" href="#/tawaf">' + icon('tawaf') + esc(t('open_tawaf')) + '</a>';
-    if (s.tool === 'sai') tool = '<a class="btn primary wide" href="#/sai">' + icon('sai') + esc(t('open_sai')) + '</a>';
-    if (s.tool === 'miqat') tool = '<a class="btn wide" href="#/miqat">' + icon('miqat') + esc(t('open_miqat')) + '</a>';
     var done = !!S.done[s.id], prev = list[i - 1], next = list[i + 1];
     var nav = '<div class="st-nav">' +
       (prev ? '<a class="btn ghost sm" href="#/s/' + prev.id + '">' + esc(t('prev_station')) + '</a>' : '<span></span>') +
       '<button class="btn ' + (done ? 'ghost' : 'primary') + '" data-act="done" data-id="' + s.id + '">' + (done ? icon('check') + esc(t('marked_done')) : esc(t('mark_done'))) + '</button>' +
       (next ? '<a class="btn ghost sm" href="#/s/' + next.id + '">' + esc(t('next_station')) + '</a>' : '<span></span>') + '</div>';
     var srcs = '<details class="srcs"><summary>' + esc(t('station_sources')) + '</summary>' + srcList(s.src) + '</details>';
-    return head(tx(s.title), { back: '#/journey', sub: t('station_of', { n: i + 1, total: list.length }) + sep() + tx(s.place) }) +
-      '<main class="wrap">' + tool + seg + '<div class="panel">' + body + '</div>' + nav + srcs + '</main>';
+    return head(tx(s.title), { back: '#/journey?j=' + j, sub: t('station_of', { n: i + 1, total: list.length }) + sep() + tx(s.place) }) +
+      '<main class="wrap">' + stationTools(s) + seg + (s.trusts ? momentBar() : '') + '<div class="panel">' + body + '</div>' + nav + srcs + '</main>';
   }
 
   /* ------------------------------------------------------------ tawaf */
@@ -276,6 +341,11 @@
       '<text class="lbl" x="252" y="104">' + esc(t('label_maqam')) + '</text>' +
       '</svg>';
   }
+  function kindChips(kinds, cur, base, pre) {
+    return '<div class="seg small kinds">' + kinds.map(function (k) {
+      return '<a href="#/' + base + '?k=' + k + '" class="' + (k === cur ? 'on' : '') + '"' + (k === cur ? ' aria-current="true"' : '') + '>' + esc(t(pre + k)) + '</a>';
+    }).join('') + '</div>';
+  }
   function doubtBox(done) {
     var opts = [];
     for (var k = Math.max(0, done - 2); k <= done; k++) opts.push(k);
@@ -286,31 +356,39 @@
   function pauseBox(p) {
     return '<div class="pause-box"><p>' + esc(t('paused_note')) + '</p><button class="btn primary" data-act="' + p + '-resume">' + esc(t('resume')) + '</button></div>';
   }
-  function vTawaf() {
-    var st = L.tawaf(S.tawaf.laps), paused = S.tawaf.paused;
+  var TW_BACK = { umrah: '#/s/tawaf', qudum: '#/s/h-arrive', ifadah: '#/s/h-ifadah', wada: '#/s/h-wada' };
+  function vTawaf(k) {
+    k = TW_KINDS.indexOf(k) >= 0 ? k : (TW_KINDS.indexOf(S.twk) >= 0 ? S.twk : 'umrah');
+    twk = k;
+    if (S.twk !== k) { S.twk = k; save(); }
+    var T0 = S.tw[k], st = L.tawaf(T0.laps), paused = T0.paused, first = k === 'umrah' || k === 'qudum';
     var tips = [];
     if (!st.finished) {
-      if (st.current === 1) tips.push(t('tip_idtiba'));
+      if (first && st.current === 1) tips.push(t('tip_idtiba'));
       tips.push(t('tip_start'));
-      tips.push(st.ramal ? t('tip_ramal') : t('tip_walk'));
-      if (st.last) tips.push(t('tip_last'));
+      tips.push(first ? (st.ramal ? t('tip_ramal') : t('tip_walk')) : t('tip_no_ramal'));
+      if (first && st.last) tips.push(t('tip_last'));
     }
+    var next;
+    if (k === 'umrah') next = btnA('#/s/maqam', t('tawaf_next'), true);
+    else if (k === 'wada') next = '<p class="note">' + esc(t('wada_done')) + '</p>' + btnA('#/s/h-done', tx(stationById('h-done').s.title), true);
+    else next = '<p class="note">' + esc(t('after_tawaf')) + '</p>' + btnA('#/sai?k=hajj', t('sai_if_due'), true) + btnA('#/journey?j=hajj', t('back_hajj'));
     var top = st.finished
-      ? '<div class="done-box">' + icon('check') + '<h2>' + esc(t('tawaf_done')) + '</h2><a class="btn primary" href="#/s/maqam">' + esc(t('tawaf_next')) + '</a></div>'
+      ? '<div class="done-box">' + icon('check') + '<h2>' + esc(t('tawaf_done')) + '</h2>' + next + '</div>'
       : '<p class="lap-now">' + esc(t('lap_now', { n: st.current })) + '</p>';
     var corners = st.finished ? '' : '<div class="corner-dua"><p class="lbl">' + esc(t('tip_corners')) + '</p><p class="dua-ar sm" lang="ar" dir="rtl">' + esc(RD.corners.ar) + '</p>' +
       (S.lang === 'en' ? '<p class="mean">' + esc(RD.corners.en) + '</p>' : '') + '</div>';
     var row = '<div class="row3">' +
-      '<button class="btn ghost sm" data-act="t-undo"' + (S.tawaf.laps ? '' : ' disabled') + '>' + esc(t('undo')) + '</button>' +
+      '<button class="btn ghost sm" data-act="t-undo"' + (T0.laps ? '' : ' disabled') + '>' + esc(t('undo')) + '</button>' +
       '<button class="btn ghost sm" data-act="t-pause"' + (paused || st.finished ? ' disabled' : '') + '>' + esc(t('pause_prayer')) + '</button>' +
       '<button class="btn ghost sm" data-act="t-doubt"' + (st.finished || !st.done ? ' disabled' : '') + '>' + esc(t('doubt')) + '</button></div>';
     var dock = st.finished ? '' : '<div class="dock">' + (paused ? pauseBox('t') :
       '<button class="tap" data-act="t-lap"><span>' + esc(t('tap_lap')) + '</span><small>' + esc(t('tap_hint')) + '</small></button>') + '</div>';
-    return head(t('tawaf_title'), { back: '#/s/tawaf', sub: S.tawaf.startedAt ? t('started_at', { t: clock(S.tawaf.startedAt) }) : t('kaaba_note') }) +
-      '<main class="wrap counter">' + tawafSvg(st) + top +
+    return head(t('tw_' + k), { back: TW_BACK[k], sub: T0.startedAt ? t('started_at', { t: clock(T0.startedAt) }) : t('kaaba_note') }) +
+      '<main class="wrap counter">' + kindChips(TW_KINDS, k, 'tawaf', 'twk_') + tawafSvg(st) + top +
       (tips.length ? '<ul class="tips">' + tips.map(liS).join('') + '</ul>' : '') + corners +
-      (S.tawaf.doubt && !st.finished ? doubtBox(st.done) : '') + momentBar() + row +
-      (S.tawaf.laps ? '<button class="linkish" data-act="t-restart">' + esc(t('restart')) + '</button>' : '') +
+      (T0.doubt && !st.finished ? doubtBox(st.done) : '') + momentBar() + row +
+      (T0.laps ? '<button class="linkish" data-act="t-restart">' + esc(t('restart')) + '</button>' : '') +
       '</main>' + dock;
   }
 
@@ -341,30 +419,35 @@
     return '<div class="mini"><p class="mini-t">' + esc(tx(d.title)) + '</p><p class="dua-ar xs" lang="ar" dir="rtl">' + esc(d.ar) + '</p>' +
       (S.lang === 'en' ? '<p class="mean">' + esc(d.en) + '</p>' : '') + '</div>';
   }
-  function vSai() {
-    var st = L.sai(S.sai.legs), paused = S.sai.paused, dh = S.sai.dhikr || 0;
-    var pills = '<ol class="legs">' + [1, 2, 3, 4, 5, 6, 7].map(function (k) {
-      return '<li class="' + (k <= st.done ? 'done' : (k === st.current ? 'now' : '')) + '">' + esc(n(k)) + '</li>';
+  function vSai(k) {
+    k = SW_KINDS.indexOf(k) >= 0 ? k : (SW_KINDS.indexOf(S.swk) >= 0 ? S.swk : 'umrah');
+    swk = k;
+    if (S.swk !== k) { S.swk = k; save(); }
+    var W = S.sw[k], st = L.sai(W.legs), paused = W.paused, dh = W.dhikr || 0;
+    var pills = '<ol class="legs">' + [1, 2, 3, 4, 5, 6, 7].map(function (x) {
+      return '<li class="' + (x <= st.done ? 'done' : (x === st.current ? 'now' : '')) + '">' + esc(n(x)) + '</li>';
     }).join('') + '</ol>';
     var endCard = '<div class="card endcard"><h2>' + esc(st.at === 'safa' ? t('at_safa') : t('at_marwa')) + '</h2>' +
       (st.firstStart ? miniDua('nabda') + miniDua('safaverse') : '') +
       '<p class="mini-t">' + esc(tx(RD.safa.title)) + '</p>' +
       '<p class="dua-ar sm" lang="ar" dir="rtl">' + esc(RD.safa.ar) + '</p>' +
       (S.lang === 'en' ? '<p class="mean">' + esc(RD.safa.en) + '</p>' : '') +
-      '<div class="rounds">' + [1, 2, 3].map(function (k) { return '<i class="' + (k <= dh ? 'on' : '') + '"></i>'; }).join('') +
+      '<div class="rounds">' + [1, 2, 3].map(function (x) { return '<i class="' + (x <= dh ? 'on' : '') + '"></i>'; }).join('') +
       '<span>' + esc(dh >= 3 ? t('dhikr_done') : t('dhikr_round', { n: dh + 1 })) + '</span></div>' +
       (dh < 3 ? '<button class="btn sm" data-act="s-dhikr">' + esc(t('dhikr_next')) + '</button>' : '') + '</div>';
     var walk = st.finished ? '' : '<div class="walk"><p class="go">' + esc(st.next === 'marwa' ? t('going_marwa') : t('going_safa')) + '</p>' +
       '<p class="green-tip"><i></i>' + esc(t('green_zone')) + '</p></div>';
-    var done = st.finished ? '<div class="done-box">' + icon('check') + '<h2>' + esc(t('sai_done')) + '</h2><a class="btn primary" href="#/s/halq">' + esc(t('sai_next')) + '</a></div>' : '';
+    var next = k === 'umrah' ? btnA('#/s/halq', t('sai_next'), true) : btnA('#/journey?j=hajj', t('back_hajj'), true);
+    var done = st.finished ? '<div class="done-box">' + icon('check') + '<h2>' + esc(t('sai_done')) + '</h2>' + next + '</div>' : '';
     var row = '<div class="row3 two">' +
-      '<button class="btn ghost sm" data-act="s-undo"' + (S.sai.legs ? '' : ' disabled') + '>' + esc(t('undo')) + '</button>' +
+      '<button class="btn ghost sm" data-act="s-undo"' + (W.legs ? '' : ' disabled') + '>' + esc(t('undo')) + '</button>' +
       '<button class="btn ghost sm" data-act="s-pause"' + (paused || st.finished ? ' disabled' : '') + '>' + esc(t('pause_prayer')) + '</button></div>';
     var dock = st.finished ? '' : '<div class="dock">' + (paused ? pauseBox('s') :
       '<button class="tap" data-act="s-leg"><span>' + esc(st.next === 'marwa' ? t('reached_marwa') : t('reached_safa')) + '</span><small>' + esc(t('leg_now', { n: st.current })) + '</small></button>') + '</div>';
-    return head(t('sai_title'), { back: '#/s/sai', sub: S.sai.startedAt ? t('started_at', { t: clock(S.sai.startedAt) }) : t('tool_sai_sub') }) +
-      '<main class="wrap counter"><div class="sai-grid">' + saiSvg(st) + '<div class="sai-side">' + pills + done + endCard + walk + '</div></div>' +
-      momentBar() + row + (S.sai.legs ? '<button class="linkish" data-act="s-restart">' + esc(t('restart')) + '</button>' : '') + '</main>' + dock;
+    return head(t('sw_' + k), { back: k === 'umrah' ? '#/s/sai' : '#/s/h-ifadah', sub: W.startedAt ? t('started_at', { t: clock(W.startedAt) }) : t('tool_sai_sub') }) +
+      '<main class="wrap counter">' + kindChips(SW_KINDS, k, 'sai', 'swk_') +
+      '<div class="sai-grid">' + saiSvg(st) + '<div class="sai-side">' + pills + done + endCard + walk + '</div></div>' +
+      momentBar() + row + (W.legs ? '<button class="linkish" data-act="s-restart">' + esc(t('restart')) + '</button>' : '') + '</main>' + dock;
   }
 
   /* ------------------------------------------------------------ duas */
@@ -440,14 +523,14 @@
       (del ? '<button class="icon-btn" data-act="prep-del" data-k="' + kind + '" data-id="' + esc(id.slice(2)) + '" aria-label="' + esc(t('delete')) + '">' + icon('trash') + '</button>' : '') + '</div>';
   }
   function vPrep(kind) {
-    kind = kind === 'hajj' ? 'hajj' : 'umrah';
+    kind = kind === 'hajj' ? 'hajj' : (kind === 'umrah' ? 'umrah' : S.mode);
     S.prep[kind] = S.prep[kind] || {};
     S.custom[kind] = S.custom[kind] || [];
     var groups = RITE.prep[kind], custom = S.custom[kind], all = [];
     groups.forEach(function (g) { g.items.forEach(function (it) { all.push(it.id); }); });
     custom.forEach(function (c) { all.push('c:' + c.id); });
     var done = all.filter(function (id) { return S.prep[kind][id]; }).length;
-    var seg = '<div class="seg" role="tablist">' + ['umrah', 'hajj'].map(function (k) {
+    var seg = '<div class="seg" role="tablist">' + ['hajj', 'umrah'].map(function (k) {
       return '<a role="tab" aria-selected="' + (k === kind) + '" class="' + (k === kind ? 'on' : '') + '" href="#/prep?k=' + k + '">' + esc(t('prep_' + k)) + '</a>';
     }).join('') + '</div>';
     var bar = '<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="' + all.length + '" aria-valuenow="' + done + '"><div style="width:' + Math.round(100 * done / Math.max(1, all.length)) + '%"></div></div>' +
@@ -520,20 +603,17 @@
       flightWidget() + '<details class="srcs"><summary>' + esc(t('sources')) + '</summary>' + srcList(M.src) + '</details></main>';
   }
 
-  /* ------------------------------------------------------------ hajj */
-  function vHajj() {
+  /* ------------------------------------------------------------ the three forms of Hajj */
+  function vNusuk() {
     var H = RITE.hajj;
-    var nus = H.nusuk.map(function (x) {
-      return '<details class="card nusk"><summary><b>' + esc(tx(x.name)) + '</b>' + icon('back', 'fwd') + '</summary><ul class="lines dot">' + x.lines.map(li).join('') + '</ul>' + riteDua(x.say) + '</details>';
+    var cards = H.nusuk.map(function (x) {
+      var on = x.id === S.nusk;
+      return '<section class="card nusk-card' + (on ? ' on' : '') + '"><div class="nc-h"><h2>' + esc(tx(x.name)) + '</h2>' +
+        (on ? '<span class="pill">' + esc(t('nusk_yours')) + '</span>' : '<button class="btn sm" data-act="nusk" data-v="' + x.id + '">' + esc(t('nusk_choose')) + '</button>') +
+        '</div><ul class="lines dot">' + x.lines.map(li).join('') + '</ul>' + riteDua(x.say) + '</section>';
     }).join('');
-    var days = H.days.map(function (d) {
-      return '<li class="day"><div class="day-h"><span class="d">' + esc(tx(d.day)) + '</span><h3>' + esc(tx(d.name)) + '</h3></div>' +
-        '<ul class="lines dot">' + d.lines.map(li).join('') + '</ul>' + (d.say || []).map(riteDua).join('') +
-        (d.trusts ? '<a class="chip gold" href="#/trusts">' + icon('trusts') + '<span>' + esc(t('open_trusts')) + '</span></a>' : '') + '</li>';
-    }).join('');
-    return head(t('hajj_title'), { back: '#/more' }) + '<main class="wrap"><p class="lead">' + esc(t('hajj_intro')) + '</p>' +
-      '<h2 class="sec-h">' + esc(t('hajj_nusuk')) + '</h2>' + nus +
-      '<h2 class="sec-h">' + esc(t('hajj_days')) + '</h2><ol class="days">' + days + '</ol>' +
+    return head(t('nusuk_title'), { back: '#/journey?j=hajj' }) + '<main class="wrap"><p class="lead">' + esc(t('nusuk_intro')) + '</p>' + cards +
+      '<a class="btn primary wide" href="#/journey?j=hajj">' + icon('hajj') + esc(t('journey_hajj')) + '</a>' +
       '<details class="srcs"><summary>' + esc(t('sources')) + '</summary>' + srcList(H.src) + '</details></main>';
   }
 
@@ -544,7 +624,8 @@
     }).join('') + '</div>';
   }
   function vMore() {
-    var links = [['hajj', t('tool_hajj'), 'hajj'], ['miqat', t('tool_miqat'), 'miqat'], ['trusts', t('tool_trusts'), 'trusts'], ['journey', t('journey_title'), 'journey'], ['sources', t('sources'), 'book']];
+    var links = [['journey?j=hajj', t('journey_hajj'), 'hajj'], ['journey?j=umrah', t('journey_umrah'), 'tawaf'], ['nusuk', t('nusuk_title'), 'journey'],
+      ['miqat', t('tool_miqat'), 'miqat'], ['trusts', t('tool_trusts'), 'trusts'], ['sources', t('sources'), 'book']];
     return head(t('more_title')) + '<main class="wrap">' +
       '<nav class="links">' + links.map(function (x) { return '<a href="#/' + x[0] + '">' + icon(x[2]) + '<span>' + esc(x[1]) + '</span>' + icon('back', 'fwd') + '</a>'; }).join('') + '</nav>' +
       '<h2 class="sec-h">' + esc(t('settings')) + '</h2><div class="card set">' +
@@ -586,16 +667,20 @@
   function render() {
     var r = parse(), p = r.parts, v = p[0] || '', html, tab = 'journey';
     if (v === '') html = vHome();
-    else if (v === 'journey') html = vJourney();
-    else if (v === 's') html = vStation(p[1], r.q.t);
-    else if (v === 'tawaf') html = vTawaf();
-    else if (v === 'sai') html = vSai();
+    else if (v === 'journey') {
+      var j = r.q.j === 'hajj' || r.q.j === 'umrah' ? r.q.j : S.mode;
+      setMode(j);
+      html = vJourney(j);
+    }
+    else if (v === 's') { if (stationById(p[1])) setMode(jOf(p[1])); html = vStation(p[1], r.q.t); }
+    else if (v === 'tawaf') html = vTawaf(r.q.k);
+    else if (v === 'sai') html = vSai(r.q.k);
     else if (v === 'duas' && p[1]) { html = vSection(p[1]); tab = 'duas'; }
     else if (v === 'duas') { html = vDuas(r.q.t, r.q.q); tab = 'duas'; }
     else if (v === 'trusts') html = vTrusts();
     else if (v === 'prep') { html = vPrep(r.q.k); tab = 'prep'; }
     else if (v === 'miqat') html = vMiqat();
-    else if (v === 'hajj') { html = vHajj(); tab = 'more'; }
+    else if (v === 'nusuk' || v === 'hajj') { html = vNusuk(); tab = 'more'; }
     else if (v === 'more') { html = vMore(); tab = 'more'; }
     else if (v === 'sources') { html = vSources(); tab = 'more'; }
     else html = vHome();
@@ -702,37 +787,44 @@
   app.addEventListener('click', function (e) {
     var el = e.target.closest('[data-act]');
     if (!el || el.tagName === 'INPUT') return;
-    var act = el.getAttribute('data-act'), id = el.getAttribute('data-id'), k = el.getAttribute('data-k');
+    var act = el.getAttribute('data-act'), id = el.getAttribute('data-id'), k = el.getAttribute('data-k'), v = el.getAttribute('data-v');
+    var TW = S.tw[twk], SW = S.sw[swk];
     switch (act) {
+      case 'mode': setMode(v); rerender(); break;
+      case 'nusk': if (NUSK.indexOf(v) >= 0) { S.nusk = v; save(); rerender(); } break;
       case 'done':
         S.done[id] = !S.done[id]; save();
-        if (S.done[id]) { var nx = RITE.stations[stationIndex(id) + 1]; if (nx) { location.hash = '#/s/' + nx.id; return; } }
+        if (S.done[id]) {
+          var f = stationById(id), nx = f && f.list[f.i + 1];
+          if (nx) { location.hash = '#/s/' + nx.id; return; }
+        }
         rerender(); break;
       case 'reset-journey':
-        if (confirm(t('confirm_reset'))) { S.done = {}; save(); rerender(); } break;
+        if (confirm(t('confirm_reset'))) { jList(v).forEach(function (s) { delete S.done[s.id]; }); save(); rerender(); } break;
       case 't-lap':
-        if (!S.tawaf.startedAt) S.tawaf.startedAt = Date.now();
-        S.tawaf.laps = Math.min(7, S.tawaf.laps + 1); S.tawaf.doubt = false;
-        if (S.tawaf.laps === 7) S.done.tawaf = true;
+        if (!TW.startedAt) TW.startedAt = Date.now();
+        TW.laps = Math.min(7, TW.laps + 1); TW.doubt = false;
+        if (TW.laps === 7 && twk === 'umrah') S.done.tawaf = true;
+        if (TW.laps === 7 && twk === 'wada') S.done['h-wada'] = true;
         buzz(35); save(); rerender(); break;
-      case 't-undo': S.tawaf.laps = Math.max(0, S.tawaf.laps - 1); save(); rerender(); break;
-      case 't-pause': S.tawaf.paused = true; save(); rerender(); break;
-      case 't-resume': S.tawaf.paused = false; save(); rerender(); break;
-      case 't-doubt': S.tawaf.doubt = !S.tawaf.doubt; save(); rerender(); break;
-      case 't-set': S.tawaf.laps = +el.getAttribute('data-v'); S.tawaf.doubt = false; save(); rerender(); break;
+      case 't-undo': TW.laps = Math.max(0, TW.laps - 1); save(); rerender(); break;
+      case 't-pause': TW.paused = true; save(); rerender(); break;
+      case 't-resume': TW.paused = false; save(); rerender(); break;
+      case 't-doubt': TW.doubt = !TW.doubt; save(); rerender(); break;
+      case 't-set': TW.laps = +v; TW.doubt = false; save(); rerender(); break;
       case 't-restart':
-        if (confirm(t('confirm_restart'))) { S.tawaf = { laps: 0, startedAt: null, paused: false, doubt: false }; save(); rerender(); } break;
+        if (confirm(t('confirm_restart'))) { S.tw[twk] = newTw(); save(); rerender(); } break;
       case 's-leg':
-        if (!S.sai.startedAt) S.sai.startedAt = Date.now();
-        S.sai.legs = Math.min(7, S.sai.legs + 1); S.sai.dhikr = 0;
-        if (S.sai.legs === 7) S.done.sai = true;
+        if (!SW.startedAt) SW.startedAt = Date.now();
+        SW.legs = Math.min(7, SW.legs + 1); SW.dhikr = 0;
+        if (SW.legs === 7 && swk === 'umrah') S.done.sai = true;
         buzz(35); save(); rerender(); break;
-      case 's-dhikr': S.sai.dhikr = Math.min(3, (S.sai.dhikr || 0) + 1); save(); rerender(); break;
-      case 's-undo': S.sai.legs = Math.max(0, S.sai.legs - 1); S.sai.dhikr = 0; save(); rerender(); break;
-      case 's-pause': S.sai.paused = true; save(); rerender(); break;
-      case 's-resume': S.sai.paused = false; save(); rerender(); break;
+      case 's-dhikr': SW.dhikr = Math.min(3, (SW.dhikr || 0) + 1); save(); rerender(); break;
+      case 's-undo': SW.legs = Math.max(0, SW.legs - 1); SW.dhikr = 0; save(); rerender(); break;
+      case 's-pause': SW.paused = true; save(); rerender(); break;
+      case 's-resume': SW.paused = false; save(); rerender(); break;
       case 's-restart':
-        if (confirm(t('confirm_restart'))) { S.sai = { legs: 0, startedAt: null, dhikr: 0, paused: false }; save(); rerender(); } break;
+        if (confirm(t('confirm_restart'))) { S.sw[swk] = newSw(); save(); rerender(); } break;
       case 'fav': toggleFav(id); rerender(); break;
       case 'copy': copyText(textOf(id)); break;
       case 'share': shareText(textOf(id)); break;
@@ -748,7 +840,7 @@
         if (S.prep[k]) delete S.prep[k]['c:' + id];
         save(); rerender(); break;
       case 'set':
-        S[k] = el.getAttribute('data-v'); save(); applyPrefs(); rerender(); break;
+        S[k] = v; save(); applyPrefs(); rerender(); break;
       case 'erase':
         if (confirm(t('confirm_erase'))) {
           var keep = { lang: S.lang, theme: S.theme, size: S.size };

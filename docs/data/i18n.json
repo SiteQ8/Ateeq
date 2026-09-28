@@ -4,8 +4,8 @@
   "en": "Ateeq"
  },
  "tagline": {
-  "ar": "العمرة خطوة بخطوة، من بيتك حتى التقصير",
-  "en": "Umrah step by step, from your door to the final trim"
+  "ar": "الحج والعمرة خطوة بخطوة",
+  "en": "Hajj and Umrah, step by step"
  },
  "nav_journey": {
   "ar": "الرحلة",
@@ -35,10 +35,6 @@
   "ar": "محطتك الآن",
   "en": "Your station now"
  },
- "home_all_done": {
-  "ar": "تمّت عمرتك، تقبّل الله منك",
-  "en": "Your Umrah is complete. May Allah accept it"
- },
  "home_progress": {
   "ar": "أتممت {a} من {b}",
   "en": "{a} of {b} done"
@@ -67,10 +63,6 @@
   "ar": "التجهيز",
   "en": "Prepare"
  },
- "tool_hajj": {
-  "ar": "الحج",
-  "en": "Hajj"
- },
  "tool_tawaf_sub": {
   "ar": "سبعة أشواط بلا عدّ في رأسك",
   "en": "Seven circuits, no counting in your head"
@@ -90,10 +82,6 @@
  "tool_prep_sub": {
   "ar": "قبل أن تسافر",
   "en": "Before you travel"
- },
- "tool_hajj_sub": {
-  "ar": "الأنساك والأيام",
-  "en": "Its forms and days"
  },
  "station_of": {
   "ar": "المحطة {n} من {total}",
@@ -154,10 +142,6 @@
  "station_sources": {
   "ar": "مصادر هذه المحطة",
   "en": "Sources for this station"
- },
- "journey_title": {
-  "ar": "رحلة العمرة",
-  "en": "The Umrah journey"
  },
  "reset_journey": {
   "ar": "ابدأ الرحلة من جديد",
@@ -575,22 +559,6 @@
   "ar": "اكتب الوقت بصيغة ساعة ودقيقة",
   "en": "Enter the time as hours and minutes"
  },
- "hajj_title": {
-  "ar": "الحج",
-  "en": "Hajj"
- },
- "hajj_nusuk": {
-  "ar": "الأنساك الثلاثة",
-  "en": "The three forms"
- },
- "hajj_days": {
-  "ar": "أيام الحج",
-  "en": "The days of Hajj"
- },
- "hajj_intro": {
-  "ar": "من فتاوى الشيخ ابن باز في صفة الأنساك الثلاثة ورمي الجمار.",
-  "en": "From Shaykh Ibn Baz's fatwas on the three forms of Hajj and on the stoning."
- },
  "more_title": {
   "ar": "المزيد",
   "en": "More"
@@ -660,8 +628,8 @@
   "en": "Named after the verse \"and let them circle the Ancient House\", and after the freeing from the Fire hoped for on the Day of Arafah."
  },
  "about_content": {
-  "ar": "صفة العمرة والحج في التطبيق مأخوذة من كلام الشيخ عبدالعزيز بن باز رحمه الله ومن الكتيبات الموثوقة المذكورة في المصادر.",
-  "en": "The description of Umrah and Hajj in this app comes from Shaykh Abdulaziz ibn Baz, may Allah have mercy on him, and the trusted guides listed in the sources."
+  "ar": "صفة الحج والعمرة في التطبيق مأخوذة من كلام الشيخ عبدالعزيز بن باز رحمه الله ومن الكتيبات الموثوقة المذكورة في المصادر.",
+  "en": "The description of Hajj and Umrah in this app comes from Shaykh Abdulaziz ibn Baz, may Allah have mercy on him, and the trusted guides listed in the sources."
  },
  "about_open": {
   "ar": "مشروع مفتوح المصدر",
@@ -708,11 +676,167 @@
   "en": "Ready to work offline"
  },
  "sources_intro": {
-  "ar": "هذه هي المصادر التي بُنيت عليها صفة العمرة والحج في التطبيق.",
-  "en": "These are the sources the description of Umrah and Hajj is built on."
+  "ar": "هذه هي المصادر التي بُنيت عليها صفة الحج والعمرة في التطبيق.",
+  "en": "These are the sources the description of Hajj and Umrah is built on."
  },
  "north": {
   "ar": "الشمال",
   "en": "North"
+ },
+ "mode_hajj": {
+  "ar": "الحج",
+  "en": "Hajj"
+ },
+ "mode_umrah": {
+  "ar": "العمرة",
+  "en": "Umrah"
+ },
+ "journey_hajj": {
+  "ar": "رحلة الحج",
+  "en": "The Hajj journey"
+ },
+ "journey_umrah": {
+  "ar": "رحلة العمرة",
+  "en": "The Umrah journey"
+ },
+ "home_done_hajj": {
+  "ar": "تمّ حجّك، تقبّل الله منك",
+  "en": "Your Hajj is complete. May Allah accept it"
+ },
+ "home_done_umrah": {
+  "ar": "تمّت عمرتك، تقبّل الله منك",
+  "en": "Your Umrah is complete. May Allah accept it"
+ },
+ "nusk_label": {
+  "ar": "نسكك",
+  "en": "Your form of Hajj"
+ },
+ "nusk_change": {
+  "ar": "غيّر",
+  "en": "Change"
+ },
+ "nusk_tamattu": {
+  "ar": "التمتع",
+  "en": "Tamattuʿ"
+ },
+ "nusk_qiran": {
+  "ar": "القران",
+  "en": "Qiran"
+ },
+ "nusk_ifrad": {
+  "ar": "الإفراد",
+  "en": "Ifrad"
+ },
+ "nusk_for": {
+  "ar": "لنسكك: {n}",
+  "en": "For your form: {n}"
+ },
+ "nusk_what": {
+  "ar": "ما الفرق بين الأنساك الثلاثة؟",
+  "en": "How do the three forms differ?"
+ },
+ "nusk_choose": {
+  "ar": "اختر هذا النسك",
+  "en": "Choose this form"
+ },
+ "nusk_yours": {
+  "ar": "نسكك",
+  "en": "Your form"
+ },
+ "nusuk_title": {
+  "ar": "الأنساك الثلاثة",
+  "en": "The three forms of Hajj"
+ },
+ "nusuk_intro": {
+  "ar": "اختر النسك الذي نويته فتتغيّر تعليمات رحلة الحج بحسبه، والتمتع هو السنة لمن لم يسق الهدي.",
+  "en": "Choose the form you intend and the Hajj journey adjusts to it. Tamattuʿ is the sunnah for anyone who has not brought a sacrificial animal."
+ },
+ "tool_nusuk": {
+  "ar": "الأنساك الثلاثة",
+  "en": "Forms of Hajj"
+ },
+ "tool_nusuk_sub": {
+  "ar": "التمتع والقران والإفراد",
+  "en": "Tamattuʿ, qiran and ifrad"
+ },
+ "open_counter": {
+  "ar": "افتح عدّاد {x}",
+  "en": "Open counter: {x}"
+ },
+ "tw_umrah": {
+  "ar": "طواف العمرة",
+  "en": "Umrah tawaf"
+ },
+ "tw_qudum": {
+  "ar": "طواف القدوم",
+  "en": "Arrival tawaf"
+ },
+ "tw_ifadah": {
+  "ar": "طواف الإفاضة",
+  "en": "Tawaf al-Ifadah"
+ },
+ "tw_wada": {
+  "ar": "طواف الوداع",
+  "en": "Farewell tawaf"
+ },
+ "sw_umrah": {
+  "ar": "سعي العمرة",
+  "en": "Umrah saʿi"
+ },
+ "sw_hajj": {
+  "ar": "سعي الحج",
+  "en": "Hajj saʿi"
+ },
+ "tip_no_ramal": {
+  "ar": "امشِ مشيًا عاديًا في الأشواط كلها، فلا رمل ولا اضطباع في هذا الطواف",
+  "en": "Walk normally in every circuit. This tawaf has no brisk walking and no uncovered shoulder"
+ },
+ "after_tawaf": {
+  "ar": "ثم صلِّ ركعتين خلف المقام إن تيسر، ولو في أي مكان من المسجد.",
+  "en": "Then pray two rakʿahs behind the Station of Ibrahim if you can, or anywhere in the mosque."
+ },
+ "back_hajj": {
+  "ar": "عُد إلى رحلة الحج",
+  "en": "Back to the Hajj journey"
+ },
+ "sai_if_due": {
+  "ar": "إلى السعي إن كان عليك سعي",
+  "en": "On to saʿi, if it is due"
+ },
+ "wada_done": {
+  "ar": "تقبّل الله منك، واجعل خروجك من مكة بعده.",
+  "en": "May Allah accept it from you. Leave Makkah after it."
+ },
+ "open_umrah": {
+  "ar": "افتح رحلة العمرة",
+  "en": "Open the Umrah journey"
+ },
+ "open_prep_hajj": {
+  "ar": "افتح تجهيز الحج",
+  "en": "Open the Hajj checklist"
+ },
+ "twk_umrah": {
+  "ar": "العمرة",
+  "en": "Umrah"
+ },
+ "twk_qudum": {
+  "ar": "القدوم",
+  "en": "Arrival"
+ },
+ "twk_ifadah": {
+  "ar": "الإفاضة",
+  "en": "Ifadah"
+ },
+ "twk_wada": {
+  "ar": "الوداع",
+  "en": "Farewell"
+ },
+ "swk_umrah": {
+  "ar": "العمرة",
+  "en": "Umrah"
+ },
+ "swk_hajj": {
+  "ar": "الحج",
+  "en": "Hajj"
  }
 }

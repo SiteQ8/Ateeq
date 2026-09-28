@@ -37,7 +37,7 @@ function pairs(node, where = 'rite', out = []) {
   return out;
 }
 const RITE_PAIRS = pairs(RITE);
-const PROSE_KEYS = /\.(do|watch|calm|women|lines|rules|plane|hadith|note|t)(\[\d+\])?$/;
+const PROSE_KEYS = /\.(do|watch|calm|women|lines|rules|plane|hadith|note|t|tamattu|qiran|ifrad)(\[\d+\])?$/;
 
 test('no unicode dashes anywhere in the repository text', () => {
   const dash = /[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/;
@@ -111,15 +111,36 @@ test('the duas library: thirty topics, clean text, no duplicates', () => {
 test('station references resolve: duas, sources and tools', () => {
   const duaIds = new Set(RITE.duas.map(d => d.id));
   const srcIds = new Set(RITE.sources.map(s => s.id));
+  const NUSK = ['tamattu', 'qiran', 'ifrad'];
+  const KINDS = { tawaf: ['umrah', 'qudum', 'ifadah', 'wada'], sai: ['umrah', 'hajj'] };
   assert.equal(RITE.stations.length, 10);
-  for (const s of RITE.stations) {
+  assert.equal(RITE.hajjStations.length, 11);
+  const ids = new Set();
+  for (const s of [...RITE.stations, ...RITE.hajjStations]) {
+    assert.ok(!ids.has(s.id), `station id ${s.id} is used twice`);
+    ids.add(s.id);
     for (const id of s.say) assert.ok(duaIds.has(id), `station ${s.id} says unknown dua ${id}`);
     assert.ok(s.src.length, `station ${s.id} has no source`);
     for (const id of s.src) assert.ok(srcIds.has(id), `station ${s.id} cites unknown source ${id}`);
     assert.ok(s.do.length, `station ${s.id} has nothing to do`);
+    for (const [k, id] of Object.entries(s.nuskSay || {})) {
+      assert.ok(NUSK.includes(k), `station ${s.id} names an unknown form ${k}`);
+      assert.ok(duaIds.has(id), `station ${s.id} says unknown dua ${id}`);
+    }
+    for (const [k, lines] of Object.entries(s.nusk || {})) {
+      assert.ok(NUSK.includes(k), `station ${s.id} names an unknown form ${k}`);
+      assert.ok(lines.length, `station ${s.id} has an empty ${k} card`);
+    }
+    for (const x of s.tools || []) {
+      assert.ok(['tawaf', 'sai', 'miqat', 'umrah', 'prep', 'trusts'].includes(x.kind), `station ${s.id} has an unknown tool ${x.kind}`);
+      if (x.k) assert.ok(KINDS[x.kind].includes(x.k), `station ${s.id} opens an unknown ${x.kind} ${x.k}`);
+      for (const k of x.n || []) assert.ok(NUSK.includes(k), `station ${s.id} tool names an unknown form ${k}`);
+    }
   }
+  for (const s of RITE.hajjStations) assert.ok(s.id.startsWith('h-'), `Hajj station ${s.id} must start with h-`);
+  for (const s of RITE.stations) assert.ok(!s.id.startsWith('h-'), `Umrah station ${s.id} must not start with h-`);
+  assert.deepEqual(RITE.hajj.nusuk.map(n => n.id).sort(), [...NUSK].sort());
   for (const n of RITE.hajj.nusuk) assert.ok(duaIds.has(n.say), `nusk ${n.id}`);
-  for (const d of RITE.hajj.days) for (const id of d.say || []) assert.ok(duaIds.has(id), `day ${d.id} ${id}`);
   for (const id of [...RITE.hajj.src, ...RITE.miqat.src]) assert.ok(srcIds.has(id), `unknown source ${id}`);
   for (const s of RITE.sources) assert.match(s.url, /^https:\/\//);
   assert.equal(RITE.miqat.list.length, 5);
@@ -130,7 +151,10 @@ test('every interface string the app asks for exists', () => {
   const keys = new Set([...app.matchAll(/\bt\('([a-z0-9_]+)'\s*[,)]/g)].map(m => m[1]));
   for (const k of ['do', 'say', 'watch', 'calm', 'women']) keys.add('tab_' + k);
   for (const k of ['sections', 'rite', 'favs', 'mine']) keys.add('duas_tab_' + k);
-  for (const k of ['umrah', 'hajj']) keys.add('prep_' + k);
+  for (const k of ['umrah', 'hajj']) for (const p of ['prep_', 'mode_', 'journey_', 'home_done_', 'sw_']) keys.add(p + k);
+  for (const k of ['umrah', 'qudum', 'ifadah', 'wada']) { keys.add('tw_' + k); keys.add('twk_' + k); }
+  for (const k of ['umrah', 'hajj']) keys.add('swk_' + k);
+  for (const k of ['tamattu', 'qiran', 'ifrad']) keys.add('nusk_' + k);
   for (const k of keys) assert.ok(I18N[k], `missing i18n key ${k}`);
 });
 
