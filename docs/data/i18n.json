@@ -568,8 +568,8 @@
   "en": "Language"
  },
  "theme": {
-  "ar": "المظهر",
-  "en": "Appearance"
+  "ar": "الوضع",
+  "en": "Mode"
  },
  "theme_auto": {
   "ar": "تلقائي",
@@ -842,5 +842,141 @@
  "home_start_hajj": {
   "ar": "ابدأ رحلة الحج",
   "en": "Begin your Hajj"
+ },
+ "settings_title": {
+  "ar": "المظهر وسهولة الاستخدام",
+  "en": "Look and accessibility"
+ },
+ "look_short": {
+  "ar": "المظهر",
+  "en": "Look"
+ },
+ "look_title": {
+  "ar": "المظهر",
+  "en": "Appearance"
+ },
+ "colors": {
+  "ar": "الألوان",
+  "en": "Colours"
+ },
+ "palette_kiswah": {
+  "ar": "أسود وذهبي",
+  "en": "Black and gold"
+ },
+ "palette_emerald": {
+  "ar": "زمردي وذهبي",
+  "en": "Emerald and gold"
+ },
+ "palette_navy": {
+  "ar": "كحلي وذهبي",
+  "en": "Navy and gold"
+ },
+ "palette_burgundy": {
+  "ar": "عنابي وذهبي",
+  "en": "Burgundy and gold"
+ },
+ "palette_sand": {
+  "ar": "رملي وبرونزي",
+  "en": "Sand and bronze"
+ },
+ "palette_graphite": {
+  "ar": "رمادي وفضي",
+  "en": "Graphite and silver"
+ },
+ "palette_custom": {
+  "ar": "ألوانك",
+  "en": "Your colours"
+ },
+ "color_band": {
+  "ar": "اللون الأساسي",
+  "en": "Main colour"
+ },
+ "color_accent": {
+  "ar": "لون التمييز",
+  "en": "Accent colour"
+ },
+ "color_note": {
+  "ar": "يضبط عتيق درجات الألوان التي تختارها ليبقى كل نص واضحًا عليها.",
+  "en": "Ateeq adjusts the shades you pick so every piece of text stays clear on them."
+ },
+ "preview_note": {
+  "ar": "هكذا تظهر المحطات والأدعية بالألوان والخط الذي اخترته.",
+  "en": "This is how stations and duas look with the colours and text size you chose."
+ },
+ "a11y_title": {
+  "ar": "سهولة الاستخدام",
+  "en": "Accessibility"
+ },
+ "text_size": {
+  "ar": "حجم خط التطبيق",
+  "en": "App text size"
+ },
+ "text_0": {
+  "ar": "عادي",
+  "en": "Normal"
+ },
+ "text_1": {
+  "ar": "كبير",
+  "en": "Large"
+ },
+ "text_2": {
+  "ar": "أكبر",
+  "en": "Larger"
+ },
+ "text_3": {
+  "ar": "الأكبر",
+  "en": "Largest"
+ },
+ "text_auto": {
+  "ar": "كهاتفي",
+  "en": "Like my phone"
+ },
+ "a11y_bold": {
+  "ar": "خط أعرض",
+  "en": "Bolder text"
+ },
+ "a11y_bold_sub": {
+  "ar": "يجعل النصوص والأزرار أثقل فتُقرأ بسهولة أكبر.",
+  "en": "Makes text and buttons heavier and easier to read."
+ },
+ "a11y_contrast": {
+  "ar": "تباين أعلى",
+  "en": "Higher contrast"
+ },
+ "a11y_contrast_sub": {
+  "ar": "يقوّي لون النصوص الثانوية والحدود ويضع خطًا تحت الروابط.",
+  "en": "Strengthens secondary text and borders, and underlines links."
+ },
+ "a11y_spacing": {
+  "ar": "تباعد أوسع بين الأسطر",
+  "en": "Wider line spacing"
+ },
+ "a11y_spacing_sub": {
+  "ar": "يفصل بين الأسطر أكثر في الشرح والأدعية.",
+  "en": "Puts more space between lines in explanations and duas."
+ },
+ "a11y_motion": {
+  "ar": "تقليل الحركة",
+  "en": "Reduce motion"
+ },
+ "a11y_motion_sub": {
+  "ar": "يوقف النبض والانتقالات المتحركة.",
+  "en": "Stops pulsing and animated transitions."
+ },
+ "a11y_haptics": {
+  "ar": "الاهتزاز عند العدّ",
+  "en": "Vibrate when counting"
+ },
+ "a11y_haptics_sub": {
+  "ar": "نبضة خفيفة مع كل شوط، وأقوى عند السابع.",
+  "en": "A light tap with each circuit, and a stronger one at the seventh."
+ },
+ "a11y_note": {
+  "ar": "يعلن قارئ الشاشة رقم الشوط بعد كل ضغطة في عدّاد الطواف والسعي، وتبقى الإعدادات في جهازك وحده.",
+  "en": "Screen readers announce the circuit number after every tap on the tawaf and saʿi counters, and these settings stay on your device only."
+ },
+ "look_reset": {
+  "ar": "أعد المظهر وسهولة الاستخدام إلى الأصل",
+  "en": "Restore the default look and accessibility"
  }
 }

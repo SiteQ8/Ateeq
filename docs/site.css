@@ -18,7 +18,7 @@ a { color: inherit; }
 .band-in { max-width: 1080px; margin: 0 auto; padding: 12px 20px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; position: relative; }
 .band-in::after { content: ''; position: absolute; inset-inline: 0; bottom: 6px; height: 1px; background: var(--gold-line); opacity: .45; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--gold-2); font-family: var(--naskh); font-weight: 700; font-size: 30px; line-height: 1; }
-.brand img { border-radius: 9px; }
+.brand img { display: block; }
 .top-nav { display: flex; gap: 8px; align-items: center; }
 .lang { background: none; border: 1px solid #4A443A; color: #E9E1CD; border-radius: 12px; padding: 7px 12px; font: inherit; font-size: 14px; cursor: pointer; }
 .cta { background: var(--gold-2); color: #15130F; border-radius: 12px; padding: 8px 14px; text-decoration: none; font-weight: 700; font-size: 14.5px; }

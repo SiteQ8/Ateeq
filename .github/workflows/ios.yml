@@ -1,0 +1,71 @@
+name: ios
+
+# Builds the iPhone app on every change that reaches it, opens it in the simulator on the
+# same prepared screens as the web screenshots, and keeps the pictures as an artifact.
+on:
+  push:
+    branches: [main]
+    paths: ['ios/**', 'docs/app/**', 'docs/data/**', 'docs/fonts/**', 'docs/assets/**', 'tools/ios/**', 'tools/scenes.mjs', '.github/workflows/ios.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  app:
+    name: iPhone app build and screenshots
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select the newest Xcode
+        run: |
+          set -euo pipefail
+          latest=$(ls -d /Applications/Xcode*.app 2>/dev/null | sort -V | tail -1)
+          sudo xcode-select -s "$latest/Contents/Developer"
+          xcodebuild -version
+
+      - name: Web app into the bundle, then the Xcode project
+        run: |
+          set -euo pipefail
+          sh tools/ios/sync-web.sh
+          brew install xcodegen
+          cd ios && xcodegen generate
+
+      - name: Build for the simulator
+        working-directory: ios
+        run: |
+          set -o pipefail
+          xcodebuild -project Ateeq.xcodeproj -scheme Ateeq -sdk iphonesimulator -configuration Debug \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO build 2>&1 | tee build.log | grep -E "error:|BUILD (SUCCEEDED|FAILED)" || true
+          APP=build/Build/Products/Debug-iphonesimulator/Ateeq.app
+          test -f "$APP/Ateeq" || { echo "no app executable"; tail -60 build.log; exit 1; }
+          test -f "$APP/Web/app/index.html" && test -f "$APP/Web/data/rite.json" && test -f "$APP/Web/app/palettes.js"
+
+      - name: Screenshots in Arabic and English
+        working-directory: ios
+        run: |
+          set -euo pipefail
+          UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; ok=[x for k,v in sorted(d.items(), reverse=True) if 'iOS' in k for x in v if x['name'].startswith('iPhone')]; pick=[x for x in ok if 'Pro Max' in x['name']] or ok; print(pick[0]['udid'])")
+          echo "device $UDID"
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl status_bar "$UDID" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 || true
+          xcrun simctl install "$UDID" build/Build/Products/Debug-iphonesimulator/Ateeq.app
+          mkdir -p shots
+          node ../tools/ios/scenes.mjs > scenes.txt
+          while IFS='|' read -r name lang route state; do
+            xcrun simctl terminate "$UDID" com.eworldq8.ateeq < /dev/null || true
+            xcrun simctl launch "$UDID" com.eworldq8.ateeq -state "$state" -route "$route" -AppleLanguages "($lang)" < /dev/null
+            sleep 7
+            xcrun simctl io "$UDID" screenshot "shots/$lang-$name.png" < /dev/null
+          done < scenes.txt
+          ls shots
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iphone-screenshots
+          path: |
+            ios/shots
+            ios/build.log

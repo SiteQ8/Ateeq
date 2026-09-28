@@ -10,14 +10,16 @@ const DOCS = path.join(ROOT, 'docs');
 const read = p => fs.readFileSync(path.join(ROOT, p), 'utf8');
 const json = p => JSON.parse(read(p));
 const L = require(path.join(DOCS, 'app/logic.js'));
+const LOOK = require(path.join(DOCS, 'app/palettes.js'));
 const RITE = json('docs/data/rite.json');
 const BOOK = json('docs/data/duas.json');
 const I18N = json('docs/data/i18n.json');
 
-const TEXT_EXT = new Set(['.html', '.css', '.js', '.mjs', '.json', '.md', '.txt', '.yml', '.webmanifest', '.svg']);
+const TEXT_EXT = new Set(['.html', '.css', '.js', '.mjs', '.json', '.md', '.txt', '.yml', '.webmanifest', '.svg', '.swift', '.yaml', '.py', '.sh', '.strings']);
+const p_skip = (dir, name) => path.join(dir, name) === path.join(ROOT, 'ios', 'Web');
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name === '.git' || e.name === 'node_modules') continue;
+    if (e.name === '.git' || e.name === 'node_modules' || p_skip(dir, e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, out);
     else if (TEXT_EXT.has(path.extname(e.name)) && !e.name.startsWith('OFL')) out.push(p);
@@ -155,6 +157,8 @@ test('every interface string the app asks for exists', () => {
   for (const k of ['umrah', 'qudum', 'ifadah', 'wada']) { keys.add('tw_' + k); keys.add('twk_' + k); }
   for (const k of ['umrah', 'hajj']) keys.add('swk_' + k);
   for (const k of ['tamattu', 'qiran', 'ifrad']) keys.add('nusk_' + k);
+  for (const k of [...LOOK.ORDER, 'custom']) keys.add('palette_' + k);
+  for (const k of ['0', '1', '2', '3', 'auto']) keys.add('text_' + k);
   for (const k of keys) assert.ok(I18N[k], `missing i18n key ${k}`);
 });
 
@@ -228,4 +232,48 @@ test('flight alert uses Jeddah time whatever the phone clock', () => {
   assert.equal((L.arrivalFrom('10:00', now) - now) / 3600000, 18);
   assert.equal(L.arrivalFrom('25:00', now), null);
   assert.equal(L.arrivalFrom('', now), null);
+});
+
+test('every palette keeps text readable in light, dark and high contrast', () => {
+  const fails = [];
+  const check = (name, t) => {
+    for (const [a, b, min] of LOOK.PAIRS) {
+      const c = LOOK.contrast(t[a], t[b]);
+      if (!(c >= min)) fails.push(`${name}: ${a} on ${b} is ${c.toFixed(2)}, needs ${min}`);
+    }
+  };
+  for (const p of LOOK.ORDER) for (const dark of [false, true]) for (const contrast of [false, true]) {
+    check(`${p} ${dark ? 'dark' : 'light'}${contrast ? ' high contrast' : ''}`, LOOK.resolve({ palette: p, dark, contrast }));
+  }
+  assert.deepEqual(fails, []);
+});
+
+test('any colours a person picks still give readable text', () => {
+  let seed = 20260928;
+  const rnd = () => (seed = (seed * 48271) % 2147483647) / 2147483647;
+  const col = () => '#' + [0, 0, 0].map(() => Math.floor(rnd() * 256).toString(16).padStart(2, '0')).join('');
+  const samples = [['#FFFFFF', '#FFFFFF'], ['#000000', '#000000'], ['#808080', '#808080'], ['#FFFF00', '#0000FF'], ['#ff0000', '#00ff00']];
+  for (let i = 0; i < 600; i++) samples.push([col(), col()]);
+  const fails = [];
+  for (const [band, accent] of samples) for (const dark of [false, true]) for (const contrast of [false, true]) {
+    const t = LOOK.resolve({ palette: 'custom', colors: { band, accent }, dark, contrast });
+    for (const [a, b, min] of LOOK.PAIRS) {
+      const c = LOOK.contrast(t[a], t[b]);
+      if (!(c >= min)) fails.push(`${band} ${accent} ${dark ? 'dark' : 'light'}: ${a} on ${b} ${c.toFixed(2)}`);
+    }
+  }
+  assert.deepEqual(fails.slice(0, 5), []);
+});
+
+test('the text size setting reaches every font size outside the drawings', () => {
+  const css = read('docs/app/app.css');
+  const fixed = [];
+  for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (/svg|:root/.test(m[1])) continue;
+    for (const f of m[2].matchAll(/font-size:\s*([^;]+)/g)) if (!/var\(--ts/.test(f[1]) && !/inherit/.test(f[1])) fixed.push(`${m[1].trim()} ${f[1]}`);
+  }
+  assert.deepEqual(fixed, []);
+  assert.deepEqual(LOOK.TEXT, [...LOOK.TEXT].sort((a, b) => a - b));
+  assert.equal(LOOK.textScaleFor(null, 1.3), 1.25);
+  assert.equal(LOOK.textScaleFor(2), 1.25);
 });

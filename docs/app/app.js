@@ -3,8 +3,9 @@
   'use strict';
 
   var L = window.AteeqLogic;
+  var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.2.1';
+  var VERSION = '0.3.0';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N;
@@ -12,6 +13,13 @@
   var TW_KINDS = ['umrah', 'qudum', 'ifadah', 'wada'];
   var SW_KINDS = ['umrah', 'hajj'];
   var NUSK = ['tamattu', 'qiran', 'ifrad'];
+  /* The iPhone app injects AteeqNative and answers on the 'ateeq' message handler. */
+  var NATIVE_INFO = window.AteeqNative || {};
+  var NATIVE = window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.ateeq;
+  function native(type, data) {
+    if (!NATIVE) return false;
+    try { NATIVE.postMessage(Object.assign({ type: type }, data || {})); return true; } catch (e) { return false; }
+  }
   var S = load();
   var wakeLock = null, flightTimer = null, lastPhase = null, twk = 'umrah', swk = 'umrah';
 
@@ -33,6 +41,8 @@
     return {
       lang: nav.indexOf('ar') === 0 ? 'ar' : 'en', theme: 'auto', size: 'm',
       mode: autoMode(), nusk: 'tamattu', done: {},
+      palette: 'kiswah', colors: { band: '#0B3A2C', accent: '#C9A55C' }, text: null,
+      bold: false, contrast: false, motion: false, spacing: false, haptics: true,
       tw: tw, sw: sw, twk: 'umrah', swk: 'umrah',
       favs: [], mine: [], trusts: [],
       prep: { umrah: {}, hajj: {} }, custom: { umrah: [], hajj: [] },
@@ -53,6 +63,8 @@
     SW_KINDS.forEach(function (k) { if (!d.sw[k]) d.sw[k] = newSw(); });
     if (NUSK.indexOf(d.nusk) < 0) d.nusk = 'tamattu';
     if (d.mode !== 'hajj' && d.mode !== 'umrah') d.mode = 'umrah';
+    if (d.palette !== 'custom' && !(window.AteeqLook && window.AteeqLook.PALETTES[d.palette])) d.palette = 'kiswah';
+    if (!d.colors || typeof d.colors !== 'object') d.colors = { band: '#0B3A2C', accent: '#C9A55C' };
     return d;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* storage full or blocked */ } }
@@ -116,7 +128,8 @@
     miqat: '<path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',
     hajj: '<path d="M3 19l6-9 3 4 3-6 6 11z"/>',
     plane: '<path d="M10.5 20l1.5-6-6.5 1.5L4 14l8-5V4.5a1.5 1.5 0 0 1 3 0V9l6 4v1.5L15 13l1.5 7z"/>',
-    book: '<path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19"/>'
+    book: '<path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19"/>',
+    look: '<path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.9-.7-1.3-.7-2.2 0-1 .8-1.6 1.7-1.6H17a4 4 0 0 0 4-4C21 6.7 17 3 12 3z"/><circle cx="7.6" cy="11.2" r="1.1"/><circle cx="10.2" cy="7.4" r="1.1"/><circle cx="14.6" cy="7.4" r="1.1"/>'
   };
   function icon(name, cls) {
     return '<svg class="ic' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + IC[name] + '</svg>';
@@ -128,6 +141,7 @@
     return '<header class="hizam' + (o.big ? ' big' : '') + '"><div class="hz-in">' +
       (o.back ? '<a class="back" href="' + o.back + '" aria-label="' + esc(t('back')) + '">' + icon('back') + '</a>' : '') +
       '<div class="hz-t"><h1>' + esc(title) + '</h1>' + (o.sub ? '<p>' + esc(o.sub) + '</p>' : '') + '</div>' +
+      (o.big ? '<span class="brand-mark" aria-hidden="true"></span>' : '') +
       '</div></header>';
   }
   function li(x) { return '<li>' + esc(tx(x)) + '</li>'; }
@@ -233,7 +247,8 @@
     }).join('');
     var h = hijri();
     return head(t('app_name'), { big: true, sub: t('tagline') }) +
-      '<main class="wrap">' + (h ? '<p class="date">' + esc(h) + '</p>' : '') + modes + card +
+      '<main class="wrap"><div class="date-row">' + (h ? '<p class="date">' + esc(h) + '</p>' : '<span></span>') +
+      '<a class="look-btn" href="#/look">' + icon('look') + '<span>' + esc(t('look_short')) + '</span></a></div>' + modes + card +
       '<h2 class="sec-h">' + esc(t('tools_title')) + '</h2><div class="tools">' + tools + '</div></main>';
   }
 
@@ -629,14 +644,12 @@
     }).join('') + '</div>';
   }
   function vMore() {
-    var links = [['journey?j=hajj', t('journey_hajj'), 'hajj'], ['journey?j=umrah', t('journey_umrah'), 'tawaf'], ['nusuk', t('nusuk_title'), 'journey'],
+    var links = [['look', t('settings_title'), 'look'], ['journey?j=hajj', t('journey_hajj'), 'hajj'], ['journey?j=umrah', t('journey_umrah'), 'tawaf'], ['nusuk', t('nusuk_title'), 'journey'],
       ['miqat', t('tool_miqat'), 'miqat'], ['trusts', t('tool_trusts'), 'trusts'], ['sources', t('sources'), 'book']];
     return head(t('more_title')) + '<main class="wrap">' +
       '<nav class="links">' + links.map(function (x) { return '<a href="#/' + x[0] + '">' + icon(x[2]) + '<span>' + esc(x[1]) + '</span>' + icon('back', 'fwd') + '</a>'; }).join('') + '</nav>' +
       '<h2 class="sec-h">' + esc(t('settings')) + '</h2><div class="card set">' +
-      '<div class="set-row"><span>' + esc(t('lang')) + '</span>' + segc('lang', S.lang, [['ar', 'العربية'], ['en', 'English']]) + '</div>' +
-      '<div class="set-row"><span>' + esc(t('theme')) + '</span>' + segc('theme', S.theme, [['auto', t('theme_auto')], ['light', t('theme_light')], ['dark', t('theme_dark')]]) + '</div>' +
-      '<div class="set-row"><span>' + esc(t('size')) + '</span>' + segc('size', S.size, [['s', t('size_s')], ['m', t('size_m')], ['l', t('size_l')]]) + '</div></div>' +
+      '<div class="set-row"><span>' + esc(t('lang')) + '</span>' + segc('lang', S.lang, [['ar', 'العربية'], ['en', 'English']]) + '</div></div>' +
       '<h2 class="sec-h">' + esc(t('install')) + '</h2><p class="note">' + esc(t('install_note')) + '</p>' +
       '<h2 class="sec-h">' + esc(t('data_title')) + '</h2><p class="note">' + esc(t('data_note')) + '</p>' +
       '<button class="btn ghost danger" data-act="erase">' + esc(t('erase_all')) + '</button>' +
@@ -644,6 +657,47 @@
       '<p><a href="https://github.com/SiteQ8/Ateeq" target="_blank" rel="noopener">' + esc(t('about_open')) + '</a></p>' +
       '<p>' + esc(t('about_by')) + '</p><p><a href="mailto:site@hotmail.com">' + esc(t('contact')) + '</a></p>' +
       '<p class="ver">' + esc(t('version')) + ' <span dir="ltr">' + VERSION + '</span></p></div></main>';
+  }
+  function sw(k, title, sub) {
+    var on = !!S[k];
+    return '<button class="switch" role="switch" aria-checked="' + on + '" data-act="toggle" data-k="' + k + '">' +
+      '<span class="sw-t"><b>' + esc(title) + '</b>' + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</span><span class="knob" aria-hidden="true"></span></button>';
+  }
+  function vLook() {
+    var swatches = LOOK.ORDER.map(function (id) {
+      var P = LOOK.PALETTES[id].light, on = S.palette === id;
+      return '<button class="swatch' + (on ? ' on' : '') + '" data-act="palette" data-v="' + id + '" aria-pressed="' + on + '">' +
+        '<i style="--a:' + P.band + ';--b:' + P.gold2 + '"></i>' + esc(t('palette_' + id)) + '</button>';
+    }).join('');
+    var mine = S.palette === 'custom';
+    swatches += '<button class="swatch' + (mine ? ' on' : '') + '" data-act="palette" data-v="custom" aria-pressed="' + mine + '">' +
+      '<i style="--a:' + esc(S.colors.band) + ';--b:' + esc(S.colors.accent) + '"></i>' + esc(t('palette_custom')) + '</button>';
+    var picks = mine ? '<div class="picks">' +
+      '<label class="pick">' + esc(t('color_band')) + '<input type="color" data-color="band" value="' + esc(S.colors.band) + '"></label>' +
+      '<label class="pick">' + esc(t('color_accent')) + '<input type="color" data-color="accent" value="' + esc(S.colors.accent) + '"></label></div>' +
+      '<p class="note">' + esc(t('color_note')) + '</p>' : '';
+    var steps = [['0', t('text_0')], ['1', t('text_1')], ['2', t('text_2')], ['3', t('text_3')]];
+    if (NATIVE_INFO.textScale) steps.unshift(['auto', t('text_auto')]);
+    var cur = S.text == null ? (NATIVE_INFO.textScale ? 'auto' : '0') : String(S.text);
+    var textSeg = '<div class="seg small">' + steps.map(function (o) {
+      return '<button data-act="text" data-v="' + o[0] + '" class="' + (cur === o[0] ? 'on' : '') + '" aria-pressed="' + (cur === o[0]) + '">' + esc(o[1]) + '</button>';
+    }).join('') + '</div>';
+    var preview = '<div class="preview" aria-hidden="true"><div class="pv-band"><span><b>' + esc(t('app_name')) + '</b><small>' + esc(t('tagline')) + '</small></span>' +
+      '<span class="brand-mark"></span></div><div class="pv-body">' +
+      '<p class="dua-ar" lang="ar" dir="rtl">' + esc(RD.talbiyah.ar) + '</p>' +
+      '<p class="note">' + esc(t('preview_note')) + '</p>' +
+      '<div class="row"><span class="btn primary sm">' + esc(t('home_continue')) + '</span><span class="ref">' + esc(t('journey_hajj')) + '</span></div></div></div>';
+    return head(t('settings_title'), { back: '#/more' }) + '<main class="wrap">' + preview +
+      '<h2 class="sec-h">' + esc(t('look_title')) + '</h2><div class="card set"><p class="lbl">' + esc(t('colors')) + '</p><div class="swatches">' + swatches + '</div>' + picks +
+      '<div class="set-row"><span>' + esc(t('theme')) + '</span>' + segc('theme', S.theme, [['auto', t('theme_auto')], ['light', t('theme_light')], ['dark', t('theme_dark')]]) + '</div></div>' +
+      '<h2 class="sec-h">' + esc(t('a11y_title')) + '</h2><div class="card set">' +
+      '<p class="lbl">' + esc(t('text_size')) + '</p>' + textSeg +
+      '<div class="set-row"><span>' + esc(t('size')) + '</span>' + segc('size', S.size, [['s', t('size_s')], ['m', t('size_m')], ['l', t('size_l')]]) + '</div>' +
+      sw('bold', t('a11y_bold'), t('a11y_bold_sub')) + sw('contrast', t('a11y_contrast'), t('a11y_contrast_sub')) +
+      sw('spacing', t('a11y_spacing'), t('a11y_spacing_sub')) + sw('motion', t('a11y_motion'), t('a11y_motion_sub')) +
+      sw('haptics', t('a11y_haptics'), t('a11y_haptics_sub')) + '</div>' +
+      '<p class="note">' + esc(t('a11y_note')) + '</p>' +
+      '<button class="linkish" data-act="look-reset">' + esc(t('look_reset')) + '</button></main>';
   }
   function vSources() {
     return head(t('sources'), { back: '#/more' }) + '<main class="wrap"><p class="lead">' + esc(t('sources_intro')) + '</p>' +
@@ -687,6 +741,7 @@
     else if (v === 'miqat') html = vMiqat();
     else if (v === 'nusuk' || v === 'hajj') { html = vNusuk(); tab = 'more'; }
     else if (v === 'more') { html = vMore(); tab = 'more'; }
+    else if (v === 'look') { html = vLook(); tab = 'more'; }
     else if (v === 'sources') { html = vSources(); tab = 'more'; }
     else html = vHome();
     app.innerHTML = html;
@@ -700,13 +755,24 @@
 
   /* ------------------------------------------------------------ device helpers */
   /* browsers refuse to vibrate before the first tap, so wait for it */
-  function buzz(p) {
+  function buzz(p, style) {
+    if (S.haptics === false) return;
+    if (native('haptic', { style: style || 'light' })) return;
     try {
       var ua = navigator.userActivation;
       if (navigator.vibrate && (!ua || ua.hasBeenActive)) navigator.vibrate(p);
     } catch (e) { /* not supported */ }
   }
+  var srTimer;
+  function announce(text) {
+    var el = document.getElementById('sr');
+    if (!el) return;
+    el.textContent = '';
+    clearTimeout(srTimer);
+    srTimer = setTimeout(function () { el.textContent = text; }, 60);
+  }
   function keepAwake(on) {
+    if (native('awake', { on: !!on })) return;
     if (!('wakeLock' in navigator)) return;
     if (on && !wakeLock) {
       navigator.wakeLock.request('screen').then(function (l) {
@@ -747,6 +813,7 @@
   }
   function copyText(s) {
     function ok() { toast(t('copied')); }
+    if (native('copy', { text: s })) { ok(); return; }
     function fallback() {
       var ta = document.createElement('textarea');
       ta.value = s; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
@@ -758,6 +825,7 @@
     else fallback();
   }
   function shareText(s) {
+    if (native('share', { text: s })) return;
     if (navigator.share) navigator.share({ text: s }).catch(function () { /* cancelled */ });
     else copyText(s);
   }
@@ -777,6 +845,16 @@
     }
     if (ph.phase === 'past') { S.flight.on = false; save(); stopTicker(); keepAwake(false); }
   }
+  function scheduleAlarms() {
+    if (!NATIVE) return;
+    var items = [];
+    if (S.flight.on && S.flight.arrival) {
+      var rt = flightRoute();
+      items.push({ id: 'prepare', at: S.flight.arrival - rt.prepare * 60000, title: t('flight_title'), body: t('flight_now_prepare') });
+      if (rt.intent != null) items.push({ id: 'intent', at: S.flight.arrival - rt.intent * 60000, title: t('flight_title'), body: intentWords() });
+    }
+    native('alarms', { items: items.filter(function (x) { return x.at > Date.now(); }) });
+  }
   function startFlight() {
     var inp = document.getElementById('farr');
     var v = inp ? inp.value : '';
@@ -785,6 +863,7 @@
     S.flight.time = v; S.flight.arrival = arr; S.flight.on = true;
     save();
     lastPhase = L.flight(arr, Date.now(), flightRoute()).phase;
+    scheduleAlarms();
     startTicker();
     rerender();
   }
@@ -817,7 +896,8 @@
         TW.laps = Math.min(7, TW.laps + 1); TW.doubt = false;
         if (TW.laps === 7 && twk === 'umrah') S.done.tawaf = true;
         if (TW.laps === 7 && twk === 'wada') S.done['h-wada'] = true;
-        buzz(35); save(); rerender(); break;
+        buzz(TW.laps === 7 ? [60, 60, 120] : 35, TW.laps === 7 ? 'success' : 'medium'); save(); rerender();
+        announce(TW.laps === 7 ? t('tawaf_done') : t('lap_now', { n: TW.laps + 1 })); break;
       case 't-undo': TW.laps = Math.max(0, TW.laps - 1); save(); rerender(); break;
       case 't-pause': TW.paused = true; save(); rerender(); break;
       case 't-resume': TW.paused = false; save(); rerender(); break;
@@ -829,7 +909,8 @@
         if (!SW.startedAt) SW.startedAt = Date.now();
         SW.legs = Math.min(7, SW.legs + 1); SW.dhikr = 0;
         if (SW.legs === 7 && swk === 'umrah') S.done.sai = true;
-        buzz(35); save(); rerender(); break;
+        buzz(SW.legs === 7 ? [60, 60, 120] : 35, SW.legs === 7 ? 'success' : 'medium'); save(); rerender();
+        announce(SW.legs === 7 ? t('sai_done') : t('leg_now', { n: SW.legs + 1 })); break;
       case 's-dhikr': SW.dhikr = Math.min(3, (SW.dhikr || 0) + 1); save(); rerender(); break;
       case 's-undo': SW.legs = Math.max(0, SW.legs - 1); SW.dhikr = 0; save(); rerender(); break;
       case 's-pause': SW.paused = true; save(); rerender(); break;
@@ -859,7 +940,15 @@
           save(); stopTicker(); rerender();
         } break;
       case 'flight-start': startFlight(); break;
-      case 'flight-stop': S.flight.on = false; save(); stopTicker(); rerender(); break;
+      case 'flight-stop': S.flight.on = false; save(); stopTicker(); scheduleAlarms(); rerender(); break;
+      case 'palette': S.palette = v; save(); applyLook(); rerender(); break;
+      case 'toggle': S[k] = !S[k]; save(); applyLook(); rerender(); break;
+      case 'text': S.text = v === 'auto' ? null : +v; save(); applyLook(); rerender(); break;
+      case 'look-reset':
+        ['palette', 'colors', 'theme', 'size', 'text', 'bold', 'contrast', 'motion', 'spacing', 'haptics'].forEach(function (key) {
+          var def = defaults(); S[key] = def[key];
+        });
+        save(); applyLook(); rerender(); break;
     }
   });
   app.addEventListener('change', function (e) {
@@ -870,7 +959,9 @@
       if (el.checked) S.prep[k][id] = true; else delete S.prep[k][id];
       save(); rerender();
     } else if (act === 'route') {
-      S.flight.route = el.value; save(); rerender();
+      S.flight.route = el.value; save(); scheduleAlarms(); rerender();
+    } else if (el.getAttribute('data-color')) {
+      S.colors[el.getAttribute('data-color')] = el.value; save(); applyLook(); rerender();
     }
   });
   app.addEventListener('submit', function (e) {
@@ -894,7 +985,11 @@
     }
     save(); rerender();
   });
-  app.addEventListener('input', function (e) { if (e.target.id === 'dsearch') runSearch(e.target.value); });
+  app.addEventListener('input', function (e) {
+    if (e.target.id === 'dsearch') runSearch(e.target.value);
+    var ck = e.target.getAttribute && e.target.getAttribute('data-color');
+    if (ck) { S.colors[ck] = e.target.value; applyLook(); }
+  });
   document.getElementById('banner').addEventListener('click', function (e) {
     if (e.target.closest('[data-close]')) document.getElementById('banner').hidden = true;
   });
@@ -907,13 +1002,37 @@
     }
   });
 
+  function isDark() {
+    return S.theme === 'dark' || (S.theme !== 'light' && !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  /* Palette, mode and accessibility, applied before anything is drawn. */
+  function applyLook() {
+    var d = document.documentElement, tk = LOOK.resolve({ palette: S.palette, colors: S.colors, dark: isDark(), contrast: !!S.contrast });
+    Object.keys(LOOK.VARS).forEach(function (k) { if (tk[k]) d.style.setProperty(LOOK.VARS[k], tk[k]); });
+    d.style.colorScheme = tk.scheme;
+    d.setAttribute('data-scheme', tk.scheme);
+    if (S.theme === 'auto') d.removeAttribute('data-theme'); else d.setAttribute('data-theme', S.theme);
+    ['bold', 'contrast', 'motion', 'spacing'].forEach(function (k) { if (S[k]) d.setAttribute('data-' + k, '1'); else d.removeAttribute('data-' + k); });
+    var ts = LOOK.textScaleFor(S.text, NATIVE_INFO.textScale);
+    d.style.setProperty('--ts', String(ts));
+    if (ts >= 1.25) d.setAttribute('data-large', '1'); else d.removeAttribute('data-large');
+    d.style.setProperty('--dua-size', { s: '21px', m: '25px', l: '30px' }[S.size] || '25px');
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', tk.band);
+    native('theme', { band: tk.band, background: tk.marble, lightBand: LOOK.lum(tk.band) > 0.35 });
+  }
   function applyPrefs() {
     var d = document.documentElement;
     d.lang = S.lang;
     d.dir = S.lang === 'ar' ? 'rtl' : 'ltr';
-    if (S.theme === 'auto') d.removeAttribute('data-theme'); else d.setAttribute('data-theme', S.theme);
-    d.style.setProperty('--dua-size', { s: '21px', m: '25px', l: '30px' }[S.size] || '25px');
-    document.title = t('app_name');
+    applyLook();
+    if (I18N) document.title = t('app_name');
+  }
+  applyPrefs();
+  if (window.matchMedia) {
+    var schemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    var onScheme = function () { if (S.theme === 'auto') applyLook(); };
+    if (schemeQuery.addEventListener) schemeQuery.addEventListener('change', onScheme); else if (schemeQuery.addListener) schemeQuery.addListener(onScheme);
   }
 
   /* ------------------------------------------------------------ start */
@@ -925,13 +1044,13 @@
     BOOK.sections.forEach(function (s) { s.duas.forEach(function (d) { d.sec = s; DMAP[d.id] = d; }); });
     applyPrefs();
     render();
-    if (S.flight.on) startTicker();
+    if (S.flight.on) { startTicker(); scheduleAlarms(); }
     window.addEventListener('hashchange', render);
   }).catch(function () {
     app.innerHTML = '<main class="wrap"><p class="lead">تعذّر تحميل المحتوى، فأعد فتح الصفحة.</p><p class="lead" dir="ltr">The content could not load. Please reopen the page.</p></main>';
   });
 
-  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  if ('serviceWorker' in navigator && location.protocol !== 'file:' && location.protocol !== 'ateeq:') {
     window.addEventListener('load', function () { navigator.serviceWorker.register('../sw.js').catch(function () { /* offline cache unavailable */ }); });
   }
 })();

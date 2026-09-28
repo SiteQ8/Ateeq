@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs><linearGradient id="g" x1="0.12" y1="0.04" x2="0.88" y2="0.96">
+    <stop offset="0" stop-color="#FBF0C8"/><stop offset="0.28" stop-color="#E4C57C"/>
+    <stop offset="0.52" stop-color="#B8893C"/><stop offset="0.74" stop-color="#EDD48E"/>
+    <stop offset="1" stop-color="#A67B33"/></linearGradient>
+  <linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B3326"/><stop offset="1" stop-color="#262017"/></linearGradient>
+  <linearGradient id="left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16130D"/><stop offset="1" stop-color="#0C0A07"/></linearGradient>
+  <linearGradient id="right" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#231E15"/><stop offset="1" stop-color="#15110C"/></linearGradient>
+    <radialGradient id="bg" cx="0.5" cy="0.46" r="0.72"><stop offset="0" stop-color="#241E15"/><stop offset="0.62" stop-color="#110F0B"/><stop offset="1" stop-color="#070605"/></radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.42"><stop offset="0" stop-color="#E4C57C" stop-opacity="0.10"/><stop offset="1" stop-color="#E4C57C" stop-opacity="0"/></radialGradient>
+  </defs>
+  
+  <g transform="translate(512 512) scale(1) translate(-512 -512)">
+    <g fill="none" stroke="url(#g)" stroke-linejoin="miter">
+    <polygon points="817.5,817.5 206.5,817.5 206.5,206.5 817.5,206.5" stroke-width="17"/>
+    <polygon points="944.0,512.0 512.0,944.0 80.0,512.0 512.0,80.0" stroke-width="17"/>
+    <polygon points="791.0,791.0 233.0,791.0 233.0,233.0 791.0,233.0" stroke-width="5.1" opacity="0.7"/>
+    <polygon points="906.6,512.0 512.0,906.6 117.4,512.0 512.0,117.4" stroke-width="5.1" opacity="0.7"/>
+  </g>
+    <circle cx="512" cy="512" r="274" fill="none" stroke="url(#g)" stroke-width="4.3" opacity="0.55"/><rect x="500.0" y="226.0" width="24" height="24" transform="rotate(45 512.0 238.0)" fill="url(#g)"/><rect x="714.2" y="329.2" width="24" height="24" transform="rotate(45 726.2 341.2)" fill="url(#g)"/><rect x="767.1" y="561.0" width="24" height="24" transform="rotate(45 779.1 573.0)" fill="url(#g)"/><rect x="618.9" y="746.9" width="24" height="24" transform="rotate(45 630.9 758.9)" fill="url(#g)"/><rect x="381.1" y="746.9" width="24" height="24" transform="rotate(45 393.1 758.9)" fill="url(#g)"/><rect x="232.9" y="561.0" width="24" height="24" transform="rotate(45 244.9 573.0)" fill="url(#g)"/><rect x="285.8" y="329.2" width="24" height="24" transform="rotate(45 297.8 341.2)" fill="url(#g)"/>
+    <g stroke-linejoin="round">
+    <polygon points="512.0,322.0 676.5,417.0 512.0,512.0 347.5,417.0" fill="url(#top)"/>
+    <polygon points="347.5,417.0 512.0,512.0 512.0,702.0 347.5,607.0" fill="url(#left)"/>
+    <polygon points="512.0,512.0 676.5,417.0 676.5,607.0 512.0,702.0" fill="url(#right)"/>
+    <polygon points="347.5,455.0 512.0,550.0 512.0,570.9 347.5,475.9" fill="url(#g)"/>
+    <polygon points="512.0,550.0 676.5,455.0 676.5,475.9 512.0,570.9" fill="url(#g)"/>
+    <polygon points="347.5,481.6 512.0,576.6 512.0,580.4 347.5,485.4" fill="url(#g)" opacity="0.7"/>
+    <polygon points="512.0,576.6 676.5,481.6 676.5,485.4 512.0,580.4" fill="url(#g)" opacity="0.7"/>
+    <polygon points="544.9,588.0 577.8,569.0 577.8,633.6 544.9,652.6" fill="url(#g)"/>
+    <g fill="none" stroke="url(#g)" stroke-width="3.8" opacity="0.95">
+      <polygon points="512.0,322.0 676.5,417.0 676.5,607.0 512.0,702.0 347.5,607.0 347.5,417.0"/>
+      <polyline points="347.5,417.0 512.0,512.0 676.5,417.0"/>
+      <line x1="512.0" y1="512.0" x2="512.0" y2="702.0"/>
+    </g>
+  </g>
+  </g>
+</svg>

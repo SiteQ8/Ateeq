@@ -30,6 +30,8 @@
 - **الميقات وتنبيه الطائرة:** المواقيت الخمسة ومن يحرم من أين، وتنبيه قبل الوصول إلى جدة يحسب الوقت بتوقيت جدة مهما كان توقيت الهاتف.
 - **التجهيز:** قوائم للحج والعمرة تبدأ بالقلب، من التوبة وردّ المظالم وكتابة الديون، ثم العلم والحقيبة والأوراق، مع بنودك الخاصة.
 - **أدعية المناسك:** أدعية الإحرام والطواف والسعي، وذكر يوم عرفة وجوامع الدعاء فيه، وذكر المشعر الحرام، والتكبير مع الحصى، ودعاء ذبح الهدي.
+- **المظهر:** ست لوحات ألوان فاخرة أو لونان تختارهما بنفسك، مع الوضع الفاتح والليلي، ويضبط التطبيق الدرجات حتى يبقى النص واضحًا، وتفرض الاختبارات ذلك على كل لوحة.
+- **سهولة الاستخدام:** أربعة أحجام لخط التطبيق، وخط أعرض، وتباين أعلى، وتباعد أوسع بين الأسطر، وتقليل الحركة، ويعلن قارئ الشاشة رقم كل شوط.
 - **باب الأدعية:** ثلاثون بابًا وأكثر من أربعمئة وخمسين دعاءً، مع البحث والمفضلة وقائمة دعائي.
 - **بلا إنترنت وبلا حساب:** يحتاج الإنترنت في أول فتح فقط، ثم يعمل دونه، ولا تغادر بياناتك جهازك.
 - **عربي وإنجليزي:** يفتح بلغة جهازك، مع الوضع الليلي وتكبير خط الأدعية.
@@ -57,9 +59,17 @@ python3 -m http.server 8080 --directory docs
 
 ### الخطة
 
-1. الويب وتطبيق يُثبّت على الشاشة الرئيسية، وهو هذا الإصدار.
-2. تطبيق آيفون.
+1. الويب وتطبيق يُثبّت على الشاشة الرئيسية، وهو منشور.
+2. تطبيق آيفون، وهو في المجلد `ios/` ويُبنى على GitHub ويُفتح في المحاكي مع كل تغيير، وينتظر النشر في المتجر.
 3. تطبيق أندرويد.
+
+### تطبيق آيفون
+
+يحمل التطبيق صفحات عتيق وبياناته وخطوطه داخله، فيعمل كله دون إنترنت، ويضيف ما لا يقدر عليه المتصفح: تنبيه الإحرام في الطائرة إشعارًا حقيقيًا ولو كان التطبيق مغلقًا، واهتزازًا مع كل شوط، وإبقاء الشاشة مضاءة في الطواف والسعي، وورقة المشاركة، وحجم الخط الذي اخترته في إعدادات الهاتف.
+
+- `ios/project.yml` يولّد مشروع Xcode بأداة XcodeGen، و`tools/ios/sync-web.sh` ينسخ `docs/` إلى داخل التطبيق، فلا نسخة ثانية من المحتوى في المستودع.
+- `.github/workflows/ios.yml` يبني التطبيق ويفتحه في محاكي آيفون على الشاشات نفسها التي في صور الموقع، ويحفظ الصور.
+- `.github/workflows/ios-release.yml` يوقّع التطبيق ويرفعه إلى TestFlight عند وسم `ios-v1.0.0`، ويحتاج خمسة أسرار في المستودع مذكورة في رأس الملف.
 
 ### الرخصة
 
@@ -86,6 +96,8 @@ The name comes from the verse "and let them circle the Ancient House" (al-Bayt a
 - **Miqat and plane alert:** the five miqats and who enters ihram where, with an alert before landing in Jeddah timed in Jeddah time whatever the phone clock says.
 - **Preparation:** Hajj and Umrah checklists that begin with the heart, then knowledge, the bag and the papers, plus your own items.
 - **Supplications of the rites:** ihram, tawaf and saʿi, the remembrance and comprehensive duas of Arafah, al-Mashʿar al-Haram, the takbir with each pebble and the words at the sacrifice.
+- **Appearance:** six refined palettes or two colours of your own, in light or dark mode. The app tunes the shades so text stays clear, and the tests hold every palette to it.
+- **Accessibility:** four app text sizes, bolder text, higher contrast, wider line spacing, reduced motion, and screen readers announce every circuit.
 - **Duas library:** thirty topics and more than 450 supplications, with search, saving and a list of your own.
 - **Offline, no account:** the internet is needed on the first visit only, and your data never leaves your device.
 - **Arabic and English:** opens in your device language, with a dark theme and a larger dua font.
@@ -107,19 +119,30 @@ Then open `http://localhost:8080/app/`. Run the tests with `npm test`.
 ```
 docs/              the site and the app, served by GitHub Pages
   index.html       the explanation site
-  app/             the app: index.html, app.js, logic.js, app.css
+  app/             the app: index.html, app.js, logic.js, palettes.js, app.css
   data/            rite.json (Umrah and Hajj journeys, forms of Hajj, miqat, preparation), duas.json, i18n.json
   fonts/           self-hosted Noto Kufi Arabic and Scheherazade New, SIL Open Font License
   sw.js            the offline cache
 tests/             content and logic tests
-tools/shots.mjs    renders the screenshots
+ios/               the iPhone app: project.yml, Swift sources, asset catalog
+tools/shots.mjs    renders the screenshots, from the scenes in tools/scenes.mjs
+tools/brand/       draws the mark and renders every icon size
+tools/ios/         copies the web app into the iPhone app, prints simulator scenes, prepares App Store signing
 ```
 
 ### Roadmap
 
-1. Web and an installable home screen app, this release.
-2. iPhone app.
+1. Web and an installable home screen app, published.
+2. iPhone app, in `ios/`, built on GitHub and opened in the simulator on every change, waiting for the store.
 3. Android app.
+
+### The iPhone app
+
+The app carries Ateeq's pages, data and fonts inside it, so it works entirely offline, and it adds what a browser cannot: the plane ihram alert as a real notification even when the app is closed, a tap with every circuit, the screen kept on during tawaf and saʿi, the share sheet, and the text size chosen in the phone's settings.
+
+- `ios/project.yml` generates the Xcode project with XcodeGen, and `tools/ios/sync-web.sh` copies `docs/` into the app, so the repository holds no second copy of the content.
+- `.github/workflows/ios.yml` builds the app and opens it in an iPhone simulator on the same screens as the site screenshots, and keeps the pictures.
+- `.github/workflows/ios-release.yml` signs the app and uploads it to TestFlight on an `ios-v1.0.0` tag. It needs five repository secrets, listed at the top of the file.
 
 ### Licence
 

@@ -2,3 +2,12 @@ node_modules/
 .DS_Store
 *.log
 /tmp/
+
+# iPhone app: generated from docs/ and ios/project.yml
+ios/Web/
+ios/*.xcodeproj/
+ios/Ateeq/Info.plist
+ios/build/
+ios/shots/
+ios/build.log
+ios/scenes.txt
