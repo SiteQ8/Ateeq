@@ -61,7 +61,7 @@ python3 -m http.server 8080 --directory docs
 
 1. الويب وتطبيق يُثبّت على الشاشة الرئيسية، وهو منشور.
 2. تطبيق آيفون، وهو في المجلد `ios/` ويُبنى على GitHub ويُفتح في المحاكي مع كل تغيير، وينتظر النشر في المتجر.
-3. تطبيق أندرويد.
+3. تطبيق أندرويد، وهو في المجلد `android/` ويُبنى ويُفتح في محاكي أندرويد مع كل تغيير، وينتظر النشر في Google Play.
 
 ### تطبيق آيفون
 
@@ -70,6 +70,14 @@ python3 -m http.server 8080 --directory docs
 - `ios/project.yml` يولّد مشروع Xcode بأداة XcodeGen، و`tools/ios/sync-web.sh` ينسخ `docs/` إلى داخل التطبيق، فلا نسخة ثانية من المحتوى في المستودع.
 - `.github/workflows/ios.yml` يبني التطبيق ويفتحه في محاكي آيفون على الشاشات نفسها التي في صور الموقع، ويحفظ الصور.
 - `.github/workflows/ios-release.yml` يوقّع التطبيق ويرفعه إلى TestFlight عند وسم `ios-v1.0.0`، ويحتاج خمسة أسرار في المستودع مذكورة في رأس الملف.
+
+### تطبيق أندرويد
+
+مثل تطبيق آيفون يحمل عتيق كاملًا داخله ويعمل دون إنترنت، ويلوّن شريطي النظام بلوحة الألوان المختارة، ويضيف تنبيه الإحرام إشعارًا حقيقيًا، والاهتزاز مع كل شوط، وإبقاء الشاشة مضاءة، والمشاركة، وحجم الخط من إعدادات الهاتف.
+
+- `android/` مشروع Gradle بلغة Kotlin، ومهمة `copyWeb` فيه تنسخ `docs/` إلى داخل التطبيق عند كل بناء.
+- `.github/workflows/android.yml` يبني التطبيق ويفحصه ويصوّره في محاكي أندرويد على الشاشات نفسها.
+- `.github/workflows/android-release.yml` يوقّع الحزمة بمفتاح الرفع ويرسلها إلى الاختبار المغلق في Google Play عند وسم `android-v1.0.0`، ثم يحدّث صفحة المتجر من المجلد `play/`.
 
 ### الرخصة
 
@@ -125,16 +133,19 @@ docs/              the site and the app, served by GitHub Pages
   sw.js            the offline cache
 tests/             content and logic tests
 ios/               the iPhone app: project.yml, Swift sources, asset catalog
+android/           the Android app: Gradle project, Kotlin sources, resources
+play/              the Google Play listing: texts, release notes, graphics
 tools/shots.mjs    renders the screenshots, from the scenes in tools/scenes.mjs
 tools/brand/       draws the mark and renders every icon size
-tools/ios/         copies the web app into the iPhone app, prints simulator scenes, prepares App Store signing
+tools/ios/         copies the web app into the iPhone app, prints the phone scenes, prepares App Store signing
+tools/android/     emulator screenshots, Play upload and Play listing
 ```
 
 ### Roadmap
 
 1. Web and an installable home screen app, published.
 2. iPhone app, in `ios/`, built on GitHub and opened in the simulator on every change, waiting for the store.
-3. Android app.
+3. Android app, in `android/`, built and opened in an Android emulator on every change, waiting for Google Play.
 
 ### The iPhone app
 
@@ -143,6 +154,14 @@ The app carries Ateeq's pages, data and fonts inside it, so it works entirely of
 - `ios/project.yml` generates the Xcode project with XcodeGen, and `tools/ios/sync-web.sh` copies `docs/` into the app, so the repository holds no second copy of the content.
 - `.github/workflows/ios.yml` builds the app and opens it in an iPhone simulator on the same screens as the site screenshots, and keeps the pictures.
 - `.github/workflows/ios-release.yml` signs the app and uploads it to TestFlight on an `ios-v1.0.0` tag. It needs five repository secrets, listed at the top of the file.
+
+### The Android app
+
+Like the iPhone app, it carries all of Ateeq inside and works offline. It paints the system bars in the chosen palette and adds the ihram alert as a real notification, a tap with every circuit, the screen kept on, sharing, and the text size set in the phone's settings.
+
+- `android/` is a Gradle project in Kotlin, and its `copyWeb` task copies `docs/` into the app on every build.
+- `.github/workflows/android.yml` builds, lints and photographs the app on an Android emulator, on the same screens.
+- `.github/workflows/android-release.yml` signs the bundle with the upload key and sends it to the closed test on Google Play on an `android-v1.0.0` tag, then refreshes the store listing from `play/`.
 
 ### Licence
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The eight-point star with the Kaaba cut out of it, for the status bar. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M12.00,1.00 L15.22,4.22 L19.78,4.22 L19.78,8.78 L23.00,12.00 L19.78,15.22 L19.78,19.78 L15.22,19.78 L12.00,23.00 L8.78,19.78 L4.22,19.78 L4.22,15.22 L1.00,12.00 L4.22,8.78 L4.22,4.22 L8.78,4.22 Z M12.00,7.40 L15.98,9.70 L15.98,14.30 L12.00,16.60 L8.02,14.30 L8.02,9.70 Z" />
+</vector>

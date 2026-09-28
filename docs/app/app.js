@@ -13,9 +13,16 @@
   var TW_KINDS = ['umrah', 'qudum', 'ifadah', 'wada'];
   var SW_KINDS = ['umrah', 'hajj'];
   var NUSK = ['tamattu', 'qiran', 'ifrad'];
-  /* The iPhone app injects AteeqNative and answers on the 'ateeq' message handler. */
-  var NATIVE_INFO = window.AteeqNative || {};
-  var NATIVE = window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.ateeq;
+  /* The phone apps: the iPhone injects AteeqNative and answers on the 'ateeq' message handler,
+     Android exposes AteeqAndroid with info() and post(). Both take the same messages. */
+  var ANDROID = window.AteeqAndroid;
+  var NATIVE_INFO = window.AteeqNative || (function () {
+    try { return ANDROID ? JSON.parse(ANDROID.info()) : {}; } catch (e) { return {}; }
+  })();
+  var NATIVE = (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.ateeq) ||
+    (ANDROID ? { postMessage: function (m) { ANDROID.post(JSON.stringify(m)); } } : null);
+  /* A prepared state, used only when the phone app is opened for screenshots. */
+  if (NATIVE_INFO.state) { try { localStorage.setItem(KEY, NATIVE_INFO.state); } catch (e) { /* blocked */ } }
   function native(type, data) {
     if (!NATIVE) return false;
     try { NATIVE.postMessage(Object.assign({ type: type }, data || {})); return true; } catch (e) { return false; }
@@ -1019,7 +1026,7 @@
     d.style.setProperty('--dua-size', { s: '21px', m: '25px', l: '30px' }[S.size] || '25px');
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', tk.band);
-    native('theme', { band: tk.band, background: tk.marble, lightBand: LOOK.lum(tk.band) > 0.35 });
+    native('theme', { band: tk.band, background: tk.marble, card: tk.card, lightBand: LOOK.lum(tk.band) > 0.35 });
   }
   function applyPrefs() {
     var d = document.documentElement;
@@ -1050,7 +1057,7 @@
     app.innerHTML = '<main class="wrap"><p class="lead">تعذّر تحميل المحتوى، فأعد فتح الصفحة.</p><p class="lead" dir="ltr">The content could not load. Please reopen the page.</p></main>';
   });
 
-  if ('serviceWorker' in navigator && location.protocol !== 'file:' && location.protocol !== 'ateeq:') {
+  if ('serviceWorker' in navigator && location.protocol !== 'file:' && !NATIVE_INFO.platform) {
     window.addEventListener('load', function () { navigator.serviceWorker.register('../sw.js').catch(function () { /* offline cache unavailable */ }); });
   }
 })();

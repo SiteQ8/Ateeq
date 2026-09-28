@@ -1,0 +1,77 @@
+name: android
+
+# Builds the Android app on every change that reaches it: release lint, a debug apk to install
+# from Artifacts, a check that it asks for no permission beyond the internet for links and the
+# ihram notifications, and the Play screenshots taken on an emulator from the shared scenes.
+# Signing and uploading to Play happen in android-release.yml on an android-v tag.
+on:
+  push:
+    branches: [main]
+    paths: ['android/**', 'docs/app/**', 'docs/data/**', 'docs/fonts/**', 'docs/assets/**', 'tools/android/**', 'tools/scenes.mjs', 'tools/ios/scenes.mjs', '.github/workflows/android.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('android/**/*.gradle.kts', 'android/gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: Release lint and debug build
+        run: cd android && chmod +x gradlew && ./gradlew --no-daemon :app:lintRelease :app:assembleDebug
+
+      - name: The web app is inside the apk
+        run: |
+          unzip -l android/app/build/outputs/apk/debug/app-debug.apk | tee apk.txt | grep -E "assets/(app/index.html|app/palettes.js|data/rite.json|assets/mark-flat.svg)" | wc -l | grep -qx 4
+
+      - name: Permissions allowlist
+        run: |
+          AAPT2=$(ls -d $ANDROID_HOME/build-tools/*/aapt2 | sort -V | tail -1)
+          $AAPT2 dump permissions android/app/build/outputs/apk/debug/app-debug.apk | tee perms.txt
+          BAD=$(grep "uses-permission" perms.txt | grep -v -e INTERNET -e POST_NOTIFICATIONS -e DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION || true)
+          if [ -n "$BAD" ]; then echo "unexpected permission: $BAD"; exit 1; fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ateeq-android-debug
+          path: android/app/build/outputs/apk/debug/*.apk
+          retention-days: 14
+
+      - name: Enable KVM for the emulator
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      # A 1080 by 1920 screen: Play refuses screenshots longer than twice their width.
+      - name: Screenshots on an emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          profile: Nexus 5X
+          disable-animations: true
+          script: sh tools/android/screenshots.sh
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ateeq-android-screenshots
+          path: shots
+          retention-days: 14

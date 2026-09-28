@@ -15,8 +15,9 @@ const RITE = json('docs/data/rite.json');
 const BOOK = json('docs/data/duas.json');
 const I18N = json('docs/data/i18n.json');
 
-const TEXT_EXT = new Set(['.html', '.css', '.js', '.mjs', '.json', '.md', '.txt', '.yml', '.webmanifest', '.svg', '.swift', '.yaml', '.py', '.sh', '.strings']);
-const p_skip = (dir, name) => path.join(dir, name) === path.join(ROOT, 'ios', 'Web');
+const TEXT_EXT = new Set(['.html', '.css', '.js', '.mjs', '.json', '.md', '.txt', '.yml', '.webmanifest', '.svg', '.swift', '.yaml', '.py', '.sh', '.strings', '.kt', '.kts', '.xml', '.properties', '.xcprivacy']);
+const SKIP = [path.join(ROOT, 'ios', 'Web'), path.join(ROOT, 'android', 'app', 'build'), path.join(ROOT, 'android', '.gradle'), path.join(ROOT, 'android', 'build')];
+const p_skip = (dir, name) => SKIP.includes(path.join(dir, name));
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.name === '.git' || e.name === 'node_modules' || p_skip(dir, e.name)) continue;

@@ -127,5 +127,17 @@ if (fs.existsSync(ios)) {
   await png(full, 1024, path.join(ios, 'AppIcon.appiconset/AppIcon-1024.png'));
   await png(mark({ bg: false }), 600, path.join(ios, 'LaunchMark.imageset/LaunchMark.png'), true);
 }
+const res = path.join(ROOT, 'android/app/src/main/res');
+if (fs.existsSync(res)) {
+  // Adaptive icon layers: the mark inside the 66dp safe zone of a 108dp canvas, over the black.
+  await png(mark({ bg: false, scale: 0.7 }), 432, path.join(res, 'drawable-xxxhdpi/ic_launcher_foreground.png'), true);
+  const back = mark({ bg: true }).replace(/<g transform=[\s\S]*?<\/g>\s*<\/svg>/, '</svg>');
+  await png(back, 432, path.join(res, 'drawable-xxxhdpi/ic_launcher_background.png'));
+  await png(mark({ bg: true, scale: 0.86 }), 192, path.join(res, 'mipmap-xxxhdpi/ic_launcher.png'));
+  const round = mark({ bg: true, scale: 0.78 }).replace('<svg ', '<svg style="border-radius:50%" ');
+  await png(round, 192, path.join(res, 'mipmap-xxxhdpi/ic_launcher_round.png'), true);
+}
+const play = path.join(ROOT, 'play/graphics');
+if (fs.existsSync(play)) await png(full, 512, path.join(play, 'icon-512.png'));
 await browser.close();
 console.log('mark written and rendered');
