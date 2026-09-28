@@ -19,7 +19,7 @@ abstract class CopyWeb : DefaultTask() {
         val root = docs.get().asFile
         listOf("app", "data", "fonts").forEach { File(root, it).copyRecursively(File(out, it), overwrite = true) }
         val assets = File(out, "assets").apply { mkdirs() }
-        listOf("logo.svg", "mark-flat.svg", "icon.svg", "icon-180.png").forEach {
+        listOf("logo.svg", "mark-flat.svg", "mark-352.png", "icon.svg", "icon-180.png").forEach {
             File(root, "assets/$it").copyTo(File(assets, it), overwrite = true)
         }
     }

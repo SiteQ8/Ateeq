@@ -5,7 +5,7 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.4.1';
+  var VERSION = '0.4.2';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N, FAITH;
