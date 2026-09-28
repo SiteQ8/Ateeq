@@ -112,7 +112,26 @@
     };
   }
 
+  /* Phrases of dhikr that never break across lines, so a line can never end on «لا إله»
+     with «إلا الله» on the next. Their spaces become no-break spaces; the letters are
+     matched with or without their vowel marks and hamza forms. */
+  var KEEP = (function () {
+    var marks = '[\u064B-\u065F\u0670\u06D6-\u06ED]*';
+    var letter = { 'ا': '[اأإآٱ]', 'ه': '[هة]', 'ي': '[يى]' };
+    function pat(words) {
+      return words.split(' ').map(function (w) {
+        return w.split('').map(function (c) { return (letter[c] || c) + marks; }).join('');
+      }).join('\\s+');
+    }
+    var phrases = ['لا اله الا الله', 'لا اله الا انت', 'لا اله الا هو', 'الله اكبر', 'لا شريك له', 'لا شريك لك', 'سبحان الله', 'الحمد لله', 'بسم الله'];
+    return new RegExp('(' + phrases.map(pat).join('|') + ')', 'g');
+  })();
+  function keepPhrases(s) {
+    return String(s).replace(KEEP, function (m) { return m.replace(/\s+/g, '\u00A0'); });
+  }
+
   return {
+    keepPhrases: keepPhrases, KEEP: KEEP,
     num: num, arCount: arCount, enCount: enCount, normalize: normalize, search: search,
     tawaf: tawaf, sai: sai, arrivalFrom: arrivalFrom, flight: flight,
     TAWAF_LAPS: TAWAF_LAPS, SAI_LAPS: SAI_LAPS

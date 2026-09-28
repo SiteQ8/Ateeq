@@ -5,7 +5,7 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.4.0';
+  var VERSION = '0.4.1';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N, FAITH;
@@ -114,6 +114,8 @@
   };
   /* Built from the Umm al-Qura numbers and the app's own month names: some phone browsers
      carry the calendar's numbers but not its month names in every language. */
+  /* Dua and dhikr text: escaped, with its phrases of remembrance kept on one line. */
+  function arText(s) { return L.keepPhrases(esc(s)); }
   function hijri() {
     try {
       var n = {};
@@ -204,7 +206,7 @@
     var fid = 'r:' + id, fav = S.favs.indexOf(fid) >= 0;
     return '<article class="dua rite">' +
       '<div class="dua-h"><h3>' + esc(tx(d.title)) + '</h3>' + (d.ref ? '<span class="ref">' + esc(tx(d.ref)) + '</span>' : '') + '</div>' +
-      '<p class="dua-ar" lang="ar" dir="rtl">' + esc(d.ar) + '</p>' +
+      '<p class="dua-ar" lang="ar" dir="rtl">' + arText(d.ar) + '</p>' +
       (S.lang === 'en' && d.tr ? '<p class="tr" lang="en" dir="ltr">' + esc(d.tr) + '</p>' : '') +
       (S.lang === 'en' ? '<p class="mean">' + esc(d.en) + '</p>' : '') +
       (d.note ? '<p class="note">' + esc(tx(d.note)) + '</p>' : '') +
@@ -213,10 +215,10 @@
   function bookDua(d) {
     var fav = S.favs.indexOf(d.id) >= 0;
     return '<article class="dua">' + (d.ref ? '<span class="ref">' + esc(tx(d.ref)) + '</span>' : '') +
-      '<p class="dua-ar" lang="ar" dir="rtl">' + esc(d.ar) + '</p>' + acts(d.id, fav) + '</article>';
+      '<p class="dua-ar" lang="ar" dir="rtl">' + arText(d.ar) + '</p>' + acts(d.id, fav) + '</article>';
   }
   function mineCard(m) {
-    return '<article class="dua mine"><p class="dua-ar" dir="auto">' + esc(m.t) + '</p><div class="dua-act">' +
+    return '<article class="dua mine"><p class="dua-ar" dir="auto">' + arText(m.t) + '</p><div class="dua-act">' +
       '<button class="icon-btn" data-act="copy" data-id="m:' + esc(m.id) + '" aria-label="' + esc(t('copy')) + '">' + icon('copy') + '</button>' +
       '<button class="icon-btn" data-act="share" data-id="m:' + esc(m.id) + '" aria-label="' + esc(t('share')) + '">' + icon('share') + '</button>' +
       '<button class="icon-btn" data-act="mine-del" data-id="' + esc(m.id) + '" aria-label="' + esc(t('delete')) + '">' + icon('trash') + '</button></div></article>';
@@ -412,7 +414,7 @@
     var top = st.finished
       ? '<div class="done-box">' + icon('check') + '<h2>' + esc(t('tawaf_done')) + '</h2>' + next + '</div>'
       : '<p class="lap-now">' + esc(t('lap_now', { n: st.current })) + '</p>';
-    var corners = st.finished ? '' : '<div class="corner-dua"><p class="lbl">' + esc(t('tip_corners')) + '</p><p class="dua-ar sm" lang="ar" dir="rtl">' + esc(RD.corners.ar) + '</p>' +
+    var corners = st.finished ? '' : '<div class="corner-dua"><p class="lbl">' + esc(t('tip_corners')) + '</p><p class="dua-ar sm" lang="ar" dir="rtl">' + arText(RD.corners.ar) + '</p>' +
       (S.lang === 'en' ? '<p class="mean">' + esc(RD.corners.en) + '</p>' : '') + '</div>';
     var row = '<div class="row3">' +
       '<button class="btn ghost sm" data-act="t-undo"' + (T0.laps ? '' : ' disabled') + '>' + esc(t('undo')) + '</button>' +
@@ -452,7 +454,7 @@
   }
   function miniDua(id) {
     var d = RD[id];
-    return '<div class="mini"><p class="mini-t">' + esc(tx(d.title)) + '</p><p class="dua-ar xs" lang="ar" dir="rtl">' + esc(d.ar) + '</p>' +
+    return '<div class="mini"><p class="mini-t">' + esc(tx(d.title)) + '</p><p class="dua-ar xs" lang="ar" dir="rtl">' + arText(d.ar) + '</p>' +
       (S.lang === 'en' ? '<p class="mean">' + esc(d.en) + '</p>' : '') + '</div>';
   }
   function vSai(k) {
@@ -466,7 +468,7 @@
     var endCard = '<div class="card endcard"><h2>' + esc(st.at === 'safa' ? t('at_safa') : t('at_marwa')) + '</h2>' +
       (st.firstStart ? miniDua('nabda') + miniDua('safaverse') : '') +
       '<p class="mini-t">' + esc(tx(RD.safa.title)) + '</p>' +
-      '<p class="dua-ar sm" lang="ar" dir="rtl">' + esc(RD.safa.ar) + '</p>' +
+      '<p class="dua-ar sm" lang="ar" dir="rtl">' + arText(RD.safa.ar) + '</p>' +
       (S.lang === 'en' ? '<p class="mean">' + esc(RD.safa.en) + '</p>' : '') +
       '<div class="rounds">' + [1, 2, 3].map(function (x) { return '<i class="' + (x <= dh ? 'on' : '') + '"></i>'; }).join('') +
       '<span>' + esc(dh >= 3 ? t('dhikr_done') : t('dhikr_round', { n: dh + 1 })) + '</span></div>' +
@@ -705,7 +707,7 @@
     }).join('') + '</div>';
     var preview = '<div class="preview" aria-hidden="true"><div class="pv-band"><span><b>' + esc(t('app_name')) + '</b><small>' + esc(t('tagline')) + '</small></span>' +
       '<span class="brand-mark"></span></div><div class="pv-body">' +
-      '<p class="dua-ar" lang="ar" dir="rtl">' + esc(RD.talbiyah.ar) + '</p>' +
+      '<p class="dua-ar" lang="ar" dir="rtl">' + arText(RD.talbiyah.ar) + '</p>' +
       '<p class="note">' + esc(t('preview_note')) + '</p>' +
       '<div class="row"><span class="btn primary sm">' + esc(t('home_continue')) + '</span><span class="ref">' + esc(t('journey_hajj')) + '</span></div></div></div>';
     return head(t('settings_title'), { back: '#/more' }) + '<main class="wrap">' + preview +
@@ -727,7 +729,7 @@
     return S.lang === 'ar' ? 'سورة ' + sr.ar + '، الآية ' + L.num(it.ayah, 'ar') : sr.en + ' ' + it.sura + ':' + it.ayah;
   }
   function faithText(it) {
-    return it.kind === 'ayah' ? '<span class="br">﴿</span>' + esc(it.ar) + '<span class="br">﴾</span>' : '«' + esc(it.ar) + '»';
+    return it.kind === 'ayah' ? '<span class="br">﴿</span>' + arText(it.ar) + '<span class="br">﴾</span>' : '«' + arText(it.ar) + '»';
   }
   function faithCard(id, label, cls) {
     var it = FAITH && FAITH.items[id];

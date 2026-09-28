@@ -292,3 +292,21 @@ test('every station opens with a verse or hadith, each with its reference', () =
   assert.ok(faith.items[faith.name]);
   for (const g of Object.values(faith.sources)) for (const s of g) assert.match(s.url, /^https:\/\//);
 });
+
+test('phrases of remembrance never break across lines in any dua', () => {
+  const texts = [];
+  const walk = n => { if (Array.isArray(n)) n.forEach(walk); else if (n && typeof n === 'object') { if (typeof n.ar === 'string') texts.push(n.ar); Object.values(n).forEach(walk); } };
+  walk(JSON.parse(read('docs/data/rite.json')));
+  walk(JSON.parse(read('docs/data/duas.json')));
+  walk(JSON.parse(read('docs/data/faith.json')));
+  const shahada = /لَا إِلَهَ إِلَّا/;
+  assert.ok(texts.some(t => shahada.test(t)), 'the duas contain the shahada');
+  const broken = [];
+  for (const t of texts) {
+    const kept = L.keepPhrases(t);
+    for (const m of kept.matchAll(new RegExp(L.KEEP.source, 'g'))) if (m[0].includes(' ')) broken.push(m[0]);
+    if (/لَا إِلَهَ\s+إِلَّا/.test(kept.replace(/\u00A0/g, '_'))) broken.push(t.slice(0, 40));
+  }
+  assert.deepEqual(broken, []);
+  assert.equal(L.keepPhrases('لَا إِلَهَ إِلَّا اللَّهُ').includes(' '), false);
+});

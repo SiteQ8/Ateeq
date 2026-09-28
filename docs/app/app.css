@@ -353,7 +353,7 @@ details.nusk[open] summary { margin-bottom: 6px; }
 .nb-h a { color: var(--gold); font-weight: 600; }
 .nusk-box .lines li { border-bottom-color: rgba(184, 146, 75, .28); border-bottom-color: color-mix(in srgb, var(--gold-line) 30%, transparent); }
 .nusk-box .lines li:last-child { border-bottom: 0; }
-.kinds { margin: 12px 0 2px; justify-content: center; }
+.seg.small.kinds { margin: 12px 0 14px; justify-content: center; }
 .seg.small a { flex: 0 1 auto; border: 1px solid var(--hair); background: var(--card); padding: 6px 12px; font-size: calc(13.5px * var(--ts, 1)); }
 .seg.small { overflow: visible; }
 .seg.small button.on, .seg.small a.on { background: var(--btn-bg); color: var(--btn-fg); border-color: transparent; }
@@ -472,3 +472,4 @@ details.nusk[open] summary { margin-bottom: 6px; }
 .src-go .ic { width: 18px; height: 18px; }
 [dir="rtl"] .src-go .ic { transform: scaleX(-1); }
 [dir="rtl"] .src-t small { text-align: right; }
+.dua-ar, .faith-ar { overflow-wrap: break-word; }
