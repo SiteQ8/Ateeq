@@ -3,7 +3,7 @@
 // prepared screens as the web screenshots.
 import { state, scenes } from '../scenes.mjs';
 
-const pick = (process.argv[2] || 'hajj-home,arafah,home,tawaf,sai,duas,look,trusts').split(',');
+const pick = (process.argv[2] || 'hajj-home,arafah,home,tawaf,sai,tasbeeh,dates,duas,look,trusts').split(',');
 for (const lang of ['ar', 'en']) {
   for (const name of pick) {
     const scene = scenes.find(s => s[0] === name);

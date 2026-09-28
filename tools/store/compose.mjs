@@ -34,16 +34,24 @@ const SCENES = [
   { id: 'sai',
     ar: ['عدّاد السعي', 'من الصفا إلى المروة، يعرف موضعك ويضع أمامك الذكر'],
     en: ["The sa'i counter", 'From Safa to Marwah, it knows where you are and what to say'] },
+  { id: 'tasbeeh',
+    ar: ['المسبحة', 'عدّ ذكرك بلمسة، واختر العدد، ويهتز الجوال حين يكتمل'],
+    en: ['The tasbeeh', 'Count your dhikr with a tap, choose a target, and feel it when a round is complete'] },
+  { id: 'dates',
+    ar: ['الهجري والميلادي', 'حوّل بين التقويمين، واعرف أيام الحج وكم بقي على يوم عرفة'],
+    en: ['Hijri and Gregorian', 'Convert between the calendars, see the days of Hajj and the count to Arafah'] },
   { id: 'duas',
     ar: ['أدعية لكل حاجة', 'أدعية المناسك في مواضعها وأبواب الدعاء، مع البحث وحفظ ما تحب'],
     en: ['Duas for every need', 'The rite duas in their places and collections for every need, with search'] },
-  { id: 'trusts',
-    ar: ['أمانات الدعاء', 'اكتب من أوصاك بالدعاء، فتجده أمامك على الصفا والمروة وفي عرفة'],
-    en: ['Dua trusts', 'Note who asked you to pray for them, and find them on Safa, Marwah and Arafah'] },
   { id: 'look',
     ar: ['ألوانك وخطك', 'ست لوحات فاخرة، والوضع الليلي، وأدوات سهولة الاستخدام'],
     en: ['Your colours, your text', 'Six refined palettes, dark mode and accessibility tools'] },
+  { id: 'trusts',
+    ar: ['أمانات الدعاء', 'اكتب من أوصاك بالدعاء، فتجده أمامك على الصفا والمروة وفي عرفة'],
+    en: ['Dua trusts', 'Note who asked you to pray for them, and find them on Safa, Marwah and Arafah'] },
 ];
+// Google Play takes at most eight phone screenshots, so it gets the first eight.
+const PLAY_MAX = 8;
 
 const SIZES = platform === 'appstore'
   ? [{ kind: 'APP_IPHONE_67', w: 1290, h: 2796 }, { kind: 'APP_IPHONE_65', w: 1242, h: 2688 }]
@@ -121,7 +129,7 @@ try {
       const dir = platform === 'appstore' ? path.join(outDir, lang, size.kind) : path.join(outDir, folder);
       fs.rmSync(dir, { recursive: true, force: true });
       fs.mkdirSync(dir, { recursive: true });
-      for (const [i, scene] of SCENES.entries()) {
+      for (const [i, scene] of SCENES.slice(0, platform === 'play' ? PLAY_MAX : SCENES.length).entries()) {
         const raw = path.join(rawDir, `${lang}-${scene.id}.png`);
         if (!fs.existsSync(raw)) throw new Error('missing capture ' + raw);
         const copy = `${lang}-${scene.id}.png`;

@@ -1006,5 +1006,153 @@
  "src_open": {
   "ar": "مفتوح المصدر",
   "en": "Open source"
+ },
+ "tool_tasbeeh": {
+  "ar": "المسبحة",
+  "en": "Tasbeeh"
+ },
+ "tool_tasbeeh_sub": {
+  "ar": "عدّ ذكرك بلمسة",
+  "en": "Count your dhikr with a tap"
+ },
+ "tool_dates": {
+  "ar": "التاريخ",
+  "en": "Dates"
+ },
+ "tool_dates_sub": {
+  "ar": "هجري وميلادي وأيام الحج",
+  "en": "Hijri, Gregorian and the days of Hajj"
+ },
+ "tasbeeh_title": {
+  "ar": "المسبحة",
+  "en": "Tasbeeh"
+ },
+ "tb_free": {
+  "ar": "بلا حد",
+  "en": "No limit"
+ },
+ "tb_tap": {
+  "ar": "اضغط للعدّ",
+  "en": "Tap to count"
+ },
+ "tb_of": {
+  "ar": "من {n}",
+  "en": "of {n}"
+ },
+ "tb_round": {
+  "ar": "الدورات المكتملة {n}",
+  "en": "Rounds completed {n}"
+ },
+ "tb_target": {
+  "ar": "العدد",
+  "en": "Target"
+ },
+ "tb_total": {
+  "ar": "المجموع كله {n}",
+  "en": "Total {n}"
+ },
+ "tb_reset": {
+  "ar": "صفّر المسبحة",
+  "en": "Reset the counter"
+ },
+ "tb_reset_q": {
+  "ar": "أتصفّر العدّ والمجموع؟",
+  "en": "Reset the count and the total?"
+ },
+ "tb_done": {
+  "ar": "اكتمل {n}",
+  "en": "{n} complete"
+ },
+ "hajj_now": {
+  "ar": "أيام الحج الآن",
+  "en": "The days of Hajj are here"
+ },
+ "arafah_today": {
+  "ar": "اليوم يوم عرفة",
+  "en": "Today is the Day of Arafah"
+ },
+ "arafah_in": {
+  "ar": "على يوم عرفة {y}",
+  "en": "to the Day of Arafah {y}"
+ },
+ "dates_show": {
+  "ar": "التاريخ في الرئيسية",
+  "en": "Dates on the home screen"
+ },
+ "dates_both": {
+  "ar": "الاثنان",
+  "en": "Both"
+ },
+ "dates_hijri": {
+  "ar": "هجري",
+  "en": "Hijri"
+ },
+ "dates_greg": {
+  "ar": "ميلادي",
+  "en": "Gregorian"
+ },
+ "dates_title": {
+  "ar": "التاريخ",
+  "en": "Dates"
+ },
+ "dates_today": {
+  "ar": "اليوم",
+  "en": "Today"
+ },
+ "conv_title": {
+  "ar": "حوّل تاريخًا",
+  "en": "Convert a date"
+ },
+ "conv_g2h": {
+  "ar": "من ميلادي إلى هجري",
+  "en": "Gregorian to Hijri"
+ },
+ "conv_h2g": {
+  "ar": "من هجري إلى ميلادي",
+  "en": "Hijri to Gregorian"
+ },
+ "conv_pick_g": {
+  "ar": "التاريخ الميلادي",
+  "en": "Gregorian date"
+ },
+ "conv_day": {
+  "ar": "اليوم",
+  "en": "Day"
+ },
+ "conv_month": {
+  "ar": "الشهر",
+  "en": "Month"
+ },
+ "conv_year": {
+  "ar": "السنة",
+  "en": "Year"
+ },
+ "conv_short": {
+  "ar": "هذا الشهر تسعة وعشرون يومًا في تقويم أم القرى",
+  "en": "This month has 29 days in the Umm al-Qura calendar"
+ },
+ "conv_note": {
+  "ar": "التحويل بتقويم أم القرى، وقد يتقدّم أول الشهر أو يتأخر يومًا بحسب رؤية الهلال.",
+  "en": "Dates follow the Umm al-Qura calendar, and a month can begin a day earlier or later with the sighting of the moon."
+ },
+ "hajj_days": {
+  "ar": "أيام الحج {y}",
+  "en": "The days of Hajj {y}"
+ },
+ "day_tarwiyah": {
+  "ar": "يوم التروية",
+  "en": "The Day of Tarwiyah"
+ },
+ "day_arafah": {
+  "ar": "يوم عرفة",
+  "en": "The Day of Arafah"
+ },
+ "day_nahr": {
+  "ar": "يوم النحر، عيد الأضحى",
+  "en": "The Day of Sacrifice, Eid al-Adha"
+ },
+ "day_tashreeq": {
+  "ar": "من أيام التشريق",
+  "en": "A day of Tashreeq"
  }
 }

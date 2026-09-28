@@ -5,7 +5,7 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.4.2';
+  var VERSION = '0.5.0';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N, FAITH;
@@ -47,7 +47,8 @@
     return {
       lang: 'ar', theme: 'auto', size: 'm',
       mode: autoMode(), nusk: 'tamattu', done: {},
-      palette: 'kiswah', colors: { band: '#0B3A2C', accent: '#C9A55C' }, text: null,
+      palette: 'kiswah', colors: { band: '#0B3A2C', accent: '#C9A55C' }, text: null, dates: 'both',
+      tb: { phrase: 0, count: 0, target: 33, total: 0 }, conv: { mode: 'g2h', g: '', hy: 0, hm: 0, hd: 0 },
       bold: false, contrast: false, motion: false, spacing: false, haptics: true,
       tw: tw, sw: sw, twk: 'umrah', swk: 'umrah',
       favs: [], mine: [], trusts: [],
@@ -71,6 +72,9 @@
     if (d.mode !== 'hajj' && d.mode !== 'umrah') d.mode = 'umrah';
     if (d.palette !== 'custom' && !(window.AteeqLook && window.AteeqLook.PALETTES[d.palette])) d.palette = 'kiswah';
     if (!d.colors || typeof d.colors !== 'object') d.colors = { band: '#0B3A2C', accent: '#C9A55C' };
+    if (!d.tb || typeof d.tb !== 'object') d.tb = { phrase: 0, count: 0, target: 33, total: 0 };
+    if (!d.conv || typeof d.conv !== 'object') d.conv = { mode: 'g2h', g: '', hy: 0, hm: 0, hd: 0 };
+    if (['both', 'hijri', 'greg'].indexOf(d.dates) < 0) d.dates = 'both';
     return d;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* storage full or blocked */ } }
@@ -108,23 +112,25 @@
       return new Date(ms).toLocaleTimeString(S.lang === 'ar' ? 'ar-SA-u-nu-arab' : 'en-GB', { hour: '2-digit', minute: '2-digit' });
     } catch (e) { return ''; }
   }
-  var HIJRI_MONTHS = {
-    ar: ['محرم', 'صفر', 'ربيع الأول', 'ربيع الآخر', 'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'],
-    en: ['Muharram', 'Safar', 'Rabiʿ al-Awwal', 'Rabiʿ al-Akhir', 'Jumada al-Ula', 'Jumada al-Akhirah', 'Rajab', 'Shaʿban', 'Ramadan', 'Shawwal', 'Dhul-Qiʿdah', 'Dhul-Hijjah']
-  };
-  /* Built from the Umm al-Qura numbers and the app's own month names: some phone browsers
-     carry the calendar's numbers but not its month names in every language. */
   /* Dua and dhikr text: escaped, with its phrases of remembrance kept on one line. */
   function arText(s) { return L.keepPhrases(esc(s)); }
   function hijri() {
-    try {
-      var n = {};
-      new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', { day: 'numeric', month: 'numeric', year: 'numeric' })
-        .formatToParts(new Date()).forEach(function (p) { n[p.type] = parseInt(p.value, 10); });
-      if (!(n.month >= 1 && n.month <= 12) || !n.day || !n.year) return '';
-      if (S.lang === 'ar') return L.num(n.day, 'ar') + ' ' + HIJRI_MONTHS.ar[n.month - 1] + ' ' + L.num(n.year, 'ar') + ' هـ';
-      return n.day + ' ' + HIJRI_MONTHS.en[n.month - 1] + ' ' + n.year + ' AH';
-    } catch (e) { return ''; }
+    try { return L.fmtHijri(L.toHijri(L.today()), S.lang); } catch (e) { return ''; }
+  }
+  function gregorian() { return L.fmtGreg(L.today(), S.lang); }
+  /* Days, counted the Arabic way: يوم، يومان، ٣ أيام، ١١ يومًا. */
+  function daysWord(n) {
+    return S.lang === 'ar' ? L.arCount(n, { one: 'يوم واحد', two: 'يومان', few: 'أيام', many: 'يومًا' }) : L.enCount(n, 'day', 'days');
+  }
+  /* In Hajj mode the home screen counts down to the Day of Arafah. */
+  function arafahCard() {
+    var a;
+    try { a = L.nextArafah(); } catch (e) { a = null; }
+    if (!a) return '';
+    var big = a.hajjNow ? t('hajj_now') : a.days === 0 ? t('arafah_today') : daysWord(a.days);
+    var sub = a.hajjNow || a.days === 0 ? L.fmtGreg(a.date, S.lang) : t('arafah_in', { y: L.num(a.y, S.lang) }) + '، ' + L.weekday(a.date, S.lang) + ' ' + L.fmtGreg(a.date, S.lang);
+    if (S.lang !== 'ar' && !(a.hajjNow || a.days === 0)) sub = t('arafah_in', { y: a.y }) + ', ' + L.weekday(a.date, 'en') + ' ' + L.fmtGreg(a.date, 'en');
+    return '<a class="count-card" href="#/dates">' + icon('calendar') + '<span class="cc-t"><b>' + esc(big) + '</b><small>' + esc(sub) + '</small></span></a>';
   }
 
   /* ------------------------------------------------------------ icons */
@@ -147,6 +153,8 @@
     hajj: '<path d="M3 19l6-9 3 4 3-6 6 11z"/>',
     plane: '<path d="M10.5 20l1.5-6-6.5 1.5L4 14l8-5V4.5a1.5 1.5 0 0 1 3 0V9l6 4v1.5L15 13l1.5 7z"/>',
     book: '<path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19"/>',
+    beads: '<circle cx="12" cy="5" r="2"/><circle cx="17.2" cy="8" r="2"/><circle cx="17.2" cy="14" r="2"/><circle cx="6.8" cy="8" r="2"/><circle cx="6.8" cy="14" r="2"/><path d="M12 17v4M10 21h4"/>',
+    calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h2M12 14h2M16 14h.5M8 17.5h2M12 17.5h2"/>',
     ext: '<path d="M14 5h5v5M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/>',
     doc: '<path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
     globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9M12 3c-2.5 2.6-3.7 5.6-3.7 9s1.2 6.4 3.7 9"/>',
@@ -254,7 +262,7 @@
       (ci >= total
         ? '<h2 class="jc-now">' + esc(t('home_done_' + j)) + '</h2>'
         : '<p class="jc-label">' + esc(t('home_now')) + '</p><h2 class="jc-now">' + esc(tx(cur.title)) + '</h2><p class="jc-place">' + esc(tx(cur.place)) + '</p>') +
-      (j === 'hajj' ? '<p class="jc-nusk">' + esc(t('nusk_label')) + ': <b>' + esc(t('nusk_' + S.nusk)) + '</b><a href="#/journey?j=hajj">' + esc(t('nusk_change')) + '</a></p>' : '') +
+      (j === 'hajj' ? '<p class="jc-nusk">' + esc(t('nusk_label')) + ': <b>' + esc(t('nusk_' + S.nusk)) + '</b> <a href="#/journey?j=hajj">' + esc(t('nusk_change')) + '</a></p>' : '') +
       '<a class="btn primary" href="#/s/' + cur.id + '">' + esc(dc === 0 ? t('home_start_' + j) : t('home_continue')) + '</a></section>';
     var pt = pendingTrusts();
     var tools = [
@@ -263,14 +271,18 @@
       ['trusts', '#/trusts', t('tool_trusts'), pt ? t('trusts_left', { n: countTrusts(pt) }) : t('tool_trusts_sub')],
       ['miqat', '#/miqat', t('tool_miqat'), t('tool_miqat_sub')],
       ['prep', '#/prep?k=' + j, t('tool_prep'), t('tool_prep_sub')],
-      ['hajj', '#/nusuk', t('tool_nusuk'), t('tool_nusuk_sub')]
+      ['hajj', '#/nusuk', t('tool_nusuk'), t('tool_nusuk_sub')],
+      ['beads', '#/tasbeeh', t('tool_tasbeeh'), t('tool_tasbeeh_sub')],
+      ['calendar', '#/dates', t('tool_dates'), t('tool_dates_sub')]
     ].map(function (x) {
       return '<a class="tool" href="' + x[1] + '">' + icon(x[0]) + '<b>' + esc(x[2]) + '</b><span>' + esc(x[3]) + '</span></a>';
     }).join('');
-    var h = hijri();
+    var h = S.dates === 'greg' ? '' : hijri(), g = S.dates === 'hijri' ? '' : gregorian();
+    var dates = h || g ? '<p class="date">' + (h ? '<span>' + esc(h) + '</span>' : '') + (g ? '<span class="' + (h ? 'greg' : '') + '">' + esc(g) + '</span>' : '') + '</p>' : '<span></span>';
     return head(t('app_name'), { big: true, sub: t('tagline') }) +
-      '<main class="wrap"><div class="date-row">' + (h ? '<p class="date">' + esc(h) + '</p>' : '<span></span>') +
+      '<main class="wrap"><div class="date-row">' + dates +
       '<a class="look-btn" href="#/look">' + icon('look') + '<span>' + esc(t('look_short')) + '</span></a></div>' + modes + card +
+      (j === 'hajj' ? arafahCard() : '') +
       faithCard(faithOfDay(), t('faith_glimpse')) +
       '<h2 class="sec-h">' + esc(t('tools_title')) + '</h2><div class="tools">' + tools + '</div></main>';
   }
@@ -672,7 +684,8 @@
     return head(t('more_title')) + '<main class="wrap">' +
       '<nav class="links">' + links.map(function (x) { return '<a href="#/' + x[0] + '">' + icon(x[2]) + '<span>' + esc(x[1]) + '</span>' + icon('back', 'fwd') + '</a>'; }).join('') + '</nav>' +
       '<h2 class="sec-h">' + esc(t('settings')) + '</h2><div class="card set">' +
-      '<div class="set-row"><span>' + esc(t('lang')) + '</span>' + segc('lang', S.lang, [['ar', 'العربية'], ['en', 'English']]) + '</div></div>' +
+      '<div class="set-row"><span>' + esc(t('lang')) + '</span>' + segc('lang', S.lang, [['ar', 'العربية'], ['en', 'English']]) + '</div>' +
+      '<div class="set-row"><span>' + esc(t('dates_show')) + '</span>' + segc('dates', S.dates, [['both', t('dates_both')], ['hijri', t('dates_hijri')], ['greg', t('dates_greg')]]) + '</div></div>' +
       '<h2 class="sec-h">' + esc(t('install')) + '</h2><p class="note">' + esc(t('install_note')) + '</p>' +
       '<h2 class="sec-h">' + esc(t('data_title')) + '</h2><p class="note">' + esc(t('data_note')) + '</p>' +
       '<button class="btn ghost danger" data-act="erase">' + esc(t('erase_all')) + '</button>' +
@@ -755,6 +768,78 @@
       '<span class="src-t"><b>' + esc(main) + '</b>' + (rest ? '<span>' + esc(rest) + '</span>' : '') +
       '<small dir="ltr">' + esc(host) + (pdf ? ' · PDF' : '') + '</small></span><span class="src-go">' + icon('ext') + '</span></a>';
   }
+  /* ------------------------------------------------------------ tasbeeh */
+  var TB_PHRASES = [
+    { ar: 'سُبْحَانَ اللَّهِ', en: 'Subhan Allah, glory be to Allah' },
+    { ar: 'الْحَمْدُ لِلَّهِ', en: 'Al-hamdu lillah, praise be to Allah' },
+    { ar: 'اللَّهُ أَكْبَرُ', en: 'Allahu akbar, Allah is the greatest' },
+    { ar: 'لَا إِلَهَ إِلَّا اللَّهُ', en: 'La ilaha illa Allah, there is no god but Allah' },
+    { ar: 'أَسْتَغْفِرُ اللَّهَ', en: 'Astaghfirullah, I seek the forgiveness of Allah' }
+  ];
+  function vTasbeeh() {
+    var tb = S.tb, ph = TB_PHRASES[tb.phrase] || TB_PHRASES[0];
+    var phrases = '<div class="seg small wrapseg">' + TB_PHRASES.map(function (p, i) {
+      return '<button data-act="tb-phrase" data-v="' + i + '" class="' + (i === tb.phrase ? 'on' : '') + '" aria-pressed="' + (i === tb.phrase) + '" lang="ar" dir="rtl">' + arText(p.ar) + '</button>';
+    }).join('') + '</div>';
+    var targets = [['33', '٣٣'], ['99', '٩٩'], ['100', '١٠٠'], ['0', t('tb_free')]].map(function (o) {
+      var on = String(tb.target) === o[0];
+      return '<button data-act="tb-target" data-v="' + o[0] + '" class="' + (on ? 'on' : '') + '" aria-pressed="' + on + '">' + esc(S.lang === 'ar' ? o[1] : (o[0] === '0' ? t('tb_free') : o[0])) + '</button>';
+    }).join('');
+    var goal = tb.target > 0, inRound = goal ? tb.count % tb.target : tb.count, round = goal ? Math.floor(tb.count / tb.target) : 0;
+    var shown = goal && tb.count > 0 && inRound === 0 ? tb.target : inRound;
+    var frac = goal ? shown / tb.target : 0, R = 88, C = 2 * Math.PI * R;
+    var ring = '<svg class="tb-ring" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="' + R + '" class="tb-track"/>' +
+      (goal ? '<circle cx="100" cy="100" r="' + R + '" class="tb-fill" stroke-dasharray="' + (C * frac).toFixed(1) + ' ' + C.toFixed(1) + '" transform="rotate(-90 100 100)"/>' : '') + '</svg>';
+    return head(t('tasbeeh_title'), { back: '#/' }) + '<main class="wrap tasbeeh">' + phrases +
+      '<p class="tb-phrase dua-ar" lang="ar" dir="rtl">' + arText(ph.ar) + '</p>' + (S.lang === 'en' ? '<p class="note tb-en">' + esc(ph.en) + '</p>' : '') +
+      '<button class="bead" data-act="tb-tap" aria-label="' + esc(t('tb_tap')) + '">' + ring +
+      '<span class="bead-n">' + esc(L.num(shown, S.lang)) + '</span>' + (goal ? '<span class="bead-of">' + esc(t('tb_of', { n: L.num(tb.target, S.lang) })) + '</span>' : '') + '</button>' +
+      (round > 0 ? '<p class="tb-round">' + esc(t('tb_round', { n: L.num(round, S.lang) })) + '</p>' : '') +
+      '<div class="set-row"><span>' + esc(t('tb_target')) + '</span><div class="seg small">' + targets + '</div></div>' +
+      '<p class="tb-total">' + esc(t('tb_total', { n: L.num(tb.total, S.lang) })) + '</p>' +
+      '<button class="linkish" data-act="tb-reset">' + esc(t('tb_reset')) + '</button></main>';
+  }
+
+  /* ------------------------------------------------------------ dates */
+  function dayLine(date) { return L.weekday(date, S.lang) + (S.lang === 'ar' ? '، ' : ', ') + L.fmtGreg(date, S.lang); }
+  function vDates() {
+    var now = L.today(), h = L.toHijri(now), c = S.conv;
+    var todayCard = '<div class="card date-today"><p class="lbl">' + esc(t('dates_today')) + '، ' + esc(L.weekday(now, S.lang)) + '</p>' +
+      '<p class="dt-h">' + esc(L.fmtHijri(h, S.lang)) + '</p><p class="dt-g">' + esc(L.fmtGreg(now, S.lang)) + '</p></div>';
+    var modeSeg = '<div class="seg small">' + [['g2h', t('conv_g2h')], ['h2g', t('conv_h2g')]].map(function (o) {
+      return '<button data-act="conv-mode" data-v="' + o[0] + '" class="' + (c.mode === o[0] ? 'on' : '') + '" aria-pressed="' + (c.mode === o[0]) + '">' + esc(o[1]) + '</button>';
+    }).join('') + '</div>';
+    var form, result;
+    if (c.mode === 'g2h') {
+      var iso = c.g || now.toISOString().slice(0, 10), parts = iso.split('-').map(Number), gd = L.day(parts[0], parts[1], parts[2]);
+      form = '<label class="pick">' + esc(t('conv_pick_g')) + '<input type="date" data-conv="g" value="' + esc(iso) + '"></label>';
+      var hh = L.toHijri(gd);
+      result = hh ? '<p class="conv-out"><b>' + esc(L.fmtHijri(hh, S.lang)) + '</b><span>' + esc(L.weekday(gd, S.lang)) + '</span></p>' : '';
+    } else {
+      var y = c.hy || h.y, m = c.hm || h.m, d = c.hd || h.d;
+      var opt = function (from, to, cur, label) {
+        var o = '';
+        for (var i = from; i <= to; i++) o += '<option value="' + i + '"' + (i === cur ? ' selected' : '') + '>' + esc(label ? label(i) : L.num(i, S.lang)) + '</option>';
+        return o;
+      };
+      form = '<div class="conv-h"><label class="pick">' + esc(t('conv_day')) + '<select data-conv="hd">' + opt(1, 30, d) + '</select></label>' +
+        '<label class="pick">' + esc(t('conv_month')) + '<select data-conv="hm">' + opt(1, 12, m, function (i) { return L.HIJRI_MONTHS[S.lang === 'ar' ? 'ar' : 'en'][i - 1]; }) + '</select></label>' +
+        '<label class="pick">' + esc(t('conv_year')) + '<select data-conv="hy">' + opt(h.y - 5, h.y + 10, y) + '</select></label></div>';
+      var gg = L.fromHijri(y, m, d);
+      result = gg ? '<p class="conv-out"><b>' + esc(L.fmtGreg(gg, S.lang)) + '</b><span>' + esc(L.weekday(gg, S.lang)) + '</span></p>' : '<p class="conv-out short">' + esc(t('conv_short')) + '</p>';
+    }
+    var a = L.nextArafah(), days = '';
+    if (a) {
+      var names = { 8: 'day_tarwiyah', 9: 'day_arafah', 10: 'day_nahr', 11: 'day_tashreeq', 12: 'day_tashreeq', 13: 'day_tashreeq' };
+      days = '<h2 class="sec-h">' + esc(t('hajj_days', { y: L.num(a.y, S.lang) })) + '</h2><div class="card hajj-days">' + L.hajjDays(a.y).map(function (x) {
+        return '<div class="hd-row' + (x.d === 9 ? ' key' : '') + '"><span><b>' + esc(t(names[x.d])) + '</b><small>' + esc(L.fmtHijri({ y: a.y, m: 12, d: x.d }, S.lang)) + '</small></span><span class="hd-g">' + esc(x.date ? dayLine(x.date) : '') + '</span></div>';
+      }).join('') + '</div>';
+    }
+    return head(t('dates_title'), { back: '#/' }) + '<main class="wrap">' + todayCard +
+      '<h2 class="sec-h">' + esc(t('conv_title')) + '</h2><div class="card conv">' + modeSeg + form + result + '</div>' +
+      days + '<p class="note">' + esc(t('conv_note')) + '</p></main>';
+  }
+
   function vSources() {
     var name = FAITH.items[FAITH.name];
     var plaque = '<section class="plaque"><span class="brand-mark" aria-hidden="true"></span><h2>' + esc(t('why_name')) + '</h2>' +
@@ -806,6 +891,8 @@
     else if (v === 'trusts') html = vTrusts();
     else if (v === 'prep') { html = vPrep(r.q.k); tab = 'prep'; }
     else if (v === 'miqat') html = vMiqat();
+    else if (v === 'tasbeeh') html = vTasbeeh();
+    else if (v === 'dates') html = vDates();
     else if (v === 'nusuk' || v === 'hajj') { html = vNusuk(); tab = 'more'; }
     else if (v === 'more') { html = vMore(); tab = 'more'; }
     else if (v === 'look') { html = vLook(); tab = 'more'; }
@@ -814,7 +901,7 @@
     app.innerHTML = html;
     document.body.setAttribute('data-view', v || 'home');
     renderTabs(tab);
-    keepAwake(v === 'tawaf' || v === 'sai' || S.flight.on);
+    keepAwake(v === 'tawaf' || v === 'sai' || v === 'tasbeeh' || S.flight.on);
     var q = document.getElementById('dsearch');
     if (q && q.value) runSearch(q.value);
   }
@@ -1009,6 +1096,16 @@
       case 'flight-start': startFlight(); break;
       case 'flight-stop': S.flight.on = false; save(); stopTicker(); scheduleAlarms(); rerender(); break;
       case 'palette': S.palette = v; save(); applyLook(); rerender(); break;
+      case 'tb-tap':
+        S.tb.count++; S.tb.total++;
+        var full = S.tb.target > 0 && S.tb.count % S.tb.target === 0;
+        buzz(full ? [60, 60, 120] : 20, full ? 'success' : 'light'); save(); rerender();
+        announce(full ? t('tb_done', { n: S.tb.target }) : String(S.tb.target > 0 ? (S.tb.count % S.tb.target) : S.tb.count));
+        break;
+      case 'tb-phrase': S.tb.phrase = +v; S.tb.count = 0; save(); rerender(); break;
+      case 'tb-target': S.tb.target = +v; S.tb.count = 0; save(); rerender(); break;
+      case 'tb-reset': if (confirm(t('tb_reset_q'))) { S.tb.count = 0; S.tb.total = 0; save(); rerender(); } break;
+      case 'conv-mode': S.conv.mode = v; save(); rerender(); break;
       case 'toggle': S[k] = !S[k]; save(); applyLook(); rerender(); break;
       case 'text': S.text = v === 'auto' ? null : +v; save(); applyLook(); rerender(); break;
       case 'look-reset':
@@ -1027,6 +1124,9 @@
       save(); rerender();
     } else if (act === 'route') {
       S.flight.route = el.value; save(); scheduleAlarms(); rerender();
+    } else if (el.getAttribute('data-conv')) {
+      var ck2 = el.getAttribute('data-conv');
+      S.conv[ck2] = ck2 === 'g' ? el.value : +el.value; save(); rerender();
     } else if (el.getAttribute('data-color')) {
       S.colors[el.getAttribute('data-color')] = el.value; save(); applyLook(); rerender();
     }
@@ -1064,7 +1164,7 @@
     if (document.visibilityState === 'visible') {
       var v = parse().parts[0];
       wakeLock = null;
-      keepAwake(v === 'tawaf' || v === 'sai' || S.flight.on);
+      keepAwake(v === 'tawaf' || v === 'sai' || v === 'tasbeeh' || S.flight.on);
       if (S.flight.on) tick();
     }
   });

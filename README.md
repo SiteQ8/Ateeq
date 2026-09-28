@@ -30,6 +30,8 @@
 - **الميقات وتنبيه الطائرة:** المواقيت الخمسة ومن يحرم من أين، وتنبيه قبل الوصول إلى جدة يحسب الوقت بتوقيت جدة مهما كان توقيت الهاتف.
 - **التجهيز:** قوائم للحج والعمرة تبدأ بالقلب، من التوبة وردّ المظالم وكتابة الديون، ثم العلم والحقيبة والأوراق، مع بنودك الخاصة.
 - **أدعية المناسك:** أدعية الإحرام والطواف والسعي، وذكر يوم عرفة وجوامع الدعاء فيه، وذكر المشعر الحرام، والتكبير مع الحصى، ودعاء ذبح الهدي.
+- **التاريخ:** الهجري والميلادي معًا في الرئيسية، ومحوّل بين التقويمين، وأيام الحج بتواريخها، وعدّ تنازلي ليوم عرفة، والتحويل كله بتقويم أم القرى ويفحصه اختبار يومًا بيوم.
+- **المسبحة:** تعدّ الذكر بلمسة مع عدد تختاره، ويهتز الجوال حين يكتمل.
 - **المظهر:** ست لوحات ألوان فاخرة أو لونان تختارهما بنفسك، مع الوضع الفاتح والليلي، ويضبط التطبيق الدرجات حتى يبقى النص واضحًا، وتفرض الاختبارات ذلك على كل لوحة.
 - **سهولة الاستخدام:** أربعة أحجام لخط التطبيق، وخط أعرض، وتباين أعلى، وتباعد أوسع بين الأسطر، وتقليل الحركة، ويعلن قارئ الشاشة رقم كل شوط.
 - **باب الأدعية:** ثلاثون بابًا وأكثر من أربعمئة وخمسين دعاءً، مع البحث والمفضلة وقائمة دعائي.
@@ -104,6 +106,8 @@ The name comes from the verse "and let them circle the Ancient House" (al-Bayt a
 - **Miqat and plane alert:** the five miqats and who enters ihram where, with an alert before landing in Jeddah timed in Jeddah time whatever the phone clock says.
 - **Preparation:** Hajj and Umrah checklists that begin with the heart, then knowledge, the bag and the papers, plus your own items.
 - **Supplications of the rites:** ihram, tawaf and saʿi, the remembrance and comprehensive duas of Arafah, al-Mashʿar al-Haram, the takbir with each pebble and the words at the sacrifice.
+- **Dates:** Hijri and Gregorian together on the home screen, a converter between the calendars, the days of Hajj with their dates, and a count to the Day of Arafah, all on the Umm al-Qura calendar and tested day by day.
+- **Tasbeeh:** counts dhikr with a tap towards a target you choose, and taps the phone when a round is complete.
 - **Appearance:** six refined palettes or two colours of your own, in light or dark mode. The app tunes the shades so text stays clear, and the tests hold every palette to it.
 - **Accessibility:** four app text sizes, bolder text, higher contrast, wider line spacing, reduced motion, and screen readers announce every circuit.
 - **Duas library:** thirty topics and more than 450 supplications, with search, saving and a list of your own.

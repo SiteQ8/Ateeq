@@ -347,7 +347,7 @@ details.nusk[open] summary { margin-bottom: 6px; }
 .jc-title { text-decoration: none; }
 .jc-nusk { margin: -4px 0 14px; font-size: calc(14px * var(--ts, 1)); color: var(--stone); }
 .jc-nusk b { color: var(--ink); font-weight: 700; }
-.jc-nusk a { color: var(--gold); margin-inline-start: 10px; font-weight: 600; }
+.jc-nusk a { color: var(--gold); margin-inline-start: 6px; font-weight: 600; }
 .nusk-box { background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: 14px; padding: 10px 14px 2px; margin: 4px 0 12px; }
 .nb-h { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: calc(13.5px * var(--ts, 1)); color: var(--gold); font-weight: 700; }
 .nb-h a { color: var(--gold); font-weight: 600; }
@@ -473,3 +473,48 @@ details.nusk[open] summary { margin-bottom: 6px; }
 [dir="rtl"] .src-go .ic { transform: scaleX(-1); }
 [dir="rtl"] .src-t small { text-align: right; }
 .dua-ar, .faith-ar { overflow-wrap: break-word; }
+
+/* both calendars on the home screen, and the count to Arafah */
+.date span { display: block; }
+.date .greg { font-size: calc(12.5px * var(--ts, 1)); color: var(--stone); margin-top: 1px; }
+.count-card { display: flex; align-items: center; gap: 14px; margin: 12px 0; padding: 14px 16px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--gold-line); color: var(--ink); text-decoration: none; }
+.count-card .ic { width: 30px; height: 30px; flex: none; color: var(--gold); }
+.cc-t b { display: block; font-family: var(--naskh); font-weight: 700; font-size: calc(25px * var(--ts, 1)); line-height: 1.4; color: var(--gold); }
+.cc-t small { display: block; font-size: calc(13px * var(--ts, 1)); line-height: 1.7; color: var(--stone); }
+
+/* the tasbeeh */
+.tasbeeh { text-align: center; }
+.seg.small.wrapseg { flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+.seg.small.wrapseg button { font-family: var(--naskh); font-size: calc(16px * var(--ts, 1)); }
+.tb-phrase { margin: 18px 0 4px; font-size: calc((var(--dua-size) + 6px) * var(--ts, 1)); }
+.tb-en { margin: 0 0 6px; }
+.bead { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 230px; height: 230px; margin: 14px auto 8px; border: 0; border-radius: 50%;
+  background: radial-gradient(circle at 50% 38%, var(--gold-soft) 0%, var(--card) 72%); box-shadow: inset 0 0 0 1px var(--gold-line), 0 12px 32px rgba(0, 0, 0, .14); color: var(--ink); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.bead:active { transform: scale(.985); }
+.tb-ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tb-track { fill: none; stroke: var(--hair); stroke-width: 6; }
+.tb-fill { fill: none; stroke: var(--gold-line); stroke-width: 6; stroke-linecap: round; transition: stroke-dasharray .2s ease; }
+.bead-n { position: relative; font-size: calc(64px * var(--ts, 1)); font-weight: 700; line-height: 1.1; }
+.bead-of { position: relative; font-size: calc(14px * var(--ts, 1)); color: var(--gold); font-weight: 600; }
+.tb-round, .tb-total { margin: 6px 0; font-size: calc(13.5px * var(--ts, 1)); color: var(--stone); }
+.tasbeeh .set-row { margin-top: 10px; }
+
+/* the dates */
+.date-today { text-align: center; }
+.dt-h { margin: 4px 0 2px; font-family: var(--naskh); font-weight: 700; font-size: calc(27px * var(--ts, 1)); }
+.dt-g { margin: 0; font-size: calc(15px * var(--ts, 1)); color: var(--stone); }
+.conv .seg { margin-bottom: 12px; }
+.conv .seg.small { display: grid; grid-template-columns: 1fr 1fr; }
+.conv .seg.small button { white-space: normal; line-height: 1.5; }
+.conv-h { display: grid; grid-template-columns: 1fr 1.7fr 1.2fr; gap: 8px; }
+.conv select, .conv input[type="date"] { width: 100%; min-height: 46px; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--hair); background: var(--card); color: var(--ink); font: inherit; font-size: calc(15px * var(--ts, 1)); }
+.conv-out { margin: 14px 0 0; padding: 14px; border-radius: 12px; background: var(--gold-soft); text-align: center; }
+.conv-out b { display: block; font-family: var(--naskh); font-weight: 700; font-size: calc(25px * var(--ts, 1)); color: var(--ink); }
+.conv-out span { font-size: calc(14px * var(--ts, 1)); font-weight: 600; color: var(--gold); }
+.conv-out.short { font-size: calc(14px * var(--ts, 1)); color: var(--ink); }
+.hajj-days .hd-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--hair); }
+.hajj-days .hd-row:last-child { border-bottom: 0; }
+.hd-row b { display: block; font-weight: 700; }
+.hd-row small { display: block; font-size: calc(12.5px * var(--ts, 1)); color: var(--stone); }
+.hd-row.key b { color: var(--gold); }
+.hd-g { font-size: calc(14px * var(--ts, 1)); text-align: end; }

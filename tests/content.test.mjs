@@ -310,3 +310,33 @@ test('phrases of remembrance never break across lines in any dua', () => {
   assert.deepEqual(broken, []);
   assert.equal(L.keepPhrases('لَا إِلَهَ إِلَّا اللَّهُ').includes(' '), false);
 });
+
+test('Umm al-Qura dates convert both ways, day by day, and name the days of Hajj', () => {
+  const t0 = L.day(2026, 9, 28), h = L.toHijri(t0);
+  assert.deepEqual(h, { y: 1448, m: 4, d: 17 });
+  assert.equal(L.fmtHijri(h, 'ar'), '١٧ ربيع الآخر ١٤٤٨ هـ');
+  assert.equal(L.fmtGreg(t0, 'ar'), '٢٨ سبتمبر ٢٠٢٦ م');
+  assert.equal(L.fmtGreg(t0, 'en'), '28 September 2026');
+  assert.equal(L.weekday(t0, 'ar'), 'الاثنين');
+  let bad = 0;
+  for (let d = L.day(2024, 1, 1).getTime(); d < L.day(2030, 1, 1).getTime(); d += 86400000) {
+    const g = new Date(d), x = L.toHijri(g), back = L.fromHijri(x.y, x.m, x.d);
+    if (!back || back.getTime() !== g.getTime()) bad++;
+  }
+  assert.equal(bad, 0, 'every day comes back to itself');
+  const short = [];
+  for (let m = 1; m <= 12; m++) if (!L.fromHijri(1448, m, 30)) short.push(m);
+  assert.ok(short.length >= 4 && short.length <= 8, 'a year has some 29 day months');
+  const a = L.nextArafah(new Date(2026, 8, 28, 10));
+  assert.equal(a.y, 1448);
+  assert.deepEqual(L.toHijri(a.date), { y: 1448, m: 12, d: 9 });
+  assert.equal(a.days, L.daysBetween(t0, a.date));
+  assert.equal(L.hajjDays(1448).length, 6);
+  const after = L.nextArafah(new Date(2027, 5, 10, 10));
+  assert.equal(after.y, 1449, 'after the days of Hajj the count moves to the next year');
+});
+
+test('no Arabic word is written straight into a link without a space', () => {
+  const app = read('docs/app/app.js');
+  assert.equal((app.match(/<\/b><a /g) || []).length, 0);
+});

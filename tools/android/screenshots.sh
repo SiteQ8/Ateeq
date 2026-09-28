@@ -21,7 +21,7 @@ in_front() {
     | grep -E "topResumedActivity|mResumedActivity|mCurrentFocus|mFocusedApp" | grep -q "$PKG"
 }
 
-node tools/ios/scenes.mjs hajj-home,arafah,tawaf,sai,duas,trusts,look,home > shots/scenes.txt
+node tools/ios/scenes.mjs hajj-home,arafah,tawaf,sai,tasbeeh,dates,duas,look,trusts > shots/scenes.txt
 while IFS='|' read -r name lang route state; do
   r=$(printf '%s' "$route" | sed 's/^#//')
   for attempt in 1 2 3; do

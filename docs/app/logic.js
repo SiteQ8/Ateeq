@@ -130,7 +130,83 @@
     return String(s).replace(KEEP, function (m) { return m.replace(/\s+/g, '\u00A0'); });
   }
 
+  /* ------------------------------------------------------------ dates
+     Umm al-Qura dates from the calendar's numbers alone, with the app's own month and day
+     names: some phone browsers carry the numbers but not the names in every language.
+     Days are handled at noon UTC, so no time zone can move a date by one. */
+  var DAY = 86400000;
+  var HIJRI_MONTHS = {
+    ar: ['محرم', 'صفر', 'ربيع الأول', 'ربيع الآخر', 'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'],
+    en: ['Muharram', 'Safar', 'Rabiʿ al-Awwal', 'Rabiʿ al-Akhir', 'Jumada al-Ula', 'Jumada al-Akhirah', 'Rajab', 'Shaʿban', 'Ramadan', 'Shawwal', 'Dhul-Qiʿdah', 'Dhul-Hijjah']
+  };
+  var GREG_MONTHS = {
+    ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
+    en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  };
+  var WEEKDAYS = {
+    ar: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
+    en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  };
+  var UQ;
+  function uq() {
+    if (UQ === undefined) {
+      try { UQ = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', { day: 'numeric', month: 'numeric', year: 'numeric', timeZone: 'UTC' }); }
+      catch (e) { UQ = null; }
+    }
+    return UQ;
+  }
+  /* A calendar day as a Date at noon UTC. */
+  function day(y, m, d) { return new Date(Date.UTC(y, m - 1, d, 12)); }
+  function today(now) { var n = now || new Date(); return day(n.getFullYear(), n.getMonth() + 1, n.getDate()); }
+  function toHijri(date) {
+    var f = uq();
+    if (!f) return null;
+    var n = {};
+    f.formatToParts(date).forEach(function (p) { n[p.type] = parseInt(p.value, 10); });
+    return n.year > 0 && n.month >= 1 && n.month <= 12 && n.day >= 1 ? { y: n.year, m: n.month, d: n.day } : null;
+  }
+  /* The Gregorian day of a Hijri one: start from the mean length of the months, then walk
+     day by day to it. A day the month does not have (the 30th of a 29 day month) gives null. */
+  function fromHijri(y, m, d) {
+    if (!uq() || !(y > 0 && m >= 1 && m <= 12 && d >= 1 && d <= 30)) return null;
+    var t = day(622, 7, 19).getTime() + Math.round((y - 1) * 354.36708 + (m - 1) * 29.530589 + (d - 1)) * DAY;
+    for (var i = 0; i < 14; i++) {
+      var h = toHijri(new Date(t));
+      if (!h) return null;
+      if (h.y === y && h.m === m && h.d === d) return new Date(t);
+      var diff = (y - h.y) * 354.367 + (m - h.m) * 29.53 + (d - h.d);
+      var step = Math.round(diff) || (diff > 0 ? 1 : -1);
+      t += step * DAY;
+    }
+    return null;
+  }
+  function daysBetween(a, b) { return Math.round((b.getTime() - a.getTime()) / DAY); }
+  function fmtHijri(h, lang) {
+    if (!h) return '';
+    return lang === 'ar' ? num(h.d, 'ar') + ' ' + HIJRI_MONTHS.ar[h.m - 1] + ' ' + num(h.y, 'ar') + ' هـ'
+      : h.d + ' ' + HIJRI_MONTHS.en[h.m - 1] + ' ' + h.y + ' AH';
+  }
+  function fmtGreg(date, lang) {
+    var d = date.getUTCDate(), m = date.getUTCMonth(), y = date.getUTCFullYear();
+    return lang === 'ar' ? num(d, 'ar') + ' ' + GREG_MONTHS.ar[m] + ' ' + num(y, 'ar') + ' م' : d + ' ' + GREG_MONTHS.en[m] + ' ' + y;
+  }
+  function weekday(date, lang) { return WEEKDAYS[lang === 'ar' ? 'ar' : 'en'][date.getUTCDay()]; }
+  /* The days of Hajj of a Hijri year, 8 to 13 Dhul-Hijjah, as Gregorian days. */
+  function hajjDays(y) {
+    return [8, 9, 10, 11, 12, 13].map(function (d) { return { d: d, date: fromHijri(y, 12, d) }; });
+  }
+  /* The coming Day of Arafah, or today's; after the 13th the next year's. */
+  function nextArafah(now) {
+    var t = today(now), h = toHijri(t);
+    if (!h) return null;
+    var y = h.m === 12 && h.d > 13 ? h.y + 1 : h.y;
+    var date = fromHijri(y, 12, 9);
+    return date ? { y: y, date: date, days: daysBetween(t, date), hajjNow: h.m === 12 && h.d >= 8 && h.d <= 13 } : null;
+  }
+
   return {
+    toHijri: toHijri, fromHijri: fromHijri, fmtHijri: fmtHijri, fmtGreg: fmtGreg, weekday: weekday, day: day, today: today,
+    daysBetween: daysBetween, hajjDays: hajjDays, nextArafah: nextArafah, HIJRI_MONTHS: HIJRI_MONTHS, GREG_MONTHS: GREG_MONTHS,
     keepPhrases: keepPhrases, KEEP: KEEP,
     num: num, arCount: arCount, enCount: enCount, normalize: normalize, search: search,
     tawaf: tawaf, sai: sai, arrivalFrom: arrivalFrom, flight: flight,
