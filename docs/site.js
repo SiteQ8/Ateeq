@@ -10,7 +10,7 @@
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) { /* private mode */ }
   var q = new URLSearchParams(location.search).get('lang');
-  set(q === 'ar' || q === 'en' ? q : saved || (String(navigator.language || 'ar').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en'));
+  set(q === 'ar' || q === 'en' ? q : saved || 'ar');
   document.addEventListener('click', function (e) {
     if (e.target.closest('[data-lang-toggle]')) set(d.getAttribute('data-lang') === 'ar' ? 'en' : 'ar');
   });

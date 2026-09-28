@@ -48,7 +48,8 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     /// The phone's text size and platform, and a prepared state when launched for screenshots.
     private static func bootScript() -> String {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
-        var js = "window.AteeqNative = { platform: 'ios', version: \(literal(version)), textScale: \(textScale()) };"
+        let shot = UserDefaults.standard.string(forKey: "state") != nil
+        var js = "window.AteeqNative = { platform: 'ios', version: \(literal(version)), textScale: \(textScale()), shot: \(shot) };"
         if let encoded = UserDefaults.standard.string(forKey: "state"),
            let data = Data(base64Encoded: encoded),
            let json = String(data: data, encoding: .utf8) {

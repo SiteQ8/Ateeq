@@ -26,7 +26,7 @@ for (const lang of (process.env.LANGS || 'ar,en').split(',')) {
     page.on('console', m => { if (m.type() === 'error') errors.push(`${lang}/${name}: ${m.text()}`); });
     page.on('pageerror', e => errors.push(`${lang}/${name}: ${e.message}`));
     await page.addInitScript(s => { localStorage.setItem('ateeq.v1', s); }, JSON.stringify(state(lang, extra)));
-    await page.goto(`${base}/app/${hash}`, { waitUntil: 'networkidle' });
+    await page.goto(`${base}/app/?shot=1${hash}`, { waitUntil: 'networkidle' });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(300);
     await page.screenshot({ path: `${out}/${lang}-${name}.png`, fullPage: !!process.env.FULL });

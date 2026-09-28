@@ -1,6 +1,6 @@
 {
   "name": "ateeq",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "description": "Hajj and Umrah step by step, every station with what to do, say and avoid. Offline, free and open source.",
   "scripts": {

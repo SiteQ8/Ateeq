@@ -5,7 +5,7 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.3.0';
+  var VERSION = '0.3.1';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N;
@@ -41,12 +41,11 @@
     } catch (e) { return 'umrah'; }
   }
   function defaults() {
-    var nav = String(navigator.language || 'ar').toLowerCase();
     var tw = {}, sw = {};
     TW_KINDS.forEach(function (k) { tw[k] = newTw(); });
     SW_KINDS.forEach(function (k) { sw[k] = newSw(); });
     return {
-      lang: nav.indexOf('ar') === 0 ? 'ar' : 'en', theme: 'auto', size: 'm',
+      lang: 'ar', theme: 'auto', size: 'm',
       mode: autoMode(), nusk: 'tamattu', done: {},
       palette: 'kiswah', colors: { band: '#0B3A2C', accent: '#C9A55C' }, text: null,
       bold: false, contrast: false, motion: false, spacing: false, haptics: true,
@@ -1053,6 +1052,18 @@
   }
 
   /* ------------------------------------------------------------ start */
+  /* The welcome stays at least long enough to read the talbiyah, and a tap skips it.
+     Screenshot tools open the app without it. */
+  var splash = document.getElementById('splash'), splashAt = Date.now();
+  if (splash && (NATIVE_INFO.state || NATIVE_INFO.shot || /[?&]shot\b/.test(location.search))) { splash.remove(); splash = null; }
+  function hideSplash(now) {
+    if (!splash) return;
+    var el = splash;
+    splash = null;
+    var rest = now ? 0 : Math.max(0, (S.motion ? 1200 : 3300) - (Date.now() - splashAt));
+    setTimeout(function () { el.classList.add('out'); setTimeout(function () { if (el.parentNode) el.remove(); }, 800); }, rest);
+  }
+  if (splash) splash.addEventListener('click', function () { hideSplash(true); });
   Promise.all(['../data/rite.json', '../data/duas.json', '../data/i18n.json'].map(function (u) {
     return fetch(u).then(function (r) { if (!r.ok) throw new Error(u); return r.json(); });
   })).then(function (res) {
@@ -1061,10 +1072,12 @@
     BOOK.sections.forEach(function (s) { s.duas.forEach(function (d) { d.sec = s; DMAP[d.id] = d; }); });
     applyPrefs();
     render();
+    hideSplash();
     if (S.flight.on) { startTicker(); scheduleAlarms(); }
     window.addEventListener('hashchange', render);
   }).catch(function () {
     app.innerHTML = '<main class="wrap"><p class="lead">تعذّر تحميل المحتوى، فأعد فتح الصفحة.</p><p class="lead" dir="ltr">The content could not load. Please reopen the page.</p></main>';
+    hideSplash(true);
   });
 
   if ('serviceWorker' in navigator && location.protocol !== 'file:' && !NATIVE_INFO.platform) {
