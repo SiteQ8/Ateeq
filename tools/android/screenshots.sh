@@ -28,7 +28,17 @@ open_scene() {
 }
 
 mkdir -p shots
+# The phone's system log goes to a file for the whole run, so a crash leaves its reason behind.
+(adb logcat -v time > shots/logcat.txt 2>&1 &)
 node tools/ios/scenes.mjs hajj-home,arafah,tawaf,sai,duas,trusts,look,home > shots/scenes.txt
+
+# If the phone restarts, wait for it to finish booting before carrying on.
+recover() {
+  adb wait-for-device
+  until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = "1" ]; do sleep 2; done
+  (adb logcat -v time >> shots/logcat.txt 2>&1 &)
+  sleep 10
+}
 
 # The first start after installing warms up WebView, which is slow on an emulator.
 first=$(head -1 shots/scenes.txt | cut -d'|' -f4)
@@ -42,6 +52,7 @@ while IFS='|' read -r name lang route state; do
       if in_front; then break; fi
     fi
     echo "retrying $lang-$name"
+    adb get-state > /dev/null 2>&1 || { echo "the phone went away, waiting for it"; recover; }
   done
   in_front || { echo "the app never came to the front for $lang-$name"; exit 1; }
 done < shots/scenes.txt
