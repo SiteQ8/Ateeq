@@ -151,7 +151,7 @@ test('every interface string the app asks for exists', () => {
   const keys = new Set([...app.matchAll(/\bt\('([a-z0-9_]+)'\s*[,)]/g)].map(m => m[1]));
   for (const k of ['do', 'say', 'watch', 'calm', 'women']) keys.add('tab_' + k);
   for (const k of ['sections', 'rite', 'favs', 'mine']) keys.add('duas_tab_' + k);
-  for (const k of ['umrah', 'hajj']) for (const p of ['prep_', 'mode_', 'journey_', 'home_done_', 'sw_']) keys.add(p + k);
+  for (const k of ['umrah', 'hajj']) for (const p of ['prep_', 'mode_', 'journey_', 'home_done_', 'home_start_', 'sw_']) keys.add(p + k);
   for (const k of ['umrah', 'qudum', 'ifadah', 'wada']) { keys.add('tw_' + k); keys.add('twk_' + k); }
   for (const k of ['umrah', 'hajj']) keys.add('swk_' + k);
   for (const k of ['tamattu', 'qiran', 'ifrad']) keys.add('nusk_' + k);

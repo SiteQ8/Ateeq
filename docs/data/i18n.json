@@ -23,10 +23,6 @@
   "ar": "المزيد",
   "en": "More"
  },
- "home_start": {
-  "ar": "ابدأ رحلة العمرة",
-  "en": "Begin your Umrah"
- },
  "home_continue": {
   "ar": "تابع رحلتك",
   "en": "Continue your journey"
@@ -536,8 +532,8 @@
   "en": "Time to get ready. Put on your ihram"
  },
  "flight_now_intent": {
-  "ar": "حان وقت الإحرام، فانوِ وقل: لبّيك عمرة",
-  "en": "Time to enter ihram. Intend it and say Labbayka 'umratan"
+  "ar": "حان وقت الإحرام، فانوِ نسكك وقل: {w}",
+  "en": "Time to enter ihram. Make your intention and say {w}"
  },
  "flight_listen": {
   "ar": "واستمع لتنبيه طاقم الطائرة عند محاذاة الميقات، وأحرم عنده أو قبله بيسير.",
@@ -838,5 +834,13 @@
  "swk_hajj": {
   "ar": "الحج",
   "en": "Hajj"
+ },
+ "home_start_umrah": {
+  "ar": "ابدأ رحلة العمرة",
+  "en": "Begin your Umrah"
+ },
+ "home_start_hajj": {
+  "ar": "ابدأ رحلة الحج",
+  "en": "Begin your Hajj"
  }
 }

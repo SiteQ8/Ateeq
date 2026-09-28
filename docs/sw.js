@@ -1,6 +1,6 @@
 /* Ateeq offline cache: everything the app needs is cached on the first visit,
    then served from the cache while a fresh copy is fetched in the background. */
-var VERSION = 'ateeq-0.2.0';
+var VERSION = 'ateeq-0.2.1';
 var ASSETS = [
   './', 'index.html', 'site.css', 'site.js', 'privacy.html',
   'app/', 'app/index.html', 'app/app.css', 'app/app.js', 'app/logic.js', 'app/manifest.webmanifest',

@@ -59,6 +59,8 @@ const scenes = [
   ['nahr', '#/s/h-nahr', { mode: 'hajj' }], ['tashreeq', '#/s/h-tashreeq', { mode: 'hajj' }], ['nusuk', '#/nusuk', { mode: 'hajj' }],
   ['ifadah', '#/tawaf?k=ifadah', { mode: 'hajj', tw: tw(7, 0, 4) }], ['wada-done', '#/tawaf?k=wada', { mode: 'hajj', tw: tw(7, 0, 7, 7) }],
   ['hajj-sai-done', '#/sai?k=hajj', { mode: 'hajj', sw: sw(7, 7) }], ['prep-hajj', '#/prep?k=hajj', { mode: 'hajj' }],
+  ['hajj-new', '#/', { mode: 'hajj', done: {} }],
+  ['miqat-qiran', '#/miqat', { mode: 'hajj', nusk: 'qiran', flight: { route: 'east', time: '', arrival: now + 30 * 60000, on: true } }],
   ['dark-arafah', '#/s/h-arafah', { mode: 'hajj', theme: 'dark' }], ['dark-hajj-home', '#/', { mode: 'hajj', theme: 'dark' }]
 ];
 

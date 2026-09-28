@@ -4,7 +4,7 @@
 
   var L = window.AteeqLogic;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.2.0';
+  var VERSION = '0.2.1';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N;
@@ -219,7 +219,7 @@
         ? '<h2 class="jc-now">' + esc(t('home_done_' + j)) + '</h2>'
         : '<p class="jc-label">' + esc(t('home_now')) + '</p><h2 class="jc-now">' + esc(tx(cur.title)) + '</h2><p class="jc-place">' + esc(tx(cur.place)) + '</p>') +
       (j === 'hajj' ? '<p class="jc-nusk">' + esc(t('nusk_label')) + ': <b>' + esc(t('nusk_' + S.nusk)) + '</b><a href="#/journey?j=hajj">' + esc(t('nusk_change')) + '</a></p>' : '') +
-      '<a class="btn primary" href="#/s/' + cur.id + '">' + esc(dc === 0 ? t('home_start') : t('home_continue')) + '</a></section>';
+      '<a class="btn primary" href="#/s/' + cur.id + '">' + esc(dc === 0 ? t('home_start_' + j) : t('home_continue')) + '</a></section>';
     var pt = pendingTrusts();
     var tools = [
       ['tawaf', '#/tawaf', t('tool_tawaf'), t('tool_tawaf_sub')],
@@ -565,12 +565,17 @@
     var rs = RITE.miqat.routes;
     return rs.filter(function (r) { return r.id === S.flight.route; })[0] || rs[0];
   }
+  function intentWords() {
+    var id = S.mode === 'hajj' ? { tamattu: 'niyyah', qiran: 'qiran', ifrad: 'hajj' }[S.nusk] : 'niyyah';
+    var d = RD[id];
+    return t('flight_now_intent', { w: S.lang === 'en' && d.tr ? d.tr : d.ar });
+  }
   function flightStatusHtml() {
     var F = S.flight;
     if (!F.on || !F.arrival) return '';
     var rt = flightRoute(), ph = L.flight(F.arrival, Date.now(), rt);
     if (ph.phase === 'past') return '<p class="fs past">' + esc(t('flight_past')) + '</p>';
-    if (ph.phase === 'intent') return '<p class="fs now">' + esc(t('flight_now_intent')) + '</p>';
+    if (ph.phase === 'intent') return '<p class="fs now">' + esc(intentWords()) + '</p>';
     if (ph.phase === 'prepare') return '<p class="fs now">' + esc(t('flight_now_prepare')) + '</p>' +
       (ph.toIntent != null ? '<p class="fs">' + esc(t('flight_to_intent', { m: countMin(ph.toIntent) })) + '</p>' : '<p class="fs">' + esc(t('flight_listen')) + '</p>');
     return '<p class="fs">' + esc(t('flight_to_prepare', { m: countMin(ph.toPrepare) })) + '</p>' +
@@ -694,7 +699,13 @@
   function rerender() { var y = window.scrollY; render(); window.scrollTo(0, y); }
 
   /* ------------------------------------------------------------ device helpers */
-  function buzz(p) { try { if (navigator.vibrate) navigator.vibrate(p); } catch (e) { /* not supported */ } }
+  /* browsers refuse to vibrate before the first tap, so wait for it */
+  function buzz(p) {
+    try {
+      var ua = navigator.userActivation;
+      if (navigator.vibrate && (!ua || ua.hasBeenActive)) navigator.vibrate(p);
+    } catch (e) { /* not supported */ }
+  }
   function keepAwake(on) {
     if (!('wakeLock' in navigator)) return;
     if (on && !wakeLock) {
@@ -761,7 +772,7 @@
     if (box) box.innerHTML = flightStatusHtml();
     if (ph.phase !== lastPhase) {
       if (ph.phase === 'prepare') { showBanner(t('flight_now_prepare')); buzz([200, 120, 200]); }
-      if (ph.phase === 'intent') { showBanner(t('flight_now_intent')); buzz([300, 150, 300, 150, 300]); }
+      if (ph.phase === 'intent') { showBanner(intentWords()); buzz([300, 150, 300, 150, 300]); }
       lastPhase = ph.phase;
     }
     if (ph.phase === 'past') { S.flight.on = false; save(); stopTicker(); keepAwake(false); }
