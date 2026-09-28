@@ -978,5 +978,33 @@
  "look_reset": {
   "ar": "أعد المظهر وسهولة الاستخدام إلى الأصل",
   "en": "Restore the default look and accessibility"
+ },
+ "faith_pause": {
+  "ar": "وقفة",
+  "en": "A pause"
+ },
+ "faith_glimpse": {
+  "ar": "لمحة إيمانية",
+  "en": "A moment of faith"
+ },
+ "why_name": {
+  "ar": "لماذا عتيق؟",
+  "en": "Why Ateeq?"
+ },
+ "name_note": {
+  "ar": "أخذ التطبيق اسمه من هذه الآية التي وصف الله فيها بيته الحرام بالبيت العتيق، وكل محطة فيه خطوة في الطريق إليه.",
+  "en": "The app takes its name from this verse, where Allah calls His Sacred House the ancient House, and every station in it is a step on the way there."
+ },
+ "src_rite": {
+  "ar": "صفة المناسك",
+  "en": "How the rites are described"
+ },
+ "src_texts": {
+  "ar": "الآيات والأحاديث",
+  "en": "Verses and hadith"
+ },
+ "src_open": {
+  "ar": "مفتوح المصدر",
+  "en": "Open source"
  }
 }

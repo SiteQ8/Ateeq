@@ -1,10 +1,10 @@
 /* Ateeq offline cache: everything the app needs is cached on the first visit,
    then served from the cache while a fresh copy is fetched in the background. */
-var VERSION = 'ateeq-0.3.1';
+var VERSION = 'ateeq-0.4.0';
 var ASSETS = [
   './', 'index.html', 'site.css', 'site.js', 'privacy.html',
   'app/', 'app/index.html', 'app/app.css', 'app/app.js', 'app/logic.js', 'app/palettes.js', 'app/manifest.webmanifest',
-  'data/rite.json', 'data/duas.json', 'data/i18n.json',
+  'data/rite.json', 'data/duas.json', 'data/i18n.json', 'data/faith.json',
   'fonts/fonts.css',
   'fonts/NotoKufiArabic-400-arabic.woff2', 'fonts/NotoKufiArabic-400-latin.woff2', 'fonts/NotoKufiArabic-400-latin-ext.woff2',
   'fonts/ScheherazadeNew-400-arabic.woff2', 'fonts/ScheherazadeNew-400-latin.woff2', 'fonts/ScheherazadeNew-400-latin-ext.woff2',

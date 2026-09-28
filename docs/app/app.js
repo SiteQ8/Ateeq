@@ -5,10 +5,10 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.3.1';
+  var VERSION = '0.4.0';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
-  var RITE, BOOK, I18N;
+  var RITE, BOOK, I18N, FAITH;
   var RD = {}, DMAP = {};
   var TW_KINDS = ['umrah', 'qudum', 'ifadah', 'wada'];
   var SW_KINDS = ['umrah', 'hajj'];
@@ -145,6 +145,10 @@
     hajj: '<path d="M3 19l6-9 3 4 3-6 6 11z"/>',
     plane: '<path d="M10.5 20l1.5-6-6.5 1.5L4 14l8-5V4.5a1.5 1.5 0 0 1 3 0V9l6 4v1.5L15 13l1.5 7z"/>',
     book: '<path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19"/>',
+    ext: '<path d="M14 5h5v5M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/>',
+    doc: '<path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9M12 3c-2.5 2.6-3.7 5.6-3.7 9s1.2 6.4 3.7 9"/>',
+    code: '<path d="M8.5 8l-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/>',
     look: '<path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.9-.7-1.3-.7-2.2 0-1 .8-1.6 1.7-1.6H17a4 4 0 0 0 4-4C21 6.7 17 3 12 3z"/><circle cx="7.6" cy="11.2" r="1.1"/><circle cx="10.2" cy="7.4" r="1.1"/><circle cx="14.6" cy="7.4" r="1.1"/>'
   };
   function icon(name, cls) {
@@ -265,6 +269,7 @@
     return head(t('app_name'), { big: true, sub: t('tagline') }) +
       '<main class="wrap"><div class="date-row">' + (h ? '<p class="date">' + esc(h) + '</p>' : '<span></span>') +
       '<a class="look-btn" href="#/look">' + icon('look') + '<span>' + esc(t('look_short')) + '</span></a></div>' + modes + card +
+      faithCard(faithOfDay(), t('faith_glimpse')) +
       '<h2 class="sec-h">' + esc(t('tools_title')) + '</h2><div class="tools">' + tools + '</div></main>';
   }
 
@@ -333,7 +338,7 @@
       (next ? '<a class="btn ghost sm" href="#/s/' + next.id + '">' + esc(t('next_station')) + '</a>' : '<span></span>') + '</div>';
     var srcs = '<details class="srcs"><summary>' + esc(t('station_sources')) + '</summary>' + srcList(s.src) + '</details>';
     return head(tx(s.title), { back: '#/journey?j=' + j, sub: t('station_of', { n: i + 1, total: list.length }) + sep() + tx(s.place) }) +
-      '<main class="wrap">' + stationTools(s) + seg + (s.trusts ? momentBar() : '') + '<div class="panel">' + body + '</div>' + nav + srcs + '</main>';
+      '<main class="wrap">' + faithCard(FAITH.stations[s.id], t('faith_pause'), 'at-station') + stationTools(s) + seg + (s.trusts ? momentBar() : '') + '<div class="panel">' + body + '</div>' + nav + srcs + '</main>';
   }
 
   /* ------------------------------------------------------------ tawaf */
@@ -715,9 +720,53 @@
       '<p class="note">' + esc(t('a11y_note')) + '</p>' +
       '<button class="linkish" data-act="look-reset">' + esc(t('look_reset')) + '</button></main>';
   }
+  /* A verse or a hadith in a gold frame: the faith that runs under every step. */
+  function faithRef(it) {
+    if (it.kind === 'hadith') return tx(it.src);
+    var sr = FAITH.surahs[String(it.sura)];
+    return S.lang === 'ar' ? 'سورة ' + sr.ar + '، الآية ' + L.num(it.ayah, 'ar') : sr.en + ' ' + it.sura + ':' + it.ayah;
+  }
+  function faithText(it) {
+    return it.kind === 'ayah' ? '<span class="br">﴿</span>' + esc(it.ar) + '<span class="br">﴾</span>' : '«' + esc(it.ar) + '»';
+  }
+  function faithCard(id, label, cls) {
+    var it = FAITH && FAITH.items[id];
+    if (!it) return '';
+    return '<figure class="faith' + (cls ? ' ' + cls : '') + '"><span class="faith-orn" aria-hidden="true"></span>' +
+      (label ? '<span class="faith-lbl">' + esc(label) + '</span>' : '') +
+      '<p class="faith-ar" lang="ar" dir="rtl">' + faithText(it) + '</p>' +
+      (S.lang === 'en' ? '<p class="faith-en">' + esc(it.en) + '</p>' : '') +
+      '<figcaption class="faith-ref">' + esc(faithRef(it)) + '</figcaption></figure>';
+  }
+  /* One verse or hadith a day on the home screen, the same for everyone on that day. */
+  function faithOfDay() {
+    var ids = Object.keys(FAITH.items), day = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000);
+    return ids[day % ids.length];
+  }
+  function srcCard(title, url, kind) {
+    var full = tx(title), cut = full.indexOf(S.lang === 'ar' ? '،' : ','), host = '';
+    try { host = new URL(url).hostname.replace(/^www\./, ''); } catch (e) { /* not a full address */ }
+    var main = cut > 0 ? full.slice(0, cut) : full, rest = cut > 0 ? full.slice(cut + 1).trim() : '';
+    var pdf = /\.pdf($|\?)/i.test(url);
+    var ic = kind || (pdf ? 'doc' : 'globe');
+    return '<a class="src-card" href="' + esc(url) + '" target="_blank" rel="noopener"><span class="src-ic">' + icon(ic) + '</span>' +
+      '<span class="src-t"><b>' + esc(main) + '</b>' + (rest ? '<span>' + esc(rest) + '</span>' : '') +
+      '<small dir="ltr">' + esc(host) + (pdf ? ' · PDF' : '') + '</small></span><span class="src-go">' + icon('ext') + '</span></a>';
+  }
   function vSources() {
-    return head(t('sources'), { back: '#/more' }) + '<main class="wrap"><p class="lead">' + esc(t('sources_intro')) + '</p>' +
-      srcList(RITE.sources.map(function (s) { return s.id; })) + '</main>';
+    var name = FAITH.items[FAITH.name];
+    var plaque = '<section class="plaque"><span class="brand-mark" aria-hidden="true"></span><h2>' + esc(t('why_name')) + '</h2>' +
+      '<p class="faith-ar" lang="ar" dir="rtl">' + faithText(name) + '</p>' +
+      (S.lang === 'en' ? '<p class="faith-en">' + esc(name.en) + '</p>' : '') +
+      '<p class="faith-ref">' + esc(faithRef(name)) + '</p><p class="plaque-note">' + esc(t('name_note')) + '</p></section>';
+    var rite = RITE.sources.map(function (s) { return srcCard(s.title, s.url); }).join('');
+    var texts = FAITH.sources.texts.map(function (s) { return srcCard(s.title, s.url, 'book'); }).join('');
+    var open = FAITH.sources.open.map(function (s, i) { return srcCard(s.title, s.url, i === 0 ? 'code' : 'globe'); }).join('');
+    return head(t('sources'), { back: '#/more' }) + '<main class="wrap">' + plaque +
+      '<p class="lead">' + esc(t('sources_intro')) + '</p>' +
+      '<h2 class="sec-h">' + esc(t('src_rite')) + '</h2><div class="src-cards">' + rite + '</div>' +
+      '<h2 class="sec-h">' + esc(t('src_texts')) + '</h2><div class="src-cards">' + texts + '</div>' +
+      '<h2 class="sec-h">' + esc(t('src_open')) + '</h2><div class="src-cards">' + open + '</div></main>';
   }
 
   /* ------------------------------------------------------------ router */
@@ -1064,10 +1113,10 @@
     setTimeout(function () { el.classList.add('out'); setTimeout(function () { if (el.parentNode) el.remove(); }, 800); }, rest);
   }
   if (splash) splash.addEventListener('click', function () { hideSplash(true); });
-  Promise.all(['../data/rite.json', '../data/duas.json', '../data/i18n.json'].map(function (u) {
+  Promise.all(['../data/rite.json', '../data/duas.json', '../data/i18n.json', '../data/faith.json'].map(function (u) {
     return fetch(u).then(function (r) { if (!r.ok) throw new Error(u); return r.json(); });
   })).then(function (res) {
-    RITE = res[0]; BOOK = res[1]; I18N = res[2];
+    RITE = res[0]; BOOK = res[1]; I18N = res[2]; FAITH = res[3];
     RITE.duas.forEach(function (d) { RD[d.id] = d; });
     BOOK.sections.forEach(function (s) { s.duas.forEach(function (d) { d.sec = s; DMAP[d.id] = d; }); });
     applyPrefs();

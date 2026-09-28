@@ -49,6 +49,7 @@ export const scenes = [
   ['hajj-new', '#/', { mode: 'hajj', done: {} }],
   ['miqat-qiran', '#/miqat', { mode: 'hajj', nusk: 'qiran', flight: { route: 'east', time: '', arrival: now + 30 * 60000, on: true } }],
   ['dark-arafah', '#/s/h-arafah', { mode: 'hajj', theme: 'dark' }],
+  ['sources', '#/sources'], ['station-sai', '#/s/sai'], ['station-ifadah-dark', '#/s/h-ifadah', { mode: 'hajj', theme: 'dark' }],
   ['look', '#/look'], ['look-custom', '#/look', { palette: 'custom', colors: { band: '#5B2A86', accent: '#E9B949' } }],
   ['home-emerald', '#/', { mode: 'hajj', palette: 'emerald' }], ['home-navy-dark', '#/', { mode: 'hajj', palette: 'navy', theme: 'dark' }],
   ['home-burgundy', '#/', { palette: 'burgundy' }], ['home-sand', '#/', { palette: 'sand' }], ['home-graphite', '#/', { palette: 'graphite' }],

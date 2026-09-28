@@ -278,3 +278,17 @@ test('the text size setting reaches every font size outside the drawings', () =>
   assert.equal(LOOK.textScaleFor(null, 1.3), 1.25);
   assert.equal(LOOK.textScaleFor(2), 1.25);
 });
+
+test('every station opens with a verse or hadith, each with its reference', () => {
+  const faith = JSON.parse(read('docs/data/faith.json'));
+  const rite = JSON.parse(read('docs/data/rite.json'));
+  const ids = [...rite.stations, ...rite.hajjStations].map(s => s.id);
+  assert.deepEqual(ids.filter(id => !faith.items[faith.stations[id]]), []);
+  for (const [k, it] of Object.entries(faith.items)) {
+    assert.ok(ARABIC.test(it.ar) && it.en && !ARABIC.test(it.en), k);
+    if (it.kind === 'ayah') assert.ok(faith.surahs[String(it.sura)] && it.ayah > 0, k);
+    else assert.ok(it.kind === 'hadith' && it.src && it.src.ar && it.src.en, k);
+  }
+  assert.ok(faith.items[faith.name]);
+  for (const g of Object.values(faith.sources)) for (const s of g) assert.match(s.url, /^https:\/\//);
+});

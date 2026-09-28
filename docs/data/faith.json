@@ -1,0 +1,231 @@
+{
+ "surahs": {
+  "2": {
+   "ar": "البقرة",
+   "en": "Al-Baqarah"
+  },
+  "3": {
+   "ar": "آل عمران",
+   "en": "Aal Imran"
+  },
+  "22": {
+   "ar": "الحج",
+   "en": "Al-Hajj"
+  }
+ },
+ "items": {
+  "complete": {
+   "kind": "ayah",
+   "ar": "وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ",
+   "en": "And complete the Hajj and 'umrah for Allah.",
+   "sura": 2,
+   "ayah": 196
+  },
+  "provision": {
+   "kind": "ayah",
+   "ar": "وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَىٰ",
+   "en": "And take provisions, but indeed, the best provision is fear of Allah.",
+   "sura": 2,
+   "ayah": 197
+  },
+  "proclaim": {
+   "kind": "ayah",
+   "ar": "وَأَذِّنْ فِي النَّاسِ بِالْحَجِّ يَأْتُوكَ رِجَالًا وَعَلَىٰ كُلِّ ضَامِرٍ يَأْتِينَ مِنْ كُلِّ فَجٍّ عَمِيقٍ",
+   "en": "And proclaim to the people the Hajj [pilgrimage]; they will come to you on foot and on every lean camel; they will come from every distant pass.",
+   "sura": 22,
+   "ayah": 27
+  },
+  "ancient": {
+   "kind": "ayah",
+   "ar": "وَلْيَطَّوَّفُوا بِالْبَيْتِ الْعَتِيقِ",
+   "en": "And [let them] perform Tawaf around the ancient House.",
+   "sura": 22,
+   "ayah": 29
+  },
+  "safa": {
+   "kind": "ayah",
+   "ar": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِنْ شَعَائِرِ اللَّهِ",
+   "en": "Indeed, as-Safa and al-Marwah are among the symbols of Allah.",
+   "sura": 2,
+   "ayah": 158
+  },
+  "mashar": {
+   "kind": "ayah",
+   "ar": "فَإِذَا أَفَضْتُمْ مِنْ عَرَفَاتٍ فَاذْكُرُوا اللَّهَ عِنْدَ الْمَشْعَرِ الْحَرَامِ",
+   "en": "But when you depart from 'Arafat, remember Allah at al-Mash'ar al-Haram.",
+   "sura": 2,
+   "ayah": 198
+  },
+  "days": {
+   "kind": "ayah",
+   "ar": "وَاذْكُرُوا اللَّهَ فِي أَيَّامٍ مَعْدُودَاتٍ",
+   "en": "And remember Allah during [specific] numbered days.",
+   "sura": 2,
+   "ayah": 203
+  },
+  "meat": {
+   "kind": "ayah",
+   "ar": "لَنْ يَنَالَ اللَّهَ لُحُومُهَا وَلَا دِمَاؤُهَا وَلَٰكِنْ يَنَالُهُ التَّقْوَىٰ مِنْكُمْ",
+   "en": "Their meat will not reach Allah, nor will their blood, but what reaches Him is piety from you.",
+   "sura": 22,
+   "ayah": 37
+  },
+  "symbols": {
+   "kind": "ayah",
+   "ar": "ذَٰلِكَ وَمَنْ يُعَظِّمْ شَعَائِرَ اللَّهِ فَإِنَّهَا مِنْ تَقْوَى الْقُلُوبِ",
+   "en": "That [is so]. And whoever honors the symbols of Allah, indeed, it is from the piety of hearts.",
+   "sura": 22,
+   "ayah": 32
+  },
+  "accept": {
+   "kind": "ayah",
+   "ar": "رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ",
+   "en": "Our Lord, accept [this] from us. Indeed You are the Hearing, the Knowing.",
+   "sura": 2,
+   "ayah": 127
+  },
+  "obligation": {
+   "kind": "ayah",
+   "ar": "وَلِلَّهِ عَلَى النَّاسِ حِجُّ الْبَيْتِ مَنِ اسْتَطَاعَ إِلَيْهِ سَبِيلًا",
+   "en": "And [due] to Allah from the people is a pilgrimage to the House, for whoever is able to find thereto a way.",
+   "sura": 3,
+   "ayah": 97
+  },
+  "signs": {
+   "kind": "ayah",
+   "ar": "فِيهِ آيَاتٌ بَيِّنَاتٌ مَقَامُ إِبْرَاهِيمَ ۖ وَمَنْ دَخَلَهُ كَانَ آمِنًا",
+   "en": "In it are clear signs [such as] the standing place of Abraham. And whoever enters it shall be safe.",
+   "sura": 3,
+   "ayah": 97
+  },
+  "return": {
+   "kind": "ayah",
+   "ar": "وَإِذْ جَعَلْنَا الْبَيْتَ مَثَابَةً لِلنَّاسِ وَأَمْنًا",
+   "en": "And [mention] when We made the House a place of return for the people and [a place of] security.",
+   "sura": 2,
+   "ayah": 125
+  },
+  "maqam": {
+   "kind": "ayah",
+   "ar": "وَاتَّخِذُوا مِنْ مَقَامِ إِبْرَاهِيمَ مُصَلًّى",
+   "en": "And take, [O believers], from the standing place of Abraham a place of prayer.",
+   "sura": 2,
+   "ayah": 125
+  },
+  "niyyah": {
+   "kind": "hadith",
+   "ar": "إنَّما الأعْمالُ بالنِّيّاتِ، وإنَّما لِكُلِّ امْرِئٍ ما نَوَى",
+   "en": "Actions are only by intentions, and every person shall have only what he intended.",
+   "src": {
+    "ar": "رواه البخاري ومسلم",
+    "en": "Reported by al-Bukhari and Muslim"
+   }
+  },
+  "mabrur": {
+   "kind": "hadith",
+   "ar": "العُمْرَةُ إلى العُمْرَةِ كَفَّارَةٌ لِما بيْنَهُمَا، والحَجُّ المَبْرُورُ ليسَ له جَزَاءٌ إلَّا الجَنَّةُ",
+   "en": "One Umrah to the next is an expiation for what lies between them, and an accepted Hajj has no reward but Paradise.",
+   "src": {
+    "ar": "رواه البخاري ومسلم",
+    "en": "Reported by al-Bukhari and Muslim"
+   }
+  },
+  "rafath": {
+   "kind": "hadith",
+   "ar": "مَن حَجَّ لِلَّهِ فَلَمْ يَرْفُثْ، ولَمْ يَفْسُقْ، رَجَعَ كَيَومِ ولَدَتْهُ أُمُّهُ",
+   "en": "Whoever performs Hajj for Allah and avoids obscenity and wrongdoing returns as on the day his mother bore him.",
+   "src": {
+    "ar": "رواه البخاري ومسلم",
+    "en": "Reported by al-Bukhari and Muslim"
+   }
+  },
+  "arafah": {
+   "kind": "hadith",
+   "ar": "ما مِن يَومٍ أَكْثَرَ مِن أَنْ يُعْتِقَ اللَّهُ فيه عَبْدًا مِنَ النَّارِ، مِن يَومِ عَرَفَةَ، وإنَّه لَيَدْنُو، ثُمَّ يُبَاهِي بهِمُ المَلَائِكَةَ، فيَقولُ: ما أَرَادَ هَؤُلَاءِ؟",
+   "en": "There is no day on which Allah frees more servants from the Fire than the Day of Arafah. He draws near, then speaks proudly of them to the angels, saying: What do these want?",
+   "src": {
+    "ar": "رواه مسلم",
+    "en": "Reported by Muslim"
+   }
+  }
+ },
+ "stations": {
+  "safar": "complete",
+  "before": "provision",
+  "ihram": "niyyah",
+  "road": "proclaim",
+  "enter": "return",
+  "tawaf": "ancient",
+  "maqam": "maqam",
+  "sai": "safa",
+  "halq": "mabrur",
+  "done": "accept",
+  "h-safar": "obligation",
+  "h-ihram": "rafath",
+  "h-arrive": "signs",
+  "h-tarwiyah": "symbols",
+  "h-arafah": "arafah",
+  "h-muzdalifah": "mashar",
+  "h-nahr": "meat",
+  "h-ifadah": "ancient",
+  "h-tashreeq": "days",
+  "h-wada": "mabrur",
+  "h-done": "accept"
+ },
+ "name": "ancient",
+ "sources": {
+  "texts": [
+   {
+    "title": {
+     "ar": "القرآن الكريم، النص المدقّق من مشروع تنزيل",
+     "en": "The Qur'an, the verified text of the Tanzil project"
+    },
+    "url": "https://tanzil.net"
+   },
+   {
+    "title": {
+     "ar": "معاني القرآن بالإنجليزية، ترجمة صحيح الدولية",
+     "en": "The meanings of the Qur'an in English, Saheeh International"
+    },
+    "url": "https://tanzil.net/trans/"
+   },
+   {
+    "title": {
+     "ar": "صحيح البخاري",
+     "en": "Sahih al-Bukhari"
+    },
+    "url": "https://sunnah.com/bukhari"
+   },
+   {
+    "title": {
+     "ar": "صحيح مسلم",
+     "en": "Sahih Muslim"
+    },
+    "url": "https://sunnah.com/muslim"
+   },
+   {
+    "title": {
+     "ar": "الموسوعة الحديثية، الدرر السنية",
+     "en": "The Hadith Encyclopedia, Dorar"
+    },
+    "url": "https://dorar.net/hadith"
+   }
+  ],
+  "open": [
+   {
+    "title": {
+     "ar": "شيفرة عتيق، مفتوحة المصدر على GitHub",
+     "en": "Ateeq's source code, open on GitHub"
+    },
+    "url": "https://github.com/SiteQ8/Ateeq"
+   },
+   {
+    "title": {
+     "ar": "خطا Noto Kufi Arabic وScheherazade New، برخصة الخطوط المفتوحة من SIL",
+     "en": "The Noto Kufi Arabic and Scheherazade New fonts, under the SIL Open Font License"
+    },
+    "url": "https://openfontlicense.org"
+   }
+  ]
+ }
+}
