@@ -82,6 +82,7 @@ def main():
     ap.add_argument('--aab', required=True)
     ap.add_argument('--track', default='internal')
     ap.add_argument('--notes')
+    ap.add_argument('--mapping')
     ap.add_argument('--package', default=PACKAGE)
     a = ap.parse_args()
 
@@ -112,6 +113,10 @@ def main():
                   raw=aab.read_bytes(), ctype='application/octet-stream')
         code = up['versionCode']
         print('رُفعت الحزمة، رمزها', code, '|', round(aab.stat().st_size / 1048576, 1), 'ميغابايت')
+        if a.mapping and Path(a.mapping).exists():
+            call('POST', f'{UPLOAD}/{a.package}/edits/{edit}/apks/{code}/deobfuscationFiles/proguard?uploadType=media', tok,
+                 raw=Path(a.mapping).read_bytes(), ctype='application/octet-stream')
+            print('رُفع ملف فك التشويش لتقارير الأعطال')
 
         notes = release_notes(a.notes)
         release = {'versionCodes': [str(code)], 'status': 'completed', 'releaseNotes': notes}

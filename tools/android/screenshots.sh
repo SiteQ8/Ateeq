@@ -2,7 +2,7 @@
 # Takes the Play screenshots on an emulator, from the same prepared scenes as the web and
 # iPhone screenshots. Runs inside the emulator step of android.yml.
 set -e
-APK=android/app/build/outputs/apk/debug/app-debug.apk
+APK=android/app/build/outputs/apk/release/app-release.apk
 PKG=com.eworldq8.ateeq
 adb install -r "$APK"
 adb shell settings put global sysui_demo_allowed 1

@@ -59,8 +59,14 @@ android {
 
     buildTypes {
         release {
-            if (keystorePath != null) signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = false
+            // Without the upload key (every build except the Play one) the release build is signed
+            // with the debug key, so CI can install and photograph exactly what Play receives.
+            signingConfig = signingConfigs.getByName(if (keystorePath != null) "release" else "debug")
+            // R8 removes the unused parts of Kotlin and AndroidX, which are most of the app's size.
+            // The mapping file travels inside the bundle and is also uploaded to Play by the release workflow.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 

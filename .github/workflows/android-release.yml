@@ -60,7 +60,8 @@ jobs:
           pip install --quiet cryptography
           python3 tools/android/play-upload.py \
             --aab "$(ls android/app/build/outputs/bundle/release/*.aab | head -1)" \
-            --track alpha --notes play/whatsnew | tee play.log
+            --track alpha --notes play/whatsnew \
+            --mapping android/app/build/outputs/mapping/release/mapping.txt | tee play.log
 
       - name: Store listing
         if: hashFiles('play/graphics/phone/ar/*.png') != ''
