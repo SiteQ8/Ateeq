@@ -59,7 +59,14 @@ jobs:
             xcrun simctl terminate "$UDID" com.eworldq8.ateeq < /dev/null || true
             xcrun simctl launch "$UDID" com.eworldq8.ateeq -state "$state" -route "$route" -AppleLanguages "($lang)" < /dev/null
             sleep 7
-            xcrun simctl io "$UDID" screenshot "shots/$lang-$name.png" < /dev/null
+            # The launch screen compresses to under 100 KB and every app screen to over 200 KB,
+            # so a small picture means the app had not opened yet: wait and take it again.
+            for attempt in 1 2 3 4; do
+              xcrun simctl io "$UDID" screenshot "shots/$lang-$name.png" < /dev/null
+              [ "$(stat -f%z "shots/$lang-$name.png")" -gt 150000 ] && break
+              echo "retaking $lang-$name"
+              sleep 5
+            done
           done < scenes.txt
           ls shots
 
