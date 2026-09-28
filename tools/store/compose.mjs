@@ -125,8 +125,14 @@ try {
         const raw = path.join(rawDir, `${lang}-${scene.id}.png`);
         if (!fs.existsSync(raw)) throw new Error('missing capture ' + raw);
         const copy = `${lang}-${scene.id}.png`;
-        fs.copyFileSync(raw, path.join(work, copy));
-        const dims = execFileSync('python3', ['-c', `from PIL import Image; im = Image.open(${JSON.stringify(raw)}); print(im.width, im.height)`]).toString().trim().split(' ').map(Number);
+        // Android's status bar puts the clock in the corner the frame rounds off, so the strip
+        // is trimmed and the frame opens straight onto the app's header.
+        const trim = platform === 'play' ? 63 : 0;
+        const dims = execFileSync('python3', ['-c', `from PIL import Image
+im = Image.open(${JSON.stringify(raw)})
+im = im.crop((0, ${trim}, im.width, im.height))
+im.save(${JSON.stringify(path.join(work, copy))})
+print(im.width, im.height)`]).toString().trim().split(' ').map(Number);
         const html = page({ w: size.w, h: size.h, lang, scene, img: copy, imgW: dims[0], imgH: dims[1] });
         fs.writeFileSync(path.join(work, 'shot.html'), html);
         const p = await browser.newPage({ viewport: { width: size.w, height: size.h }, deviceScaleFactor: 1 });
