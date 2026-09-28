@@ -44,8 +44,8 @@ import org.json.JSONObject
  */
 class MainActivity : ComponentActivity() {
     private lateinit var web: WebView
-    private lateinit var top: View
-    private lateinit var bottom: View
+    private lateinit var statusStrip: View
+    private lateinit var navStrip: View
     private var waitingAlarms: JSONArray? = null
 
     private val askNotifications = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -75,15 +75,15 @@ class MainActivity : ComponentActivity() {
         }
 
         val band = ContextCompat.getColor(this, R.color.band)
-        top = View(this).apply { setBackgroundColor(band) }
-        bottom = View(this).apply { setBackgroundColor(band) }
+        statusStrip = View(this).apply { setBackgroundColor(band) }
+        navStrip = View(this).apply { setBackgroundColor(band) }
         web = WebView(this).apply { setBackgroundColor(band) }
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setBackgroundColor(band)
-            addView(top, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0))
+            addView(statusStrip, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0))
             addView(web, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f))
-            addView(bottom, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0))
+            addView(navStrip, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0))
         }
         setContentView(root)
 
@@ -91,8 +91,8 @@ class MainActivity : ComponentActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
             val keyboard = insets.getInsets(WindowInsetsCompat.Type.ime())
-            top.layoutParams = top.layoutParams.apply { height = bars.top }
-            bottom.layoutParams = bottom.layoutParams.apply { height = maxOf(bars.bottom, keyboard.bottom) }
+            statusStrip.layoutParams = statusStrip.layoutParams.apply { height = bars.top }
+            navStrip.layoutParams = navStrip.layoutParams.apply { height = maxOf(bars.bottom, keyboard.bottom) }
             view.setPadding(bars.left, 0, bars.right, 0)
             WindowInsetsCompat.CONSUMED
         }
@@ -205,8 +205,8 @@ class MainActivity : ComponentActivity() {
     private fun paintBars(msg: JSONObject) {
         val band = color(msg.optString("band")) ?: return
         val card = color(msg.optString("card")) ?: color(msg.optString("background")) ?: band
-        top.setBackgroundColor(band)
-        bottom.setBackgroundColor(card)
+        statusStrip.setBackgroundColor(band)
+        navStrip.setBackgroundColor(card)
         web.setBackgroundColor(color(msg.optString("background")) ?: card)
         val bars = WindowInsetsControllerCompat(window, window.decorView)
         bars.isAppearanceLightStatusBars = msg.optBoolean("lightBand")
