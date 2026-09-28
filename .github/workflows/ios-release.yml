@@ -104,6 +104,7 @@ jobs:
           APP="$RUNNER_TEMP/Ateeq.xcarchive/Products/Applications/Ateeq.app"
           test -f "$APP/Ateeq" || { echo "app bundle has no executable"; ls -la "$APP"; exit 1; }
           test -f "$APP/Web/app/index.html" || { echo "the web app is missing from the bundle"; exit 1; }
+          test -f "$APP/PrivacyInfo.xcprivacy" || { echo "the privacy manifest is missing from the bundle"; exit 1; }
           WORK="$RUNNER_TEMP/ipa"; rm -rf "$WORK"; mkdir -p "$WORK/Payload" "$RUNNER_TEMP/export"
           cp -R "$APP" "$WORK/Payload/Ateeq.app"
           ( cd "$WORK" && zip -qry "$RUNNER_TEMP/export/Ateeq.ipa" Payload )

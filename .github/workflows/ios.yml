@@ -41,6 +41,7 @@ jobs:
           APP=build/Build/Products/Debug-iphonesimulator/Ateeq.app
           test -f "$APP/Ateeq" || { echo "no app executable"; tail -60 build.log; exit 1; }
           test -f "$APP/Web/app/index.html" && test -f "$APP/Web/data/rite.json" && test -f "$APP/Web/app/palettes.js"
+          test -f "$APP/PrivacyInfo.xcprivacy" || { echo "the privacy manifest is missing from the bundle"; exit 1; }
 
       - name: Screenshots in Arabic and English
         working-directory: ios
