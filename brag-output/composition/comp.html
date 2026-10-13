@@ -39,6 +39,7 @@
     box-shadow: 0 0 0 2.5px rgba(221,190,120,.55), 0 60px 140px rgba(0,0,0,.7), 0 0 120px rgba(221,190,120,.10); }
   #screen { position: relative; width: 820px; height: 1782px; border-radius: 108px; overflow: hidden; background: #000; }
   #screen img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+  #screen img.in { box-shadow: 0 0 90px rgba(0, 0, 0, .55); }
   #island { position: absolute; left: 50%; top: 22px; width: 238px; height: 70px; margin-left: -119px; background: #000; border-radius: 999px; }
   /* outro */
   #omark { left: 50%; top: 440px; width: 300px; height: 300px; margin-left: -150px; }
@@ -178,10 +179,13 @@ function render(t) {
   HEADS.forEach((h, i) => {
     const el = i % 2 ? $('hlB') : $('hlA'), sub = i % 2 ? $('subB') : $('subA');
     const outAt = h.until - HL_OUT - HL_GAP;
-    const s = inout(t, h.at, outAt, 0.42, HL_OUT, 44);
+    const s = inout(t, h.at, outAt, 0.42, HL_OUT, 24);
     if (s.o > 0) {
       el.textContent = h.h; put(el, s);
-      sub.textContent = h.s; if (h.s) put(sub, inout(t, h.at + 0.15, outAt - 0.04, 0.42, HL_OUT, 30));
+      // a feathered wipe uncovers the words from the right, the way they are read
+      const w = io(t, h.at, h.at + 0.6), edge = -16 + 132 * w;
+      el.style.webkitMaskImage = el.style.maskImage = w < 1 ? `linear-gradient(to left, #000 ${edge - 16}%, transparent ${edge}%)` : 'none';
+      sub.textContent = h.s; if (h.s) put(sub, inout(t, h.at + 0.2, outAt - 0.04, 0.42, HL_OUT, 24));
     }
   });
   // the offline pill under the plane headline, out with it
@@ -199,10 +203,11 @@ function render(t) {
   // (forward, in RTL) and shoves the old one out to the right; both stay opaque, so nothing goes muddy.
   const imgs = [...$('screen').querySelectorAll('img')];
   let active = -1; SCREENS.forEach((s, i) => { if (t >= s[1]) active = i; });
-  const k = active > 0 ? io(t, SCREENS[active][1], SCREENS[active][1] + 0.42) : 1;
+  const k = active > 0 ? io(t, SCREENS[active][1], SCREENS[active][1] + 0.48) : 1;
   imgs.forEach((im, i) => {
-    if (i === active) { im.style.opacity = 1; im.style.transform = `translateX(${-820 * (1 - k)}px)`; }
-    else if (i === active - 1) { im.style.opacity = 1; im.style.transform = `translateX(${820 * k}px)`; }
+    im.classList.toggle('in', i === active && k < 1);
+    if (i === active) { im.style.opacity = 1; im.style.transform = `translateX(${-820 * (1 - k)}px)`; im.style.filter = 'none'; }
+    else if (i === active - 1) { im.style.opacity = 1; im.style.transform = `translateX(${820 * 0.38 * k}px)`; im.style.filter = `brightness(${1 - 0.45 * k})`; }
     else { im.style.opacity = 0; }
   });
 
