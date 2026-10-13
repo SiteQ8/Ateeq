@@ -1286,6 +1286,18 @@
       else if (act === 'skip') endTour();
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && tourAt >= 0) endTour(); });
+    /* a swipe across the card turns it, the way the reading direction goes */
+    var swipe = null;
+    tour.addEventListener('pointerdown', function (e) { if (e.target.closest('.tour-card')) swipe = { x: e.clientX, y: e.clientY, id: e.pointerId }; });
+    tour.addEventListener('pointerup', function (e) {
+      if (!swipe || swipe.id !== e.pointerId) return;
+      var dx = e.clientX - swipe.x, dy = e.clientY - swipe.y; swipe = null;
+      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      var forward = S.lang === 'ar' ? dx > 0 : dx < 0;
+      if (forward) { if (tourAt + 1 < TOUR.length) { buzz(15); showTour(tourAt + 1); } else endTour(); }
+      else if (tourAt > 0) showTour(tourAt - 1);
+    });
+    tour.addEventListener('pointercancel', function () { swipe = null; });
   }
 
   /* ------------------------------------------------------------ start */

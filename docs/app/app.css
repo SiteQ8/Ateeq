@@ -454,7 +454,7 @@ details.nusk[open] summary { margin-bottom: 6px; }
 #tour { position: fixed; inset: 0; z-index: 90; display: flex; align-items: flex-end; justify-content: center; padding: 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: rgba(7, 6, 5, .7); animation: tour-dim .3s ease both; }
 #tour[hidden] { display: none; }
 body[data-tour="1"] { overflow: hidden; }
-.tour-card { --rise: 28px; width: 100%; max-width: 560px; background: var(--card); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 26px; padding: 26px 20px 16px; text-align: center;
+.tour-card { --rise: 28px; touch-action: pan-y; width: 100%; max-width: 560px; background: var(--card); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 26px; padding: 26px 20px 16px; text-align: center;
   box-shadow: 0 24px 60px rgba(0, 0, 0, .35), inset 0 0 0 5px var(--card), inset 0 0 0 6px rgba(184, 146, 75, .45); animation: tour-rise .38s var(--ease-out) both; }
 .tour-card.step { --rise: 10px; animation-duration: .22s; }
 .tour-ic { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 10px; border-radius: 50%; background: radial-gradient(circle at 50% 35%, var(--gold-soft) 0%, var(--card) 80%); box-shadow: inset 0 0 0 1px var(--gold-line); color: var(--gold); }
