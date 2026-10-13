@@ -5,7 +5,7 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.6.0';
+  var VERSION = '0.6.1';
   var STORE = { ios: 'https://apps.apple.com/app/id6816854571', android: 'https://play.google.com/store/apps/details?id=com.eworldq8.ateeq', site: 'https://ateeq.3li.info' };
   var MAIL = 'site@hotmail.com';
   var app = document.getElementById('app');
