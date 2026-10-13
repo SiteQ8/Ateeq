@@ -14,3 +14,7 @@ ios/scenes.txt
 __pycache__/
 *.pyc
 docs/_store/
+
+# agent skills installed locally for design review, not part of the app
+.claude/
+skills-lock.json

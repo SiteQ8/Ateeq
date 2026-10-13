@@ -18,8 +18,11 @@
   .naskh { font-family: 'Scheherazade New', serif; font-weight: 700; }
   .center { left: 0; right: 0; text-align: center; }
   /* hook */
-  #mark { left: 50%; top: 560px; width: 320px; height: 320px; margin-left: -160px; }
-  #talb { top: 930px; font-size: 118px; line-height: 1.5; padding: 0 40px .35em; }
+  #mark { left: 50%; top: 420px; width: 320px; height: 320px; margin-left: -160px; }
+  /* the verse the app is named after, the first thing on screen */
+  #ayah { top: 640px; font-size: 108px; line-height: 1.65; padding: 0 50px .35em; }
+  #ayah .br { background: none; -webkit-text-fill-color: #B8924B; color: #B8924B; font-weight: 400; margin: 0 .08em; }
+  #ayahref { top: 1090px; font-size: 40px; color: #CDBB92; letter-spacing: .5px; }
   #word { top: 880px; font-size: 300px; line-height: 1.2; padding-bottom: .3em; }
   #tag { top: 1270px; font-size: 46px; color: #EFE3C6; letter-spacing: .5px; }
   /* feature headlines */
@@ -54,7 +57,8 @@
 <div id="glow" class="abs"></div>
 
 <img id="mark" class="abs" src="logo.svg" alt="">
-<div id="talb" class="abs center naskh gold">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ</div>
+<div id="ayah" class="abs center naskh gold"><span class="br">﴿</span>وَلْيَطَّوَّفُوا<br>بِالْبَيْتِ الْعَتِيقِ<span class="br">﴾</span></div>
+<div id="ayahref" class="abs center">سورة الحج، الآية ٢٩</div>
 <div id="word" class="abs center naskh gold">عتيق</div>
 <div id="tag" class="abs center">الحج والعمرة خطوة بخطوة</div>
 
@@ -106,11 +110,12 @@ function put(el, s) { el.style.opacity = s.o; el.style.transform = `translateY($
 
 // The timeline follows the narration (take 1). The file starts at A seconds into the video,
 // so a word spoken at s seconds in the file lands at S(s). Word times come from the transcript.
-const A = 0.8;
+const A = 3.4;
 const S = s => A + s;
 const T = {
-  talb: 0.45,
-  wordIn: S(1.72),                 // "عتيق"
+  ayah: 0.3, ayahOut: 3.0,         // the verse, alone, before a word is spoken
+  wordIn: 3.4,                     // the name rises out of the verse as the narration begins
+  tagIn: S(2.58),                  // "خطوة بخطوة"
   stationIn: S(3.68),              // "في كل محطة"
   arafah: S(5.18),                 // "تسوي"
   countersIn: S(8.04),             // "عداد للطواف والسعي"
@@ -142,14 +147,14 @@ function render(t) {
   $('glow').style.opacity = 0.75 + 0.25 * Math.sin(t * 0.9);
   $('fade').style.opacity = 1 - io(t, 0, 0.6);
 
-  // hook: mark, talbiyah, then the wordmark and tagline; all gone before the phone reaches them
-  const m = inout(t, 0.25, T.outroIn - 0.2, 1.0, 0.35, 0);
-  const markOut = lin(t, T.stationIn - 0.45, T.stationIn - 0.05);
-  $('mark').style.opacity = t < T.stationIn ? m.o * (1 - markOut) : 0;
-  $('mark').style.transform = `translateY(${t < T.wordIn ? 0 : -140 * io(t, T.wordIn, T.wordIn + 0.6)}px) scale(${0.92 + 0.08 * io(t, 0.25, 1.25)})`;
-  put($('talb'), inout(t, T.talb, T.wordIn - 0.4, 0.8, 0.35, 50));
-  const w = inout(t, T.wordIn, T.stationIn - 0.4, 0.55, 0.35, 60); w.scale = 0.9 + 0.1 * io(t, T.wordIn, T.wordIn + 0.55); put($('word'), w);
-  put($('tag'), inout(t, T.wordIn + 0.15, T.stationIn - 0.4, 0.5, 0.3, 30));
+  // hook: the verse first, then the mark and the name it gave the app, then the tagline; all gone before the phone reaches them
+  const ay = inout(t, T.ayah, T.ayahOut, 0.9, 0.35, 40); ay.scale = 0.96 + 0.04 * io(t, T.ayah, T.ayah + 0.9); put($('ayah'), ay);
+  put($('ayahref'), inout(t, T.ayah + 0.55, T.ayahOut, 0.6, 0.3, 20));
+  const m = inout(t, T.wordIn, T.stationIn - 0.45, 0.7, 0.4, 30);
+  $('mark').style.opacity = m.o;
+  $('mark').style.transform = `translateY(${m.y}px) scale(${0.9 + 0.1 * io(t, T.wordIn, T.wordIn + 0.7)})`;
+  const w = inout(t, T.wordIn + 0.15, T.stationIn - 0.4, 0.55, 0.35, 60); w.scale = 0.9 + 0.1 * io(t, T.wordIn + 0.15, T.wordIn + 0.7); put($('word'), w);
+  put($('tag'), inout(t, T.tagIn, T.stationIn - 0.4, 0.5, 0.3, 30));
 
   // feature headlines: the old one is fully out before the new one rises, never a double exposure
   for (const [el, sub] of [[$('hlA'), $('subA')], [$('hlB'), $('subB')]]) { el.style.opacity = 0; sub.style.opacity = 0; }

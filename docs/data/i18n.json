@@ -532,7 +532,7 @@
   "en": "Time to get ready. Put on your ihram"
  },
  "flight_now_intent": {
-  "ar": "حان وقت الإحرام، فانوِ نسكك وقل: {w}",
+  "ar": "حان وقت الإحرام، فاعقد النية وقل: {w}",
   "en": "Time to enter ihram. Make your intention and say {w}"
  },
  "flight_listen": {
@@ -540,8 +540,8 @@
   "en": "Listen for the crew's announcement at the miqat, and enter ihram then or a little before."
  },
  "flight_note_east": {
-  "ar": "يأتي تنبيه الإحرام قبل الوصول بأربعين دقيقة، أي قبل نصف الساعة بقليل احتياطًا، لأن الطائرة قد تصل مبكرة.",
-  "en": "The ihram alert comes forty minutes before arrival, a little ahead of the half hour, to be safe in case the plane lands early."
+  "ar": "يأتي تنبيه الإحرام قبل الوصول بأربعين دقيقة، أي قبل محاذاة الميقات بنحو عشر دقائق احتياطًا، لأن الطائرة قد تصل مبكرة.",
+  "en": "The ihram alert comes forty minutes before arrival, about ten minutes before the miqat is reached, to be safe in case the plane lands early."
  },
  "flight_note_web": {
   "ar": "يعمل التنبيه ما دامت هذه الصفحة مفتوحة، وتنبيهات الهاتف تأتي مع تطبيقي آيفون وأندرويد.",

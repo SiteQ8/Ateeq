@@ -20,7 +20,7 @@ const SKIP = [path.join(ROOT, 'ios', 'Web'), path.join(ROOT, 'android', 'app', '
 const p_skip = (dir, name) => SKIP.includes(path.join(dir, name));
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name === '.git' || e.name === 'node_modules' || p_skip(dir, e.name)) continue;
+    if (e.name === '.git' || e.name === '.claude' || e.name === 'node_modules' || p_skip(dir, e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, out);
     else if (TEXT_EXT.has(path.extname(e.name)) && !e.name.startsWith('OFL')) out.push(p);

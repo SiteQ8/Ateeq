@@ -7,6 +7,7 @@
   --radius: 16px;
   --nav-h: 64px;
   --dua-size: 25px;
+  --ease-out: cubic-bezier(.23, 1, .32, 1); --ease-in-out: cubic-bezier(.77, 0, .175, 1);
   --ui: 'Noto Kufi Arabic', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --naskh: 'Scheherazade New', 'Noto Naskh Arabic', 'Times New Roman', serif;
   color-scheme: light;
@@ -25,7 +26,8 @@
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+html, body { overscroll-behavior-y: contain; }
 body {
   margin: 0; background: var(--marble); color: var(--ink);
   font-family: var(--ui); font-size: calc(16px * var(--ts, 1)); line-height: 1.75;
@@ -35,6 +37,14 @@ body {
 [dir="ltr"] body { line-height: 1.6; }
 a { color: inherit; }
 button { font: inherit; }
+button, a, [role="button"], .switch, .chk label { touch-action: manipulation; }
+button, [role="button"], .seg a, .tool, .links a, #tabs a, .chip, .swatch, .node, .look-btn, .count-card, .sec-card, .src-card { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+/* every pressable answers the finger at once, then springs back */
+.btn, .tool, .sec-card, .src-card, .swatch, .chip, .look-btn, .count-card, .icon-btn, .tick, .seg button, .seg a, #tabs a .ic { transition: transform 160ms var(--ease-out), background-color 160ms ease, border-color 160ms ease; }
+.btn:active, .tool:active, .sec-card:active, .src-card:active, .swatch:active, .chip:active, .look-btn:active, .count-card:active, .tick:active { transform: scale(.97); }
+.icon-btn:active, .seg button:active, .seg a:active { transform: scale(.94); }
+#tabs a:active .ic { transform: scale(.88); }
+.links a:active, .links button:active, .switch:active, .stop a:active, .chk label:active, .radio:active { background-color: var(--gold-soft); }
 :focus-visible { outline: 2px solid var(--gold-line); outline-offset: 2px; }
 .wrap { max-width: 640px; margin: 0 auto; padding: 14px 16px 28px; }
 
@@ -333,7 +343,7 @@ details.nusk[open] summary { margin-bottom: 6px; }
 #tabs a.on { color: var(--ink); font-weight: 700; }
 #tabs a.on .ic { color: var(--gold-line); }
 #tabs a.on::after { content: ''; position: absolute; top: -6px; width: 26px; height: 3px; border-radius: 0 0 3px 3px; background: var(--gold-line); }
-#toast { position: fixed; left: 50%; bottom: calc(var(--nav-h) + 110px); transform: translate(-50%, 16px); background: var(--kiswah); color: var(--gold-2); padding: 8px 16px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 50; font-size: calc(14px * var(--ts, 1)); }
+#toast { position: fixed; left: 50%; bottom: calc(var(--nav-h) + 110px); transform: translate(-50%, 16px); background: var(--kiswah); color: var(--gold-2); padding: 8px 16px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s var(--ease-out); z-index: 50; font-size: calc(14px * var(--ts, 1)); }
 #toast.show { opacity: 1; transform: translate(-50%, 0); }
 #banner { position: fixed; inset-inline: 12px; top: calc(10px + env(safe-area-inset-top)); z-index: 60; background: var(--kiswah); color: var(--band-ink); border: 1px solid var(--gold-line); border-radius: 16px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; box-shadow: 0 10px 30px rgba(0, 0, 0, .3); max-width: 616px; margin: 0 auto; }
 #banner[hidden] { display: none; }
@@ -404,10 +414,11 @@ details.nusk[open] summary { margin-bottom: 6px; }
 .switch:last-child { border-bottom: 0; }
 .switch .sw-t b { display: block; font-weight: 600; }
 .switch .sw-t small { display: block; color: var(--stone); font-size: calc(12.5px * var(--ts, 1)); line-height: 1.6; }
-.knob { position: relative; width: 50px; height: 30px; flex: none; border-radius: 999px; background: var(--hair); transition: background .2s; }
-.knob::after { content: ''; position: absolute; top: 3px; inset-inline-start: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--card); box-shadow: 0 1px 3px rgba(0, 0, 0, .3); transition: inset-inline-start .2s; }
+.knob { position: relative; width: 50px; height: 30px; flex: none; border-radius: 999px; background: var(--hair); transition: background-color .2s ease; }
+.knob::after { content: ''; position: absolute; top: 3px; inset-inline-start: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--card); box-shadow: 0 1px 3px rgba(0, 0, 0, .3); transition: transform .2s var(--ease-out), background-color .2s ease; }
 .switch[aria-checked="true"] .knob { background: var(--btn-bg); }
-.switch[aria-checked="true"] .knob::after { inset-inline-start: 23px; background: var(--btn-fg); }
+.switch[aria-checked="true"] .knob::after { transform: translateX(20px); background: var(--btn-fg); }
+[dir="rtl"] .switch[aria-checked="true"] .knob::after { transform: translateX(-20px); }
 .set .lbl { margin: 0 0 8px; color: var(--stone); font-size: calc(13.5px * var(--ts, 1)); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 
@@ -443,8 +454,9 @@ details.nusk[open] summary { margin-bottom: 6px; }
 #tour { position: fixed; inset: 0; z-index: 90; display: flex; align-items: flex-end; justify-content: center; padding: 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: rgba(7, 6, 5, .7); animation: tour-dim .3s ease both; }
 #tour[hidden] { display: none; }
 body[data-tour="1"] { overflow: hidden; }
-.tour-card { width: 100%; max-width: 560px; background: var(--card); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 26px; padding: 26px 20px 16px; text-align: center;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, .35), inset 0 0 0 5px var(--card), inset 0 0 0 6px rgba(184, 146, 75, .45); animation: tour-rise .38s cubic-bezier(.2, .8, .3, 1) both; }
+.tour-card { --rise: 28px; width: 100%; max-width: 560px; background: var(--card); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 26px; padding: 26px 20px 16px; text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .35), inset 0 0 0 5px var(--card), inset 0 0 0 6px rgba(184, 146, 75, .45); animation: tour-rise .38s var(--ease-out) both; }
+.tour-card.step { --rise: 10px; animation-duration: .22s; }
 .tour-ic { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 10px; border-radius: 50%; background: radial-gradient(circle at 50% 35%, var(--gold-soft) 0%, var(--card) 80%); box-shadow: inset 0 0 0 1px var(--gold-line); color: var(--gold); }
 .tour-ic .ic { width: 36px; height: 36px; stroke-width: 1.5; }
 .tour-n { margin: 0; font-size: calc(12.5px * var(--ts, 1)); font-weight: 700; letter-spacing: .4px; color: var(--gold); }
@@ -458,7 +470,7 @@ body[data-tour="1"] { overflow: hidden; }
 .tour-card .btn.wide { margin: 0 0 8px; min-height: 54px; font-size: calc(17px * var(--ts, 1)); }
 .tour-card .btn.ghost { margin-bottom: 0; border-color: transparent; color: var(--stone); }
 @keyframes tour-dim { from { opacity: 0; } to { opacity: 1; } }
-@keyframes tour-rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes tour-rise { from { opacity: 0; transform: translateY(var(--rise)); } to { opacity: 1; transform: none; } }
 @media (min-width: 700px) { #tour { align-items: center; } }
 
 /* the faith that runs under the journey: a verse or a hadith in a gold frame */
@@ -490,7 +502,7 @@ body[data-tour="1"] { overflow: hidden; }
 .plaque-note { margin: 10px auto 0; max-width: 460px; font-size: calc(13.5px * var(--ts, 1)); line-height: 1.8; color: var(--band-ink); opacity: .85; }
 .src-cards { display: flex; flex-direction: column; gap: 8px; margin: 8px 0 16px; }
 .src-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; background: var(--card); border: 1px solid var(--hair); text-decoration: none; color: var(--ink); }
-.src-card:hover { border-color: var(--gold-line); }
+@media (hover: hover) and (pointer: fine) { .src-card:hover { border-color: var(--gold-line); } }
 .src-ic { display: grid; place-items: center; width: 40px; height: 40px; flex: none; border-radius: 12px; background: var(--gold-soft); color: var(--gold); }
 .src-ic .ic { width: 21px; height: 21px; }
 .src-t { flex: 1; min-width: 0; display: flex; flex-direction: column; }
@@ -502,6 +514,7 @@ body[data-tour="1"] { overflow: hidden; }
 [dir="rtl"] .src-go .ic { transform: scaleX(-1); }
 [dir="rtl"] .src-t small { text-align: right; }
 .dua-ar, .faith-ar { overflow-wrap: break-word; }
+.tr-t b, .chk .txt, .stop-t b, .src-t b, .tour-card h2 { overflow-wrap: anywhere; }
 
 /* both calendars on the home screen, and the count to Arafah */
 .date span { display: block; }
@@ -536,7 +549,7 @@ body[data-tour="1"] { overflow: hidden; }
 .conv .seg { margin-bottom: 12px; }
 
 .conv-h { display: grid; grid-template-columns: 1fr 1.7fr 1.2fr; gap: 8px; }
-.conv select, .conv input[type="date"] { width: 100%; min-height: 46px; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--hair); background: var(--card); color: var(--ink); font: inherit; font-size: calc(15px * var(--ts, 1)); }
+.conv select, .conv input[type="date"] { width: 100%; min-height: 46px; padding: 8px 10px; border-radius: 12px; border: 1px solid var(--hair); background: var(--card); color: var(--ink); font: inherit; font-size: max(16px, calc(15px * var(--ts, 1))); }
 .conv-out { margin: 14px 0 0; padding: 14px; border-radius: 12px; background: var(--gold-soft); text-align: center; }
 .conv-out b { display: block; font-family: var(--naskh); font-weight: 700; font-size: calc(25px * var(--ts, 1)); color: var(--ink); }
 .conv-out span { font-size: calc(14px * var(--ts, 1)); font-weight: 600; color: var(--gold); }

@@ -187,9 +187,9 @@
     "ar": "عند بداية السعي",
     "en": "At the start of saʿi"
    },
-   "ar": "نَبْدَأُ بِمَا بَدَأَ اللَّهُ بِهِ",
-   "tr": "Nabda'u bima bada'a Allahu bih",
-   "en": "We begin with what Allah began with.",
+   "ar": "أَبْدَأُ بِمَا بَدَأَ اللَّهُ بِهِ",
+   "tr": "Abda'u bima bada'a Allahu bih",
+   "en": "I begin with what Allah began with.",
    "note": {
     "ar": "في بداية الشوط الأول فقط.",
     "en": "At the start of the first lap only."
@@ -511,7 +511,7 @@
    },
    "do": [
     {
-     "ar": "انوِ بقلبك الدخول في العمرة عند الميقات الذي تمرّ عليه، وقل: لبّيك عمرة، أو: اللهم لبّيك عمرة.",
+     "ar": "اعقد بقلبك نية الدخول في العمرة عند الميقات الذي تمرّ عليه، وقل: لبّيك عمرة، أو: اللهم لبّيك عمرة.",
      "en": "At the miqat on your route, intend in your heart to begin Umrah and say Labbayka ʿumratan, or Allahumma labbayka ʿumratan."
     },
     {
@@ -519,7 +519,7 @@
      "en": "If you fear that illness or danger may stop you from finishing, add the condition when you enter ihram."
     },
     {
-     "ar": "ثم لبِّ بتلبية النبي صلى الله عليه وسلم وأكثر منها.",
+     "ar": "ثم قل تلبية النبي صلى الله عليه وسلم وأكثر منها.",
      "en": "Then begin the Talbiyah of the Prophet, peace be upon him, and repeat it often."
     },
     {
@@ -853,7 +853,7 @@
      "en": "Go to Safa and climb it or stand at its foot. Climbing is better if you can."
     },
     {
-     "ar": "قل في بداية الشوط الأول: نبدأ بما بدأ الله به، واقرأ: إن الصفا والمروة من شعائر الله.",
+     "ar": "قل في بداية الشوط الأول: أبدأ بما بدأ الله به، واقرأ: إن الصفا والمروة من شعائر الله.",
      "en": "At the start of the first lap, say nabda'u bima bada'a Allahu bih, and recite: inna s-safa wa l-marwata min sha'a'iri llah."
     },
     {
@@ -865,7 +865,7 @@
      "en": "Walk down towards Marwah. Between the two green markers, men walk quickly."
     },
     {
-     "ar": "اصعد المروة أو قف عندها، وقل وافعل كما فعلت على الصفا، دون قراءة الآية ودون قول: نبدأ بما بدأ الله به.",
+     "ar": "اصعد المروة أو قف عندها، وقل وافعل كما فعلت على الصفا، دون قراءة الآية ودون قول: أبدأ بما بدأ الله به.",
      "en": "Climb Marwah or stand at it, and do and say what you did on Safa, without the verse and without nabda'u."
     },
     {
@@ -1080,7 +1080,7 @@
      "en": "At the miqat, bathe if you can and perfume your body, then put on the two sheets, as in the Umrah journey."
     },
     {
-     "ar": "انوِ بقلبك النسك الذي اخترته، وقل لفظه المذكور في بطاقة نسكك.",
+     "ar": "اعقد بقلبك نية النسك الذي اخترته، وقل لفظه المذكور في بطاقة نسكك.",
      "en": "Make the intention for your chosen form in your heart and say its words, shown in your form card."
     },
     {
@@ -1088,7 +1088,7 @@
      "en": "If you fear illness or danger may stop you, add the condition when you enter ihram."
     },
     {
-     "ar": "ثم لبِّ بتلبية النبي صلى الله عليه وسلم، ويرفع الرجال بها أصواتهم وتخفضها النساء.",
+     "ar": "ثم قل تلبية النبي صلى الله عليه وسلم، ويرفع الرجال بها أصواتهم وتخفضها النساء.",
      "en": "Then begin the Talbiyah of the Prophet, peace be upon him. Men say it aloud and women say it quietly."
     },
     {
@@ -1141,7 +1141,7 @@
      "en": "Ihram is an intention of the heart. Once you intend it you are in ihram, even if you say nothing aloud."
     },
     {
-     "ar": "في الطائرة تهيّأ قبل الإقلاع ثم انوِ قبل محاذاة الميقات بيسير احتياطًا، ولا تؤخّر الإحرام إلى جدة.",
+     "ar": "في الطائرة تهيّأ قبل الإقلاع ثم اعقد النية قبل محاذاة الميقات بيسير احتياطًا، ولا تؤخّر الإحرام إلى جدة.",
      "en": "On a plane, get ready before take-off and make the intention a little before you are level with the miqat, to be safe. Never delay it until Jeddah."
     }
    ],
@@ -1202,7 +1202,7 @@
    "nusk": {
     "tamattu": [
      {
-      "ar": "طوافك هذا طواف عمرتك، فأتمّ عمرتك بالسعي ثم التقصير، ثم تحلّل وابقَ حلالًا حتى يوم الثامن.",
+      "ar": "طوافك هذا طواف عمرتك، فأتمّ عمرتك بالسعي ثم التقصير، ثم تحلّل وابقَ حلالًا حتى اليوم الثامن.",
       "en": "This tawaf is the tawaf of your Umrah. Complete your Umrah with saʿi and shortening, then leave ihram and stay out of it until the 8th."
      },
      {
@@ -1249,7 +1249,7 @@
    ],
    "women": [
     {
-     "ar": "إن حاضت المتمتعة قبل الطواف ولم تطهر قبل يوم الثامن أحرمت بالحج من مكانها وصارت قارنة، ثم تفعل ما يفعله الحاج فإذا طهرت طافت وسعت.",
+     "ar": "إن حاضت المتمتعة قبل الطواف ولم تطهر قبل اليوم الثامن أحرمت بالحج من مكانها وصارت قارنة، ثم تفعل ما يفعله الحاج فإذا طهرت طافت وسعت.",
      "en": "If a woman doing tamattuʿ gets her period before tawaf and is not pure by the 8th, she enters ihram for Hajj from where she is and becomes a qarin. She does all the rites and, once pure, performs tawaf and saʿi."
     },
     {
@@ -2061,7 +2061,7 @@
       "en": "You enter ihram for Umrah alone during the Hajj months, saying Labbayka ʿumratan, and you may add: enjoying it until Hajj."
      },
      {
-      "ar": "تطوف وتسعى وتقصّر وتحل، ثم تحرم بالحج يوم الثامن من مكانك في مكة.",
+      "ar": "تطوف وتسعى وتقصّر وتحل، ثم تحرم بالحج في اليوم الثامن من مكانك في مكة.",
       "en": "You do tawaf and saʿi, shorten your hair and leave ihram, then enter ihram for Hajj on the eighth from where you are in Makkah."
      },
      {
@@ -2083,7 +2083,7 @@
     "say": "hajj",
     "lines": [
      {
-      "ar": "تحرم بالحج وحده فتقول: لبّيك حجًا، وتبقى على إحرامك حتى يوم النحر.",
+      "ar": "تحرم بالحج وحده فتقول: لبّيك حجًّا، وتبقى على إحرامك حتى يوم النحر.",
       "en": "You enter ihram for Hajj alone, saying Labbayka hajjan, and remain in ihram until the Day of Sacrifice."
      },
      {
@@ -2105,7 +2105,7 @@
     "say": "qiran",
     "lines": [
      {
-      "ar": "تحرم بالعمرة والحج معًا فتقول: لبّيك عمرة وحجًا، وأعمالك مثل أعمال المفرد ويكفيك سعي واحد.",
+      "ar": "تحرم بالعمرة والحج معًا فتقول: لبّيك عمرة وحجًّا، وأعمالك مثل أعمال المفرد ويكفيك سعي واحد.",
       "en": "You enter ihram for Umrah and Hajj together, saying Labbayka ʿumratan wa hajjan. Your rites are those of ifrad, and one saʿi is enough."
      },
      {

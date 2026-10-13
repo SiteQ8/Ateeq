@@ -1247,7 +1247,7 @@
   function tourCard(i) {
     var last = i === TOUR.length - 1, k = i + 1;
     var dots = TOUR.map(function (_, j) { return '<i class="' + (j === i ? 'on' : j < i ? 'done' : '') + '"></i>'; }).join('');
-    return '<div class="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-h" aria-describedby="tour-b">' +
+    return '<div class="tour-card' + (tourAt >= 0 ? ' step' : '') + '" role="dialog" aria-modal="true" aria-labelledby="tour-h" aria-describedby="tour-b">' +
       '<span class="tour-ic" aria-hidden="true">' + icon(TOUR[i]) + '</span>' +
       '<p class="tour-n">' + esc(t('tour_step', { a: k, b: TOUR.length })) + '</p>' +
       '<h2 id="tour-h">' + esc(t('tour_' + k + '_t')) + '</h2>' +
@@ -1259,8 +1259,8 @@
   function showTour(i) {
     if (!tour) return;
     if (tourAt < 0) tourFrom = document.activeElement;
-    tourAt = i;
     tour.innerHTML = tourCard(i);
+    tourAt = i;
     tour.hidden = false;
     document.body.setAttribute('data-tour', '1');
     var h = document.getElementById('tour-h');
