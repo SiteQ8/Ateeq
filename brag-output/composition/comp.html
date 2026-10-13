@@ -19,10 +19,12 @@
   .center { left: 0; right: 0; text-align: center; }
   /* hook */
   #mark { left: 50%; top: 420px; width: 320px; height: 320px; margin-left: -160px; }
-  /* the verse the app is named after, the first thing on screen */
-  #ayah { top: 640px; font-size: 108px; line-height: 1.65; padding: 0 50px .35em; }
-  #ayah .br { background: none; -webkit-text-fill-color: #B8924B; color: #B8924B; font-weight: 400; margin: 0 .08em; }
-  #ayahref { top: 1090px; font-size: 40px; color: #CDBB92; letter-spacing: .5px; }
+  /* the verse the app is named after, recited first, each phrase arriving as it is read */
+  #ayah { top: 520px; padding: 0 40px; }
+  .aline { font-size: 100px; line-height: 1.72; padding: 0 20px .1em; }
+  .aline .w { display: inline-block; padding-bottom: .1em; }
+  .aline .br { background: none; -webkit-text-fill-color: #B8924B; color: #B8924B; font-weight: 400; margin: 0 .08em; }
+  #ayahref { top: 1130px; font-size: 40px; color: #CDBB92; letter-spacing: .5px; }
   #word { top: 880px; font-size: 300px; line-height: 1.2; padding-bottom: .3em; }
   #tag { top: 1270px; font-size: 46px; color: #EFE3C6; letter-spacing: .5px; }
   /* feature headlines */
@@ -57,7 +59,11 @@
 <div id="glow" class="abs"></div>
 
 <img id="mark" class="abs" src="logo.svg" alt="">
-<div id="ayah" class="abs center naskh gold"><span class="br">﴿</span>وَلْيَطَّوَّفُوا<br>بِالْبَيْتِ الْعَتِيقِ<span class="br">﴾</span></div>
+<div id="ayah" class="abs center">
+  <div class="aline naskh gold" id="a1"><span class="br">﴿</span>ثُمَّ لْيَقْضُوا تَفَثَهُمْ</div>
+  <div class="aline naskh gold" id="a2">وَلْيُوفُوا نُذُورَهُمْ</div>
+  <div class="aline naskh" id="a3"><span class="w gold">وَلْيَطَّوَّفُوا بِالْبَيْتِ</span> <span class="w gold" id="a4">الْعَتِيقِ<span class="br">﴾</span></span></div>
+</div>
 <div id="ayahref" class="abs center">سورة الحج، الآية ٢٩</div>
 <div id="word" class="abs center naskh gold">عتيق</div>
 <div id="tag" class="abs center">الحج والعمرة خطوة بخطوة</div>
@@ -110,11 +116,12 @@ function put(el, s) { el.style.opacity = s.o; el.style.transform = `translateY($
 
 // The timeline follows the narration (take 1). The file starts at A seconds into the video,
 // so a word spoken at s seconds in the file lands at S(s). Word times come from the transcript.
-const A = 3.4;
+const R = 0.6;                       // the recitation starts here
+const A = R + 12.0;                  // the narration follows the verse
 const S = s => A + s;
 const T = {
-  ayah: 0.3, ayahOut: 3.0,         // the verse, alone, before a word is spoken
-  wordIn: 3.4,                     // the name rises out of the verse as the narration begins
+  ayahOut: R + 11.85,              // the verse leaves once the reciter has finished
+  wordIn: R + 12.05,               // the name rises out of the verse as the narration begins
   tagIn: S(2.58),                  // "خطوة بخطوة"
   stationIn: S(3.68),              // "في كل محطة"
   arafah: S(5.18),                 // "تسوي"
@@ -128,7 +135,7 @@ const T = {
   siteIn: S(17.95),
   end: S(17.72) + 2.6
 };
-window.AUDIO_OFFSET = A;
+window.AUDIO_OFFSET = A; window.RECITE_OFFSET = R;
 const SCREENS = [
   ['hajj-home', T.stationIn], ['arafah', T.arafah], ['tawaf', T.countersIn], ['duas', T.duasIn], ['miqat', T.planeIn]
 ];
@@ -148,8 +155,12 @@ function render(t) {
   $('fade').style.opacity = 1 - io(t, 0, 0.6);
 
   // hook: the verse first, then the mark and the name it gave the app, then the tagline; all gone before the phone reaches them
-  const ay = inout(t, T.ayah, T.ayahOut, 0.9, 0.35, 40); ay.scale = 0.96 + 0.04 * io(t, T.ayah, T.ayah + 0.9); put($('ayah'), ay);
-  put($('ayahref'), inout(t, T.ayah + 0.55, T.ayahOut, 0.6, 0.3, 20));
+  // each phrase of the verse rises as the reciter reaches it (word times from the recording)
+  [['a1', 0.16], ['a2', 3.46], ['a3', 6.02]].forEach(function (x) { put($(x[0]), inout(t, R + x[1] - 0.12, T.ayahOut, 0.7, 0.35, 30)); });
+  // and the word the app is named after brightens as it is read
+  const em = io(t, R + 8.94, R + 9.6);
+  $('a4').style.filter = `brightness(${1 + 0.28 * em})`; $('a4').style.transform = `scale(${1 + 0.05 * em})`;
+  put($('ayahref'), inout(t, R + 1.4, T.ayahOut, 0.6, 0.3, 20));
   const m = inout(t, T.wordIn, T.stationIn - 0.45, 0.7, 0.4, 30);
   $('mark').style.opacity = m.o;
   $('mark').style.transform = `translateY(${m.y}px) scale(${0.9 + 0.1 * io(t, T.wordIn, T.wordIn + 0.7)})`;
