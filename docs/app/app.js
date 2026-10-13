@@ -5,7 +5,9 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.5.1';
+  var VERSION = '0.6.0';
+  var STORE = { ios: 'https://apps.apple.com/app/id6816854571', android: 'https://play.google.com/store/apps/details?id=com.eworldq8.ateeq', site: 'https://ateeq.3li.info' };
+  var MAIL = 'site@hotmail.com';
   var app = document.getElementById('app');
   var tabs = document.getElementById('tabs');
   var RITE, BOOK, I18N, FAITH;
@@ -27,6 +29,8 @@
     if (!NATIVE) return false;
     try { NATIVE.postMessage(Object.assign({ type: type }, data || {})); return true; } catch (e) { return false; }
   }
+  /* Nothing saved yet means a first visit, and that is when the tour shows itself. */
+  var firstRun = (function () { try { return localStorage.getItem(KEY) == null; } catch (e) { return false; } })();
   var S = load();
   var wakeLock = null, flightTimer = null, lastPhase = null, twk = 'umrah', swk = 'umrah';
 
@@ -53,7 +57,8 @@
       tw: tw, sw: sw, twk: 'umrah', swk: 'umrah',
       favs: [], mine: [], trusts: [],
       prep: { umrah: {}, hajj: {} }, custom: { umrah: [], hajj: [] },
-      flight: { route: 'east', time: '', arrival: null, on: false }
+      flight: { route: 'east', time: '', arrival: null, on: false },
+      tour: 0
     };
   }
   function load() {
@@ -159,7 +164,9 @@
     doc: '<path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
     globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9M12 3c-2.5 2.6-3.7 5.6-3.7 9s1.2 6.4 3.7 9"/>',
     code: '<path d="M8.5 8l-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/>',
-    look: '<path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.9-.7-1.3-.7-2.2 0-1 .8-1.6 1.7-1.6H17a4 4 0 0 0 4-4C21 6.7 17 3 12 3z"/><circle cx="7.6" cy="11.2" r="1.1"/><circle cx="10.2" cy="7.4" r="1.1"/><circle cx="14.6" cy="7.4" r="1.1"/>'
+    look: '<path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-.9-.7-1.3-.7-2.2 0-1 .8-1.6 1.7-1.6H17a4 4 0 0 0 4-4C21 6.7 17 3 12 3z"/><circle cx="7.6" cy="11.2" r="1.1"/><circle cx="10.2" cy="7.4" r="1.1"/><circle cx="14.6" cy="7.4" r="1.1"/>',
+    mail: '<rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.5 7.5l7.5 5.5 7.5-5.5"/>',
+    compass: '<circle cx="12" cy="12" r="9"/><path d="M15.6 8.4l-2.1 5.1-5.1 2.1 2.1-5.1z"/>'
   };
   function icon(name, cls) {
     return '<svg class="ic' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + IC[name] + '</svg>';
@@ -681,11 +688,17 @@
   function vMore() {
     var links = [['look', t('settings_title'), 'look'], ['journey?j=hajj', t('journey_hajj'), 'hajj'], ['journey?j=umrah', t('journey_umrah'), 'tawaf'], ['nusuk', t('nusuk_title'), 'journey'],
       ['miqat', t('tool_miqat'), 'miqat'], ['trusts', t('tool_trusts'), 'trusts'], ['sources', t('sources'), 'book']];
+    /* share, rate, feedback and the tour: full width rows, each a real button */
+    var acts = [['share-app', 'share', t('share_app'), t('share_app_sub'), 'back'], ['rate', 'star', t('rate_app'), t('rate_app_sub'), 'ext'],
+      ['feedback', 'mail', t('feedback'), t('feedback_sub'), 'ext'], ['tour', 'compass', t('tour_title'), t('tour_sub'), 'back']];
     return head(t('more_title')) + '<main class="wrap">' +
       '<nav class="links">' + links.map(function (x) { return '<a href="#/' + x[0] + '">' + icon(x[2]) + '<span>' + esc(x[1]) + '</span>' + icon('back', 'fwd') + '</a>'; }).join('') + '</nav>' +
       '<h2 class="sec-h">' + esc(t('settings')) + '</h2><div class="card set">' +
       '<div class="set-row"><span>' + esc(t('lang')) + '</span>' + segc('lang', S.lang, [['ar', 'العربية'], ['en', 'English']]) + '</div>' +
       '<div class="set-row"><span>' + esc(t('dates_show')) + '</span>' + segc('dates', S.dates, [['both', t('dates_both')], ['hijri', t('dates_hijri')], ['greg', t('dates_greg')]]) + '</div></div>' +
+      '<h2 class="sec-h">' + esc(t('app_section')) + '</h2><div class="links acts">' + acts.map(function (x) {
+        return '<button type="button" data-act="' + x[0] + '">' + icon(x[1]) + '<span><b>' + esc(x[2]) + '</b><small>' + esc(x[3]) + '</small></span>' + icon(x[4], 'fwd') + '</button>';
+      }).join('') + '</div>' +
       (installed() ? '' : '<h2 class="sec-h">' + esc(t('install')) + '</h2><p class="note">' + esc(t('install_note')) + '</p>') +
       '<h2 class="sec-h">' + esc(t('data_title')) + '</h2><p class="note">' + esc(t('data_note')) + '</p>' +
       '<button class="btn ghost danger" data-act="erase">' + esc(t('erase_all')) + '</button>' +
@@ -989,6 +1002,21 @@
     if (navigator.share) navigator.share({ text: s }).catch(function () { /* cancelled */ });
     else copyText(s);
   }
+  /* The app's own link: the App Store inside the iPhone app, the site everywhere else, since the
+     site carries the store badges. */
+  function appLink() { return NATIVE_INFO.platform === 'ios' ? STORE.ios : STORE.site; }
+  function shareApp() { shareText(t('share_app_text') + '\n' + appLink()); }
+  /* The store's review page, opened outside the app the way every other link is. */
+  function rateApp() {
+    var url = NATIVE_INFO.platform === 'android' ? STORE.android : STORE.ios + '?action=write-review';
+    var a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.style.display = 'none';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  function feedback() {
+    var about = 'Ateeq ' + VERSION + (NATIVE_INFO.platform ? ' (' + NATIVE_INFO.platform + ' ' + (NATIVE_INFO.version || '') + ')' : '') + ', ' + S.lang;
+    location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(t('feedback_subject')) + '&body=' + encodeURIComponent('\n\n\n' + about);
+  }
 
   /* ------------------------------------------------------------ flight alert */
   function startTicker() { stopTicker(); flightTimer = setInterval(tick, 20000); tick(); }
@@ -1080,6 +1108,10 @@
       case 'fav': toggleFav(id); rerender(); break;
       case 'copy': copyText(textOf(id)); break;
       case 'share': shareText(textOf(id)); break;
+      case 'share-app': shareApp(); break;
+      case 'rate': rateApp(); break;
+      case 'feedback': feedback(); break;
+      case 'tour': showTour(0); break;
       case 'mine-del':
         S.mine = S.mine.filter(function (m) { return m.id !== id; }); save(); rerender(); break;
       case 'trust-toggle':
@@ -1208,17 +1240,75 @@
     if (schemeQuery.addEventListener) schemeQuery.addEventListener('change', onScheme); else if (schemeQuery.addListener) schemeQuery.addListener(onScheme);
   }
 
+  /* ------------------------------------------------------------ the tour */
+  /* Five cards for a first visit, one feature each, and the same cards again from More. */
+  var TOUR = ['journey', 'tawaf', 'duas', 'plane', 'look'];
+  var tour = document.getElementById('tour'), tourAt = -1, tourFrom = null;
+  function tourCard(i) {
+    var last = i === TOUR.length - 1, k = i + 1;
+    var dots = TOUR.map(function (_, j) { return '<i class="' + (j === i ? 'on' : j < i ? 'done' : '') + '"></i>'; }).join('');
+    return '<div class="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-h" aria-describedby="tour-b">' +
+      '<span class="tour-ic" aria-hidden="true">' + icon(TOUR[i]) + '</span>' +
+      '<p class="tour-n">' + esc(t('tour_step', { a: k, b: TOUR.length })) + '</p>' +
+      '<h2 id="tour-h">' + esc(t('tour_' + k + '_t')) + '</h2>' +
+      '<p id="tour-b" class="tour-b">' + esc(t('tour_' + k + '_b')) + '</p>' +
+      '<div class="tour-dots" aria-hidden="true">' + dots + '</div>' +
+      '<button type="button" class="btn primary wide" data-tour="next">' + esc(t(last ? 'tour_done' : 'tour_next')) + '</button>' +
+      '<button type="button" class="btn ghost wide" data-tour="' + (last ? 'back' : 'skip') + '">' + esc(t(last ? 'tour_back' : 'tour_skip')) + '</button></div>';
+  }
+  function showTour(i) {
+    if (!tour) return;
+    if (tourAt < 0) tourFrom = document.activeElement;
+    tourAt = i;
+    tour.innerHTML = tourCard(i);
+    tour.hidden = false;
+    document.body.setAttribute('data-tour', '1');
+    var h = document.getElementById('tour-h');
+    if (h) { h.setAttribute('tabindex', '-1'); h.focus(); }
+    announce(t('tour_' + (i + 1) + '_t'));
+  }
+  function endTour() {
+    if (!tour || tourAt < 0) return;
+    tourAt = -1;
+    tour.hidden = true;
+    tour.innerHTML = '';
+    document.body.removeAttribute('data-tour');
+    S.tour = 1; save();
+    if (tourFrom && tourFrom.focus) { try { tourFrom.focus(); } catch (e) { /* gone */ } }
+    tourFrom = null;
+  }
+  if (tour) {
+    tour.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-tour]');
+      var act = b ? b.getAttribute('data-tour') : (e.target === tour ? 'skip' : '');
+      if (act === 'next') { if (tourAt + 1 < TOUR.length) { buzz(15); showTour(tourAt + 1); } else endTour(); }
+      else if (act === 'back') showTour(Math.max(0, tourAt - 1));
+      else if (act === 'skip') endTour();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && tourAt >= 0) endTour(); });
+  }
+
   /* ------------------------------------------------------------ start */
   /* The welcome stays at least long enough to read the talbiyah, and a tap skips it.
-     Screenshot tools open the app without it. */
+     Screenshot tools open the app without it, and without the tour. */
   var splash = document.getElementById('splash'), splashAt = Date.now();
-  if (splash && (NATIVE_INFO.state || NATIVE_INFO.shot || /[?&]shot\b/.test(location.search))) { splash.remove(); splash = null; }
+  var forShots = !!(NATIVE_INFO.state || NATIVE_INFO.shot || /[?&]shot\b/.test(location.search));
+  if (splash && forShots) { splash.remove(); splash = null; }
+  var afterSplash = [], splashGone = !splash;
+  function whenSplashGone(f) { if (splashGone) f(); else afterSplash.push(f); }
   function hideSplash(now) {
     if (!splash) return;
     var el = splash;
     splash = null;
     var rest = now ? 0 : Math.max(0, (S.motion ? 1200 : 3300) - (Date.now() - splashAt));
-    setTimeout(function () { el.classList.add('out'); setTimeout(function () { if (el.parentNode) el.remove(); }, 800); }, rest);
+    setTimeout(function () {
+      el.classList.add('out');
+      setTimeout(function () {
+        if (el.parentNode) el.remove();
+        splashGone = true;
+        afterSplash.splice(0).forEach(function (f) { f(); });
+      }, S.motion ? 200 : 800);
+    }, rest);
   }
   if (splash) splash.addEventListener('click', function () { hideSplash(true); });
   Promise.all(['../data/rite.json', '../data/duas.json', '../data/i18n.json', '../data/faith.json'].map(function (u) {
@@ -1229,6 +1319,12 @@
     BOOK.sections.forEach(function (s) { s.duas.forEach(function (d) { d.sec = s; DMAP[d.id] = d; }); });
     applyPrefs();
     render();
+    /* The tour greets a first visit once the talbiyah has faded; anyone who was here before
+       the tour existed keeps their quiet start and finds it under More. */
+    if (!forShots && !S.tour) {
+      if (firstRun) whenSplashGone(function () { setTimeout(function () { if (!S.tour) showTour(0); }, 250); });
+      else { S.tour = 1; save(); }
+    }
     hideSplash();
     if (S.flight.on) { startTicker(); scheduleAlarms(); }
     window.addEventListener('hashchange', render);

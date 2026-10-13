@@ -308,11 +308,16 @@ details.nusk[open] summary { margin-bottom: 6px; }
 
 /* more */
 .links { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--hair); border-radius: var(--radius); overflow: hidden; margin: 12px 0; }
-.links a { display: flex; align-items: center; gap: 12px; padding: 14px 16px; text-decoration: none; border-bottom: 1px solid var(--hair); }
-.links a:last-child { border-bottom: 0; }
-.links a span { flex: 1; }
-.links a .ic:first-child { color: var(--gold-line); }
+.links a, .links button { display: flex; align-items: center; gap: 12px; padding: 14px 16px; text-decoration: none; border-bottom: 1px solid var(--hair); }
+.links button { width: 100%; background: none; border-inline: 0; border-top: 0; color: var(--ink); text-align: start; cursor: pointer; min-height: 56px; }
+.links a:last-child, .links button:last-child { border-bottom: 0; }
+.links a span, .links button span { flex: 1; min-width: 0; }
+.links a .ic:first-child, .links button .ic:first-child { color: var(--gold-line); }
 .links .ic.fwd { color: var(--stone); width: 18px; height: 18px; }
+/* share, rate, feedback and the tour: a title with a line under it, like the switches */
+.links.acts button { padding: 12px 16px; }
+.links.acts b { display: block; font-weight: 600; line-height: 1.6; }
+.links.acts small { display: block; color: var(--stone); font-size: calc(12.5px * var(--ts, 1)); line-height: 1.6; }
 .set-row { display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--hair); }
 .set-row > span { font-weight: 600; font-size: calc(15px * var(--ts, 1)); }
 .set-row:last-child { border-bottom: 0; }
@@ -433,6 +438,28 @@ details.nusk[open] summary { margin-bottom: 6px; }
 @keyframes sp-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { #splash *, #splash { animation: none !important; transition-duration: .2s !important; } .sp-one { background-position: 35% 0; } }
 :root[data-motion="1"] #splash *, :root[data-motion="1"] #splash { animation: none !important; transition-duration: .2s !important; }
+
+/* the tour: one card at a time, rising from the bottom over a dimmed page */
+#tour { position: fixed; inset: 0; z-index: 90; display: flex; align-items: flex-end; justify-content: center; padding: 16px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); background: rgba(7, 6, 5, .7); animation: tour-dim .3s ease both; }
+#tour[hidden] { display: none; }
+body[data-tour="1"] { overflow: hidden; }
+.tour-card { width: 100%; max-width: 560px; background: var(--card); color: var(--ink); border: 1px solid var(--gold-line); border-radius: 26px; padding: 26px 20px 16px; text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .35), inset 0 0 0 5px var(--card), inset 0 0 0 6px rgba(184, 146, 75, .45); animation: tour-rise .38s cubic-bezier(.2, .8, .3, 1) both; }
+.tour-ic { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 10px; border-radius: 50%; background: radial-gradient(circle at 50% 35%, var(--gold-soft) 0%, var(--card) 80%); box-shadow: inset 0 0 0 1px var(--gold-line); color: var(--gold); }
+.tour-ic .ic { width: 36px; height: 36px; stroke-width: 1.5; }
+.tour-n { margin: 0; font-size: calc(12.5px * var(--ts, 1)); font-weight: 700; letter-spacing: .4px; color: var(--gold); }
+.tour-card h2 { margin: 2px 0 6px; font-family: var(--naskh); font-weight: 700; font-size: calc(30px * var(--ts, 1)); line-height: 1.35; outline: none; }
+.tour-b { margin: 0 auto 16px; max-width: 460px; font-size: calc(15.5px * var(--ts, 1)); line-height: 1.95; color: var(--ink); }
+[dir="ltr"] .tour-b { line-height: 1.7; }
+.tour-dots { display: flex; justify-content: center; gap: 8px; margin: 0 0 16px; }
+.tour-dots i { width: 9px; height: 9px; transform: rotate(45deg); border: 1.5px solid var(--gold-line); background: transparent; transition: background .2s; }
+.tour-dots i.done { background: var(--gold-line); }
+.tour-dots i.on { background: var(--kiswah); border-color: var(--gold-line); box-shadow: 0 0 0 3px var(--gold-soft); }
+.tour-card .btn.wide { margin: 0 0 8px; min-height: 54px; font-size: calc(17px * var(--ts, 1)); }
+.tour-card .btn.ghost { margin-bottom: 0; border-color: transparent; color: var(--stone); }
+@keyframes tour-dim { from { opacity: 0; } to { opacity: 1; } }
+@keyframes tour-rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@media (min-width: 700px) { #tour { align-items: center; } }
 
 /* the faith that runs under the journey: a verse or a hadith in a gold frame */
 .faith { position: relative; margin: 14px 0; padding: 20px 18px 16px; text-align: center; border-radius: var(--radius); border: 1px solid var(--gold-line);

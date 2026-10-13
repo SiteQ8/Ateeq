@@ -1158,5 +1158,109 @@
  "app_version": {
   "ar": "وإصدار التطبيق",
   "en": "app"
+ },
+ "app_section": {
+  "ar": "التطبيق",
+  "en": "The app"
+ },
+ "share_app": {
+  "ar": "شارك التطبيق",
+  "en": "Share the app"
+ },
+ "share_app_sub": {
+  "ar": "أرسله لمن يستعد للحج أو العمرة",
+  "en": "Send it to someone preparing for Hajj or Umrah"
+ },
+ "share_app_text": {
+  "ar": "عتيق، الحج والعمرة خطوة بخطوة: في كل محطة ما تفعله وما تقوله، مع عدّاد للطواف والسعي والأدعية في مواضعها، ويعمل دون إنترنت.",
+  "en": "Ateeq, Hajj and Umrah step by step: what to do and say at every station, with tawaf and sa'i counters and the duas in their places, and it works offline."
+ },
+ "rate_app": {
+  "ar": "قيّم التطبيق",
+  "en": "Rate the app"
+ },
+ "rate_app_sub": {
+  "ar": "تقييمك في المتجر يوصل عتيق إلى حاج ومعتمر غيرك",
+  "en": "Your rating in the store helps other pilgrims find Ateeq"
+ },
+ "feedback": {
+  "ar": "أرسل ملاحظاتك",
+  "en": "Send feedback"
+ },
+ "feedback_sub": {
+  "ar": "اقتراح أو خطأ وجدته، يصلنا بالبريد",
+  "en": "A suggestion or something wrong, sent by email"
+ },
+ "feedback_subject": {
+  "ar": "ملاحظات على عتيق",
+  "en": "Feedback on Ateeq"
+ },
+ "tour_title": {
+  "ar": "الجولة التعريفية",
+  "en": "Quick tour"
+ },
+ "tour_sub": {
+  "ar": "خمس خطوات تعرّفك بما في عتيق",
+  "en": "Five steps through what Ateeq does"
+ },
+ "tour_step": {
+  "ar": "{a} من {b}",
+  "en": "{a} of {b}"
+ },
+ "tour_next": {
+  "ar": "التالي",
+  "en": "Next"
+ },
+ "tour_back": {
+  "ar": "السابق",
+  "en": "Back"
+ },
+ "tour_skip": {
+  "ar": "تخطَّ الجولة",
+  "en": "Skip the tour"
+ },
+ "tour_done": {
+  "ar": "ابدأ الرحلة",
+  "en": "Start the journey"
+ },
+ "tour_1_t": {
+  "ar": "مرحبًا بك في عتيق",
+  "en": "Welcome to Ateeq"
+ },
+ "tour_1_b": {
+  "ar": "رحلتا الحج والعمرة محطةً محطة، وفي كل محطة ما تفعله وما تقوله وما تنتبه له، وحين تنتهي من محطة تعلّمها فينقلك إلى التي بعدها.",
+  "en": "Hajj and Umrah station by station. At every station you see what to do, what to say and what to watch for, and when you finish one you mark it done and move on to the next."
+ },
+ "tour_2_t": {
+  "ar": "عدّادا الطواف والسعي",
+  "en": "Tawaf and sa'i counters"
+ },
+ "tour_2_b": {
+  "ar": "لمسة واحدة لكل شوط، ومع كل شوط نبضة خفيفة وذكر موضعه، وتبقى الشاشة مضاءة حتى تنتهي.",
+  "en": "One tap for every circuit, a light tap of the phone and the remembrance for where you are, and the screen stays on until you finish."
+ },
+ "tour_3_t": {
+  "ar": "الأدعية وأمانات الدعاء",
+  "en": "Duas and dua trusts"
+ },
+ "tour_3_b": {
+  "ar": "دعاء كل موضع في موضعه، وأبواب الأدعية مع البحث والمفضلة، ومن أوصاك بالدعاء تكتبه في الأمانات فتجده أمامك في الطواف وعلى الصفا والمروة ويوم عرفة.",
+  "en": "Every dua in its place, collections you can search and favourite, and whoever asked you to pray for them goes into your trusts, waiting for you in tawaf, on Safa and Marwah and on the Day of Arafah."
+ },
+ "tour_4_t": {
+  "ar": "تنبيه الإحرام في الطائرة",
+  "en": "The ihram alert on the plane"
+ },
+ "tour_4_b": {
+  "ar": "اختر طريقك ووقت وصولك، فيصلك إشعار لتتهيأ ثم إشعار حين يحين وقت الإحرام، ولو كان التطبيق مغلقًا.",
+  "en": "Choose your route and arrival time, and a notification tells you to get ready, then another when it is time to enter ihram, even with the app closed."
+ },
+ "tour_5_t": {
+  "ar": "على طريقتك",
+  "en": "Your way"
+ },
+ "tour_5_b": {
+  "ar": "من «المزيد» تختار اللغة والألوان وحجم الخط وأدوات سهولة الاستخدام، وكل شيء يعمل دون إنترنت ويبقى في جهازك.",
+  "en": "In More you choose the language, colours, text size and accessibility tools, and everything works offline and stays on your device."
  }
 }

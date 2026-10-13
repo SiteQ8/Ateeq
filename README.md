@@ -37,6 +37,8 @@
 - **باب الأدعية:** ثلاثون بابًا وأكثر من أربعمئة وخمسين دعاءً، مع البحث والمفضلة وقائمة دعائي.
 - **بلا إنترنت وبلا حساب:** يحتاج الإنترنت في أول فتح فقط، ثم يعمل دونه، ولا تغادر بياناتك جهازك.
 - **عربي وإنجليزي:** يفتح بلغة جهازك، مع الوضع الليلي وتكبير خط الأدعية.
+- **جولة تعريفية:** خمس بطاقات تعرّف الزائر الجديد بما في التطبيق بعد شاشة الترحيب، وتُفتح من «المزيد» متى شاء.
+- **شارك وقيّم وراسلنا:** من «المزيد» يشارك التطبيق برابط المتجر، ويقيّمه في المتجر، ويرسل ملاحظاته بالبريد.
 
 ### المصادر
 
@@ -113,6 +115,8 @@ The name comes from the verse "and let them circle the Ancient House" (al-Bayt a
 - **Duas library:** thirty topics and more than 450 supplications, with search, saving and a list of your own.
 - **Offline, no account:** the internet is needed on the first visit only, and your data never leaves your device.
 - **Arabic and English:** opens in your device language, with a dark theme and a larger dua font.
+- **A quick tour:** five cards introduce a first visitor to the app after the welcome, and More opens them again at any time.
+- **Share, rate and feedback:** from More, share the app with its store link, rate it in the store, or send feedback by email.
 
 ### Sources
 

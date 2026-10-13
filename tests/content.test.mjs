@@ -160,7 +160,25 @@ test('every interface string the app asks for exists', () => {
   for (const k of ['tamattu', 'qiran', 'ifrad']) keys.add('nusk_' + k);
   for (const k of [...LOOK.ORDER, 'custom']) keys.add('palette_' + k);
   for (const k of ['0', '1', '2', '3', 'auto']) keys.add('text_' + k);
+  const tour = app.match(/var TOUR = \[([^\]]+)\]/)[1].split(',').length;
+  for (let k = 1; k <= tour; k++) { keys.add(`tour_${k}_t`); keys.add(`tour_${k}_b`); }
   for (const k of keys) assert.ok(I18N[k], `missing i18n key ${k}`);
+});
+
+test('the tour: five cards, each a title and one sentence, and the More page offers it with share, rate and feedback', () => {
+  const app = read('docs/app/app.js');
+  assert.match(app, /var TOUR = \['journey', 'tawaf', 'duas', 'plane', 'look'\]/);
+  for (let k = 1; k <= 5; k++) {
+    assert.ok(I18N[`tour_${k}_t`].ar.length < 40, `tour title ${k} is too long for one line`);
+    assert.ok(I18N[`tour_${k}_b`].ar.endsWith('.'), `tour card ${k} should end with a full stop`);
+  }
+  for (const act of ['share-app', 'rate', 'feedback', 'tour']) {
+    assert.ok(app.includes(`['${act}', `), `the More page lacks the ${act} row`);
+    assert.ok(app.includes(`case '${act}':`), `nothing handles ${act}`);
+  }
+  assert.ok(read('docs/app/index.html').includes('id="tour"'), 'the page has no tour container');
+  assert.match(app, /apps\.apple\.com\/app\/id6816854571/);
+  assert.match(app, /play\.google\.com\/store\/apps\/details\?id=com\.eworldq8\.ateeq/);
 });
 
 test('the offline cache lists only files that exist', () => {
