@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../docs/fonts/fonts.css">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #070605; }
+  body { font-family: 'Noto Kufi Arabic', sans-serif; position: relative; }
+  .abs { position: absolute; }
+  #bg { inset: 0; background: radial-gradient(ellipse at 50% 18%, #2E261A 0%, #16130D 46%, #080706 100%); }
+  #lattice { inset: -140px; opacity: .07; background-repeat: repeat; background-size: 120px 120px;
+    -webkit-mask-image: linear-gradient(#000 0%, rgba(0,0,0,.55) 40%, transparent 78%); mask-image: linear-gradient(#000 0%, rgba(0,0,0,.55) 40%, transparent 78%); }
+  #glow { left: 50%; top: 1080px; width: 1500px; height: 1500px; transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(221,190,120,.18) 0%, rgba(221,190,120,0) 58%); }
+  .gold { background: linear-gradient(100deg, #B8893C 0%, #EDD48E 22%, #FBF0C8 40%, #E4C57C 60%, #B8893C 80%, #EDD48E 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .naskh { font-family: 'Scheherazade New', serif; font-weight: 700; }
+  .center { left: 0; right: 0; text-align: center; }
+  /* hook */
+  #mark { left: 50%; top: 560px; width: 320px; height: 320px; margin-left: -160px; }
+  #talb { top: 930px; font-size: 118px; line-height: 1.5; padding: 0 40px .35em; }
+  #word { top: 880px; font-size: 300px; line-height: 1.2; padding-bottom: .3em; }
+  #tag { top: 1270px; font-size: 46px; color: #EFE3C6; letter-spacing: .5px; }
+  /* feature headlines */
+  .hl { top: 150px; font-size: 112px; line-height: 1.35; padding: 0 60px .4em; }
+  .sub { top: 318px; font-size: 44px; line-height: 1.7; color: #EFE3C6; padding: 0 90px; opacity: .92; }
+  .pill { top: 428px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 14px; padding: 12px 30px; border-radius: 999px;
+    border: 1.5px solid rgba(221,190,120,.55); background: rgba(221,190,120,.09); color: #EDD48E; font-size: 36px; font-weight: 700; white-space: nowrap; }
+  .pill svg { width: 40px; height: 40px; }
+  /* phone */
+  #dev { left: 50%; top: 520px; width: 860px; margin-left: -430px; padding: 20px; border-radius: 128px;
+    background: linear-gradient(145deg, #4A4640 0%, #15130F 30%, #0B0A08 70%, #3A362F 100%);
+    box-shadow: 0 0 0 2.5px rgba(221,190,120,.55), 0 60px 140px rgba(0,0,0,.7), 0 0 120px rgba(221,190,120,.10); }
+  #screen { position: relative; width: 820px; height: 1782px; border-radius: 108px; overflow: hidden; background: #000; }
+  #screen img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+  #island { position: absolute; left: 50%; top: 22px; width: 238px; height: 70px; margin-left: -119px; background: #000; border-radius: 999px; }
+  /* outro */
+  #omark { left: 50%; top: 440px; width: 300px; height: 300px; margin-left: -150px; }
+  #oword { top: 740px; font-size: 280px; line-height: 1.2; padding-bottom: .3em; }
+  #oname { top: 1110px; font-size: 54px; color: #EFE3C6; letter-spacing: 1px; direction: ltr; font-weight: 700; }
+  #otag { top: 1190px; font-size: 42px; color: #CDBB92; }
+  #avail { top: 1330px; font-size: 48px; color: #EFE3C6; font-weight: 700; }
+  #badge { left: 50%; top: 1425px; width: 480px; margin-left: -240px; }
+  #badge img { width: 100%; display: block; }
+  #site { top: 1620px; font-size: 40px; color: #D8B96F; direction: ltr; letter-spacing: 1px; }
+  #vignette { inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%); pointer-events: none; }
+  #fade { inset: 0; background: #000; }
+</style>
+</head>
+<body>
+<div id="bg" class="abs"></div>
+<div id="lattice" class="abs"></div>
+<div id="glow" class="abs"></div>
+
+<img id="mark" class="abs" src="logo.svg" alt="">
+<div id="talb" class="abs center naskh gold">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ</div>
+<div id="word" class="abs center naskh gold">عتيق</div>
+<div id="tag" class="abs center">الحج والعمرة خطوة بخطوة</div>
+
+<div id="hlA" class="abs center naskh gold hl"></div>
+<div id="hlB" class="abs center naskh gold hl"></div>
+<div id="subA" class="abs center sub"></div>
+<div id="subB" class="abs center sub"></div>
+<div id="pill" class="abs pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a14 14 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/><path d="M3 3l18 18"/></svg><span>يعمل كله دون إنترنت</span></div>
+
+<div id="dev" class="abs"><div id="screen">
+  <img data-k="hajj-home" src="ar-hajj-home.png"><img data-k="arafah" src="ar-arafah.png"><img data-k="tawaf" src="ar-tawaf.png">
+  <img data-k="duas" src="ar-duas.png"><img data-k="miqat" src="ar-miqat.png">
+  <div id="island"></div></div></div>
+
+<img id="omark" class="abs" src="logo.svg" alt="">
+<div id="oword" class="abs center naskh gold">عتيق</div>
+<div id="oname" class="abs center">عتيق · Ateeq</div>
+<div id="otag" class="abs center">الحج والعمرة خطوة بخطوة</div>
+<div id="avail" class="abs center">متوفّر الآن على App Store</div>
+<div id="badge" class="abs"><img src="app-store-badge.svg" alt="Download on the App Store"></div>
+<div id="site" class="abs center">ateeq.3li.info</div>
+<div id="vignette" class="abs"></div>
+<div id="fade" class="abs"></div>
+
+<script>
+// Every frame is a pure function of t (seconds). Nothing here animates on its own.
+const $ = id => document.getElementById(id);
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const lin = (t, a, b) => clamp((t - a) / (b - a), 0, 1);
+const easeOut = x => 1 - Math.pow(1 - x, 3);
+const easeInOut = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const io = (t, a, b) => easeOut(lin(t, a, b));
+// a thing that rises in and sinks out: returns {o, y}
+function inout(t, tIn, tOut, dIn = .5, dOut = .3, rise = 40) {
+  if (t < tIn) return { o: 0, y: rise };
+  if (t < tIn + dIn) { const k = easeOut(lin(t, tIn, tIn + dIn)); return { o: k, y: rise * (1 - k) }; }
+  if (t < tOut) return { o: 1, y: 0 };
+  if (t < tOut + dOut) { const k = easeInOut(lin(t, tOut, tOut + dOut)); return { o: 1 - k, y: -rise * .6 * k }; }
+  return { o: 0, y: -rise * .6 };
+}
+function put(el, s) { el.style.opacity = s.o; el.style.transform = `translateY(${s.y}px)` + (s.scale ? ` scale(${s.scale})` : ''); }
+
+// lattice of eight point stars, the brand's geometry
+(function () {
+  const c = 60, R = 26, sq = a => [0, 1, 2, 3].map(i => { const t = (a + i * 90) * Math.PI / 180; return `${(c + R * Math.cos(t)).toFixed(1)},${(c + R * Math.sin(t)).toFixed(1)}`; }).join(' ');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><g fill="none" stroke="#DDBE78" stroke-width="1.2"><polygon points="${sq(45)}"/><polygon points="${sq(0)}"/></g></svg>`;
+  $('lattice').style.backgroundImage = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+})();
+
+// The timeline follows the narration (take 1). The file starts at A seconds into the video,
+// so a word spoken at s seconds in the file lands at S(s). Word times come from the transcript.
+const A = 0.8;
+const S = s => A + s;
+const T = {
+  talb: 0.45,
+  wordIn: S(1.72),                 // "عتيق"
+  stationIn: S(3.68),              // "في كل محطة"
+  arafah: S(5.18),                 // "تسوي"
+  countersIn: S(8.04),             // "عداد للطواف والسعي"
+  duasIn: S(9.64),                 // "والأدعية في مواضعها"
+  planeIn: S(11.32),               // "وتنبيه الإحرام في الطائرة"
+  offline: S(13.18),               // "وكله يشتغل بدون إنترنت"
+  outroIn: S(15.44),               // "عتيق"
+  availIn: S(16.14),               // "حمله الحين"
+  badgeIn: S(17.0),                // "من Apple Store"
+  siteIn: S(17.95),
+  end: S(17.72) + 2.6
+};
+window.AUDIO_OFFSET = A;
+const SCREENS = [
+  ['hajj-home', T.stationIn], ['arafah', T.arafah], ['tawaf', T.countersIn], ['duas', T.duasIn], ['miqat', T.planeIn]
+];
+// Short beats carry no sub-line: there is no time to read one, and the screen says it.
+const HEADS = [
+  { at: T.stationIn, until: T.countersIn, h: 'في كل محطة', s: 'ما تفعله، وما تقوله، وما تنتبه له' },
+  { at: T.countersIn, until: T.duasIn, h: 'عدّاد الطواف والسعي', s: '' },
+  { at: T.duasIn, until: T.planeIn, h: 'الأدعية في مواضعها', s: '' },
+  { at: T.planeIn, until: T.outroIn, h: 'تنبيه الإحرام في الطائرة', s: 'يوصلك الإشعار ولو كان التطبيق مغلقًا' },
+];
+const HL_OUT = 0.26, HL_GAP = 0.06;   // a headline is fully out HL_GAP before the next one rises
+
+function render(t) {
+  // background drift
+  $('lattice').style.transform = `translate(${(t * 3) % 120}px, ${(t * 2) % 120}px)`;
+  $('glow').style.opacity = 0.75 + 0.25 * Math.sin(t * 0.9);
+  $('fade').style.opacity = 1 - io(t, 0, 0.6);
+
+  // hook: mark, talbiyah, then the wordmark and tagline; all gone before the phone reaches them
+  const m = inout(t, 0.25, T.outroIn - 0.2, 1.0, 0.35, 0);
+  const markOut = lin(t, T.stationIn - 0.45, T.stationIn - 0.05);
+  $('mark').style.opacity = t < T.stationIn ? m.o * (1 - markOut) : 0;
+  $('mark').style.transform = `translateY(${t < T.wordIn ? 0 : -140 * io(t, T.wordIn, T.wordIn + 0.6)}px) scale(${0.92 + 0.08 * io(t, 0.25, 1.25)})`;
+  put($('talb'), inout(t, T.talb, T.wordIn - 0.4, 0.8, 0.35, 50));
+  const w = inout(t, T.wordIn, T.stationIn - 0.4, 0.55, 0.35, 60); w.scale = 0.9 + 0.1 * io(t, T.wordIn, T.wordIn + 0.55); put($('word'), w);
+  put($('tag'), inout(t, T.wordIn + 0.15, T.stationIn - 0.4, 0.5, 0.3, 30));
+
+  // feature headlines: the old one is fully out before the new one rises, never a double exposure
+  for (const [el, sub] of [[$('hlA'), $('subA')], [$('hlB'), $('subB')]]) { el.style.opacity = 0; sub.style.opacity = 0; }
+  HEADS.forEach((h, i) => {
+    const el = i % 2 ? $('hlB') : $('hlA'), sub = i % 2 ? $('subB') : $('subA');
+    const outAt = h.until - HL_OUT - HL_GAP;
+    const s = inout(t, h.at, outAt, 0.42, HL_OUT, 44);
+    if (s.o > 0) {
+      el.textContent = h.h; put(el, s);
+      sub.textContent = h.s; if (h.s) put(sub, inout(t, h.at + 0.15, outAt - 0.04, 0.42, HL_OUT, 30));
+    }
+  });
+  // the offline pill under the plane headline, out with it
+  const p = inout(t, T.offline, T.outroIn - HL_OUT - HL_GAP, 0.45, HL_OUT, 24);
+  $('pill').style.opacity = p.o; $('pill').style.transform = `translate(-50%, ${p.y}px) scale(${0.94 + 0.06 * io(t, T.offline, T.offline + 0.45)})`;
+
+  // the phone rises in, floats, then sinks away
+  const rise = io(t, T.stationIn - 0.15, T.stationIn + 0.75);
+  const sink = easeInOut(lin(t, T.outroIn - 0.35, T.outroIn + 0.35));
+  const float = Math.sin(t * 1.4) * 6;
+  const devY = 520 + (1 - rise) * 1500 + sink * 1500 + float;
+  $('dev').style.transform = `translateY(${devY - 520}px)`;
+  $('dev').style.opacity = rise > 0 ? 1 : 0;
+  // screens: a push, the way the app itself navigates. The new screen comes in from the left
+  // (forward, in RTL) and shoves the old one out to the right; both stay opaque, so nothing goes muddy.
+  const imgs = [...$('screen').querySelectorAll('img')];
+  let active = -1; SCREENS.forEach((s, i) => { if (t >= s[1]) active = i; });
+  const k = active > 0 ? io(t, SCREENS[active][1], SCREENS[active][1] + 0.42) : 1;
+  imgs.forEach((im, i) => {
+    if (i === active) { im.style.opacity = 1; im.style.transform = `translateX(${-820 * (1 - k)}px)`; }
+    else if (i === active - 1) { im.style.opacity = 1; im.style.transform = `translateX(${820 * k}px)`; }
+    else { im.style.opacity = 0; }
+  });
+
+  // outro: the mark and wordmark land on the spoken "عتيق", the badge on "Apple Store"
+  const o = inout(t, T.outroIn - 0.05, 999, 0.6, 0, 30); $('omark').style.opacity = o.o; $('omark').style.transform = `translateY(${o.y}px) scale(${0.9 + 0.1 * io(t, T.outroIn - 0.05, T.outroIn + 0.7)})`;
+  put($('oword'), inout(t, T.outroIn + 0.15, 999, 0.55, 0, 50));
+  put($('oname'), inout(t, T.outroIn + 0.55, 999, 0.5, 0, 24));
+  put($('otag'), inout(t, T.outroIn + 0.7, 999, 0.5, 0, 24));
+  put($('avail'), inout(t, T.availIn, 999, 0.45, 0, 30));
+  const b = inout(t, T.badgeIn, 999, 0.55, 0, 40); $('badge').style.opacity = b.o; $('badge').style.transform = `translateY(${b.y}px) scale(${0.86 + 0.14 * io(t, T.badgeIn, T.badgeIn + 0.6)})`;
+  put($('site'), inout(t, T.siteIn, 999, 0.5, 0, 20));
+}
+window.render = render;
+window.TOTAL = T.end;
+render(0);
+</script>
+</body>
+</html>
