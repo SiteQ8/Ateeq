@@ -40,7 +40,7 @@ android {
         targetSdk = 36
         // Play refuses a version code it has seen, so the release workflow numbers every build.
         versionCode = (System.getenv("ATEEQ_VERSION_CODE") ?: "1").toInt()
-        versionName = System.getenv("ATEEQ_VERSION_NAME") ?: "1.1.0"
+        versionName = System.getenv("ATEEQ_VERSION_NAME") ?: "1.1.1"
         resourceConfigurations += listOf("ar", "en")
     }
 

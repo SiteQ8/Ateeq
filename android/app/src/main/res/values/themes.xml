@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Ateeq" parent="android:Theme.Material.NoActionBar">
+    <!-- The shell follows the phone: light here, dark in values-night. WebView reads the theme's
+         isLightTheme to answer the page's prefers-color-scheme, so with a fixed dark shell the
+         app's "system" mode could never be light. -->
+    <style name="Base.Theme.Ateeq" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Ateeq" parent="Base.Theme.Ateeq">
         <item name="android:windowBackground">@color/band</item>
         <item name="android:colorAccent">@color/gold</item>
         <item name="android:statusBarColor">@android:color/transparent</item>

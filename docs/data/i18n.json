@@ -572,8 +572,8 @@
   "en": "Mode"
  },
  "theme_auto": {
-  "ar": "تلقائي",
-  "en": "Automatic"
+  "ar": "حسب الجهاز",
+  "en": "System"
  },
  "theme_light": {
   "ar": "نهاري",
@@ -1262,5 +1262,17 @@
  "tour_5_b": {
   "ar": "من «المزيد» تختار اللغة والألوان وحجم الخط وأدوات سهولة الاستخدام، وكل شيء يعمل دون إنترنت ويبقى في جهازك.",
   "en": "In More you choose the language, colours, text size and accessibility tools, and everything works offline and stays on your device."
+ },
+ "exit_ask": {
+  "ar": "تأكيد قبل الخروج",
+  "en": "Ask before leaving"
+ },
+ "exit_ask_sub": {
+  "ar": "ضغطة رجوع في الرئيسية تنبّهك، والثانية تخرج من التطبيق.",
+  "en": "A back press on the home screen warns you, and a second one leaves the app."
+ },
+ "exit_again": {
+  "ar": "اضغط رجوع مرة أخرى للخروج",
+  "en": "Press back again to exit"
  }
 }

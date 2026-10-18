@@ -181,6 +181,29 @@ test('the tour: five cards, each a title and one sentence, and the More page off
   assert.match(app, /play\.google\.com\/store\/apps\/details\?id=com\.eworldq8\.ateeq/);
 });
 
+test('the phone app: the page follows the phone\'s dark mode and answers the back button', () => {
+  const app = read('docs/app/app.js');
+  const kt = read('android/app/src/main/java/com/eworldq8/ateeq/MainActivity.kt');
+  // The "system" mode takes the phone's word before asking the browser.
+  assert.match(app, /typeof NATIVE_INFO\.dark === 'boolean'/);
+  assert.match(kt, /out\.put\("dark", night\(\)\)/);
+  assert.match(kt, /override fun onConfigurationChanged[\s\S]*AteeqApp\.dark/);
+  assert.match(read('android/app/src/main/AndroidManifest.xml'), /configChanges="[^"]*uiMode/);
+  // The shell is light by day and dark by night, which is how WebView answers prefers-color-scheme.
+  assert.match(read('android/app/src/main/res/values/themes.xml'), /Base\.Theme\.Ateeq" parent="android:Theme\.Material\.Light\.NoActionBar"/);
+  assert.match(read('android/app/src/main/res/values-night/themes.xml'), /Base\.Theme\.Ateeq" parent="android:Theme\.Material\.NoActionBar"/);
+  for (const f of ['values', 'values-v31']) assert.match(read(`android/app/src/main/res/${f}/themes.xml`), /"Theme\.Ateeq" parent="Base\.Theme\.Ateeq"/);
+  // The back button: the page answers done, wait, exit or pass, and the phone acts on each.
+  assert.match(app, /back: function \(history\)/);
+  for (const answer of ['done', 'wait', 'exit', 'pass']) assert.ok(app.includes(`return '${answer}'`), `the page never answers ${answer}`);
+  assert.match(kt, /AteeqApp\.back\(\$history\)/);
+  assert.match(kt, /"done", "wait" -> Unit/);
+  assert.match(kt, /"exit" -> leave\(\)/);
+  assert.ok(app.includes("sw('exitAsk'"), 'the setting to switch the question off is missing');
+  assert.ok(app.includes('exitAsk: true'), 'the question should be on by default');
+  for (const k of ['exit_ask', 'exit_ask_sub', 'exit_again']) assert.ok(I18N[k], `missing i18n key ${k}`);
+});
+
 test('the offline cache lists only files that exist', () => {
   const sw = read('docs/sw.js');
   const list = JSON.parse(sw.slice(sw.indexOf('['), sw.indexOf(']') + 1).replace(/'/g, '"'));

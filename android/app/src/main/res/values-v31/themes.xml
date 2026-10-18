@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Ateeq" parent="android:Theme.Material.NoActionBar">
+    <style name="Theme.Ateeq" parent="Base.Theme.Ateeq">
         <item name="android:windowBackground">@color/band</item>
         <item name="android:colorAccent">@color/gold</item>
         <item name="android:statusBarColor">@android:color/transparent</item>

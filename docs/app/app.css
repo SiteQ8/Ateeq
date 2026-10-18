@@ -343,8 +343,9 @@ details.nusk[open] summary { margin-bottom: 6px; }
 #tabs a.on { color: var(--ink); font-weight: 700; }
 #tabs a.on .ic { color: var(--gold-line); }
 #tabs a.on::after { content: ''; position: absolute; top: -6px; width: 26px; height: 3px; border-radius: 0 0 3px 3px; background: var(--gold-line); }
-#toast { position: fixed; left: 50%; bottom: calc(var(--nav-h) + 110px); transform: translate(-50%, 16px); background: var(--kiswah); color: var(--gold-2); padding: 8px 16px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s var(--ease-out); z-index: 50; font-size: calc(14px * var(--ts, 1)); }
-#toast.show { opacity: 1; transform: translate(-50%, 0); }
+/* centred from both edges, so a longer notice keeps one line in either reading direction */
+#toast { position: fixed; inset-inline: 16px; bottom: calc(var(--nav-h) + 110px); width: max-content; max-width: calc(100% - 32px); margin: 0 auto; text-align: center; transform: translateY(16px); background: var(--kiswah); color: var(--gold-2); padding: 8px 16px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s var(--ease-out); z-index: 50; font-size: calc(14px * var(--ts, 1)); }
+#toast.show { opacity: 1; transform: translateY(0); }
 #banner { position: fixed; inset-inline: 12px; top: calc(10px + env(safe-area-inset-top)); z-index: 60; background: var(--kiswah); color: var(--band-ink); border: 1px solid var(--gold-line); border-radius: 16px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; box-shadow: 0 10px 30px rgba(0, 0, 0, .3); max-width: 616px; margin: 0 auto; }
 #banner[hidden] { display: none; }
 #banner p { margin: 0; flex: 1; font-weight: 700; color: #D8B96F; line-height: 1.7; }

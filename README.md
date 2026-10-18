@@ -77,7 +77,7 @@ python3 -m http.server 8080 --directory docs
 
 ### تطبيق أندرويد
 
-مثل تطبيق آيفون يحمل عتيق كاملًا داخله ويعمل دون إنترنت، ويلوّن شريطي النظام بلوحة الألوان المختارة، ويضيف تنبيه الإحرام إشعارًا حقيقيًا، والاهتزاز مع كل شوط، وإبقاء الشاشة مضاءة، والمشاركة، وحجم الخط من إعدادات الهاتف.
+مثل تطبيق آيفون يحمل عتيق كاملًا داخله ويعمل دون إنترنت، ويلوّن شريطي النظام بلوحة الألوان المختارة، ويضيف تنبيه الإحرام إشعارًا حقيقيًا، والاهتزاز مع كل شوط، وإبقاء الشاشة مضاءة، والمشاركة، وحجم الخط من إعدادات الهاتف، ويتبع وضع «حسب الجهاز» إعداد الهاتف الفاتح أو الليلي ولو تغيّر والتطبيق مفتوح، وزر الرجوع يغلق المفتوح ويعود إلى الرئيسية ثم ينبّه قبل الخروج، ويمكن إيقاف التنبيه من الإعدادات.
 
 - `android/` مشروع Gradle بلغة Kotlin، ومهمة `copyWeb` فيه تنسخ `docs/` إلى داخل التطبيق عند كل بناء.
 - `.github/workflows/android.yml` يبني التطبيق ويفحصه ويصوّره في محاكي أندرويد على الشاشات نفسها.
@@ -166,7 +166,7 @@ The app carries Ateeq's pages, data and fonts inside it, so it works entirely of
 
 ### The Android app
 
-Like the iPhone app, it carries all of Ateeq inside and works offline. It paints the system bars in the chosen palette and adds the ihram alert as a real notification, a tap with every circuit, the screen kept on, sharing, and the text size set in the phone's settings.
+Like the iPhone app, it carries all of Ateeq inside and works offline. It paints the system bars in the chosen palette and adds the ihram alert as a real notification, a tap with every circuit, the screen kept on, sharing, and the text size set in the phone's settings. The System mode follows the phone's light or dark setting, even when it changes while the app is open, and the back button closes what is open, returns to the home screen, then warns once before leaving the app, a warning that can be switched off in Settings.
 
 - `android/` is a Gradle project in Kotlin, and its `copyWeb` task copies `docs/` into the app on every build.
 - `.github/workflows/android.yml` builds, lints and photographs the app on an Android emulator, on the same screens.

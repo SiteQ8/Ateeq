@@ -45,4 +45,28 @@ sleep 2
 adb exec-out screencap -p > shots/welcome-1.png < /dev/null
 sleep 4
 adb exec-out screencap -p > shots/welcome-2.png < /dev/null
+
+# The "system" mode: the same home while the phone is light, then once it turns dark. The app
+# must follow the phone both times, and the pictures show whether it did.
+AUTO=$(node -e "import('./tools/scenes.mjs').then(m => process.stdout.write(Buffer.from(JSON.stringify(m.state('ar', { theme: 'auto', mode: 'hajj' }))).toString('base64')))")
+adb shell cmd uimode night no > /dev/null
+adb shell am start -S -W -n "$PKG/.MainActivity" --es state "$AUTO" --es route "'/'" < /dev/null > /dev/null
+sleep 6
+adb exec-out screencap -p > shots/theme-system-day.png < /dev/null
+adb shell cmd uimode night yes > /dev/null
+sleep 3
+adb exec-out screencap -p > shots/theme-system-night.png < /dev/null
+adb shell cmd uimode night no > /dev/null
+sleep 2
+
+# The back button at the home screen: the first press only warns, the second leaves the app.
+adb shell am start -S -W -n "$PKG/.MainActivity" --es state "$AUTO" --es route "'/'" < /dev/null > /dev/null
+sleep 6
+adb shell input keyevent KEYCODE_BACK
+sleep 1
+adb exec-out screencap -p > shots/back-once.png < /dev/null
+if in_front; then echo "back once: the app stays, with its notice"; else echo "::warning::back once: the app left at the first press"; fi
+adb shell input keyevent KEYCODE_BACK
+sleep 2
+if in_front; then echo "::warning::back twice: the app is still in front"; else echo "back twice: the app left"; fi
 ls -la shots

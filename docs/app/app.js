@@ -5,7 +5,7 @@
   var L = window.AteeqLogic;
   var LOOK = window.AteeqLook;
   var KEY = 'ateeq.v1';
-  var VERSION = '0.6.1';
+  var VERSION = '0.6.2';
   var STORE = { ios: 'https://apps.apple.com/app/id6816854571', android: 'https://play.google.com/store/apps/details?id=com.eworldq8.ateeq', site: 'https://ateeq.3li.info' };
   var MAIL = 'site@hotmail.com';
   var app = document.getElementById('app');
@@ -58,7 +58,7 @@
       favs: [], mine: [], trusts: [],
       prep: { umrah: {}, hajj: {} }, custom: { umrah: [], hajj: [] },
       flight: { route: 'east', time: '', arrival: null, on: false },
-      tour: 0
+      tour: 0, exitAsk: true
     };
   }
   function load() {
@@ -695,7 +695,9 @@
       '<nav class="links">' + links.map(function (x) { return '<a href="#/' + x[0] + '">' + icon(x[2]) + '<span>' + esc(x[1]) + '</span>' + icon('back', 'fwd') + '</a>'; }).join('') + '</nav>' +
       '<h2 class="sec-h">' + esc(t('settings')) + '</h2><div class="card set">' +
       '<div class="set-row"><span>' + esc(t('lang')) + '</span>' + segc('lang', S.lang, [['ar', 'العربية'], ['en', 'English']]) + '</div>' +
-      '<div class="set-row"><span>' + esc(t('dates_show')) + '</span>' + segc('dates', S.dates, [['both', t('dates_both')], ['hijri', t('dates_hijri')], ['greg', t('dates_greg')]]) + '</div></div>' +
+      '<div class="set-row"><span>' + esc(t('dates_show')) + '</span>' + segc('dates', S.dates, [['both', t('dates_both')], ['hijri', t('dates_hijri')], ['greg', t('dates_greg')]]) + '</div>' +
+      /* only Android has a back button that can leave the app */
+      (NATIVE_INFO.platform === 'android' ? sw('exitAsk', t('exit_ask'), t('exit_ask_sub')) : '') + '</div>' +
       '<h2 class="sec-h">' + esc(t('app_section')) + '</h2><div class="links acts">' + acts.map(function (x) {
         return '<button type="button" data-act="' + x[0] + '">' + icon(x[1]) + '<span><b>' + esc(x[2]) + '</b><small>' + esc(x[3]) + '</small></span>' + icon(x[4], 'fwd') + '</button>';
       }).join('') + '</div>' +
@@ -1207,8 +1209,13 @@
     }
   });
 
+  /* The phone app says whether the phone is in dark mode; a browser is asked directly. */
+  function systemDark() {
+    if (typeof NATIVE_INFO.dark === 'boolean') return NATIVE_INFO.dark;
+    return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
   function isDark() {
-    return S.theme === 'dark' || (S.theme !== 'light' && !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    return S.theme === 'dark' || (S.theme !== 'light' && systemDark());
   }
   /* Palette, mode and accessibility, applied before anything is drawn. */
   function applyLook() {
@@ -1224,7 +1231,7 @@
     d.style.setProperty('--dua-size', { s: '21px', m: '25px', l: '30px' }[S.size] || '25px');
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', tk.band);
-    native('theme', { band: tk.band, background: tk.marble, card: tk.card, lightBand: LOOK.lum(tk.band) > 0.35 });
+    native('theme', { band: tk.band, background: tk.marble, card: tk.card, lightBand: LOOK.lum(tk.band) > 0.35, dark: tk.scheme === 'dark' });
   }
   function applyPrefs() {
     var d = document.documentElement;
@@ -1299,6 +1306,25 @@
     });
     tour.addEventListener('pointercancel', function () { swipe = null; });
   }
+
+  /* ------------------------------------------------------------ the phone */
+  /* What the phone app calls: a change of the phone's dark mode, and the Android back button.
+     The button closes the tour if it is open, lets the page history go back, takes a deep page
+     home, and at the home screen asks once: a second press within two seconds leaves the app,
+     straight away if the person switched the question off. */
+  var backAt = 0;
+  window.AteeqApp = {
+    dark: function (on) { NATIVE_INFO.dark = !!on; if (S.theme === 'auto') applyLook(); },
+    back: function (history) {
+      if (tourAt >= 0) { endTour(); return 'done'; }
+      if (history) return 'pass';
+      if (parse().parts.length) { location.replace('#/'); return 'done'; }
+      if (!I18N || S.exitAsk === false || Date.now() - backAt < 2000) return 'exit';
+      backAt = Date.now();
+      toast(t('exit_again'));
+      return 'wait';
+    }
+  };
 
   /* ------------------------------------------------------------ start */
   /* The welcome stays at least long enough to read the talbiyah, and a tap skips it.

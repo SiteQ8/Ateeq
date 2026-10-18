@@ -7,6 +7,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
@@ -40,13 +41,16 @@ import org.json.JSONObject
  * WebViewAssetLoader, so nothing is fetched from the internet. The page talks back through
  * AteeqAndroid for what only the phone can do: haptics, keeping the screen on during tawaf
  * and sa'i, the share sheet, the clipboard, and the ihram alert as a real notification that
- * fires even when the app is closed.
+ * fires even when the app is closed. The phone tells the page two things in return: whether the
+ * phone is in dark mode, so the app's "system" mode follows it, and that the back button was
+ * pressed, so the page can close what it has open, go home, or ask once before the app is left.
  */
 class MainActivity : ComponentActivity() {
     private lateinit var web: WebView
     private lateinit var statusStrip: View
     private lateinit var navStrip: View
     private var waitingAlarms: JSONArray? = null
+    private var appDark = true
 
     private val askNotifications = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         val items = waitingAlarms
@@ -54,16 +58,35 @@ class MainActivity : ComponentActivity() {
         if (granted && items != null) Alarms.schedule(this, items)
     }
 
+    /**
+     * The page answers "done" when it handled the press itself, "wait" when it showed the
+     * "press back again" notice, "exit" when the app may be left, and "pass" to let the
+     * WebView's own history decide, which is also what happens before the page is up.
+     */
     private val back = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if (web.canGoBack()) {
-                web.goBack()
-            } else {
-                isEnabled = false
-                onBackPressedDispatcher.onBackPressed()
+            val history = web.canGoBack()
+            web.evaluateJavascript("window.AteeqApp ? AteeqApp.back($history) : 'pass'") { answer ->
+                when (answer?.trim('"')) {
+                    "done", "wait" -> Unit
+                    "exit" -> leave()
+                    else -> if (web.canGoBack()) web.goBack() else leave()
+                }
             }
         }
     }
+
+    private fun leave() {
+        back.isEnabled = false
+        onBackPressedDispatcher.onBackPressed()
+    }
+
+    private fun night(config: Configuration = resources.configuration): Boolean =
+        (config.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+
+    /** Dialogs take the app's own light or dark look, whatever the phone is set to. */
+    private fun dialogTheme(): Int =
+        if (appDark) android.R.style.Theme_Material_Dialog_Alert else android.R.style.Theme_Material_Light_Dialog_Alert
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,7 +152,7 @@ class MainActivity : ComponentActivity() {
         web.webChromeClient = object : WebChromeClient() {
             override fun onJsAlert(view: WebView?, url: String?, message: String?, result: JsResult?): Boolean {
                 val text = message.orEmpty()
-                AlertDialog.Builder(this@MainActivity)
+                AlertDialog.Builder(this@MainActivity, dialogTheme())
                     .setMessage(text)
                     .setPositiveButton(word("ok", text)) { _, _ -> result?.confirm() }
                     .setOnCancelListener { result?.cancel() }
@@ -139,7 +162,7 @@ class MainActivity : ComponentActivity() {
 
             override fun onJsConfirm(view: WebView?, url: String?, message: String?, result: JsResult?): Boolean {
                 val text = message.orEmpty()
-                AlertDialog.Builder(this@MainActivity)
+                AlertDialog.Builder(this@MainActivity, dialogTheme())
                     .setMessage(text)
                     .setPositiveButton(word("ok", text)) { _, _ -> result?.confirm() }
                     .setNegativeButton(word("cancel", text)) { _, _ -> result?.cancel() }
@@ -162,6 +185,12 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         back.isEnabled = true
+    }
+
+    /** The manifest keeps the activity through a dark mode change, so the page is told instead. */
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        web.evaluateJavascript("window.AteeqApp && AteeqApp.dark(${night(newConfig)})", null)
     }
 
     private fun openOutside(url: Uri) {
@@ -203,6 +232,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun paintBars(msg: JSONObject) {
+        appDark = msg.optBoolean("dark", appDark)
         val band = color(msg.optString("band")) ?: return
         val card = color(msg.optString("card")) ?: color(msg.optString("background")) ?: band
         statusStrip.setBackgroundColor(band)
@@ -242,6 +272,7 @@ class MainActivity : ComponentActivity() {
             out.put("platform", "android")
             out.put("version", versionName())
             out.put("textScale", resources.configuration.fontScale.toDouble())
+            out.put("dark", night())
             // A prepared state, passed only when the app is opened for screenshots.
             intent.getStringExtra("state")?.let { encoded ->
                 runCatching { String(Base64.decode(encoded, Base64.DEFAULT), Charsets.UTF_8) }.getOrNull()?.let { out.put("state", it) }
